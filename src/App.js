@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Header from "./components/Header/Header";
+import Tweet from "./components/Tweet/Tweet";
+import TweetList from "./components/Tweet/TweetList";
 function App() {
+  const [tweetsList, setTweetsList] = useState([]);
+
+  const addTweetHandler = (text) => {
+    setTweetsList((prev) => {
+      return [...prev, { tweet: text, id: Math.Random.toString() }];
+    });
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Header />
+      <main>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <Tweet onAddTweet={addTweetHandler} />
+                <TweetList tweets={tweetsList} />
+              </>
+            }
+          />
+        </Routes>
+      </main>
+    </Router>
   );
 }
 
