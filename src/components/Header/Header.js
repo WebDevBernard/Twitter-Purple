@@ -4,13 +4,9 @@ import Button from "../Button/Button";
 export default function Header() {
   return (
     <div className={classes.header}>
-      <h1 className={classes.title}>
-        <Link to="/">
-          <span>twitter</span>
-          <span style={{ color: "greenyellow" }}> tweeter</span>
-          <span> clone</span>
-        </Link>
-      </h1>
+      <p className={classes.title}>
+        <Link to="/">Home</Link>
+      </p>
       <nav>
         <p>
           <span>Login</span> to write a new tweet

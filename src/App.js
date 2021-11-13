@@ -4,6 +4,8 @@ import Header from "./components/Header/Header";
 import NewTweet from "./components/Tweet/NewTweet";
 import TweetList from "./components/Tweet/TweetList";
 import { v4 } from "uuid";
+import Sidebar from "./components/Sidebar/Sidebar";
+
 function App() {
   const [tweetsList, setTweetsList] = useState([]);
 
@@ -15,7 +17,9 @@ function App() {
 
   return (
     <Router>
+      <Sidebar />
       <Header />
+
       <main>
         <Routes>
           <Route
