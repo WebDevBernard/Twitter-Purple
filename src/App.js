@@ -1,16 +1,18 @@
-import { useState } from "react";
+import { useState, Fragment } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Tweet from "./components/Tweet/Tweet";
 import TweetList from "./components/Tweet/TweetList";
+import { v4 } from "uuid";
 function App() {
   const [tweetsList, setTweetsList] = useState([]);
 
-  const addTweetHandler = (text) => {
+  const addTweetHandler = (data) => {
     setTweetsList((prev) => {
-      return [...prev, { tweet: text, id: Math.Random.toString() }];
+      return [...prev, { text: data, id: v4(data) }];
     });
   };
+
   return (
     <Router>
       <Header />
@@ -19,10 +21,10 @@ function App() {
           <Route
             path="/"
             element={
-              <>
+              <Fragment>
                 <Tweet onAddTweet={addTweetHandler} />
                 <TweetList tweets={tweetsList} />
-              </>
+              </Fragment>
             }
           />
         </Routes>
