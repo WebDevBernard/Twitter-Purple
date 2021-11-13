@@ -1,0 +1,46 @@
+.card {
+  margin: 2rem auto;
+  padding: 1rem;
+  max-width: 30rem;
+  background-color: white;
+}
+
+.card label {
+  color: grey;
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.card input {
+  margin: 1rem 1rem;
+  width: 90%;
+  border: none;
+  background-color: transparent;
+  outline: none;
+  resize: none;
+  border-bottom: solid 2px grey;
+  font-size: 20px;
+}
+
+.input input:focus {
+  outline: none;
+  border-color: #4f005f;
+}
+.card footer {
+  color: grey;
+  font-family: "bungee";
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5em;
+}
+.button {
+  background-color: #4056a1;
+  color: white;
+}
+
+.error {
+  color: red;
+  text-decoration: underline;
+  text-align: center;
+}

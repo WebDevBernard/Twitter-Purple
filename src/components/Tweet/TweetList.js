@@ -1,11 +1,12 @@
 import Card from "../Card/Card";
-import "./TweetList.css";
+import TweetItem from "./TweetItem";
+import classes from "./TweetList.module.css";
 export default function TweetList(props) {
   return (
-    <Card className="users">
+    <Card className={classes.card}>
       <ul>
-        {props.tweets.map((tweet) => {
-          return <li key={tweet.id}>{tweet.text}</li>;
+        {props.tweets.reverse().map((tweet) => {
+          return <TweetItem key={tweet.id} tweet={tweet.text} />;
         })}
       </ul>
     </Card>

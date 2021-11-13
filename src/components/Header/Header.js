@@ -1,23 +1,21 @@
-import "./Header.css";
-import { Link, NavLink } from "react-router-dom";
-
+import classes from "./Header.module.css";
+import { Link } from "react-router-dom";
+import Button from "../Button/Button";
 export default function Header() {
   return (
-    <div className="header">
-      <div className="content">
-        <h1 className="title">
-          <Link to="/">twitter clone</Link>
-        </h1>
-      </div>
+    <div className={classes.header}>
+      <h1 className={classes.title}>
+        <Link to="/">
+          <span>twitter</span>
+          <span style={{ color: "greenyellow" }}> tweeter</span>
+          <span> clone</span>
+        </Link>
+      </h1>
       <nav>
-        <ul className="navlinks">
-          <li>
-            <NavLink to="/">Sign Up</NavLink>
-          </li>
-          <li>
-            <NavLink to="/">Login</NavLink>
-          </li>
-        </ul>
+        <p>
+          <span>Login</span> to write a new tweet
+        </p>
+        <Button className={classes.button}>Login</Button>
       </nav>
     </div>
   );

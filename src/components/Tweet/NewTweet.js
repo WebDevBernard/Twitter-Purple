@@ -1,16 +1,19 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Card from "../Card/Card";
 import Button from "../Button/Button";
-import "./Tweet.css";
+import classes from "./NewTweet.module.css";
+
 export default function Tweet(props) {
   const [enteredTweet, setEnteredTweet] = useState("");
   const [error, setError] = useState();
+  const [count, setCount] = useState(140);
+  const countRef = useRef(140);
 
   const addTweetHandler = (e) => {
     e.preventDefault();
-    if (enteredTweet.trim().length >= 140) {
+    if (enteredTweet.trim().length >= 140 || enteredTweet.trim().length <= 0) {
       setError({
-        message: "Please enter an input less than 140",
+        message: "An error has occured!",
       });
       return;
     }
@@ -24,21 +27,29 @@ export default function Tweet(props) {
 
   const tweetChangeHandler = (e) => {
     setEnteredTweet(e.target.value);
+    setCount(e.target.value.length);
   };
   return (
-    <Card className="input">
+    <Card className={classes.card}>
       <form onSubmit={addTweetHandler}>
-        <label htmlFor="username">What's Happening?</label>
+        <label htmlFor="tweetinput">
+          What's happening? / What are you humming about?
+        </label>
         <input
-          id="username"
+          autocomplete="off"
+          id="tweetinput"
           type="text"
           onClick={errorHandler}
           onChange={tweetChangeHandler}
           value={enteredTweet}
         ></input>
-        {error && <p style={{ color: "red" }}>{error.message}</p>}
+
         <footer>
-          <Button type="submit">Tweet</Button>
+          <Button className={classes.button} type="submit">
+            TWEET
+          </Button>
+          {error && <p className={classes.error}>{error.message}</p>}
+          <p>{140 - count}</p>
         </footer>
       </form>
     </Card>

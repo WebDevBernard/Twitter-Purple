@@ -1,0 +1,17 @@
+.button {
+  font-family: "Bungee";
+  min-width: 6rem;
+  max-height: 2.5rem;
+  font-size: 18px;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 15px;
+  outline: none;
+  box-shadow: lightslategrey 0 7px;
+  cursor: pointer;
+}
+
+.button:active {
+  box-shadow: lightslategrey 0 0px;
+  transform: translateY(4px);
+}

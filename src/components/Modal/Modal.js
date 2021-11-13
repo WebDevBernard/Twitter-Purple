@@ -1,6 +1,6 @@
 import React from "react";
 import { CSSTransition } from "react-transition-group";
-import "./Modal.css";
+import classes from "./Modal.module.css";
 import Backdrop from "./Backdrop";
 
 export default function Modal(props) {}

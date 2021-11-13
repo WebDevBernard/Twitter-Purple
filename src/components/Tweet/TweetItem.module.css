@@ -1,0 +1,42 @@
+.card {
+  margin: 0.5rem 0;
+  padding: 1.5rem;
+  background-color: white;
+}
+.card p {
+  margin-left: 16px;
+}
+
+.card header div {
+  display: flex;
+  justify-content: space-between;
+}
+.card header p {
+  margin-left: 16px;
+  font-size: 20px;
+}
+
+.card footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 2px solid grey;
+  padding: 0.5em;
+}
+
+.icons {
+  display: flex;
+  cursor: pointer;
+}
+
+.icons i {
+  margin-right: 16px;
+}
+
+.icons i:last-child {
+  margin-right: 0px;
+}
+
+.icons i:hover {
+  color: #6699cc;
+}

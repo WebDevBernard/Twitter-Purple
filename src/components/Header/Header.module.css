@@ -1,0 +1,50 @@
+.header {
+  border-bottom: 1px solid rgba(55, 65, 81, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  height: 5rem;
+  padding: 0 3%;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.title a {
+  color: white;
+  font-family: "Bungee";
+  font-weight: lighter;
+  font-size: 18px;
+  text-align: right;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.title a span {
+  display: block;
+  line-height: 18px;
+}
+
+.header nav {
+  display: flex;
+  align-items: center;
+}
+
+.header nav p {
+  color: white;
+  margin-right: 16px;
+}
+.header nav p span {
+  color: greenyellow;
+  text-decoration: underline;
+}
+.button {
+  background-color: greenyellow;
+  color: grey;
+}

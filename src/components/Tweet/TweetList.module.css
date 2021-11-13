@@ -1,0 +1,12 @@
+.card {
+  margin: auto;
+  max-width: 34rem;
+  border: 0px;
+}
+
+.card ul {
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+  margin-bottom: 0.5em;
+}
