@@ -1,0 +1,11 @@
+.modal {
+  height: 70vh;
+  width: 60vh;
+}
+
+@media (min-width: 768px) {
+  .modal {
+    width: 40rem;
+    left: calc(50% - 20rem);
+  }
+}

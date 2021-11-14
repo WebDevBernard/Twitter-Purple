@@ -1,7 +1,7 @@
 .button {
   font-family: "Bungee";
-  min-width: 6rem;
-  max-height: 2.5rem;
+  width: 6rem;
+  height: 2.5rem;
   font-size: 18px;
   text-transform: uppercase;
   border: none;

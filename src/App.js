@@ -4,11 +4,19 @@ import Header from "./components/Header/Header";
 import NewTweet from "./components/Tweet/NewTweet";
 import TweetList from "./components/Tweet/TweetList";
 import { v4 } from "uuid";
-import Sidebar from "./components/Sidebar/Sidebar";
+import Login from "./components/Form/Login";
+import TweetButton from "./components/Tweet/TweetButton";
 
 function App() {
   const [tweetsList, setTweetsList] = useState([]);
+  const [openModal, setOpenModal] = useState(false);
 
+  const openModalHandler = () => {
+    setOpenModal(true);
+  };
+  const closeModalHandler = () => {
+    setOpenModal(false);
+  };
   const addTweetHandler = (data) => {
     setTweetsList((prev) => {
       return [...prev, { text: data, id: v4(data) }];
@@ -17,9 +25,9 @@ function App() {
 
   return (
     <Router>
-      <Sidebar />
-      <Header />
-
+      <Header onShowLogin={openModalHandler} />
+      <TweetButton />
+      {openModal && <Login onClose={closeModalHandler} />}
       <main>
         <Routes>
           <Route

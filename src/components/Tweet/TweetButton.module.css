@@ -1,0 +1,11 @@
+.button {
+  color: white;
+  background-color: deeppink;
+  position: fixed;
+  bottom: 28px;
+  left: 28px;
+  width: auto;
+}
+.hide {
+  display: none;
+}

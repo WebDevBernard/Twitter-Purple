@@ -1,13 +1,11 @@
 .card {
-  margin-top: 24px;
-  margin-left: 74.9vh;
+  margin: 1rem auto;
   padding: 1rem;
   max-width: 30rem;
-  background-color: white;
+  border: 3px solid rgba(55, 65, 81, 0.95);
 }
 
 .card label {
-  color: grey;
   display: block;
   font-weight: bold;
   margin-bottom: 0.5rem;
@@ -20,7 +18,7 @@
   background-color: transparent;
   outline: none;
   resize: none;
-  border-bottom: solid 2px grey;
+  border-bottom: solid 2px black;
   font-size: 20px;
 }
 

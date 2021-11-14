@@ -1,5 +1,4 @@
 .header {
-  border-right: 1px solid rgba(55, 65, 81, 0.95);
   border-bottom: 1px solid rgba(55, 65, 81, 0.95);
   display: flex;
   align-items: center;
@@ -8,16 +7,29 @@
   z-index: 5;
   height: 5rem;
   padding: 0 3%;
-  margin-left: 150px;
 }
 
+.title {
+  display: flex;
+  justify-content: space-around;
+}
 .title a {
-  color: white;
+  color: deeppink;
   font-family: "Bungee";
   font-weight: lighter;
-  font-size: 18px;
+  font-size: 20px;
   text-align: right;
   text-decoration: none;
+}
+
+.title a span {
+  display: block;
+  line-height: 18px;
+}
+
+/* middle  text in span */
+.middle {
+  color: chartreuse;
 }
 .header nav {
   display: flex;
@@ -25,14 +37,17 @@
 }
 
 .header nav p {
-  color: white;
+  color: rgba(55, 65, 81, 0.95);
   margin-right: 16px;
+  white-space: nowrap;
 }
 .header nav p span {
-  color: greenyellow;
+  color: deeppink;
   text-decoration: underline;
+  white-space: nowrap;
 }
+
 .button {
-  background-color: greenyellow;
+  background-color: chartreuse;
   color: grey;
 }

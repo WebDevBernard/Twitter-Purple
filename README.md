@@ -4,11 +4,10 @@ A Twitter clone and a remake of this app [https://github.com/WebDevBernard/tweet
 
 - Written with React (original project written in JQuery)
 - Fully Modular Components: Header, Modal, Button
-- Login Feature: User can like other tweets, and delete their own tweets.
-- Users can like or dislike tweets
+- Login Feature: User can delete their own tweets
 
 The purpose of remaking this app is to practice:
 
-- Using RESTful routes (Add, edit, delete a tweet)
+- Practicing making full stack with MERN
 - Using React hooks with Forms
 - Form Validation for User Login

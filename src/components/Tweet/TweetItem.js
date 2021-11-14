@@ -17,15 +17,14 @@ export default function TweetItem(props) {
           <div>
             <img src="https://i.imgur.com/ilT4JDe.png" /> <p>@ username</p>
           </div>
-          <i className="fas fa-bars"></i>
+          <i className="fas fa-ellipsis-h"></i>
         </div>
       </header>
       <p>{props.tweet}</p>
       <footer>
         <span>{timeago}</span>
         <div className={classes.icons}>
-          <i className="far fa-thumbs-up"></i>
-          <i className="far fa-thumbs-down"></i>
+          <i className="far fa-heart" fa-stack-1x></i>
         </div>
       </footer>
     </Card>

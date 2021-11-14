@@ -1,12 +1,25 @@
 .card {
-  margin-left: 73.4vh;
-  max-width: 34rem;
+  max-width: 100%;
   border: 0px;
+  gap: 1rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin: 2rem;
+}
+@media only screen and (max-width: 1440px) {
+  .card {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
-.card ul {
-  display: flex;
-  flex-direction: column;
-  padding: 1em;
-  margin-bottom: 0.5em;
+@media only screen and (max-width: 1024px) {
+  .card {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .card {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
