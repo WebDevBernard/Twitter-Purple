@@ -11,6 +11,8 @@ export default function TweetList(props) {
             key={tweet.id}
             id={tweet.id}
             tweet={tweet.text}
+            like={tweet.like}
+            likeButton={props.likeButton}
             onRemoveTweet={props.onRemoveTweet}
           />
         );

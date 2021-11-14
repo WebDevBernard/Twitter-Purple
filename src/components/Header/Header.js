@@ -1,4 +1,3 @@
-import { useState } from "react";
 import classes from "./Header.module.css";
 import Button from "../Button/Button";
 export default function Header(props) {

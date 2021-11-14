@@ -18,7 +18,11 @@
 .heart:hover {
   color: deeppink;
 }
-
+.like {
+  cursor: pointer;
+  font-size: 20px;
+  color: deeppink;
+}
 .delete {
   cursor: pointer;
   font-size: 24px;
@@ -47,21 +51,4 @@
   align-items: center;
   border-top: 2px solid rgba(55, 65, 81, 0.95);
   padding: 0.5em;
-}
-
-.icons {
-  display: flex;
-  cursor: pointer;
-}
-
-.icons i {
-  margin-right: 16px;
-}
-
-.icons i:last-child {
-  margin-right: 0px;
-}
-
-.icons i:hover {
-  color: deeppink;
 }

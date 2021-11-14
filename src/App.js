@@ -10,9 +10,15 @@ import TweetButton from "./components/Tweet/TweetButton";
 function App() {
   const [tweetsList, setTweetsList] = useState([]);
   const [openModal, setOpenModal] = useState(false);
+  const [likeToggle, setLikeToggle] = useState(false);
+
+  const toggleLike = () => {
+    likeToggle ? setLikeToggle(true) : setLikeToggle(false);
+  };
   const generateKey = (pre) => {
     return `${pre}_${new Date().getTime()}`;
   };
+
   const openModalHandler = () => {
     setOpenModal(true);
   };
@@ -22,15 +28,15 @@ function App() {
   // lifting state up from NewTweet.js to App.js as Callback function and then add pointer in TweetList.js
   const addTweetHandler = (data) => {
     setTweetsList((prev) => {
-      // console.log(prev);
-      return [...prev, { text: data, id: generateKey(data) }];
+      console.log(prev);
+      return [...prev, { text: data, id: generateKey(data), like: likeToggle }];
     });
   };
   const removeTweetHandler = (tweetId) => {
     setTweetsList((prev) => {
       // console.log(tweetId);
       // console.log(prev);
-      return prev.filter((tweet) => tweet.id !== tweetId);
+      return [...prev.filter((tweet) => tweet.id !== tweetId)];
     });
   };
 
@@ -58,6 +64,7 @@ function App() {
               <Fragment>
                 <NewTweet onAddTweet={addTweetHandler} />
                 <TweetList
+                  likeButton={toggleLike}
                   tweets={tweetsList}
                   onRemoveTweet={removeTweetHandler}
                 />

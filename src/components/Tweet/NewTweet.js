@@ -48,7 +48,7 @@ export default function Tweet(props) {
     <Card className={classes.card}>
       <form onSubmit={addTweetHandler} onKeyDown={onEnterPress}>
         <div>
-          <img src="https://i.imgur.com/ilT4JDe.png" />
+          <img src="https://i.imgur.com/ilT4JDe.png" alt="avatar" />
           <p className={classes.tag}>@ happy guy</p>
         </div>
         <textarea
