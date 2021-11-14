@@ -28,7 +28,7 @@ function App() {
   // lifting state up from NewTweet.js to App.js as Callback function and then add pointer in TweetList.js
   const addTweetHandler = (data) => {
     setTweetsList((prev) => {
-      console.log(prev);
+      // console.log(prev);
       return [...prev, { text: data, id: generateKey(data), like: likeToggle }];
     });
   };
