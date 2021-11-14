@@ -5,7 +5,7 @@ import classes from "./NewTweet.module.css";
 
 export default function Tweet(props) {
   const [enteredTweet, setEnteredTweet] = useState("");
-  const [error, setError] = useState();
+  const [error, setError] = useState({ message: "" });
   const [count, setCount] = useState(0);
 
   const addTweetHandler = (e) => {
@@ -15,7 +15,8 @@ export default function Tweet(props) {
         message: "tweet too long",
       });
       return;
-    } else if (enteredTweet.trim().length <= 0) {
+    }
+    if (enteredTweet.trim().length <= 0) {
       setError({
         message: "tweet too short!",
       });
@@ -25,7 +26,7 @@ export default function Tweet(props) {
     setEnteredTweet("");
     setCount(0);
   };
-
+  // removes the error message
   const errorHandler = () => {
     setError(null);
   };
@@ -35,7 +36,7 @@ export default function Tweet(props) {
     setEnteredTweet(e.target.value);
     setCount(e.target.value.length);
   };
-
+  //press enter to submit
   const onEnterPress = (e) => {
     if (e.keyCode === 13) {
       e.preventDefault();

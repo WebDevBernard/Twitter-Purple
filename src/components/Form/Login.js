@@ -15,7 +15,6 @@ export default function Login(props) {
           alt="close"
         />
       </header>
-
       <form id="signup" className={classes.signup}>
         <label htmlFor="signup">Create a new Account</label>
         <input placeholder="Name"></input>
@@ -24,21 +23,18 @@ export default function Login(props) {
         <input placeholder="Enter Password Again"></input>
         <Button className={classes.buttons}>Sign UP</Button>
       </form>
-      <br />
-
       <form id="login" className={classes.login}>
-        <label htmlFor="login">or login with an existing Account</label>
+        <label htmlFor="login">or login</label>
         <input placeholder="Username"></input>
         <input placeholder="Password"></input>
         <Button className={classes.buttonl}>Login</Button>
       </form>
-
-      <footer>
+      {/* <footer>
         <p> or login with a premade user</p>
         <Button className={classes.button}>Login as happy guy</Button>
         <br />
         <br />
-      </footer>
+      </footer> */}
     </Modal>
   );
 }

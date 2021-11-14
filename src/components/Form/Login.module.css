@@ -2,11 +2,10 @@
   background-color: #d0d0d0;
   top: 5vh;
   height: 80vh;
-  width: 50vh;
-  left: calc(50% - 25vh);
+  width: 70vh;
+  left: calc(50% - 35vh);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 }
 .modal header {
   display: flex;
@@ -29,8 +28,10 @@
   border: 1px solid rgba(55, 65, 81, 0.95);
 }
 .error {
-  font-family: "bungee";
+  font-family: "Ubuntu";
   color: red;
+  text-transform: uppercase;
+  text-decoration: underline;
 }
 
 .modal p {
@@ -73,6 +74,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  margin-top: 24px;
 }
 
 .buttonl {
@@ -92,4 +94,12 @@
   background-color: chartreuse;
   width: 15rem;
   align-self: center;
+}
+@media (max-width: 768px) {
+  .modal {
+    height: 100%;
+    width: 92%;
+    top: 0;
+    left: 0;
+  }
 }

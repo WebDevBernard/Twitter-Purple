@@ -64,9 +64,11 @@
 }
 
 .error {
+  font-family: "Ubuntu";
   color: red;
   text-decoration: underline;
   text-align: center;
+  text-transform: uppercase;
 }
 
 .counterred {
