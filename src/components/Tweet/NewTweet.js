@@ -15,8 +15,7 @@ export default function Tweet(props) {
         message: "tweet too long",
       });
       return;
-    }
-    if (enteredTweet.trim().length <= 0) {
+    } else if (enteredTweet.trim().length <= 0) {
       setError({
         message: "tweet too short!",
       });
@@ -31,6 +30,7 @@ export default function Tweet(props) {
     setError(null);
   };
 
+  // used in onChange prop to reset the input, enteredTweet goes in value
   const tweetChangeHandler = (e) => {
     setEnteredTweet(e.target.value);
     setCount(e.target.value.length);

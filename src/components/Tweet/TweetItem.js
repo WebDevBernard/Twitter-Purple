@@ -1,9 +1,10 @@
 import moment from "moment";
 import Card from "../Card/Card";
+import { useState } from "react";
 import classes from "./TweetItem.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
-// import { useState, useEffect } from "react";
+
 // const avatars = {
 
 //   Female: ["https://i.imgur.com/nlhLi3I.png","https://i.imgur.com/z5LNkkB.png","https://i.imgur.com/v0JXau2.png","https://i.imgur.com/lRUnDgU.png", "https://i.imgur.com/3GvwNBf.png"],
@@ -15,7 +16,11 @@ export default function TweetItem(props) {
   const deleteHandler = () => {
     props.onRemoveTweet(props.id);
   };
+  const [likeToggle, setLikeToggle] = useState(false);
 
+  const toggleLike = () => {
+    likeToggle ? setLikeToggle(false) : setLikeToggle(true);
+  };
   const timeago = moment(Date.now().created_at).fromNow();
   return (
     <Card className={classes.card}>
@@ -38,8 +43,10 @@ export default function TweetItem(props) {
         <span>{timeago}</span>
 
         <FontAwesomeIcon
-          onClick={props.likeButton}
-          className={props.like ? classes.like : classes.heart}
+          // onClick={props.likeButton}
+          // className={props.like ? classes.like : classes.heart}
+          onClick={toggleLike}
+          className={likeToggle ? classes.like : classes.heart}
           icon={faHeart}
           alt="like"
         />

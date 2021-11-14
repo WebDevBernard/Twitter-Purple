@@ -17,7 +17,7 @@ export default function Login(props) {
       </header>
 
       <form id="signup" className={classes.signup}>
-        <label htmlFor="signup">Create a new user</label>
+        <label htmlFor="signup">Create a new Account</label>
         <input placeholder="Name"></input>
         <input placeholder="Username"></input>
         <input placeholder="Password"></input>

@@ -13,7 +13,7 @@ function App() {
   const [likeToggle, setLikeToggle] = useState(false);
 
   const toggleLike = () => {
-    likeToggle ? setLikeToggle(true) : setLikeToggle(false);
+    likeToggle ? setLikeToggle(false) : setLikeToggle(true);
   };
   const generateKey = (pre) => {
     return `${pre}_${new Date().getTime()}`;
