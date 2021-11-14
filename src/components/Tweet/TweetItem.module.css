@@ -2,7 +2,7 @@
   margin: 0.5rem 0;
   padding: 1.5rem;
   border: 3px solid rgba(55, 65, 81, 0.95);
-  width: 24rem;
+  max-width: 100%;
 }
 .card p {
   margin: 16px 16px;
@@ -10,6 +10,23 @@
   overflow-wrap: break-word;
 }
 
+.heart {
+  cursor: pointer;
+  font-size: 20px;
+  color: rgba(55, 65, 81, 0.95);
+}
+.heart:hover {
+  color: deeppink;
+}
+
+.delete {
+  cursor: pointer;
+  font-size: 24px;
+  color: rgba(55, 65, 81, 0.95);
+}
+.delete:hover {
+  color: chartreuse;
+}
 .card header div {
   display: flex;
   justify-content: space-between;
@@ -17,9 +34,13 @@
 /* username */
 .card header p {
   margin-left: 16px;
+  color: rgba(55, 65, 81, 0.95);
+  font-weight: bold;
   font-size: 20px;
 }
-
+.input {
+  color: rgba(55, 65, 81, 0.95);
+}
 .card footer {
   display: flex;
   justify-content: space-between;

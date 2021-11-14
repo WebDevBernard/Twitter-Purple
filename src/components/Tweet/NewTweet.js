@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import Card from "../Card/Card";
 import Button from "../Button/Button";
 import classes from "./NewTweet.module.css";
@@ -6,19 +6,25 @@ import classes from "./NewTweet.module.css";
 export default function Tweet(props) {
   const [enteredTweet, setEnteredTweet] = useState("");
   const [error, setError] = useState();
-  const [count, setCount] = useState(140);
-  const countRef = useRef(140);
+  const [count, setCount] = useState(0);
 
   const addTweetHandler = (e) => {
     e.preventDefault();
-    if (enteredTweet.trim().length >= 140 || enteredTweet.trim().length <= 0) {
+    if (enteredTweet.trim().length >= 140) {
       setError({
-        message: "An error has occured!",
+        message: "tweet too long",
+      });
+      return;
+    }
+    if (enteredTweet.trim().length <= 0) {
+      setError({
+        message: "tweet too short!",
       });
       return;
     }
     props.onAddTweet(enteredTweet);
     setEnteredTweet("");
+    setCount(0);
   };
 
   const errorHandler = () => {
@@ -29,27 +35,47 @@ export default function Tweet(props) {
     setEnteredTweet(e.target.value);
     setCount(e.target.value.length);
   };
+
+  const onEnterPress = (e) => {
+    if (e.keyCode === 13) {
+      e.preventDefault();
+      props.onAddTweet(enteredTweet);
+      setEnteredTweet("");
+      setCount(0);
+    }
+  };
   return (
     <Card className={classes.card}>
-      <form onSubmit={addTweetHandler}>
-        <label htmlFor="tweetinput">
-          What's happening? / What are you humming about?
-        </label>
-        <input
-          autocomplete="off"
+      <form onSubmit={addTweetHandler} onKeyDown={onEnterPress}>
+        <div>
+          <img src="https://i.imgur.com/ilT4JDe.png" />
+          <p className={classes.tag}>@ happy guy</p>
+        </div>
+        <textarea
+          className={classes.input}
+          placeholder="What are you humming about?"
+          autoComplete="off"
           id="tweetinput"
           type="text"
           onClick={errorHandler}
           onChange={tweetChangeHandler}
           value={enteredTweet}
-        ></input>
+          rows="4"
+          cols="30"
+        ></textarea>
 
         <footer>
           <Button className={classes.button} type="submit">
             TWEET
           </Button>
           {error && <p className={classes.error}>{error.message}</p>}
-          <p>{140 - count}</p>
+          <p
+            className={
+              count - 140 <= 0 ? classes.counterblack : classes.counterred
+            }
+          >
+            {140 - count}
+          </p>
         </footer>
       </form>
     </Card>

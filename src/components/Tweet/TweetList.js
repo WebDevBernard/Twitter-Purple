@@ -5,8 +5,15 @@ import classes from "./TweetList.module.css";
 export default function TweetList(props) {
   return (
     <Card className={classes.card}>
-      {props.tweets.reverse().map((tweet) => {
-        return <TweetItem key={tweet.id} tweet={tweet.text} />;
+      {[...props.tweets].reverse().map((tweet) => {
+        return (
+          <TweetItem
+            key={tweet.id}
+            id={tweet.id}
+            tweet={tweet.text}
+            onRemoveTweet={props.onRemoveTweet}
+          />
+        );
       })}
     </Card>
   );
