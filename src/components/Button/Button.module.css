@@ -9,6 +9,7 @@
   outline: none;
   box-shadow: lightslategrey 0 7px;
   cursor: pointer;
+  user-select: none;
 }
 
 .button:active {
