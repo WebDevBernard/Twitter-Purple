@@ -5,7 +5,11 @@ export default function Header(props) {
     <div id="top" className={classes.header}>
       <h1 className={classes.title}>
         <br />
-        <a href="#top">
+        <a
+          href="https://github.com/WebDevBernard/Twitter-React"
+          target="_blank"
+          rel="noreferrer"
+        >
           <span>twitter</span>
           <span className={classes.middle}>tweeter</span>
           <span> react</span>

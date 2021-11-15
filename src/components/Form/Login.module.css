@@ -63,8 +63,8 @@
 }
 
 .buttons {
-  color: white;
-  background-color: deeppink;
+  color: rgba(55, 65, 81, 0.95);
+  background-color: chartreuse;
   width: 15rem;
   align-self: center;
   margin-top: 16px;

@@ -29,7 +29,7 @@ export default function TweetItem(props) {
         <div>
           <div>
             <img src="https://i.imgur.com/ilT4JDe.png" alt="avatar" />
-            <p>@ username</p>
+            <p>@ happy guy</p>
           </div>
           <FontAwesomeIcon
             onClick={deleteHandler}
@@ -41,7 +41,7 @@ export default function TweetItem(props) {
       </header>
       <p className={classes.input}>{props.tweet}</p>
       <footer>
-        <span>{timeAgo(props.createdAt)}</span>
+        <span className={classes.time}>{timeAgo(props.createdAt)}</span>
 
         <FontAwesomeIcon
           onClick={toggleLike}

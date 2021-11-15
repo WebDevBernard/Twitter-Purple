@@ -10,13 +10,13 @@ export default function Tweet(props) {
 
   const addTweetHandler = (e) => {
     e.preventDefault();
-    if (enteredTweet.trim().length >= 140) {
+    if (enteredTweet.trim().length > 140) {
       setError({
-        message: "tweet too long",
+        message: "tweet too long!",
       });
       return;
     }
-    if (enteredTweet.trim().length <= 0) {
+    if (enteredTweet.trim().length === 0) {
       setError({
         message: "tweet too short!",
       });
