@@ -10,11 +10,7 @@ import TweetButton from "./components/Tweet/TweetButton";
 function App() {
   const [tweetsList, setTweetsList] = useState([]);
   const [openModal, setOpenModal] = useState(false);
-  const [likeToggle, setLikeToggle] = useState(false);
 
-  const toggleLike = () => {
-    likeToggle ? setLikeToggle(false) : setLikeToggle(true);
-  };
   const generateKey = (pre) => {
     return `${pre}_${new Date().getTime()}`;
   };
@@ -25,17 +21,28 @@ function App() {
   const closeModalHandler = () => {
     setOpenModal(false);
   };
+
   // lifting state up from NewTweet.js to App.js as Callback function and then add pointer in TweetList.js
+  // ...prev makes a shallow copy of the previous state
+  // THE INITIAL STATE OBJECT HERE
   const addTweetHandler = (data) => {
     setTweetsList((prev) => {
       // console.log(prev);
-      return [...prev, { text: data, id: generateKey(data), like: likeToggle }];
+      return [
+        ...prev,
+        {
+          text: data,
+          id: generateKey(data),
+          like: false,
+          createdAt: Date.now(),
+        },
+      ];
     });
   };
   const removeTweetHandler = (tweetId) => {
     setTweetsList((prev) => {
       // console.log(tweetId);
-      // console.log(prev);
+      console.log("prev from App", prev);
       return [...prev.filter((tweet) => tweet.id !== tweetId)];
     });
   };
@@ -64,7 +71,6 @@ function App() {
               <Fragment>
                 <NewTweet onAddTweet={addTweetHandler} />
                 <TweetList
-                  likeButton={toggleLike}
                   tweets={tweetsList}
                   onRemoveTweet={removeTweetHandler}
                 />

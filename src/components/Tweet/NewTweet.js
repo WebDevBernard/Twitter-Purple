@@ -5,7 +5,7 @@ import classes from "./NewTweet.module.css";
 
 export default function Tweet(props) {
   const [enteredTweet, setEnteredTweet] = useState("");
-  const [error, setError] = useState({ message: "" });
+  const [error, setError] = useState();
   const [count, setCount] = useState(0);
 
   const addTweetHandler = (e) => {

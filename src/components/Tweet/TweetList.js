@@ -1,6 +1,5 @@
 import Card from "../Card/Card";
 import TweetItem from "./TweetItem";
-import NewTweet from "./NewTweet";
 import classes from "./TweetList.module.css";
 export default function TweetList(props) {
   return (
@@ -12,7 +11,7 @@ export default function TweetList(props) {
             id={tweet.id}
             tweet={tweet.text}
             like={tweet.like}
-            likeButton={props.likeButton}
+            createdAt={tweet.createdAt}
             onRemoveTweet={props.onRemoveTweet}
           />
         );
