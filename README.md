@@ -4,7 +4,7 @@
 
 ## About
 
-A very basic Twitter clone and a remake of this app [https://github.com/WebDevBernard/tweeter](https://github.com/WebDevBernard/tweeter) with these features:
+A simple Twitter clone and a remake of this app [https://github.com/WebDevBernard/tweeter](https://github.com/WebDevBernard/tweeter) with these features:
 
 - Written with modern React tools, using modular components: Header, Modal, Button
 - User content saved to localStorage.
