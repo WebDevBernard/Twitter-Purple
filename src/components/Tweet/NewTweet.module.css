@@ -33,7 +33,6 @@
   overflow: hidden;
   -webkit-animation: fadein 2s;
   animation: typing 3.5s steps(40, end);
-  user-select: none;
   caret-color: deeppink;
   color: blueviolet;
 }

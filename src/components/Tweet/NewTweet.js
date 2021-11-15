@@ -8,8 +8,7 @@ export default function Tweet(props) {
   const [error, setError] = useState();
   const [count, setCount] = useState(0);
 
-  const addTweetHandler = (e) => {
-    e.preventDefault();
+  const validateInput = () => {
     if (enteredTweet.trim().length > 140) {
       setError({
         message: "tweet too long!",
@@ -26,6 +25,18 @@ export default function Tweet(props) {
     setEnteredTweet("");
     setCount(0);
   };
+
+  const addTweetOnClick = (e) => {
+    e.preventDefault();
+    validateInput();
+  };
+
+  const addTweetOnEnter = (e) => {
+    if (e.keyCode === 13) {
+      e.preventDefault();
+      validateInput();
+    }
+  };
   // removes the error message
   const errorHandler = () => {
     setError(null);
@@ -36,18 +47,10 @@ export default function Tweet(props) {
     setEnteredTweet(e.target.value);
     setCount(e.target.value.length);
   };
-  //press enter to submit
-  const onEnterPress = (e) => {
-    if (e.keyCode === 13) {
-      e.preventDefault();
-      props.onAddTweet(enteredTweet);
-      setEnteredTweet("");
-      setCount(0);
-    }
-  };
+
   return (
     <Card className={classes.card}>
-      <form onSubmit={addTweetHandler} onKeyDown={onEnterPress}>
+      <form onSubmit={addTweetOnClick} onKeyDown={addTweetOnEnter}>
         <div>
           <img src="https://i.imgur.com/ilT4JDe.png" alt="avatar" />
           <p className={classes.tag}>@ happy guy</p>

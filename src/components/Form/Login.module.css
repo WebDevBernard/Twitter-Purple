@@ -1,7 +1,7 @@
 .modal {
   background-color: #d0d0d0;
   top: 5vh;
-  height: 40rem;
+  height: 35rem;
   width: 40rem;
   left: calc(50% - 20%);
   display: flex;
@@ -63,8 +63,8 @@
 }
 
 .buttons {
-  color: rgba(55, 65, 81, 0.95);
-  background-color: chartreuse;
+  color: #fff;
+  background-color: deeppink;
   width: 15rem;
   align-self: center;
   margin-top: 16px;
@@ -90,9 +90,10 @@
   flex-direction: column;
 }
 .button {
+  margin-top: 24px;
   color: rgba(55, 65, 81, 0.95);
   background-color: chartreuse;
-  width: 15rem;
+  width: 25rem;
   align-self: center;
 }
 @media (max-width: 768px) {

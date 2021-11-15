@@ -18,7 +18,8 @@ export default function Header(props) {
       </h1>
       <nav>
         <p>
-          <span>Sign Up</span> to create a new user
+          <span>Login</span> or <span>Sign Up</span> to tweet as a different
+          user
         </p>
         <Button className={classes.button} onClick={props.onShowLogin}>
           Sign Up
