@@ -22,7 +22,7 @@ export default function Tweet(props) {
       });
       return;
     }
-
+    props.handleUserName();
     props.handleAvatar();
     props.onAddTweet(enteredTweet);
     setEnteredTweet("");
@@ -59,32 +59,14 @@ export default function Tweet(props) {
   // put this inside input <input ref={enteredRefTweet}></input>
   // <=================================================================>
 
-  const avatars = {
-    Female: [
-      "https://i.imgur.com/nlhLi3I.png",
-      "https://i.imgur.com/z5LNkkB.png",
-      "https://i.imgur.com/v0JXau2.png",
-      "https://i.imgur.com/lRUnDgU.png",
-      "https://i.imgur.com/3GvwNBf.png",
-    ],
-    Male: [
-      "https://i.imgur.com/73hZDYK.png",
-      "https://i.imgur.com/5fUVPRP.png",
-      "https://i.imgur.com/DVpDmdR.png",
-      "https://i.imgur.com/2WZtOD6.png",
-      "https://i.imgur.com/ilT4JDe.png",
-    ],
-  };
-  const avatarArray = Object.values(avatars.Male).concat(
-    Object.values(avatars.Female)
-  );
-  const avatar = avatarArray[Math.floor(Math.random() * avatarArray.length)];
   return (
     <Card className={classes.card}>
       <form onSubmit={addTweetOnClick} onKeyDown={addTweetOnEnter}>
         <div>
           <img src={props.avatar} alt="avatar" />
-          <p className={classes.tag}>@ random dude</p>
+          <p className={classes.tag}>
+            <span style={{ color: "deeppink" }}>@</span> {props.userName}
+          </p>
         </div>
         <textarea
           className={classes.input}

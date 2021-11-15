@@ -25,7 +25,7 @@ export default function TweetItem(props) {
           <div>
             {/* <img src="https://i.imgur.com/ilT4JDe.png" alt="avatar" /> */}
             <img src={props.avatar} alt="avatar" />
-            <p>@ random dude</p>
+            <p>@ {props.userName}</p>
           </div>
           <FontAwesomeIcon
             onClick={deleteHandler}

@@ -1,4 +1,11 @@
 import { useEffect, useState, Fragment } from "react";
+import {
+  uniqueNamesGenerator,
+  Config,
+  adjectives,
+  colors,
+  animals,
+} from "unique-names-generator";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 import NewTweet from "./components/Tweet/NewTweet";
@@ -28,10 +35,19 @@ function App() {
   const avatarArray = Object.values(avatars.Male).concat(
     Object.values(avatars.Female)
   );
+
   const avatar = avatarArray[Math.floor(Math.random() * avatarArray.length)];
   const [userAvatar, setUserAvatar] = useState(avatar);
   const handleAvatar = () => {
     setUserAvatar(avatar);
+  };
+  const shortName = uniqueNamesGenerator({
+    dictionaries: [adjectives, animals, colors], // colors can be omitted here as not used
+    length: 2,
+  });
+  const [userName, setUserName] = useState(shortName);
+  const handleUserName = () => {
+    setUserName(shortName);
   };
   const generateKey = (pre) => {
     return `${pre}_${new Date().getTime()}`;
@@ -58,6 +74,7 @@ function App() {
           like: false,
           createdAt: Date.now(),
           avatar: userAvatar,
+          userName: userName,
         },
       ];
     });
@@ -95,9 +112,11 @@ function App() {
             element={
               <Fragment>
                 <NewTweet
+                  userName={userName}
+                  handleUserName={handleUserName}
                   avatar={userAvatar}
-                  onAddTweet={addTweetHandler}
                   handleAvatar={handleAvatar}
+                  onAddTweet={addTweetHandler}
                 />
                 <TweetList
                   tweets={tweetsList}
