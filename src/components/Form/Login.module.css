@@ -90,7 +90,6 @@
   flex-direction: column;
 }
 .button {
-  margin-top: 24px;
   color: rgba(55, 65, 81, 0.95);
   background-color: chartreuse;
   width: 25rem;

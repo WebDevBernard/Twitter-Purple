@@ -3,14 +3,36 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 import NewTweet from "./components/Tweet/NewTweet";
 import TweetList from "./components/Tweet/TweetList";
-
 import Login from "./components/Form/Login";
 import TweetButton from "./components/Tweet/TweetButton";
 
 function App() {
   const [tweetsList, setTweetsList] = useState([]);
   const [openModal, setOpenModal] = useState(false);
-
+  const avatars = {
+    Female: [
+      "https://i.imgur.com/nlhLi3I.png",
+      "https://i.imgur.com/z5LNkkB.png",
+      "https://i.imgur.com/v0JXau2.png",
+      "https://i.imgur.com/lRUnDgU.png",
+      "https://i.imgur.com/3GvwNBf.png",
+    ],
+    Male: [
+      "https://i.imgur.com/73hZDYK.png",
+      "https://i.imgur.com/5fUVPRP.png",
+      "https://i.imgur.com/DVpDmdR.png",
+      "https://i.imgur.com/2WZtOD6.png",
+      "https://i.imgur.com/ilT4JDe.png",
+    ],
+  };
+  const avatarArray = Object.values(avatars.Male).concat(
+    Object.values(avatars.Female)
+  );
+  const avatar = avatarArray[Math.floor(Math.random() * avatarArray.length)];
+  const [userAvatar, setUserAvatar] = useState(avatar);
+  const handleAvatar = () => {
+    setUserAvatar(avatar);
+  };
   const generateKey = (pre) => {
     return `${pre}_${new Date().getTime()}`;
   };
@@ -35,6 +57,7 @@ function App() {
           id: generateKey(data),
           like: false,
           createdAt: Date.now(),
+          avatar: userAvatar,
         },
       ];
     });
@@ -42,7 +65,7 @@ function App() {
   const removeTweetHandler = (tweetId) => {
     setTweetsList((prev) => {
       // console.log(tweetId);
-      console.log("prev from App", prev);
+      // console.log("prev from App", prev);
       return [...prev.filter((tweet) => tweet.id !== tweetId)];
     });
   };
@@ -59,6 +82,8 @@ function App() {
   }, [tweetsList]);
 
   return (
+    // send data via value instead of props drilling
+
     <Router>
       <Header onShowLogin={openModalHandler} />
       <TweetButton />
@@ -69,7 +94,11 @@ function App() {
             path="/"
             element={
               <Fragment>
-                <NewTweet onAddTweet={addTweetHandler} />
+                <NewTweet
+                  avatar={userAvatar}
+                  onAddTweet={addTweetHandler}
+                  handleAvatar={handleAvatar}
+                />
                 <TweetList
                   tweets={tweetsList}
                   onRemoveTweet={removeTweetHandler}

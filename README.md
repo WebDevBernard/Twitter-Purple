@@ -1,15 +1,14 @@
 ## Try the Live Demo
 
-## [Live Demo!](https://twitter-react-coral.vercel.app)
+### [Live Demo!](https://twitter-react-coral.vercel.app)
 
 ## About
 
 A very basic Twitter clone and a remake of this app [https://github.com/WebDevBernard/tweeter](https://github.com/WebDevBernard/tweeter) with these features:
 
-- Written in React with modular components: Header, Modal, Button
+- Written with modern React tools, using modular components: Header, Modal, Button
 - Login feature with form validation
-- Uses modern React tools like useState, useRef, useContext, useReducer
-- User data / content saved to localStorage
+- User data stored in firebase, user content saved to localStorage.
 
 ## Preview
 
@@ -17,5 +16,5 @@ A very basic Twitter clone and a remake of this app [https://github.com/WebDevBe
 
 ## Installation
 
-`run npm install`
-`view on localhost:3000`
+`run: npm install`<br/>
+`view on: localhost:3000`

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useReducer } from "react";
 import Modal from "../Modal/Modal";
 import Button from "../Button/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -40,8 +40,9 @@ export default function Login(props) {
         </form>
       )}
       <footer>
+        <p>or</p>
         <Button onClick={handleToggle} className={classes.button}>
-          {toggleLogin ? "Login with an account" : "Create an account"}
+          {toggleLogin ? "Create an account" : "Login with an account"}
         </Button>
       </footer>
     </Modal>

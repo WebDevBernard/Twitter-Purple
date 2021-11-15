@@ -13,6 +13,7 @@ export default function TweetList(props) {
             like={tweet.like}
             createdAt={tweet.createdAt}
             onRemoveTweet={props.onRemoveTweet}
+            avatar={tweet.avatar}
           />
         );
       })}
