@@ -1,6 +1,6 @@
 ## Try the Live Demo
 
-### [Live Demo!](https://twitter-react-coral.vercel.app)
+### [Live Demo!](https://twitterreact.vercel.app/)
 
 ## About
 
