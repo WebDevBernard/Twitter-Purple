@@ -1,7 +1,8 @@
 body {
-  background-color: #d0d0d0;
+  background-color: #f1f1fd;
+  letter-spacing: 0.08rem;
   margin: 0;
-  font-family: "Ubuntu", "sans-serif";
+  font-family: "Roboto Mono", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

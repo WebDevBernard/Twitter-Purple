@@ -1,18 +1,27 @@
 .button {
-  font-family: "Bungee";
-  width: 6rem;
-  height: 2.5rem;
-  font-size: 18px;
-  text-transform: uppercase;
-  border: none;
-  border-radius: 15px;
-  outline: none;
-  box-shadow: lightslategrey 0 7px;
+  outline: 0;
+  padding: 1rem 4rem;
+  font-size: 1rem;
+  letter-spacing: 0.08rem;
+  position: relative;
   cursor: pointer;
-  user-select: none;
+  line-height: 0em;
+  white-space: nowrap;
 }
 
-.button:active {
-  box-shadow: lightslategrey 0 0px;
-  transform: translateY(4px);
+.button:after {
+  content: "";
+  background-color: #dcbaff;
+  width: 100%;
+  z-index: -1;
+  position: absolute;
+  height: 100%;
+  top: 7px;
+  left: 7px;
+  transition: 0.2s;
+}
+
+.button:hover::after {
+  top: 0px;
+  left: 0px;
 }

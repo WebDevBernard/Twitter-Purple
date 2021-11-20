@@ -14,12 +14,12 @@ export default function Login(props) {
     <Modal onClose={props.onClose} className={classes.modal}>
       <header>
         <br />
-
-        <FontAwesomeIcon
+        <img
           className={classes.close}
           onClick={props.onClose}
           icon={faTimes}
           alt="close"
+          src="https://img.icons8.com/ultraviolet/40/000000/delete-sign.png"
         />
       </header>
       {!toggleLogin && (
@@ -29,7 +29,7 @@ export default function Login(props) {
           <input placeholder="Username"></input>
           <input placeholder="Password"></input>
           <input placeholder="Enter Password Again"></input>
-          <Button className={classes.buttons}>Sign UP</Button>
+          <Button className={classes.buttons}>Sign Up</Button>
         </form>
       )}
       {toggleLogin && (

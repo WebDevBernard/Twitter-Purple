@@ -22,28 +22,37 @@ export default function TweetItem(props) {
     <Card className={classes.card}>
       <header>
         <div>
-          <div>
-            {/* <img src="https://i.imgur.com/ilT4JDe.png" alt="avatar" /> */}
-            <img src={props.avatar} alt="avatar" />
-            <p>@ {props.userName}</p>
+          {/* <img src="https://i.imgur.com/ilT4JDe.png" alt="avatar" /> */}
+          <img className={classes.avatar} src={props.avatar} alt="avatar" />
+          <div className={classes.username}>
+            <img
+              className={classes.atSign}
+              src="https://img.icons8.com/ios/50/000000/email.png"
+            />
+            <p>{props.userName}</p>
           </div>
-          <FontAwesomeIcon
+          <img
             onClick={deleteHandler}
             className={classes.delete}
             icon={faTrashAlt}
             alt="delete"
+            src="https://img.icons8.com/dotty/80/000000/delete-sign.png"
           />
         </div>
       </header>
       <p className={classes.input}>{props.tweet}</p>
       <footer>
         <span className={classes.time}>{timeAgo(props.createdAt)}</span>
-
-        <FontAwesomeIcon
+        <img
           onClick={toggleLike}
           className={likeToggle ? classes.like : classes.heart}
           icon={faHeart}
           alt="like"
+          src={
+            likeToggle
+              ? "https://img.icons8.com/dusk/64/000000/hearts.png"
+              : "https://img.icons8.com/wired/64/000000/hearts.png"
+          }
         />
       </footer>
     </Card>

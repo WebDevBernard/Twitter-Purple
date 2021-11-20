@@ -1,5 +1,5 @@
 .modal {
-  background-color: #d0d0d0;
+  background-color: #f7f7ff;
   top: 5vh;
   height: 35rem;
   width: 40rem;
@@ -12,12 +12,14 @@
   justify-content: space-between;
 }
 .modal input {
+  font-family: "Roboto Mono";
+  letter-spacing: 0.08rem;
   margin-top: 16px;
   color: rgba(55, 65, 81, 0.95);
-  background-color: aliceblue;
-  font-size: 20px;
-  border-radius: 4px;
-  border-style: solid;
+  background-color: #e7e7e7;
+  font-size: 16px;
+  outline: 0;
+  padding: 1rem 4rem;
   display: block;
   border: none;
   padding: 0.6rem;
@@ -28,33 +30,35 @@
   border: 1px solid rgba(55, 65, 81, 0.95);
 }
 .error {
-  font-family: "Ubuntu";
-  color: red;
+  color: deeppink;
   text-transform: uppercase;
   text-decoration: underline;
 }
 
 .modal p {
-  font-family: "Bungee";
-  color: deeppink;
+  color: blueviolet;
   font-size: 18px;
   align-self: center;
 }
 .modal label {
   color: blueviolet;
-  font-family: "Bungee";
+
   font-size: 18px;
   align-self: center;
 }
+input::placeholder {
+  color: rgba(55, 65, 81, 0.95);
+  font-family: "Roboto Mono";
+  letter-spacing: 0.08rem;
+  font-size: 16px;
+  padding-top: 60px;
+  white-space: nowrap;
+}
 .close {
-  color: blueviolet;
-  font-size: 20px;
+  height: 34px;
   cursor: pointer;
 }
 
-.close:hover {
-  color: deeppink;
-}
 .signup {
   display: flex;
   flex-direction: column;
@@ -63,8 +67,6 @@
 }
 
 .buttons {
-  color: #fff;
-  background-color: deeppink;
   width: 15rem;
   align-self: center;
   margin-top: 16px;
@@ -78,8 +80,6 @@
 }
 
 .buttonl {
-  color: white;
-  background-color: deeppink;
   width: 15rem;
   align-self: center;
   margin-top: 16px;
@@ -90,8 +90,6 @@
   flex-direction: column;
 }
 .button {
-  color: rgba(55, 65, 81, 0.95);
-  background-color: chartreuse;
   width: 25rem;
   align-self: center;
 }

@@ -63,10 +63,14 @@ export default function Tweet(props) {
     <Card className={classes.card}>
       <form onSubmit={addTweetOnClick} onKeyDown={addTweetOnEnter}>
         <div>
-          <img src={props.avatar} alt="avatar" />
-          <p className={classes.tag}>
-            <span style={{ color: "deeppink" }}>@</span> {props.userName}
-          </p>
+          <img className={classes.avatar} src={props.avatar} alt="avatar" />
+          <div className={classes.tag}>
+            <img
+              className={classes.atSign}
+              src="https://img.icons8.com/ios/50/000000/email.png"
+            />
+            {props.userName}
+          </div>
         </div>
         <textarea
           className={classes.input}

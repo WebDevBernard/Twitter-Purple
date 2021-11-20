@@ -4,17 +4,11 @@ export default function Header(props) {
   return (
     <div id="top" className={classes.header}>
       <h1 className={classes.title}>
-        <br />
-        <a
-          href="https://github.com/WebDevBernard/Twitter-React"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <span>twitter</span>
-          <span className={classes.middle}>tweeter</span>
-          <span> react</span>
+        <img src="https://img.icons8.com/plasticine/100/000000/twitter--v1.png" />
+
+        <a href="https://www.bernardyang.com/" target="_blank" rel="noreferrer">
+          <p>twitter tweeter react</p>{" "}
         </a>
-        <br />
       </h1>
       <nav>
         <p>

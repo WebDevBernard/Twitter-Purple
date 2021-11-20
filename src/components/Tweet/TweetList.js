@@ -3,7 +3,7 @@ import TweetItem from "./TweetItem";
 import classes from "./TweetList.module.css";
 export default function TweetList(props) {
   return (
-    <Card className={classes.card}>
+    <div className={classes.card}>
       {[...props.tweets].reverse().map((tweet) => {
         return (
           <TweetItem
@@ -18,6 +18,6 @@ export default function TweetList(props) {
           />
         );
       })}
-    </Card>
+    </div>
   );
 }

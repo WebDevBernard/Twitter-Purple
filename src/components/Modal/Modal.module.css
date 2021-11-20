@@ -10,8 +10,8 @@
 
 .modal {
   position: fixed;
-  padding: 1rem;
-  border-radius: 10px;
+  outline: 0;
+  padding: 1rem 4rem;
   z-index: 30;
   animation: slide-down 300ms ease-out forwards;
 }
