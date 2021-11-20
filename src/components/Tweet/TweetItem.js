@@ -20,6 +20,16 @@ export default function TweetItem(props) {
   const timeAgo = (el) => moment(el).fromNow();
   return (
     <Card className={classes.card}>
+      <div className={classes.header}>
+        <br />
+        <img
+          onClick={deleteHandler}
+          className={classes.delete}
+          icon={faTrashAlt}
+          alt="delete"
+          src="https://img.icons8.com/dotty/80/000000/delete-sign.png"
+        />
+      </div>
       <header>
         <div>
           {/* <img src="https://i.imgur.com/ilT4JDe.png" alt="avatar" /> */}
@@ -31,15 +41,9 @@ export default function TweetItem(props) {
             />
             <p>{props.userName}</p>
           </div>
-          <img
-            onClick={deleteHandler}
-            className={classes.delete}
-            icon={faTrashAlt}
-            alt="delete"
-            src="https://img.icons8.com/dotty/80/000000/delete-sign.png"
-          />
         </div>
       </header>
+      <br />
       <p className={classes.input}>{props.tweet}</p>
       <footer>
         <span className={classes.time}>{timeAgo(props.createdAt)}</span>

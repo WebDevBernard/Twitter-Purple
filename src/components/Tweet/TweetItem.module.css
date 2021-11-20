@@ -5,15 +5,18 @@
   max-width: 100%;
 }
 
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 .card p {
   margin: 16px 16px;
   font-size: 18px;
   overflow-wrap: break-word;
 }
 .username {
-  display: flex;
   align-items: center;
-
   white-space: nowrap;
 }
 
