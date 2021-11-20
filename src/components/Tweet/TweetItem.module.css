@@ -72,3 +72,9 @@
 
   color: rgb(80, 80, 80);
 }
+@media only screen and (max-width: 768px) {
+  .card {
+    max-width: 30rem;
+    width: 30rem;
+  }
+}

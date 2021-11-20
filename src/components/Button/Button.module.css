@@ -7,6 +7,9 @@
   cursor: pointer;
   line-height: 0em;
   white-space: nowrap;
+  text-transform: uppercase;
+  user-select: none;
+  max-height: 3rem;
 }
 
 .button:after {

@@ -24,12 +24,12 @@ export default function Login(props) {
       </header>
       {!toggleLogin && (
         <form id="signup" className={classes.signup}>
-          <label htmlFor="signup">Create an new Account</label>
+          <label htmlFor="signup">Create a new Account</label>
           <input placeholder="Name"></input>
           <input placeholder="Username"></input>
           <input placeholder="Password"></input>
           <input placeholder="Enter Password Again"></input>
-          <Button className={classes.buttons}>Sign Up</Button>
+          <Button className={classes.buttons}>Sign up</Button>
         </form>
       )}
       {toggleLogin && (

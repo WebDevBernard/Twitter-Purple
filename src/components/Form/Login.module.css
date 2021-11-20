@@ -3,7 +3,7 @@
   top: 5vh;
   height: 35rem;
   width: 40rem;
-  left: calc(50% - 20%);
+  left: calc(50% - 25%);
   display: flex;
   flex-direction: column;
 }
@@ -96,7 +96,7 @@ input::placeholder {
 @media (max-width: 768px) {
   .modal {
     height: 100%;
-    width: 92%;
+    width: 76%;
     top: 0;
     left: 0;
   }

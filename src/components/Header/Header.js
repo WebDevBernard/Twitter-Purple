@@ -10,13 +10,14 @@ export default function Header(props) {
           <p>twitter tweeter react</p>{" "}
         </a>
       </h1>
+
       <nav>
         <p>
           <span>Login</span> or <span>Sign Up</span> to tweet as a different
           user
         </p>
         <Button className={classes.button} onClick={props.onShowLogin}>
-          Sign Up
+          SIGN UP
         </Button>
       </nav>
     </div>

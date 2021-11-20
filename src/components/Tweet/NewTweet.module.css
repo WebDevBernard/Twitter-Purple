@@ -1,6 +1,7 @@
 .card {
   margin: 1rem auto;
   max-width: 30rem;
+  min-width: 25.1rem;
   outline: 1px solid rgba(55, 65, 81, 0.95);
   padding: 1rem 4rem;
 }

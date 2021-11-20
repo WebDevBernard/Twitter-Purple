@@ -31,7 +31,7 @@ export default function TweetButton(props) {
       onClick={scrollToTop}
       className={showButton ? classes.button : classes.hide}
     >
-      Top
+      TOP
     </Button>
   );
 }

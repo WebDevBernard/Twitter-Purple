@@ -45,8 +45,17 @@
 
 .button {
 }
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .header nav p {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .button {
+    margin-left: 13rem;
+  }
+  .title p {
     display: none;
   }
 }
