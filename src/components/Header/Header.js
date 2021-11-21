@@ -4,7 +4,11 @@ export default function Header(props) {
   return (
     <div id="top" className={classes.header}>
       <h1 className={classes.title}>
-        <a href="https://icons8.com/icon/67617/twitter">
+        <a
+          target="_blank"
+          rel="noreferrer"
+          href="https://icons8.com/icon/67617/twitter"
+        >
           <img src="https://img.icons8.com/plasticine/100/000000/twitter--v1.png" />
         </a>
 
