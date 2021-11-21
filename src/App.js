@@ -8,6 +8,7 @@ import {
 } from "unique-names-generator";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
 import NewTweet from "./components/Tweet/NewTweet";
 import TweetList from "./components/Tweet/TweetList";
 import Login from "./components/Form/Login";
@@ -127,6 +128,7 @@ function App() {
           />
         </Routes>
       </main>
+      <Footer />
     </Router>
   );
 }
