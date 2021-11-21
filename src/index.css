@@ -1,3 +1,7 @@
+html {
+  margin: 0 auto;
+  max-width: 1680px;
+}
 body {
   background-color: #f1f1fd;
   letter-spacing: 0.08rem;

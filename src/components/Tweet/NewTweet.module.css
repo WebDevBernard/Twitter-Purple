@@ -92,3 +92,8 @@
 .counterblack {
   color: rgba(55, 65, 81, 0.95);
 }
+@media only screen and (max-width: 768px) {
+  .card {
+    margin: 0;
+  }
+}

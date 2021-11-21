@@ -4,7 +4,6 @@
   justify-content: space-between;
   top: 0;
   height: 3.5rem;
-  padding: 0 3%;
 }
 
 .title {
@@ -53,9 +52,9 @@
 
 @media (max-width: 768px) {
   .button {
-    margin-left: 13rem;
+    margin-left: 24px;
   }
-  .title p {
+  .title img {
     display: none;
   }
 }

@@ -1,7 +1,7 @@
 .card {
   border: 0px;
   position: relative;
-  max-width: 100%;
+  max-width: 1680px;
   gap: 1rem;
   display: grid;
   grid-template-columns: repeat(4, minmax(0px, 1fr));
