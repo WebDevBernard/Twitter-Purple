@@ -7,9 +7,9 @@ export default function Header(props) {
         <a
           target="_blank"
           rel="noreferrer"
-          href="https://icons8.com/icon/67617/twitter"
+          href="https://icons8.com/icon/42859/twitter"
         >
-          <img src="https://img.icons8.com/plasticine/100/000000/twitter--v1.png" />
+          <img src="https://img.icons8.com/dusk/64/000000/twitter--v1.png" />
         </a>
 
         <a href="https://www.bernardyang.com/" target="_blank" rel="noreferrer">

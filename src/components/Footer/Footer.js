@@ -32,6 +32,20 @@ export default function Footer() {
         >
           Heart icon by Icons8
         </a>
+        <a
+          target="_blank"
+          rel="noreferrer"
+          href="https://icons8.com/icon/1669/at-sign"
+        >
+          At sign icon by Icons8
+        </a>
+        <a
+          target="_blank"
+          rel="noreferrer"
+          href="https://icons8.com/icon/42859/twitter"
+        >
+          Twitter icon by Icons8
+        </a>
       </div>
       <br />
     </div>
