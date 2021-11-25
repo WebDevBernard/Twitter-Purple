@@ -4,7 +4,7 @@ import Button from "../Button/Button";
 import classes from "./NewTweet.module.css";
 import AuthContext from "../../store/auth-context";
 export default function Tweet(props) {
-  // const ctx = useContext(AuthContext);
+  const ctx = useContext(AuthContext);
   const [enteredTweet, setEnteredTweet] = useState("");
   const [error, setError] = useState();
   const [count, setCount] = useState(0);
