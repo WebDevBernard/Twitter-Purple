@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useReducer } from "react";
+import React, { useState, useEffect, useReducer, createContext } from "react";
 
-const AuthContext = React.createContext({
+export const AuthContext = createContext({
   isLoggedin: false,
-  onLogout: () => {},
-  onLogin: (email, password) => {},
+  logout: () => {},
+  login: (email, password) => {},
 });
 
 export const AuthContextProvider = (props) => {

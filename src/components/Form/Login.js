@@ -24,7 +24,7 @@ export default function Login(props) {
       </header>
       {!toggleLogin && (
         <form id="signup" className={classes.signup}>
-          <label htmlFor="signup">Create a new Account</label>
+          <label htmlFor="signup">Sign Up</label>
           <input placeholder="Name"></input>
           <input placeholder="Username"></input>
           <input placeholder="Password"></input>
@@ -37,14 +37,13 @@ export default function Login(props) {
           <label htmlFor="login">Enter Login Information</label>
           <input placeholder="Username"></input>
           <input placeholder="Password"></input>
-          <Button className={classes.buttonl}>Login</Button>
+          <Button className={classes.buttons}>Login</Button>
         </form>
       )}
       <footer>
-        <p>or</p>
-        <Button onClick={handleToggle} className={classes.button}>
-          {toggleLogin ? "Create an account" : "Login with an account"}
-        </Button>
+        <p onClick={handleToggle} className={classes.logincreate}>
+          {toggleLogin ? "Create a new account" : "Login with existing account"}
+        </p>
       </footer>
     </Modal>
   );

@@ -1,22 +1,46 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useReducer } from "react";
 import Card from "../Card/Card";
 import Button from "../Button/Button";
 import classes from "./NewTweet.module.css";
-import AuthContext from "../../store/auth-context";
-export default function Tweet(props) {
-  const ctx = useContext(AuthContext);
-  const [enteredTweet, setEnteredTweet] = useState("");
-  const [error, setError] = useState();
-  const [count, setCount] = useState(0);
 
-  const validateInput = () => {
-    if (enteredTweet.trim().length > 140) {
+const initialInputState = {
+  input: "",
+  error: "",
+  count: 0,
+};
+
+const tweetReducer = (state, action) => {
+  if (action.type === "handleInput")
+    return {
+      ...state,
+      [action.field]: action.payload,
+    };
+  return initialInputState;
+};
+export default function Tweet(props) {
+  const [enteredTweet, setEnteredTweet] = useState("");
+  const [error, setError] = useState({});
+  const [count, setCount] = useState(0);
+  const [tweetState, dispatchTweetAction] = useReducer(
+    tweetReducer,
+    initialInputState
+  );
+
+  const tweetReducerHandler = (e) =>
+    dispatchTweetAction({
+      type: "handleInput",
+      field: e.target.value,
+      payload: e.target.value,
+    });
+
+  const validateInput = (e) => {
+    if (tweetState.value.isValid) {
       setError({
         message: "tweet too long!",
       });
       return;
     }
-    if (enteredTweet.trim().length === 0) {
+    if (tweetState.value.trim().length === 0) {
       setError({
         message: "tweet too short!",
       });
@@ -24,7 +48,7 @@ export default function Tweet(props) {
     }
     props.handleUserName();
     props.handleAvatar();
-    props.onAddTweet(enteredTweet);
+    props.onAddTweet(tweetState.value);
     setEnteredTweet("");
     setCount(0);
   };
@@ -80,7 +104,7 @@ export default function Tweet(props) {
           type="text"
           onClick={errorHandler}
           onChange={tweetChangeHandler}
-          value={enteredTweet}
+          value={tweetState.value}
           rows="4"
           cols="30"
         ></textarea>

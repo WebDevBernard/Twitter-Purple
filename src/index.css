@@ -3,6 +3,7 @@ html {
   max-width: 1680px;
 }
 body {
+  color: #444444;
   background-color: #f1f1fd;
   letter-spacing: 0.08rem;
   margin: 0;

@@ -1,5 +1,7 @@
 import classes from "./Header.module.css";
 import Button from "../Button/Button";
+import { useContext } from "react";
+import { AuthContext } from "../../store/auth-context";
 export default function Header(props) {
   return (
     <div id="top" className={classes.header}>

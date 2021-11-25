@@ -1,4 +1,4 @@
-import { useEffect, useState, Fragment } from "react";
+import { useEffect, useState, useCallback, Fragment, useContext } from "react";
 import {
   uniqueNamesGenerator,
   Config,
@@ -13,9 +13,17 @@ import NewTweet from "./components/Tweet/NewTweet";
 import TweetList from "./components/Tweet/TweetList";
 import Login from "./components/Form/Login";
 import TweetButton from "./components/Tweet/TweetButton";
-import AuthContext from "./store/auth-context";
+import AuthContext, { AuthContextProvider } from "./store/auth-context";
 
 function App() {
+  const ctx = useContext(AuthContext);
+  const [isLoggedin, setIsLoggedIn] = useState(false);
+  const login = useCallback(() => {
+    setIsLoggedIn(true);
+  });
+  const logout = useCallback(() => {
+    setIsLoggedIn(false);
+  });
   const [tweetsList, setTweetsList] = useState([]);
   const [openModal, setOpenModal] = useState(false);
   const avatars = {
@@ -102,7 +110,9 @@ function App() {
 
   return (
     // send data via value instead of props drilling
-    <AuthContext.Provider>
+    <AuthContext.Provider
+      value={{ isLoggedin: isLoggedin, login: login, logout: logout }}
+    >
       <Router>
         <Header onShowLogin={openModalHandler} />
         <TweetButton />
