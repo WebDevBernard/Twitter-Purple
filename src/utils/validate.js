@@ -4,8 +4,8 @@ export default function validate(values) {
   if (values.message.trim().length > 140) {
     errors.message = "tweet too long!";
   }
-  if (values.message.trim().length === 0) {
-    errors.message = "tweet too short!";
+  if (values.message2.trim().length === 0) {
+    errors.message2 = "tweet too short!";
   }
   // email validators
   if (!values.email) {

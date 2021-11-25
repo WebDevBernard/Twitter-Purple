@@ -1,46 +1,21 @@
-import { useState, useContext, useReducer } from "react";
+import { useState } from "react";
 import Card from "../Card/Card";
 import Button from "../Button/Button";
 import classes from "./NewTweet.module.css";
 
-const initialInputState = {
-  input: "",
-  error: "",
-  count: 0,
-};
-
-const tweetReducer = (state, action) => {
-  if (action.type === "handleInput")
-    return {
-      ...state,
-      [action.field]: action.payload,
-    };
-  return initialInputState;
-};
 export default function Tweet(props) {
   const [enteredTweet, setEnteredTweet] = useState("");
   const [error, setError] = useState({});
   const [count, setCount] = useState(0);
-  const [tweetState, dispatchTweetAction] = useReducer(
-    tweetReducer,
-    initialInputState
-  );
-
-  const tweetReducerHandler = (e) =>
-    dispatchTweetAction({
-      type: "handleInput",
-      field: e.target.value,
-      payload: e.target.value,
-    });
 
   const validateInput = (e) => {
-    if (tweetState.value.isValid) {
+    if (enteredTweet.trim().length > 140) {
       setError({
         message: "tweet too long!",
       });
       return;
     }
-    if (tweetState.value.trim().length === 0) {
+    if (enteredTweet.trim().length === 0) {
       setError({
         message: "tweet too short!",
       });
@@ -48,7 +23,7 @@ export default function Tweet(props) {
     }
     props.handleUserName();
     props.handleAvatar();
-    props.onAddTweet(tweetState.value);
+    props.onAddTweet(enteredTweet);
     setEnteredTweet("");
     setCount(0);
   };
@@ -72,7 +47,7 @@ export default function Tweet(props) {
   // used in onChange prop to reset the input, enteredTweet goes in value
   const tweetChangeHandler = (e) => {
     setEnteredTweet(e.target.value);
-    setCount(e.target.value.length);
+    setCount(enteredTweet.length);
   };
 
   // <===============================useRef==++========================>
@@ -104,7 +79,7 @@ export default function Tweet(props) {
           type="text"
           onClick={errorHandler}
           onChange={tweetChangeHandler}
-          value={tweetState.value}
+          value={enteredTweet}
           rows="4"
           cols="30"
         ></textarea>
