@@ -17,7 +17,7 @@ export const AuthContextProvider = (props) => {
   const emailReducer = (state, action) => {
     return { value: "", isValid: false };
   };
-  const [emailState, dispacthEmail] = useReducer(emailReducer, {
+  const [emailState, dispatchEmail] = useReducer(emailReducer, {
     value: "",
     isVaild: false,
   });
