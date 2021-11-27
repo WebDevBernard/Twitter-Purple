@@ -2,12 +2,11 @@ import { useState } from "react";
 import Card from "../Card/Card";
 import Button from "../Button/Button";
 import classes from "./NewTweet.module.css";
-import useForm from "../../hooks/use-form";
+
 export default function Tweet(props) {
   const [enteredTweet, setEnteredTweet] = useState("");
   const [error, setError] = useState({});
   const [count, setCount] = useState(0);
-
   const validateInput = (e) => {
     if (enteredTweet.trim().length > 140) {
       setError({
@@ -51,7 +50,7 @@ export default function Tweet(props) {
   };
 
   // <===============================useRef==++========================>
-  // this is just an example on how to useRef. useReft should be used only for when reading not changing state
+  // this is just an example on how to useRef. useRef should be used only for when reading not changing state
   // const tweetInputRef = useRef();
   // put this inside const validateInput
   // const enteredRefTweet = tweetInputRef.current.value;
@@ -67,6 +66,7 @@ export default function Tweet(props) {
             <img
               className={classes.atSign}
               src="https://img.icons8.com/ios/50/000000/email.png"
+              alt="email"
             />
             {props.userName}
           </div>

@@ -1,4 +1,3 @@
-import Card from "../Card/Card";
 import TweetItem from "./TweetItem";
 import classes from "./TweetList.module.css";
 export default function TweetList(props) {

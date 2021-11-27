@@ -1,10 +1,8 @@
-import { useState, useCallback, useContext } from "react";
+import { useState, useCallback } from "react";
 import moment from "moment";
 import Card from "../Card/Card";
 import classes from "./TweetItem.module.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
-import AuthContext from "../../store/auth-context";
 
 export default function TweetItem(props) {
   // const ctx = useContext(AuthContext);
@@ -38,6 +36,7 @@ export default function TweetItem(props) {
             <img
               className={classes.atSign}
               src="https://img.icons8.com/ios/50/000000/email.png"
+              alt="@ sign"
             />
             <p>{props.userName}</p>
           </div>

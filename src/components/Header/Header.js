@@ -1,7 +1,6 @@
 import classes from "./Header.module.css";
 import Button from "../Button/Button";
-import { useContext } from "react";
-import { AuthContext } from "../../store/auth-context";
+
 export default function Header(props) {
   return (
     <div id="top" className={classes.header}>
@@ -11,7 +10,10 @@ export default function Header(props) {
           rel="noreferrer"
           href="https://icons8.com/icon/42859/twitter"
         >
-          <img src="https://img.icons8.com/dusk/64/000000/twitter--v1.png" />
+          <img
+            src="https://img.icons8.com/dusk/64/000000/twitter--v1.png"
+            alt="twitter"
+          />
         </a>
 
         <a href="https://www.bernardyang.com/" target="_blank" rel="noreferrer">
