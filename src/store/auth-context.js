@@ -1,10 +1,9 @@
 import { createContext, useState, useCallback } from "react";
-import avatar, { shortName } from "../utils/avatars-names";
+import { shortName } from "../utils/avatars-names";
 const AuthContext = createContext({});
 
 export const AuthContextProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userAvatar, setUserAvatar] = useState(avatar);
   const [userName, setUserName] = useState(shortName);
   const [loginName, setLoginName] = useState("");
 
@@ -18,9 +17,6 @@ export const AuthContextProvider = ({ children }) => {
     setIsLoggedIn(false);
   }, []);
 
-  const handleAvatar = () => {
-    setUserAvatar(avatar);
-  };
   const handleUserName = () => {
     setUserName(shortName);
   };
@@ -28,8 +24,6 @@ export const AuthContextProvider = ({ children }) => {
   return (
     <AuthContext.Provider
       value={{
-        userAvatar,
-        handleAvatar,
         userName,
         handleUserName,
         login,

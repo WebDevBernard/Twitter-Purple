@@ -55,11 +55,7 @@ export default function Tweet(props) {
     <Card className={classes.card}>
       <form onSubmit={addTweetOnClick} onKeyDown={addTweetOnEnter}>
         <div>
-          <img
-            className={classes.avatar}
-            src={context.userAvatar}
-            alt="avatar"
-          />
+          <img className={classes.avatar} src={props.userAvatar} alt="avatar" />
           <div className={classes.tag}>
             <img
               className={classes.atSign}

@@ -26,8 +26,7 @@ export default function Header(props) {
       <nav>
         {!context.isLoggedIn && (
           <p>
-            <span>Login</span> or <span>Sign Up</span> to tweet as a different
-            user
+            <span>Sign Up</span> to tweet with a unique username
           </p>
         )}
         <Button

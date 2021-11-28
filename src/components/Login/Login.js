@@ -59,9 +59,9 @@ export default function Login(props) {
     }
     context.handleLoginName(enteredName);
     context.login();
+    props.handleAvatar(props.avatar);
     props.onClose();
-    console.log("Submitted");
-    console.log(enteredName, enteredEmail, enteredPassword);
+
     resetNameInput();
     resetEmailInput();
     resetPasswordInput();
@@ -128,9 +128,9 @@ export default function Login(props) {
         </Button>
       </form>
       <footer>
-        <p onClick={handleToggle} className={classes.logincreate}>
+        {/* <p onClick={handleToggle} className={classes.logincreate}>
           {isLogin ? "Create a new account" : "Login with existing account"}
-        </p>
+        </p> */}
       </footer>
     </Modal>
   );
