@@ -95,7 +95,7 @@ export default function Login(props) {
             value={enteredName}
           />
         )}
-        {nameInputHasError && (
+        {nameInputHasError && !isLogin && (
           <p className={classes.error}>Username must not be empty</p>
         )}
         <Input
