@@ -11,24 +11,7 @@
   display: flex;
   justify-content: space-between;
 }
-.modal input {
-  font-family: "Roboto Mono";
-  letter-spacing: 0.08rem;
-  margin-top: 16px;
-  color: rgba(55, 65, 81, 0.95);
-  background-color: #e7e7e7;
-  font-size: 16px;
-  outline: 0;
-  padding: 1rem 4rem;
-  display: block;
-  border: none;
-  padding: 0.6rem;
-  resize: none;
-}
-.modal input:focus {
-  outline: none;
-  border: 1px solid rgba(55, 65, 81, 0.95);
-}
+
 .error {
   color: deeppink;
   text-transform: uppercase;
@@ -46,14 +29,7 @@
   font-size: 18px;
   align-self: center;
 }
-input::placeholder {
-  color: rgba(55, 65, 81, 0.95);
-  font-family: "Roboto Mono";
-  letter-spacing: 0.08rem;
-  font-size: 16px;
-  padding-top: 60px;
-  white-space: nowrap;
-}
+
 .close {
   height: 34px;
   cursor: pointer;
@@ -68,6 +44,8 @@ input::placeholder {
 
 .buttons {
   width: 15rem;
+  display: flex;
+  justify-content: center;
   align-self: center;
   margin-top: 32px;
 }

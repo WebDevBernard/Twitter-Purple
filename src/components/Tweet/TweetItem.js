@@ -5,16 +5,14 @@ import classes from "./TweetItem.module.css";
 import { faHeart, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
 export default function TweetItem(props) {
-  // const ctx = useContext(AuthContext);
   const deleteHandler = () => {
-    // console.log(props);
     props.onRemoveTweet(props.id);
   };
   const [likeToggle, setLikeToggle] = useState(false);
   const toggleLike = useCallback(() => {
     setLikeToggle((prevShowToggle) => !prevShowToggle);
-    // likeToggle ? setLikeToggle(false) : setLikeToggle(true);
   }, []);
+
   const timeAgo = (el) => moment(el).fromNow();
   return (
     <Card className={classes.card}>
@@ -30,7 +28,6 @@ export default function TweetItem(props) {
       </div>
       <header>
         <div>
-          {/* <img src="https://i.imgur.com/ilT4JDe.png" alt="avatar" /> */}
           <img className={classes.avatar} src={props.avatar} alt="avatar" />
           <div className={classes.username}>
             <img

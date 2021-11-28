@@ -1,13 +1,17 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Card from "../Card/Card";
 import Button from "../Button/Button";
 import classes from "./NewTweet.module.css";
+import AuthContext from "../../store/auth-context";
+import Input from "../Form/Input";
 
 export default function Tweet(props) {
   const [enteredTweet, setEnteredTweet] = useState("");
   const [error, setError] = useState({});
   const [count, setCount] = useState(0);
-  const validateInput = (e) => {
+  const context = useContext(AuthContext);
+
+  const validateInput = (values) => {
     if (enteredTweet.trim().length > 140) {
       setError({
         message: "tweet too long!",
@@ -20,8 +24,6 @@ export default function Tweet(props) {
       });
       return;
     }
-    props.handleUserName();
-    props.handleAvatar();
     props.onAddTweet(enteredTweet);
     setEnteredTweet("");
     setCount(0);
@@ -35,12 +37,12 @@ export default function Tweet(props) {
   const addTweetOnEnter = (e) => {
     if (e.keyCode === 13) {
       e.preventDefault();
-      validateInput();
+      validateInput(e);
     }
   };
   // removes the error message
   const errorHandler = () => {
-    setError(null);
+    setError("");
   };
 
   // used in onChange prop to reset the input, enteredTweet goes in value
@@ -49,41 +51,32 @@ export default function Tweet(props) {
     setCount(enteredTweet.length);
   };
 
-  // <===============================useRef==++========================>
-  // this is just an example on how to useRef. useRef should be used only for when reading not changing state
-  // const tweetInputRef = useRef();
-  // put this inside const validateInput
-  // const enteredRefTweet = tweetInputRef.current.value;
-  // put this inside input <input ref={enteredRefTweet}></input>
-  // <=================================================================>
-
   return (
     <Card className={classes.card}>
       <form onSubmit={addTweetOnClick} onKeyDown={addTweetOnEnter}>
         <div>
-          <img className={classes.avatar} src={props.avatar} alt="avatar" />
+          <img
+            className={classes.avatar}
+            src={context.userAvatar}
+            alt="avatar"
+          />
           <div className={classes.tag}>
             <img
               className={classes.atSign}
               src="https://img.icons8.com/ios/50/000000/email.png"
               alt="email"
             />
-            {props.userName}
+            {context.userName}
           </div>
         </div>
-        <textarea
+        <Input
           className={classes.input}
-          placeholder="What are you humming about?"
-          autoComplete="off"
           id="tweetinput"
-          type="text"
+          placeholder="What are you humming about?"
           onClick={errorHandler}
           onChange={tweetChangeHandler}
           value={enteredTweet}
-          rows="4"
-          cols="30"
-        ></textarea>
-
+        ></Input>
         <footer>
           <Button className={classes.button} type="submit">
             TWEET

@@ -13,6 +13,7 @@
 .card p {
   margin: 16px 16px;
   font-size: 16px;
+  word-break: break-word;
 }
 .username {
   align-items: center;
