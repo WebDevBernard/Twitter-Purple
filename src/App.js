@@ -13,6 +13,9 @@ function App() {
   const [tweetsList, setTweetsList] = useState([]);
   const [openModal, setOpenModal] = useState(false);
 
+  const handleUsernameForLoggedUser = !context.isLoggedIn
+    ? context.userName
+    : context.loginName;
   const addTweetHandler = (data) => {
     setTweetsList((prev) => {
       return [
@@ -23,7 +26,7 @@ function App() {
           like: false,
           createdAt: Date.now(),
           avatar: context.userAvatar,
-          userName: context.userName,
+          userName: handleUsernameForLoggedUser,
         },
       ];
     });

@@ -66,7 +66,7 @@ export default function Tweet(props) {
               src="https://img.icons8.com/ios/50/000000/email.png"
               alt="email"
             />
-            {context.userName}
+            {!context.isLoggedIn ? context.userName : context.loginName}
           </div>
         </div>
         <Input

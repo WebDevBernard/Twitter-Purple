@@ -19,8 +19,6 @@
 }
 
 .modal p {
-  color: blueviolet;
-  font-size: 18px;
   align-self: center;
 }
 .modal label {
@@ -58,6 +56,9 @@
 }
 
 .logincreate {
+  color: blueviolet;
+  font-size: 18px;
+
   cursor: pointer;
   margin-top: 32px;
 }

@@ -1,9 +1,11 @@
 import classes from "./Input.module.css";
+
 export default function Input(props) {
   const element =
     props.element === "input" ? (
       <input
-        ref={props.ref}
+        onBlur={props.onBlur}
+        name={props.name}
         onClick={props.onClick}
         onChange={props.onChange}
         value={props.value}
@@ -14,6 +16,8 @@ export default function Input(props) {
       />
     ) : (
       <textarea
+        onBlur={props.onBlur}
+        name={props.name}
         onClick={props.onClick}
         onChange={props.onChange}
         value={props.value}

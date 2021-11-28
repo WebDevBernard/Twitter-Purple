@@ -1,7 +1,9 @@
+import { useContext } from "react";
 import classes from "./Header.module.css";
 import Button from "../Button/Button";
-
+import AuthContext from "../../store/auth-context";
 export default function Header(props) {
+  const context = useContext(AuthContext);
   return (
     <div id="top" className={classes.header}>
       <h1 className={classes.title}>
@@ -22,12 +24,17 @@ export default function Header(props) {
       </h1>
 
       <nav>
-        <p>
-          <span>Login</span> or <span>Sign Up</span> to tweet as a different
-          user
-        </p>
-        <Button className={classes.button} onClick={props.onShowLogin}>
-          SIGN UP
+        {!context.isLoggedIn && (
+          <p>
+            <span>Login</span> or <span>Sign Up</span> to tweet as a different
+            user
+          </p>
+        )}
+        <Button
+          className={classes.button}
+          onClick={!context.isLoggedIn ? props.onShowLogin : context.logout}
+        >
+          {!context.isLoggedIn ? "SIGN UP" : "Logout"}
         </Button>
       </nav>
     </div>
