@@ -6,7 +6,7 @@
 
 A simple Twitter clone and a remake of this app [https://github.com/WebDevBernard/tweeter](https://github.com/WebDevBernard/tweeter) with these features:
 
-- Written with modern React tools, using reuseable components: Modal, Button, Input, TextArea, Card, Header, Footer
+- Written with modern React tools, using reuseable components: Modal, Button, Input, TextArea, Card, Header, Footer.
 - User content saved to localStorage.
 - Sign Up feature with form validation. Login data is not saved.
 
