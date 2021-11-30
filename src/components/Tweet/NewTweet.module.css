@@ -32,10 +32,12 @@
 }
 .avatar {
   opacity: 0.7;
+  user-select: none;
 }
 .atSign {
   margin-right: 16px;
   height: 24px;
+  user-select: none;
 }
 
 .button {

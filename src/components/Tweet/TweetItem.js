@@ -45,17 +45,20 @@ export default function TweetItem(props) {
       <p className={classes.input}>{props.tweet}</p>
       <footer>
         <span className={classes.time}>{timeAgo(props.createdAt)}</span>
-        <img
-          onClick={likeToggleHandler}
-          className={props.like ? classes.like : classes.heart}
-          icon={faHeart}
-          alt="like"
-          src={
-            props.like
-              ? "https://img.icons8.com/dusk/64/000000/hearts.png"
-              : "https://img.icons8.com/wired/64/000000/hearts.png"
-          }
-        />
+        <div className={classes.likecontainer}>
+          {props.like && <span>1</span>}
+          <img
+            onClick={likeToggleHandler}
+            className={props.like ? classes.like : classes.heart}
+            icon={faHeart}
+            alt="like"
+            src={
+              props.like
+                ? "https://img.icons8.com/dusk/64/000000/hearts.png"
+                : "https://img.icons8.com/wired/64/000000/hearts.png"
+            }
+          />
+        </div>
       </footer>
     </Card>
   );
