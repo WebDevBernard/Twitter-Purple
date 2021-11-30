@@ -1,19 +1,21 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useContext } from "react";
 import moment from "moment";
 import Card from "../Card/Card";
 import classes from "./TweetItem.module.css";
 import { faHeart, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import likeContext from "../../store/like-context";
 
 export default function TweetItem(props) {
+  const context = useContext(likeContext);
   const deleteHandler = () => {
     props.onRemoveTweet(props.id);
   };
-  const [likeToggle, setLikeToggle] = useState(false);
-  const toggleLike = useCallback(() => {
-    setLikeToggle((prevShowToggle) => !prevShowToggle);
-  }, []);
+  const likeToggleHandler = () => {
+    context.toggleLike(props.id);
+  };
 
   const timeAgo = (el) => moment(el).fromNow();
+
   return (
     <Card className={classes.card}>
       <div className={classes.header}>
@@ -44,12 +46,12 @@ export default function TweetItem(props) {
       <footer>
         <span className={classes.time}>{timeAgo(props.createdAt)}</span>
         <img
-          onClick={toggleLike}
-          className={likeToggle ? classes.like : classes.heart}
+          onClick={likeToggleHandler}
+          className={props.like ? classes.like : classes.heart}
           icon={faHeart}
           alt="like"
           src={
-            likeToggle
+            props.like
               ? "https://img.icons8.com/dusk/64/000000/hearts.png"
               : "https://img.icons8.com/wired/64/000000/hearts.png"
           }
