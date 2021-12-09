@@ -1,29 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
-import avatar, { shortName, avatarArray } from "../utils/avatars-names";
+import { avatarArray } from "../utils/avatars-names";
+
 const initialState = [
   {
     id: 1,
-    createdAt: "Dec 8, 2021",
+    createdAt: 1639077467544,
     tweet: "My First Tweet",
     avatar: avatarArray[0],
     userName: "Curly",
     like: false,
-  },
-  {
-    id: 2,
-    createdAt: "Dec 6, 2021",
-    tweet: "My Second Tweet",
-    avatar: avatarArray[1],
-    userName: "Larry",
-    like: false,
-  },
-  {
-    id: 3,
-    createdAt: "Dec 7, 2021",
-    tweet: "My Third Tweet",
-    avatar: avatarArray[2],
-    userName: "Joe",
-    like: true,
   },
 ];
 

@@ -14,7 +14,7 @@ export default function TweetButton(props) {
   // makes the animation smooth
   const scrollToTop = () => {
     window.scrollTo({
-      top: 80,
+      top: 0,
       behavior: "smooth",
     });
   };

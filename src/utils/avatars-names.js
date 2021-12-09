@@ -4,6 +4,7 @@ import {
   colors,
   animals,
 } from "unique-names-generator";
+import moment from "moment";
 
 const avatars = {
   Female: [
@@ -30,5 +31,7 @@ export const shortName = uniqueNamesGenerator({
   dictionaries: [adjectives, animals, colors],
   length: 2,
 });
+
+export const timeAgo = (el) => moment(el).fromNow();
 
 export default avatar;

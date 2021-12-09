@@ -1,19 +1,20 @@
-import { useState, useRef, useContext } from "react";
+import { useState, useRef } from "react";
 import { auth } from "../../utils/firebase";
 import Modal from "../Modal/Modal";
 import Button from "../Button/Button";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import classes from "./Login.module.css";
-import avatar, { shortName } from "../../utils/avatars-names";
-import AuthContext from "../../store/auth-context";
+import avatar from "../../utils/avatars-names";
+import { Formik, Form } from "formik";
 
 export default function Login(props) {
   const name = useRef();
   const email = useRef();
   const password = useRef();
   const passwordConfirm = useRef();
-  const { createLogin, createProfile } = useContext(AuthContext);
+  const resetPasswordRef = useRef();
   const [isLogin, setIsLogin] = useState(false);
+  const [passwordReset, setPasswordReset] = useState(false);
 
   const handleSignUpTab = () => {
     setIsLogin(true);
@@ -53,6 +54,17 @@ export default function Login(props) {
       console.error(err);
     }
   };
+
+  const resetPasswordHandler = async (e) => {
+    e.preventDefault();
+    try {
+      await auth.Auth.sendPasswordResetEmail(resetPasswordRef.current.value);
+      props.onClose();
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <Modal onClose={props.onClose} className={classes.modal}>
       <header>
@@ -66,69 +78,97 @@ export default function Login(props) {
         />
       </header>
       <div className={classes.loginheader}>
-        <label
-          onClick={handleLoginTab}
-          className={`${!isLogin ? classes.underline : classes.signup}`}
-          htmlFor="input"
-        >
-          Sign Up
-        </label>
-        <label
-          onClick={handleSignUpTab}
-          className={`${isLogin ? classes.underline : classes.login}`}
-          htmlFor="input"
-        >
-          Login
-        </label>
+        {!passwordReset && (
+          <label
+            onClick={handleLoginTab}
+            className={`${!isLogin ? classes.underline : classes.signup}`}
+            htmlFor="input"
+          >
+            Sign Up
+          </label>
+        )}
+        {!passwordReset && (
+          <label
+            onClick={handleSignUpTab}
+            className={`${isLogin ? classes.underline : classes.login}`}
+            htmlFor="input"
+          >
+            Login
+          </label>
+        )}
+        {passwordReset && <label htmlFor="email">Reset Password</label>}
       </div>
-      <form
-        onSubmit={!isLogin ? signUpHandler : loginHandler}
-        id="input"
-        className={classes.input}
-      >
-        {!isLogin && (
+      {!passwordReset && (
+        <form
+          onSubmit={!isLogin ? signUpHandler : loginHandler}
+          id="input"
+          className={classes.input}
+        >
+          {!isLogin && (
+            <input
+              element="input"
+              name="username"
+              placeholder="Username"
+              autoComplete="off"
+              type="text"
+              ref={name}
+            />
+          )}
           <input
             element="input"
-            name="username"
-            placeholder="Username"
+            name="email"
+            placeholder="Email"
             autoComplete="off"
             type="text"
-            ref={name}
+            ref={email}
           />
-        )}
-        <input
-          element="input"
-          name="email"
-          placeholder="Email"
-          autoComplete="off"
-          type="text"
-          ref={email}
-        />
-        <input
-          element="input"
-          name="password"
-          placeholder="Password"
-          type="password"
-          autoComplete="off"
-          type="text"
-          ref={password}
-        />
-        {!isLogin && (
           <input
             element="input"
-            name="confirmpassword"
-            placeholder="Confirm Password"
+            name="password"
+            placeholder="Password"
             type="password"
             autoComplete="off"
-            type="text"
-            ref={passwordConfirm}
+            ref={password}
           />
-        )}
-        <Button type="submit" className={classes.buttons}>
-          {isLogin ? "Login" : "Create Account"}
-        </Button>
-      </form>
-      <footer></footer>
+          {!isLogin && (
+            <input
+              element="input"
+              name="confirmpassword"
+              placeholder="Confirm Password"
+              type="password"
+              autoComplete="off"
+              ref={passwordConfirm}
+            />
+          )}
+          <Button type="submit" className={classes.buttons}>
+            {isLogin ? "Login" : "Create Account"}
+          </Button>
+        </form>
+      )}
+
+      {passwordReset && (
+        <form className={classes.input} onSumbit={resetPasswordHandler}>
+          <input
+            element="input"
+            name="email"
+            placeholder="Enter Email Address"
+            autoComplete="off"
+            type="text"
+            ref={resetPasswordRef}
+          />
+          <Button type="submit" className={classes.buttons}>
+            Reset Password
+          </Button>
+        </form>
+      )}
+      <footer>
+        <p
+          className={classes.logincreate}
+          onClick={() => setPasswordReset(!passwordReset)}
+        >
+          {!passwordReset ? "Forgot Password?" : "Nevermind..."}
+        </p>
+      </footer>
     </Modal>
   );
 }

@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { tweetActions } from "../../redux/tweet-slice";
-import moment from "moment";
+import { timeAgo } from "../../utils/avatars-names";
 import Card from "../Card/Card";
 import classes from "./TweetItem.module.css";
 import { faHeart, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
@@ -14,8 +14,6 @@ export default function TweetItem(props) {
   const likeToggleHandler = () => {
     dispatch(tweetActions.toggleLike({ id: props.id, like: !props.like }));
   };
-
-  const timeAgo = (el) => moment(el).fromNow();
 
   return (
     <Card className={classes.card}>
