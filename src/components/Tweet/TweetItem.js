@@ -1,17 +1,18 @@
-import { useState, useCallback, useContext } from "react";
+import { useDispatch } from "react-redux";
+import { tweetActions } from "../../redux/tweet-slice";
 import moment from "moment";
 import Card from "../Card/Card";
 import classes from "./TweetItem.module.css";
 import { faHeart, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
-import likeContext from "../../store/like-context";
 
 export default function TweetItem(props) {
-  const context = useContext(likeContext);
+  const dispatch = useDispatch();
+
   const deleteHandler = () => {
-    props.onRemoveTweet(props.id);
+    dispatch(tweetActions.deleteTweet({ id: props.id }));
   };
   const likeToggleHandler = () => {
-    context.toggleLike(props.id);
+    dispatch(tweetActions.toggleLike({ id: props.id, like: !props.like }));
   };
 
   const timeAgo = (el) => moment(el).fromNow();

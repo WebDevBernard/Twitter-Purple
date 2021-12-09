@@ -1,4 +1,4 @@
-import { useEffect, useState, Fragment, useContext, useCallback } from "react";
+import { useEffect, useState, Fragment, useContext } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
@@ -7,7 +7,7 @@ import TweetList from "./components/Tweet/TweetList";
 import Login from "./components/Login/Login";
 import TweetButton from "./components/Tweet/TweetButton";
 import AuthContext from "./store/auth-context";
-import likeContext from "./store/like-context";
+
 function App() {
   const avatars = {
     Female: [
@@ -33,15 +33,6 @@ function App() {
   const context = useContext(AuthContext);
   const [tweetsList, setTweetsList] = useState([]);
   const [openModal, setOpenModal] = useState(false);
-
-  const toggleLike = (tweetId) => {
-    setTweetsList(
-      tweetsList.map((tweet) => {
-        if (tweetId === tweet.id) return { ...tweet, like: !tweet.like };
-        return tweet;
-      })
-    );
-  };
 
   const handleAvatar = (e) => {
     setUserAvatar(e);
@@ -83,38 +74,35 @@ function App() {
 
   return (
     <Router>
-      <likeContext.Provider value={{ toggleLike }}>
-        <Header onShowLogin={() => setOpenModal(true)} />
-        <TweetButton />
-        {openModal && (
-          <Login
-            avatar={avatar}
-            handleAvatar={handleAvatar}
-            onClose={() => setOpenModal(false)}
+      <Header onShowLogin={() => setOpenModal(true)} />
+      <TweetButton />
+      {openModal && (
+        <Login
+          avatar={avatar}
+          handleAvatar={handleAvatar}
+          onClose={() => setOpenModal(false)}
+        />
+      )}
+      <main>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Fragment>
+                <NewTweet
+                  onAddTweet={addTweetHandler}
+                  userAvatar={userAvatar}
+                />
+                <TweetList
+                  tweets={tweetsList}
+                  onRemoveTweet={removeTweetHandler}
+                />
+              </Fragment>
+            }
           />
-        )}
-        <main>
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <Fragment>
-                  <NewTweet
-                    onAddTweet={addTweetHandler}
-                    userAvatar={userAvatar}
-                  />
-                  <TweetList
-                    tweets={tweetsList}
-                    onRemoveTweet={removeTweetHandler}
-                    toggleLike={toggleLike}
-                  />
-                </Fragment>
-              }
-            />
-          </Routes>
-        </main>
-        <Footer />
-      </likeContext.Provider>
+        </Routes>
+      </main>
+      <Footer />
     </Router>
   );
 }

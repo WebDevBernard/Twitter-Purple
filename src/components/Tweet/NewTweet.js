@@ -1,15 +1,26 @@
+import { useDispatch } from "react-redux";
 import { useState, useContext } from "react";
 import Card from "../Card/Card";
 import Button from "../Button/Button";
 import classes from "./NewTweet.module.css";
 import AuthContext from "../../store/auth-context";
 import Input from "../Form/Input";
+import { tweetActions } from "../../redux/tweet-slice";
 
 export default function Tweet(props) {
   const [enteredTweet, setEnteredTweet] = useState("");
   const [error, setError] = useState({});
   const [count, setCount] = useState(0);
   const context = useContext(AuthContext);
+  const dispatch = useDispatch();
+
+  const handleDispatch = (e) => {
+    dispatch(
+      tweetActions.addTweet({
+        tweet: enteredTweet,
+      })
+    );
+  };
 
   const validateInput = (values) => {
     if (enteredTweet.trim().length > 140) {
@@ -24,7 +35,8 @@ export default function Tweet(props) {
       });
       return;
     }
-    props.onAddTweet(enteredTweet);
+    // props.onAddTweet(enteredTweet);
+    handleDispatch();
     setEnteredTweet("");
     setCount(0);
   };
