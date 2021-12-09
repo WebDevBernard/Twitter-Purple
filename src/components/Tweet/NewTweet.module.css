@@ -25,11 +25,31 @@
 
 /* https://css-tricks.com/snippets/css/typewriter-effect/ */
 .input {
+  font-family: "Roboto Mono";
+  letter-spacing: 0.08rem;
+  border: none;
+  background-color: transparent;
+  font-size: 16px;
+  margin: 1rem 1rem;
+  outline: none;
+  resize: none;
+  width: 90%;
+  overflow: hidden;
+  color: black;
   border-bottom: solid 1px #dcbaff;
   -webkit-animation: fadein 2s;
   animation: typing 3.5s steps(40, end);
   caret-color: #dcbaff;
 }
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
 .avatar {
   opacity: 0.7;
   user-select: none;
@@ -43,13 +63,15 @@
 .button {
   margin-top: 16px;
 }
-@keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
+
+.input::placeholder {
+  color: black;
+  font-family: "Roboto Mono";
+  letter-spacing: 0.08rem;
+  font-size: 16px;
+  padding-top: 60px;
+  white-space: nowrap;
+  user-select: none;
 }
 .input input:focus {
   outline: none;

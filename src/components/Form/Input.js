@@ -4,18 +4,20 @@ export default function Input(props) {
   const element =
     props.element === "input" ? (
       <input
+        {...props.input}
         onBlur={props.onBlur}
         name={props.name}
         onClick={props.onClick}
         onChange={props.onChange}
         value={props.value}
         id={props.id}
-        type={props.type || "text"}
+        type={"text"}
         placeholder={props.placeholder}
-        autoComplete={props.autoComplete || "off"}
+        autoComplete={"off"}
       />
     ) : (
       <textarea
+        {...props.input}
         onBlur={props.onBlur}
         name={props.name}
         onClick={props.onClick}
@@ -24,7 +26,7 @@ export default function Input(props) {
         id={props.id}
         type={props.type || "text"}
         placeholder={props.placeholder}
-        rows={props.rows || 4}
+        rows={4}
         autoComplete="off"
       />
     );

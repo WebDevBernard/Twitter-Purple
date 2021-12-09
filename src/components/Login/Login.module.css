@@ -11,7 +11,21 @@
   display: flex;
   justify-content: space-between;
 }
-
+.modal input {
+  width: 100%;
+  font-family: "Roboto Mono";
+  letter-spacing: 0.08rem;
+  margin-top: 16px;
+  color: rgba(55, 65, 81, 0.95);
+  background-color: #e7e7e7;
+  font-size: 16px;
+  outline: 0;
+  padding: 1rem 4rem;
+  display: block;
+  border: none;
+  padding: 0.6rem;
+  resize: none;
+}
 .error {
   color: deeppink;
   text-transform: uppercase;

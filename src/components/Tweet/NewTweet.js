@@ -1,13 +1,12 @@
 import { useDispatch } from "react-redux";
+import { tweetActions } from "../../redux/tweet-slice";
 import { useState, useContext } from "react";
 import Card from "../Card/Card";
 import Button from "../Button/Button";
 import classes from "./NewTweet.module.css";
 import AuthContext from "../../store/auth-context";
-import Input from "../Form/Input";
-import { tweetActions } from "../../redux/tweet-slice";
 
-export default function Tweet(props) {
+export default function Tweet() {
   const [enteredTweet, setEnteredTweet] = useState("");
   const [error, setError] = useState({});
   const [count, setCount] = useState(0);
@@ -67,7 +66,11 @@ export default function Tweet(props) {
     <Card className={classes.card}>
       <form onSubmit={addTweetOnClick} onKeyDown={addTweetOnEnter}>
         <div>
-          <img className={classes.avatar} src={props.userAvatar} alt="avatar" />
+          <img
+            className={classes.avatar}
+            src={context.userAvatar}
+            alt="avatar"
+          />
           <div className={classes.tag}>
             <img
               className={classes.atSign}
@@ -77,14 +80,17 @@ export default function Tweet(props) {
             {!context.isLoggedIn ? context.userName : context.loginName}
           </div>
         </div>
-        <Input
+        <textarea
           className={classes.input}
           id="tweetinput"
           placeholder="What are you humming about?"
           onClick={errorHandler}
           onChange={tweetChangeHandler}
           value={enteredTweet}
-        ></Input>
+          rows={4}
+          autoComplete="off"
+          type="text"
+        />
         <footer>
           <Button className={classes.button} type="submit">
             TWEET

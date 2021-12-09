@@ -2,69 +2,19 @@ import { useState, useContext } from "react";
 import Modal from "../Modal/Modal";
 import Button from "../Button/Button";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
-import Input from "../Form/Input";
+
 import classes from "./Login.module.css";
 import AuthContext from "../../store/auth-context";
-import useForm from "../../hooks/use-form";
-
-const isNotEmpty = (value) => value.trim() !== "";
-const isEmail = (value) =>
-  value
-    .toLowerCase()
-    .match(
-      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-    );
-
-const passwordMinLength = (value) => value.length >= 6;
 
 export default function Login(props) {
-  const {
-    reset: resetNameInput,
-    isValid: enteredNameIsValid,
-    value: enteredName,
-    hasError: nameInputHasError,
-    valueChangeHandler: nameChangedHander,
-    inputBlurHandler: nameBlurHandler,
-  } = useForm(isNotEmpty);
-  const {
-    reset: resetEmailInput,
-    isValid: enteredEmailIsValid,
-    value: enteredEmail,
-    hasError: emailInputHasError,
-    valueChangeHandler: emailChangedHander,
-    inputBlurHandler: emailBlurHandler,
-  } = useForm(isEmail);
-  const {
-    reset: resetPasswordInput,
-    isValid: enteredPasswordIsValid,
-    value: enteredPassword,
-    hasError: passwordInputHasError,
-    valueChangeHandler: passwordChangedHander,
-    inputBlurHandler: passwordBlurHandler,
-  } = useForm(passwordMinLength);
   const context = useContext(AuthContext);
   const [isLogin, setIsLogin] = useState(false);
   const handleToggle = () => {
     isLogin ? setIsLogin(false) : setIsLogin(true);
   };
-  let formIsValid = false;
 
-  if (enteredNameIsValid && enteredEmailIsValid && enteredPasswordIsValid) {
-    formIsValid = true;
-  }
   const formSubmissionHandler = (e) => {
     e.preventDefault();
-    if (!formIsValid) {
-      return;
-    }
-    context.handleLoginName(enteredName);
-    context.login();
-    props.handleAvatar(props.avatar);
-    props.onClose();
-
-    resetNameInput();
-    resetEmailInput();
-    resetPasswordInput();
   };
 
   return (
@@ -86,51 +36,47 @@ export default function Login(props) {
         className={classes.signup}
       >
         {!isLogin && (
-          <Input
+          <input
             element="input"
             name="username"
             placeholder="Username"
-            onChange={nameChangedHander}
-            onBlur={nameBlurHandler}
-            value={enteredName}
+            autoComplete="off"
+            type="text"
           />
         )}
-        {nameInputHasError && !isLogin && (
-          <p className={classes.error}>Username must not be empty</p>
-        )}
-        <Input
+        <input
           element="input"
           name="email"
           placeholder="Email"
-          onChange={emailChangedHander}
-          onBlur={emailBlurHandler}
-          value={enteredEmail}
+          autoComplete="off"
+          type="text"
         />
-        {emailInputHasError && (
-          <p className={classes.error}>Email is not valid</p>
-        )}
-        <Input
+        <input
           element="input"
           name="password"
           placeholder="Password"
           type="password"
-          onChange={passwordChangedHander}
-          onBlur={passwordBlurHandler}
-          value={enteredPassword}
+          autoComplete="off"
+          type="text"
         />
-        {passwordInputHasError && (
-          <p className={classes.error}>
-            Password must be greater than 6 characters
-          </p>
+        {!isLogin && (
+          <input
+            element="input"
+            name="confirmpassword"
+            placeholder="Confirm Password"
+            type="password"
+            autoComplete="off"
+            type="text"
+          />
         )}
         <Button type="submit" className={classes.buttons}>
           {isLogin ? "Login" : "Create Account"}
         </Button>
       </form>
       <footer>
-        {/* <p onClick={handleToggle} className={classes.logincreate}>
+        <p onClick={handleToggle} className={classes.logincreate}>
           {isLogin ? "Create a new account" : "Login with existing account"}
-        </p> */}
+        </p>
       </footer>
     </Modal>
   );

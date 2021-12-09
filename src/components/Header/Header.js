@@ -31,7 +31,7 @@ export default function Header(props) {
         )}
         <Button
           className={classes.button}
-          onClick={!context.isLoggedIn ? props.onShowLogin : context.logout}
+          onClick={!context.isLoggedIn ? props.onOpen : context.logout}
         >
           {!context.isLoggedIn ? "SIGN UP" : "Logout"}
         </Button>

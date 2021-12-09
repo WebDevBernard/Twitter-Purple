@@ -1,6 +1,12 @@
 import { createContext, useState, useCallback } from "react";
 import avatar, { shortName } from "../utils/avatars-names";
 const AuthContext = createContext({});
+const isEmail = (value) =>
+  value
+    .toLowerCase()
+    .match(
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    );
 
 export const AuthContextProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -18,13 +24,12 @@ export const AuthContextProvider = ({ children }) => {
     setIsLoggedIn(false);
   }, []);
 
-  const handleUserName = () => {
-    !isLoggedIn ? userName : loginName;
-  };
+  const handleUserName = !isLoggedIn ? userName : loginName;
 
   return (
     <AuthContext.Provider
       value={{
+        userAvatar,
         userName,
         handleUserName,
         login,
