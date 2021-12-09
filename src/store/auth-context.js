@@ -1,42 +1,42 @@
-import { createContext, useState, useCallback } from "react";
+import { createContext, useState, useEffect } from "react";
+import { auth } from "../utils/firebase";
 import avatar, { shortName } from "../utils/avatars-names";
 const AuthContext = createContext({});
-const isEmail = (value) =>
-  value
-    .toLowerCase()
-    .match(
-      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-    );
 
 export const AuthContextProvider = ({ children }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userName, setUserName] = useState(shortName);
-  const [loginName, setLoginName] = useState("");
-  const [userAvatar, setUserAvatar] = useState(avatar);
+  const [currentUser, setCurrentUser] = useState(null);
 
-  const handleLoginName = (name) => {
-    setLoginName(name);
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      setCurrentUser(user);
+    });
+    return unsubscribe;
+  }, []);
+
+  const createLogin = (email, password) => {
+    auth.createUserWithEmailAndPassword(email, password);
   };
-  const login = useCallback(() => {
-    setIsLoggedIn(true);
-  }, []);
-  const logout = useCallback(() => {
-    setIsLoggedIn(false);
-  }, []);
 
-  const handleUserName = !isLoggedIn ? userName : loginName;
+  const createProfile = (displayName, photoUrl) => {
+    auth.currentUser.updateProfile({
+      displayName: displayName,
+      photoURL: photoUrl,
+    });
+  };
+
+  const selectUserName = !currentUser
+    ? shortName
+    : auth.currentUser.displayName;
+  const selectUserAvatar = !currentUser ? avatar : auth.currentUser.photoURL;
 
   return (
     <AuthContext.Provider
       value={{
-        userAvatar,
-        userName,
-        handleUserName,
-        login,
-        logout,
-        isLoggedIn,
-        loginName,
-        handleLoginName,
+        currentUser,
+        selectUserName,
+        selectUserAvatar,
+        createLogin,
+        createProfile,
       }}
     >
       {children}

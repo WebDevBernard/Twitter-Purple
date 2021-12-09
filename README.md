@@ -8,8 +8,23 @@ A simple Twitter clone and a remake of this app made at Lighthouse Labs: [https:
 
 - Written with modern React tools, using reuseable components: Modal, Button, Card, Header, Footer.
 - User content saved to localStorage. Tweets can also be liked/disliked or deleted.
-- Username is randomized on refresh or when user "signs up".
-- Firrebase login to be implemented.
+
+// add Firebase fetch for tweets add, delete, like
+// add localStorage for tweet add, delete, like
+// add auth-context and validation with formik
+// add Firebase login
+// add User update email route
+// clean up CSS
+// refs for char count in tweet form
+// add a descriptor on right side, change to single center row, login on left side
+// useEffect animation when adding new tweet
+
+const isEmail = (value) =>
+value
+.toLowerCase()
+.match(
+/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)\*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+);
 
 ## Preview
 

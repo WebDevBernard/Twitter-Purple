@@ -3,32 +3,9 @@ import classes from "./Input.module.css";
 export default function Input(props) {
   const element =
     props.element === "input" ? (
-      <input
-        {...props.input}
-        onBlur={props.onBlur}
-        name={props.name}
-        onClick={props.onClick}
-        onChange={props.onChange}
-        value={props.value}
-        id={props.id}
-        type={"text"}
-        placeholder={props.placeholder}
-        autoComplete={"off"}
-      />
+      <input {...props.input} />
     ) : (
-      <textarea
-        {...props.input}
-        onBlur={props.onBlur}
-        name={props.name}
-        onClick={props.onClick}
-        onChange={props.onChange}
-        value={props.value}
-        id={props.id}
-        type={props.type || "text"}
-        placeholder={props.placeholder}
-        rows={4}
-        autoComplete="off"
-      />
+      <textarea {...props.input} />
     );
   return (
     <div className={`${classes.formcontrol} ${props.className}`}>

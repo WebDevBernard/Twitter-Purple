@@ -1,28 +1,28 @@
 import { createSlice } from "@reduxjs/toolkit";
-import avatar, { shortName } from "../utils/avatars-names";
+import avatar, { shortName, avatarArray } from "../utils/avatars-names";
 const initialState = [
   {
     id: 1,
-    createdAt: Date.now(),
+    createdAt: "Dec 8, 2021",
     tweet: "My First Tweet",
-    avatar: avatar,
-    userName: shortName,
+    avatar: avatarArray[0],
+    userName: "Curly",
     like: false,
   },
   {
     id: 2,
-    createdAt: Date.now(),
+    createdAt: "Dec 6, 2021",
     tweet: "My Second Tweet",
-    avatar: avatar,
-    userName: shortName,
+    avatar: avatarArray[1],
+    userName: "Larry",
     like: false,
   },
   {
     id: 3,
-    createdAt: Date.now(),
+    createdAt: "Dec 7, 2021",
     tweet: "My Third Tweet",
-    avatar: avatar,
-    userName: shortName,
+    avatar: avatarArray[2],
+    userName: "Joe",
     like: true,
   },
 ];
@@ -36,8 +36,8 @@ const tweetSlice = createSlice({
         id: `${action.payload.tweet}_${new Date().getTime()}`,
         createdAt: Date.now(),
         tweet: action.payload.tweet,
-        avatar: avatar,
-        userName: shortName,
+        avatar: action.payload.avatar,
+        userName: action.payload.userName,
         like: false,
       };
       state.push(newTweet);
@@ -53,4 +53,4 @@ const tweetSlice = createSlice({
 });
 
 export const tweetActions = tweetSlice.actions;
-export default tweetSlice.reducer;
+export default tweetSlice;

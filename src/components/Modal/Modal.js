@@ -1,5 +1,4 @@
 import ReactDOM from "react-dom";
-// import { CSSTransition } from "react-transition-group";
 import classes from "./Modal.module.css";
 
 const Backdrop = (props) => (

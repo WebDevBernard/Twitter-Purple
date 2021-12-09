@@ -42,8 +42,6 @@
   white-space: nowrap;
 }
 
-.button {
-}
 @media (max-width: 1024px) {
   .header nav p {
     display: none;

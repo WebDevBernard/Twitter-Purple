@@ -1,22 +1,27 @@
 import { useDispatch } from "react-redux";
 import { tweetActions } from "../../redux/tweet-slice";
 import { useState, useContext } from "react";
+import { auth } from "../../utils/firebase";
 import Card from "../Card/Card";
 import Button from "../Button/Button";
 import classes from "./NewTweet.module.css";
 import AuthContext from "../../store/auth-context";
+import avatar, { shortName } from "../../utils/avatars-names";
 
 export default function Tweet() {
   const [enteredTweet, setEnteredTweet] = useState("");
   const [error, setError] = useState({});
   const [count, setCount] = useState(0);
-  const context = useContext(AuthContext);
+  const { selectUserName, selectUserAvatar, currentUser } =
+    useContext(AuthContext);
   const dispatch = useDispatch();
 
   const handleDispatch = (e) => {
     dispatch(
       tweetActions.addTweet({
         tweet: enteredTweet,
+        avatar: selectUserAvatar,
+        userName: selectUserName,
       })
     );
   };
@@ -34,7 +39,6 @@ export default function Tweet() {
       });
       return;
     }
-    // props.onAddTweet(enteredTweet);
     handleDispatch();
     setEnteredTweet("");
     setCount(0);
@@ -68,7 +72,7 @@ export default function Tweet() {
         <div>
           <img
             className={classes.avatar}
-            src={context.userAvatar}
+            src={!currentUser ? avatar : auth.currentUser.photoURL}
             alt="avatar"
           />
           <div className={classes.tag}>
@@ -77,7 +81,7 @@ export default function Tweet() {
               src="https://img.icons8.com/ios/50/000000/email.png"
               alt="email"
             />
-            {!context.isLoggedIn ? context.userName : context.loginName}
+            {!currentUser ? shortName : auth.currentUser.displayName}
           </div>
         </div>
         <textarea

@@ -32,6 +32,11 @@
   text-decoration: underline;
 }
 
+.loginheader {
+  margin-top: 24px;
+  display: flex;
+  justify-content: space-around;
+}
 .modal p {
   align-self: center;
 }
@@ -47,11 +52,15 @@
   cursor: pointer;
 }
 
-.signup {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  margin-top: 16px;
+.signup,
+.login {
+  cursor: pointer;
+}
+
+.underline {
+  font-weight: bold;
+  cursor: pointer;
+  border-bottom: 1px solid black;
 }
 
 .buttons {
@@ -62,7 +71,7 @@
   margin-top: 32px;
 }
 
-.login {
+.input {
   display: flex;
   flex-direction: column;
   width: 100%;

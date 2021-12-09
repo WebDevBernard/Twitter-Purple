@@ -39,7 +39,6 @@ input::placeholder {
   font-family: "Roboto Mono";
   letter-spacing: 0.08rem;
   font-size: 16px;
-  padding-top: 60px;
   white-space: nowrap;
   user-select: none;
 }
