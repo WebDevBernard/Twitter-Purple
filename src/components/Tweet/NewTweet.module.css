@@ -15,7 +15,6 @@
 .tag {
   display: flex;
   align-items: center;
-
   color: rgba(55, 65, 81, 0.95);
   font-size: 20px;
   display: block;
@@ -23,7 +22,6 @@
   color: blueviolet;
 }
 
-/* https://css-tricks.com/snippets/css/typewriter-effect/ */
 .input {
   font-family: "Roboto Mono";
   letter-spacing: 0.08rem;
@@ -53,10 +51,14 @@
 }
 
 .avatar {
-  opacity: 0.7;
+  opacity: 0.6;
   user-select: none;
+  filter: invert(41%) sepia(89%) saturate(7471%) hue-rotate(266deg)
+    brightness(90%) contrast(95%);
 }
 .atSign {
+  filter: invert(41%) sepia(89%) saturate(7471%) hue-rotate(266deg)
+    brightness(90%) contrast(95%);
   margin-right: 16px;
   height: 24px;
   user-select: none;

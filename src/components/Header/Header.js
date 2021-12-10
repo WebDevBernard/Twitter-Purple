@@ -20,18 +20,11 @@ export default function Header({ onOpen }) {
   return (
     <div id="top" className={classes.header}>
       <h1 className={classes.title}>
-        <a
-          target="_blank"
-          rel="noreferrer"
-          href="https://icons8.com/icon/42859/twitter"
-        >
-          <img
-            src="https://img.icons8.com/dusk/64/000000/twitter--v1.png"
-            alt="twitter"
-          />
-        </a>
-
-        <a href="https://www.bernardyang.com/" target="_blank" rel="noreferrer">
+        <img
+          src="https://img.icons8.com/dusk/64/000000/twitter--v1.png"
+          alt="twitter"
+        />
+        <a href="/" rel="noreferrer">
           <p>twitter tweeter react</p>
         </a>
       </h1>
@@ -39,7 +32,11 @@ export default function Header({ onOpen }) {
       <nav>
         {ready && (
           <>
-            {currentUser && <Button className={classes.button}>Profile</Button>}
+            {currentUser && (
+              <a href="/profile">
+                <Button className={classes.profilebutton}>Profile</Button>
+              </a>
+            )}
             <Button
               className={classes.button}
               onClick={!currentUser ? onOpen : logout}

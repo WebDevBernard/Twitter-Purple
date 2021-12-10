@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import PrivateRoute from "./route/PrivateRoute";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import NewTweet from "./components/Tweet/NewTweet";
@@ -7,7 +8,7 @@ import TweetList from "./components/Tweet/TweetList";
 import Login from "./components/Login/Login";
 import TopButton from "./components/TopButton/TopButton";
 import Notification from "./components/Login/Notification";
-
+import UserProfile from "./components/Login/UserProfile";
 function App() {
   const [openModal, setOpenModal] = useState(false);
   const [notification, setNotification] = useState("");
@@ -43,6 +44,7 @@ function App() {
       <main>
         <Routes>
           <Route
+            exact
             path="/"
             element={
               <>
@@ -51,6 +53,13 @@ function App() {
               </>
             }
           />
+          <Route element={<PrivateRoute />}>
+            <Route
+              exact
+              path="/profile"
+              element={<UserProfile handleNotification={handleNotification} />}
+            />
+          </Route>
         </Routes>
       </main>
       <Footer />

@@ -9,6 +9,7 @@
   text-transform: uppercase;
   user-select: none;
   max-height: 3rem;
+  color: blueviolet;
 }
 
 .button:after {
