@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { avatarArray } from "../utils/avatars-names";
+import { avatarArray } from "../utils/generate-avatar-names";
 
 const initialState = [
   {

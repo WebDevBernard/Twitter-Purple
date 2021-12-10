@@ -1,10 +1,10 @@
 import { useDispatch } from "react-redux";
 import { tweetActions } from "../../redux/tweet-slice";
-import { timeAgo } from "../../utils/avatars-names";
+import moment from "moment";
 import Card from "../Card/Card";
 import classes from "./TweetItem.module.css";
 import { faHeart, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
-
+const timeAgo = (el) => moment(el).fromNow();
 export default function TweetItem(props) {
   const dispatch = useDispatch();
 

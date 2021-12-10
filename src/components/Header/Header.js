@@ -1,9 +1,18 @@
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import classes from "./Header.module.css";
 import Button from "../Button/Button";
 import AuthContext from "../../store/auth-context";
 import { auth } from "../../utils/firebase";
 export default function Header({ onOpen }) {
+  const [ready, setReady] = useState(null);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setReady(true);
+    }, 150);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
   const logout = async () => {
     await auth.signOut();
   };
@@ -28,12 +37,17 @@ export default function Header({ onOpen }) {
       </h1>
 
       <nav>
-        <Button
-          className={classes.button}
-          onClick={!currentUser ? onOpen : logout}
-        >
-          {!currentUser ? "Login" : "Logout"}
-        </Button>
+        {ready && (
+          <>
+            {currentUser && <Button className={classes.button}>Profile</Button>}
+            <Button
+              className={classes.button}
+              onClick={!currentUser ? onOpen : logout}
+            >
+              {!currentUser ? "Login" : "Logout"}
+            </Button>
+          </>
+        )}
       </nav>
     </div>
   );

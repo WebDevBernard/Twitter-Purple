@@ -1,22 +1,30 @@
 import { useDispatch } from "react-redux";
 import { tweetActions } from "../../redux/tweet-slice";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect, useMemo } from "react";
 import { auth } from "../../utils/firebase";
 import Card from "../Card/Card";
 import Button from "../Button/Button";
 import classes from "./NewTweet.module.css";
 import AuthContext from "../../store/auth-context";
-import avatar, { shortName } from "../../utils/avatars-names";
+import avatar, { shortName } from "../../utils/generate-avatar-names";
+
 export default function Tweet() {
   const [enteredTweet, setEnteredTweet] = useState("");
   const [error, setError] = useState({});
   const [count, setCount] = useState(0);
   const { currentUser } = useContext(AuthContext);
-
-  const selectUserName = !currentUser
-    ? shortName
-    : auth.currentUser.displayName;
+  const [ready, setReady] = useState(null);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setReady(true);
+    }, 150);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
+  const selectUserName = currentUser ? auth.currentUser.displayName : shortName;
   const selectUserAvatar = !currentUser ? avatar : auth.currentUser.photoURL;
+
   const dispatch = useDispatch();
 
   const handleDispatch = (e) => {
@@ -72,17 +80,23 @@ export default function Tweet() {
   return (
     <Card className={classes.card}>
       <form onSubmit={addTweetOnClick} onKeyDown={addTweetOnEnter}>
-        <div>
-          <img className={classes.avatar} src={selectUserAvatar} alt="avatar" />
-          <div className={classes.tag}>
+        {ready && (
+          <div>
             <img
-              className={classes.atSign}
-              src="https://img.icons8.com/ios/50/000000/email.png"
-              alt="email"
+              className={classes.avatar}
+              src={selectUserAvatar}
+              alt="avatar"
             />
-            {selectUserName}
+            <div className={classes.tag}>
+              <img
+                className={classes.atSign}
+                src="https://img.icons8.com/ios/50/000000/email.png"
+                alt="email"
+              />
+              {selectUserName}
+            </div>
           </div>
-        </div>
+        )}
         <textarea
           className={classes.input}
           id="tweetinput"

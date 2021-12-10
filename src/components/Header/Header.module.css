@@ -25,6 +25,9 @@
   margin-top: 10px;
   height: 55px;
 }
+.button {
+  margin-right: 16px;
+}
 
 .header nav {
   display: flex;

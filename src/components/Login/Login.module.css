@@ -2,20 +2,20 @@
   background-color: #f7f7ff;
   top: 5vh;
   height: 35rem;
-  width: 40rem;
-  left: calc(50% - 25%);
+  width: 25rem;
+  padding: 0 !important;
+  left: calc(50% - 12.5rem);
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-.modal header {
-  display: flex;
-  justify-content: space-between;
-}
+
 .modal input {
   width: 100%;
   font-family: "Roboto Mono";
   letter-spacing: 0.08rem;
-  margin-top: 16px;
+
   color: rgba(55, 65, 81, 0.95);
   background-color: #e7e7e7;
   font-size: 16px;
@@ -26,29 +26,26 @@
   padding: 0.6rem;
   resize: none;
 }
-.error {
-  color: deeppink;
-  text-transform: uppercase;
-  text-decoration: underline;
-}
 
 .loginheader {
   margin-top: 24px;
-  display: flex;
-  justify-content: space-around;
+}
+
+.loginheader label {
+  padding-bottom: 4px;
 }
 .modal p {
   align-self: center;
 }
 .modal label {
   color: blueviolet;
-
+  margin-right: 16px;
   font-size: 18px;
   align-self: center;
 }
 
 .close {
-  height: 34px;
+  height: 30px;
   cursor: pointer;
 }
 
@@ -60,7 +57,7 @@
 .underline {
   font-weight: bold;
   cursor: pointer;
-  border-bottom: 1px solid #dcbaff;
+  border-bottom: 4px solid #dcbaff;
 }
 
 .buttons {
