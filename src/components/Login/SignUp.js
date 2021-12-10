@@ -1,4 +1,3 @@
-// https://www.youtube.com/watch?v=u-CCnDayNJw
 import { Formik, Form } from "formik";
 import { TextInput } from "../Form/TextInput";
 import {
@@ -11,7 +10,13 @@ import Button from "../Button/Button";
 import avatar from "../../utils/generate-avatar-names";
 import classes from "./Login.module.css";
 
-const SignUp = ({ onClose }) => {
+const SignUp = ({
+  onClose,
+  loading,
+  handleError,
+  handleLoading,
+  handleNotification,
+}) => {
   const signUpHandler = async (values) => {
     try {
       await auth.createUserWithEmailAndPassword(values.email, values.password);
@@ -20,8 +25,11 @@ const SignUp = ({ onClose }) => {
         displayName: values.username,
         photoURL: avatar,
       });
+      handleLoading();
       onClose();
+      handleNotification(`welcome ${auth.currentUser.displayName}!`);
     } catch (err) {
+      handleError("Please use a different email address");
       console.error(err);
     }
   };
@@ -52,13 +60,15 @@ const SignUp = ({ onClose }) => {
           name="passwordConfirm"
           type="password"
         />
-        <Button className={classes.buttons}>Register</Button>
+        <Button disabled={loading} className={classes.buttons}>
+          {!loading ? "Register" : "Loading"}
+        </Button>
       </Form>
     </Formik>
   );
 };
 
-export const SignIn = ({ onClose }) => {
+export const SignIn = ({ onClose, handleError, handleNotification }) => {
   const initialValues = {
     email: "",
     password: "",
@@ -67,7 +77,9 @@ export const SignIn = ({ onClose }) => {
     try {
       await auth.signInWithEmailAndPassword(values.email, values.password);
       onClose();
+      handleNotification(`welcome back ${auth.currentUser.displayName}!`);
     } catch (err) {
+      handleError("Invalid Credentials");
       console.error(err);
     }
   };
@@ -78,9 +90,15 @@ export const SignIn = ({ onClose }) => {
       validationSchema={validateSignIn}
       onSubmit={loginHandler}
     >
-      <Form>
-        <TextInput placeholder="Enter Email" name="email" type="email" />
+      <Form className={classes.form}>
         <TextInput
+          className={classes.input}
+          placeholder="Enter Email"
+          name="email"
+          type="email"
+        />
+        <TextInput
+          className={classes.input}
           placeholder="Enter Password"
           name="password"
           type="password"
@@ -91,11 +109,12 @@ export const SignIn = ({ onClose }) => {
   );
 };
 
-export const ResetPassword = ({ onClose }) => {
+export const ResetPassword = ({ onClose, handleNotification }) => {
   const resetPasswordHandler = async (values) => {
     try {
       await auth.sendPasswordResetEmail(values.email);
       onClose();
+      handleNotification(`An email has been sent to ${values.email}`);
     } catch (err) {
       console.error(err);
     }

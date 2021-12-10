@@ -5,9 +5,10 @@ const initialState = [
   {
     id: 1,
     createdAt: 1639077467544,
-    tweet: "My First Tweet",
-    avatar: avatarArray[0],
-    userName: "Curly",
+    tweet:
+      "Yes, it's not exactly a twitter clone, more like a to-do list. However, it does have user content persisted through local storage and a login connected to Firebase.",
+    avatar: avatarArray[3],
+    userName: "Bernard Yang",
     like: false,
   },
 ];

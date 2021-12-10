@@ -14,13 +14,6 @@ export default function Footer() {
         <a
           target="_blank"
           rel="noreferrer"
-          href="https://icons8.com/icon/41642/delete"
-        >
-          Delete icon by Icons8
-        </a>
-        <a
-          target="_blank"
-          rel="noreferrer"
           href="https://icons8.com/icon/80137/heart"
         >
           Heart icon by Icons8

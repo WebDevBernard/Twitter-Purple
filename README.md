@@ -4,14 +4,11 @@
 
 ## About
 
-A simple Twitter clone and a remake of this app made at Lighthouse Labs: [https://github.com/WebDevBernard/tweeter](https://github.com/WebDevBernard/tweeter). I made this project to practice React with Redux, Context, and useReducer. It has the following features:
+Not exactly Twitter but a remake of this app made at Lighthouse Labs: [https://github.com/WebDevBernard/tweeter](https://github.com/WebDevBernard/tweeter). I remade it with these extra features:
 
 - Written with modern React tools, using reuseable components: Modal, Button, Card, Input, Header, Footer.
-- User content saved to localStorage. Tweets can also be liked/disliked or deleted.
-- Sign in with Firebase using Formik and Yup for validation
-
-add api for redux and reducer
-add protected profile route
+- User content persisted with localStorage. Tweets can also be liked/disliked or deleted.
+- Sign in with Firebase with form validation and user feedback
 
 ## Preview
 

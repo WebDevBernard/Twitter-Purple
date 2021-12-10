@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { tweetActions } from "../../redux/tweet-slice";
-import { useState, useContext, useEffect, useMemo } from "react";
+import { useState, useContext, useEffect } from "react";
 import { auth } from "../../utils/firebase";
 import Card from "../Card/Card";
 import Button from "../Button/Button";
@@ -8,16 +8,25 @@ import classes from "./NewTweet.module.css";
 import AuthContext from "../../store/auth-context";
 import avatar, { shortName } from "../../utils/generate-avatar-names";
 
-export default function Tweet() {
+export default function NewTweet() {
   const [enteredTweet, setEnteredTweet] = useState("");
   const [error, setError] = useState({});
   const [count, setCount] = useState(0);
   const { currentUser } = useContext(AuthContext);
   const [ready, setReady] = useState(null);
+
+  // this useEffect makes it so the conditional default element is not shown when the app is checking if currentUser exists
   useEffect(() => {
     const timer = setTimeout(() => {
       setReady(true);
     }, 150);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {}, 3000);
     return () => {
       clearTimeout(timer);
     };
@@ -112,6 +121,7 @@ export default function Tweet() {
           <Button className={classes.button} type="submit">
             TWEET
           </Button>
+
           {error && <p className={classes.error}>{error.message}</p>}
           <p
             className={

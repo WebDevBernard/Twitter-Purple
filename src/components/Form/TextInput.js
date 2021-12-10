@@ -7,7 +7,7 @@ export const TextInput = ({ label, ...props }) => {
     props.element === "textarea" ? (
       <textarea autoComplete="off" {...field} {...props} />
     ) : (
-      <input autoComplete="off" {...field} {...props} />
+      <input noValidate autoComplete="off" {...field} {...props} />
     );
 
   return (

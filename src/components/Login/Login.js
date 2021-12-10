@@ -5,17 +5,30 @@ import SignUp, { ResetPassword, SignIn } from "./SignUp";
 export default function LoginContainer(props) {
   const [isLogin, setIsLogin] = useState(false);
   const [passwordReset, setPasswordReset] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleLoading = () => {
+    setLoading(true);
+  };
+
+  const handleError = (e) => {
+    setError(e);
+  };
 
   const handleSignUpTab = () => {
     setIsLogin(true);
+    setError("");
   };
 
   const handleLoginTab = () => {
     setIsLogin(false);
+    setError("");
   };
 
   return (
     <Modal onClose={props.onClose} className={classes.modal}>
+      <p className={classes.error}>{error}</p>
       <header>
         <div className={classes.loginheader}>
           {!passwordReset && (
@@ -40,15 +53,34 @@ export default function LoginContainer(props) {
         </div>
       </header>
 
-      {!passwordReset && !isLogin && <SignUp onClose={props.onClose} />}
-      {!passwordReset && isLogin && <SignIn onClose={props.onClose} />}
-      {passwordReset && <ResetPassword onClose={props.onClose} />}
+      {!passwordReset && !isLogin && (
+        <SignUp
+          handleNotification={props.handleNotification}
+          onClose={props.onClose}
+          handleLoading={handleLoading}
+          loading={loading}
+          handleError={handleError}
+        />
+      )}
+      {!passwordReset && isLogin && (
+        <SignIn
+          handleNotification={props.handleNotification}
+          handleError={handleError}
+          onClose={props.onClose}
+        />
+      )}
+      {passwordReset && (
+        <ResetPassword
+          handleNotification={props.handleNotification}
+          onClose={props.onClose}
+        />
+      )}
       <footer>
         <p
           className={classes.logincreate}
           onClick={() => setPasswordReset(!passwordReset)}
         >
-          {!passwordReset ? "Forgot Password?" : "Nevermind..."}
+          {!passwordReset ? "Forgot Password?" : "Return"}
         </p>
       </footer>
     </Modal>
