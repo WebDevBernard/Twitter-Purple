@@ -6,7 +6,6 @@ html ::selection {
   background: #c7d2fe; /* WebKit/Blink Browsers */
 }
 body {
-  color: #444444;
   background-color: #f1f1fd;
   letter-spacing: 0.08rem;
   margin: 0;

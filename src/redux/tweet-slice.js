@@ -6,7 +6,7 @@ const initialState = [
     id: 1,
     createdAt: 1639077467544,
     tweet:
-      "Yes, it's not exactly a twitter clone, more like a to-do list. I also added user persisted data through local storage and a login connected to Firebase.",
+      "Yes, it's not exactly a twitter clone, more like a to-do list. Btw user data is persisted through local storage, while login is connected to Firebase.",
     avatar: avatarArray[3],
     userName: "Bernard Yang",
     like: true,
