@@ -2,42 +2,62 @@
   background-color: #f7f7ff;
   top: 5vh;
   height: 35rem;
-  width: 40rem;
-  left: calc(50% - 25%);
+  width: 25rem;
+  padding: 0 !important;
+  left: calc(50% - 12.5rem);
   display: flex;
   flex-direction: column;
-}
-.modal header {
-  display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
 }
 
-.error {
-  color: deeppink;
-  text-transform: uppercase;
-  text-decoration: underline;
+.modal input {
+  width: 100%;
+  font-family: "Roboto Mono";
+  letter-spacing: 0.08rem;
+
+  color: rgba(55, 65, 81, 0.95);
+  background-color: #e7e7e7;
+  font-size: 16px;
+  outline: 0;
+  padding: 1rem 4rem;
+  display: block;
+  border: none;
+  padding: 0.6rem;
+  resize: none;
 }
 
+.loginheader {
+  margin-top: 24px;
+}
+
+.loginheader label {
+  padding-bottom: 4px;
+}
 .modal p {
   align-self: center;
 }
 .modal label {
   color: blueviolet;
-
+  margin-right: 16px;
   font-size: 18px;
   align-self: center;
 }
 
 .close {
-  height: 34px;
+  height: 30px;
   cursor: pointer;
 }
 
-.signup {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  margin-top: 16px;
+.signup,
+.login {
+  cursor: pointer;
+}
+
+.underline {
+  font-weight: bold;
+  cursor: pointer;
+  border-bottom: 4px solid #dcbaff;
 }
 
 .buttons {
@@ -48,7 +68,7 @@
   margin-top: 32px;
 }
 
-.login {
+.input {
   display: flex;
   flex-direction: column;
   width: 100%;

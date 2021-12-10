@@ -25,6 +25,9 @@
   margin-top: 10px;
   height: 55px;
 }
+.button {
+  margin-right: 16px;
+}
 
 .header nav {
   display: flex;
@@ -42,8 +45,6 @@
   white-space: nowrap;
 }
 
-.button {
-}
 @media (max-width: 1024px) {
   .header nav p {
     display: none;

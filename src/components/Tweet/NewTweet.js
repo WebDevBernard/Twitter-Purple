@@ -1,17 +1,43 @@
-import { useState, useContext } from "react";
+import { useDispatch } from "react-redux";
+import { tweetActions } from "../../redux/tweet-slice";
+import { useState, useContext, useEffect, useMemo } from "react";
+import { auth } from "../../utils/firebase";
 import Card from "../Card/Card";
 import Button from "../Button/Button";
 import classes from "./NewTweet.module.css";
 import AuthContext from "../../store/auth-context";
-import Input from "../Form/Input";
+import avatar, { shortName } from "../../utils/generate-avatar-names";
 
-export default function Tweet(props) {
+export default function Tweet() {
   const [enteredTweet, setEnteredTweet] = useState("");
   const [error, setError] = useState({});
   const [count, setCount] = useState(0);
-  const context = useContext(AuthContext);
+  const { currentUser } = useContext(AuthContext);
+  const [ready, setReady] = useState(null);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setReady(true);
+    }, 150);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
+  const selectUserName = currentUser ? auth.currentUser.displayName : shortName;
+  const selectUserAvatar = !currentUser ? avatar : auth.currentUser.photoURL;
 
-  const validateInput = (values) => {
+  const dispatch = useDispatch();
+
+  const handleDispatch = (e) => {
+    dispatch(
+      tweetActions.addTweet({
+        tweet: enteredTweet,
+        avatar: selectUserAvatar,
+        userName: selectUserName,
+      })
+    );
+  };
+
+  const validateInput = () => {
     if (enteredTweet.trim().length > 140) {
       setError({
         message: "tweet too long!",
@@ -24,7 +50,7 @@ export default function Tweet(props) {
       });
       return;
     }
-    props.onAddTweet(enteredTweet);
+    handleDispatch();
     setEnteredTweet("");
     setCount(0);
   };
@@ -54,25 +80,34 @@ export default function Tweet(props) {
   return (
     <Card className={classes.card}>
       <form onSubmit={addTweetOnClick} onKeyDown={addTweetOnEnter}>
-        <div>
-          <img className={classes.avatar} src={props.userAvatar} alt="avatar" />
-          <div className={classes.tag}>
+        {ready && (
+          <div>
             <img
-              className={classes.atSign}
-              src="https://img.icons8.com/ios/50/000000/email.png"
-              alt="email"
+              className={classes.avatar}
+              src={selectUserAvatar}
+              alt="avatar"
             />
-            {!context.isLoggedIn ? context.userName : context.loginName}
+            <div className={classes.tag}>
+              <img
+                className={classes.atSign}
+                src="https://img.icons8.com/ios/50/000000/email.png"
+                alt="email"
+              />
+              {selectUserName}
+            </div>
           </div>
-        </div>
-        <Input
+        )}
+        <textarea
           className={classes.input}
           id="tweetinput"
           placeholder="What are you humming about?"
           onClick={errorHandler}
           onChange={tweetChangeHandler}
           value={enteredTweet}
-        ></Input>
+          rows={4}
+          autoComplete="off"
+          type="text"
+        />
         <footer>
           <Button className={classes.button} type="submit">
             TWEET

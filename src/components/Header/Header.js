@@ -1,9 +1,22 @@
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import classes from "./Header.module.css";
 import Button from "../Button/Button";
 import AuthContext from "../../store/auth-context";
-export default function Header(props) {
-  const context = useContext(AuthContext);
+import { auth } from "../../utils/firebase";
+export default function Header({ onOpen }) {
+  const [ready, setReady] = useState(null);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setReady(true);
+    }, 150);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
+  const logout = async () => {
+    await auth.signOut();
+  };
+  const { currentUser } = useContext(AuthContext);
   return (
     <div id="top" className={classes.header}>
       <h1 className={classes.title}>
@@ -19,22 +32,22 @@ export default function Header(props) {
         </a>
 
         <a href="https://www.bernardyang.com/" target="_blank" rel="noreferrer">
-          <p>twitter tweeter react</p>{" "}
+          <p>twitter tweeter react</p>
         </a>
       </h1>
 
       <nav>
-        {!context.isLoggedIn && (
-          <p>
-            <span>Sign Up</span> to tweet with a unique username
-          </p>
+        {ready && (
+          <>
+            {currentUser && <Button className={classes.button}>Profile</Button>}
+            <Button
+              className={classes.button}
+              onClick={!currentUser ? onOpen : logout}
+            >
+              {!currentUser ? "Login" : "Logout"}
+            </Button>
+          </>
         )}
-        <Button
-          className={classes.button}
-          onClick={!context.isLoggedIn ? props.onShowLogin : context.logout}
-        >
-          {!context.isLoggedIn ? "SIGN UP" : "Logout"}
-        </Button>
       </nav>
     </div>
   );

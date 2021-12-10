@@ -1,36 +1,21 @@
-import { createContext, useState, useCallback } from "react";
-import { shortName } from "../utils/avatars-names";
+import { createContext, useState, useEffect } from "react";
+import { auth } from "../utils/firebase";
 const AuthContext = createContext({});
 
 export const AuthContextProvider = ({ children }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userName, setUserName] = useState(shortName);
-  const [loginName, setLoginName] = useState("");
+  const [currentUser, setCurrentUser] = useState(null);
 
-  const handleLoginName = (name) => {
-    setLoginName(name);
-  };
-  const login = useCallback(() => {
-    setIsLoggedIn(true);
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      setCurrentUser(user);
+    });
+    return unsubscribe;
   }, []);
-  const logout = useCallback(() => {
-    setIsLoggedIn(false);
-  }, []);
-
-  const handleUserName = () => {
-    setUserName(shortName);
-  };
 
   return (
     <AuthContext.Provider
       value={{
-        userName,
-        handleUserName,
-        login,
-        logout,
-        isLoggedIn,
-        loginName,
-        handleLoginName,
+        currentUser,
       }}
     >
       {children}

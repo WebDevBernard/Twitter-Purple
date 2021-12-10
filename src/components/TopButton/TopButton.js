@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Button from "../Button/Button";
-import classes from "./TweetButton.module.css";
+import classes from "./TopButton.module.css";
 export default function TweetButton(props) {
   const [showButton, setShowButton] = useState();
   const toggleVisibility = () => {
@@ -14,7 +14,7 @@ export default function TweetButton(props) {
   // makes the animation smooth
   const scrollToTop = () => {
     window.scrollTo({
-      top: 80,
+      top: 0,
       behavior: "smooth",
     });
   };

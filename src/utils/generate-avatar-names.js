@@ -21,7 +21,7 @@ const avatars = {
     "https://i.imgur.com/ilT4JDe.png",
   ],
 };
-const avatarArray = Object.values(avatars.Male).concat(
+export const avatarArray = Object.values(avatars.Male).concat(
   Object.values(avatars.Female)
 );
 const avatar = avatarArray[Math.floor(Math.random() * avatarArray.length)];

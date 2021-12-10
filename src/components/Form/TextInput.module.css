@@ -1,0 +1,6 @@
+.error {
+  color: deeppink;
+  display: flex;
+  justify-content: center;
+  font-size: 14px;
+}
