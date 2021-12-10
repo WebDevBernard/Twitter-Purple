@@ -10,7 +10,7 @@ export default function PrivateRoute() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setReady(true);
-    }, 150);
+    }, 250);
     return () => {
       clearTimeout(timer);
     };
