@@ -75,9 +75,7 @@ const tweetSlice = createSlice({
       const commentIndex = currentTweet.findIndex(
         (comment) => comment.id === action.payload.commentid
       );
-      console.log(commentIndex);
       state[index].reply[commentIndex].like = action.payload.like;
-      console.log(action.payload.like);
     },
   },
 });

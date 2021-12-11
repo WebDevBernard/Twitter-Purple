@@ -1,12 +1,15 @@
 import { useState, useEffect, useContext } from "react";
+import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import classes from "./SideBar.module.css";
 import Card from "../Card/Card";
 import AuthContext from "../../store/auth-context";
 import { auth } from "../../utils/firebase";
 import avatar, { shortName } from "../../utils/generate-avatar-names";
-const knope = require("knope");
 
 export default function SideBar() {
+  const params = useParams();
+  const tweets = useSelector((state) => state.tweet);
   const { currentUser } = useContext(AuthContext);
   const [ready, setReady] = useState(null);
   // Pass in the name as a parameter
@@ -29,7 +32,14 @@ export default function SideBar() {
   }, []);
   const selectUserName = currentUser ? auth.currentUser.displayName : shortName;
   const selectUserAvatar = !currentUser ? avatar : auth.currentUser.photoURL;
-  const compliment = knope.getCompliment(selectUserName);
+  const selectedTweet = tweets.find((tweet) => tweet.id === params.id);
+
+  const messagelength = window.location.href.match("comment")
+    ? selectedTweet.reply.filter(
+        (comments) => comments.userName === selectUserName
+      ).length
+    : tweets.filter((tweet) => tweet.userName === selectUserName).length;
+
   return (
     <div className={classes.cardcontainer}>
       <Card className={classes.card}>
@@ -54,7 +64,10 @@ export default function SideBar() {
           </div>
         )}
         <Card className={classes.cards}>
-          <p className={classes.profiledescription}>{compliment}</p>
+          <p className={classes.profiledescription}>
+            {messagelength}{" "}
+            {window.location.href.match("comment") ? "Comments" : "Tweets"}
+          </p>
         </Card>
       </Card>
     </div>

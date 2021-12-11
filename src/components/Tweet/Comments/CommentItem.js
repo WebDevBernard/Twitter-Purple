@@ -20,9 +20,6 @@ export default function CommentItem(props) {
   const heartLength = props.like ? 1 : 0;
   return (
     <Card className={classes.card}>
-      <div className={classes.header}>
-        <br />
-      </div>
       <header>
         <div>
           <img className={classes.avatar} src={props.avatar} alt="avatar" />
