@@ -40,13 +40,16 @@ export default function SideBar() {
               src={selectUserAvatar}
               alt="avatar"
             />
+
             <div className={classes.username}>
               <img
                 className={classes.atSign}
                 src="https://img.icons8.com/ios/50/000000/email.png"
                 alt="email"
               />
-              <p>{selectUserName}</p>
+              <a href="/profile">
+                <p>{selectUserName}</p>
+              </a>
             </div>
           </div>
         )}
