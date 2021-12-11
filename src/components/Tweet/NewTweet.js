@@ -8,7 +8,7 @@ import classes from "./NewTweet.module.css";
 import AuthContext from "../../store/auth-context";
 import avatar, { shortName } from "../../utils/generate-avatar-names";
 
-export default function NewTweet() {
+export default function NewTweet(props) {
   const [enteredTweet, setEnteredTweet] = useState("");
   const [error, setError] = useState({});
   const [count, setCount] = useState(0);

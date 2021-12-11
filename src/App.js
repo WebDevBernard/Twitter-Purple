@@ -77,7 +77,7 @@ function App() {
               <div style={{ position: "relative" }}>
                 <SideBar />
                 <Widget />
-                <NewTweet notification={notification} />
+                <NewTweet />
                 <TweetList getCommentsHandler={getCommentsHandler} />
               </div>
             }

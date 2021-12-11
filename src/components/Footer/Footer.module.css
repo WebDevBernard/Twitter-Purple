@@ -2,12 +2,15 @@
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  margin: 1rem;
+
   font-size: 1.05rem;
   padding-top: 24px;
   border-top: 1px solid grey;
   text-decoration: none;
   color: black;
+  position: absolute;
+
+  width: 1440px;
 }
 
 .footer a {

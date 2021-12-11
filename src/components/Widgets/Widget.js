@@ -17,12 +17,6 @@ export default function Widget() {
         <Card className={classes.trendcard}>
           <p>Trending</p>
         </Card>
-        <label className={classes.trendlabel} htmlFor="trendcard">
-          Trending in Crypto
-        </label>
-        <Card className={classes.trendcard}>
-          <p>Trending</p>
-        </Card>
       </Card>
 
       <Card className={classes.card}>

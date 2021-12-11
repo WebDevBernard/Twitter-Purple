@@ -1,6 +1,8 @@
 html {
   margin: 0 auto;
   max-width: 1440px;
+  position: relative;
+  min-height: 100%;
 }
 html ::selection {
   background: #c7d2fe; /* WebKit/Blink Browsers */

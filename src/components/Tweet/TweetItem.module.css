@@ -123,6 +123,15 @@
 .commentcount {
   margin-right: 1rem;
 }
+.error {
+  overflow: hidden;
+  white-space: nowrap;
+  margin: 0 auto;
+  letter-spacing: 0.08em;
+  text-transform: capitalize;
+  font-size: 18px;
+  color: violet;
+}
 
 @media only screen and (max-width: 768px) {
   .card {

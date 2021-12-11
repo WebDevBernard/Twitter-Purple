@@ -7,7 +7,7 @@ import Card from "../../Card/Card";
 import moment from "moment";
 import classes from "./CommentList.module.css";
 const timeAgo = (el) => moment(el).fromNow();
-export default function CommentList() {
+export default function CommentList(props) {
   const dispatch = useDispatch();
   const params = useParams();
   const tweets = useSelector((state) => state.tweet);

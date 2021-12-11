@@ -37,7 +37,6 @@ export default function CommentItem(props) {
         </div>
       </header>
       <br />
-
       <p className={classes.input}>{props.tweet}</p>
       <footer>
         <span className={classes.time}>{timeAgo(props.createdAt)}</span>
