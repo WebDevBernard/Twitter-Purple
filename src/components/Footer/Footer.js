@@ -30,7 +30,7 @@ export default function Footer() {
           target="_blank"
           rel="noreferrer"
         >
-          >No Comments icon by Icons8
+          No Comments icon by Icons8
         </a>
         <a
           target="_blank"

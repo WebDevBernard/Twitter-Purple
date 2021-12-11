@@ -14,6 +14,10 @@ export default function UserProfile({ handleNotification }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (selected === "") {
+      handleNotification("No User Selected");
+      return;
+    }
     try {
       await auth.currentUser.updateProfile({
         photoURL: selected,
