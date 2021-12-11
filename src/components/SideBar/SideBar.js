@@ -66,7 +66,8 @@ export default function SideBar() {
         <Card className={classes.cards}>
           <p className={classes.profiledescription}>
             {messagelength}{" "}
-            {window.location.href.match("comment") ? "Comments" : "Tweets"}
+            {window.location.href.match("comment") ? "Comment" : "Tweet"}
+            {messagelength <= 1 ? "" : "s"}
           </p>
         </Card>
       </Card>
