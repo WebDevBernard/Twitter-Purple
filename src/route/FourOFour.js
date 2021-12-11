@@ -3,7 +3,7 @@ export default function FourOFour() {
     <div
       style={{ display: "flex", justifyContent: "center", color: "deeppink" }}
     >
-      Page not found
+      404 Page not found
     </div>
   );
 }

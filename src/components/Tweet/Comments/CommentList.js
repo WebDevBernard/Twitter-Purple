@@ -12,7 +12,8 @@ export default function CommentList() {
   const params = useParams();
   const tweets = useSelector((state) => state.tweet);
   const selectedTweet = tweets.find((tweet) => tweet.id === params.id);
-  const replies = selectedTweet.reply;
+  const replies =
+    selectedTweet === undefined ? <Navigate to="/404" /> : selectedTweet.reply;
 
   const likeToggleHandler = () => {
     dispatch(
@@ -23,9 +24,11 @@ export default function CommentList() {
     );
   };
 
+  console.log(replies);
   if (selectedTweet === undefined) {
     return <Navigate to="/404" />;
   }
+
   return (
     <div className={classes.cardcontainer}>
       <Card className={classes.card}>

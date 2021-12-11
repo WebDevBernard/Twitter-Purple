@@ -15,7 +15,7 @@ export default function UserProfile({ handleNotification }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (selected === "") {
-      handleNotification("No User Selected");
+      handleNotification("No Avatar Selected");
       return;
     }
     try {

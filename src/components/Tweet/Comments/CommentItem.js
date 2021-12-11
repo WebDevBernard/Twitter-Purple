@@ -3,7 +3,6 @@ import moment from "moment";
 import classes from "./CommentItem.module.css";
 const timeAgo = (el) => moment(el).fromNow();
 export default function CommentItem(props) {
-  console.log(props);
   return (
     <Card className={classes.card}>
       <div className={classes.header}>
