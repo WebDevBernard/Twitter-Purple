@@ -21,7 +21,7 @@ export default function Header({ onOpen }) {
     <div id="top" className={classes.header}>
       <h1 className={classes.title}>
         <img
-          src="https://img.icons8.com/dusk/64/000000/twitter--v1.png"
+          src="https://img.icons8.com/dusk/64/000000/twitter--v2.png"
           alt="twitter"
         />
         <a href="/" rel="noreferrer">

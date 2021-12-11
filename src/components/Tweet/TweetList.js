@@ -14,7 +14,6 @@ export default function TweetList(props) {
             tweet={tweet.tweet}
             like={tweet.like}
             createdAt={tweet.createdAt}
-            onRemoveTweet={props.onRemoveTweet}
             avatar={tweet.avatar}
             userName={tweet.userName}
           />

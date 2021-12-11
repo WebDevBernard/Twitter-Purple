@@ -1,9 +1,9 @@
 import { useDispatch } from "react-redux";
 import { tweetActions } from "../../redux/tweet-slice";
+import { Link } from "react-router-dom";
 import moment from "moment";
 import Card from "../Card/Card";
 import classes from "./TweetItem.module.css";
-import { faHeart, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 const timeAgo = (el) => moment(el).fromNow();
 export default function TweetItem(props) {
   const dispatch = useDispatch();
@@ -22,7 +22,6 @@ export default function TweetItem(props) {
         <img
           onClick={deleteHandler}
           className={classes.delete}
-          icon={faTrashAlt}
           alt="delete"
           src="https://img.icons8.com/dotty/80/000000/delete-sign.png"
         />
@@ -36,20 +35,29 @@ export default function TweetItem(props) {
               src="https://img.icons8.com/ios/50/000000/email.png"
               alt="@ sign"
             />
+
             <p>{props.userName}</p>
           </div>
         </div>
       </header>
       <br />
-      <p className={classes.input}>{props.tweet}</p>
+      <Link to={`/comments/${props.id}`}>
+        <p className={classes.input}>{props.tweet}</p>{" "}
+      </Link>
       <footer>
         <span className={classes.time}>{timeAgo(props.createdAt)}</span>
         <div className={classes.likecontainer}>
+          <Link to={`/comments/${props.id}`}>
+            <img
+              className={classes.comment}
+              alt="comment"
+              src="https://img.icons8.com/ios/50/000000/no-comments.png"
+            />
+          </Link>
           {props.like && <span>1</span>}
           <img
             onClick={likeToggleHandler}
             className={props.like ? classes.like : classes.heart}
-            icon={faHeart}
             alt="like"
             src={
               props.like

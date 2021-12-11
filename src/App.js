@@ -1,5 +1,10 @@
 import { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import PrivateRoute from "./route/PrivateRoute";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
@@ -9,9 +14,13 @@ import Login from "./components/Login/Login";
 import TopButton from "./components/TopButton/TopButton";
 import Notification from "./components/Login/Notification";
 import UserProfile from "./components/Login/UserProfile";
+import CommentList from "./components/Tweet/Comments/CommentList";
+import FourOFour from "./route/FourOFour";
 function App() {
   const [openModal, setOpenModal] = useState(false);
   const [notification, setNotification] = useState("");
+  const [getComments, setGetComments] = useState("");
+
   const handleOpenModal = () => {
     setOpenModal(true);
   };
@@ -21,6 +30,9 @@ function App() {
 
   const handleNotification = (e) => {
     setNotification(e);
+  };
+  const getCommentsHandler = (e) => {
+    setGetComments(e);
   };
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -43,13 +55,24 @@ function App() {
       )}
       <main>
         <Routes>
+          <Route exact path="/404" element={<FourOFour />} />
+          <Route
+            exact
+            path="/comments/:id"
+            element={
+              <>
+                <CommentList getComments={getComments} />
+              </>
+            }
+          />
+
           <Route
             exact
             path="/"
             element={
               <>
                 <NewTweet notification={notification} />
-                <TweetList />
+                <TweetList getCommentsHandler={getCommentsHandler} />
               </>
             }
           />
@@ -60,6 +83,7 @@ function App() {
               element={<UserProfile handleNotification={handleNotification} />}
             />
           </Route>
+          <Route path="*" element={<Navigate to="/404" />} />
         </Routes>
       </main>
       <Footer />

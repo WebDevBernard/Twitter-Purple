@@ -26,6 +26,13 @@ export default function Footer() {
           Heart icon by Icons8
         </a>
         <a
+          href="https://icons8.com/icon/ytYEu4XLVVZr/no-comments"
+          target="_blank"
+          rel="noreferrer"
+        >
+          >No Comments icon by Icons8
+        </a>
+        <a
           target="_blank"
           rel="noreferrer"
           href="https://icons8.com/icon/1669/at-sign"

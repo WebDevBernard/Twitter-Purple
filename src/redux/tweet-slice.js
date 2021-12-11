@@ -3,13 +3,33 @@ import { avatarArray } from "../utils/generate-avatar-names";
 
 const initialState = [
   {
-    id: 1,
+    id: "1",
     createdAt: 1639077467544,
     tweet:
-      "Yes, it's not exactly a twitter clone, more like a to-do list. Btw user data is persisted through local storage, while login is connected to Firebase.",
+      "Try out the login feature without signing up by logging in with email: user1@fakemail.com // pw: 123456",
     avatar: avatarArray[3],
     userName: "Bernard Yang",
     like: true,
+    reply: [
+      {
+        id: "1",
+        createdAt: 1639077467544,
+        comment: "Why am I commenting on my own tweet?",
+        avatar: avatarArray[3],
+        userName: "Bernard Yang",
+      },
+    ],
+  },
+  {
+    id: "2",
+    createdAt: 1639077467544,
+    tweet:
+      "Yes, it's not exactly twitter but it does have data persisted through local storage, and a login connected to Firebase.",
+
+    avatar: avatarArray[3],
+    userName: "Bernard Yang",
+    like: true,
+    reply: [],
   },
 ];
 
@@ -25,6 +45,7 @@ const tweetSlice = createSlice({
         avatar: action.payload.avatar,
         userName: action.payload.userName,
         like: false,
+        reply: [],
       };
       state.push(newTweet);
     },
@@ -32,8 +53,19 @@ const tweetSlice = createSlice({
       return state.filter((tweet) => tweet.id !== action.payload.id);
     },
     toggleLike: (state, action) => {
-      const index = state.findIndex((todo) => todo.id === action.payload.id);
+      const index = state.findIndex((tweet) => tweet.id === action.payload.id);
       state[index].like = action.payload.like;
+    },
+    addComment: (state, action) => {
+      const index = state.findIndex((tweet) => tweet.id === action.payload.id);
+      const newComment = {
+        id: `${action.payload.tweet}_${new Date().getTime()}`,
+        createdAt: Date.now(),
+        comment: action.payload.reply.comment,
+        avatar: action.payload.reply.avatar,
+        userName: action.payload.reply.userName,
+      };
+      state[index].reply.push(newComment);
     },
   },
 });
