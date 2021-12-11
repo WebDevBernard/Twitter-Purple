@@ -26,23 +26,24 @@
   height: 55px;
 }
 .button {
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
   margin-left: 16px;
 }
-
+.profilebutton {
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  text-decoration: none;
+}
 .header nav {
   display: flex;
   align-items: center;
-}
-
-.header nav p {
-  color: rgba(55, 65, 81, 0.95);
-  margin-right: 16px;
-  white-space: nowrap;
-}
-.header nav p span {
-  color: #dcbaff;
-  text-decoration: underline;
-  white-space: nowrap;
 }
 
 @media (max-width: 1024px) {

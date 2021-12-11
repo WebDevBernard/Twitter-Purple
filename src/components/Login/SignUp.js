@@ -47,7 +47,7 @@ const SignUp = ({
       validationSchema={validateSignUp}
       onSubmit={signUpHandler}
     >
-      <Form>
+      <Form className={classes.form}>
         <TextInput placeholder="Enter Username" name="username" type="text" />
         <TextInput placeholder="Enter Email" name="email" type="email" />
         <TextInput
@@ -128,7 +128,7 @@ export const ResetPassword = ({ onClose, handleNotification }) => {
       validationSchema={validateReset}
       onSubmit={resetPasswordHandler}
     >
-      <Form>
+      <Form className={classes.form}>
         <TextInput placeholder="Enter Email" name="email" type="email" />
         <Button className={classes.buttons}>Reset Password</Button>
       </Form>

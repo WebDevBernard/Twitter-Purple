@@ -14,6 +14,7 @@
     "firebase": "^9.6.0",
     "formik": "^2.2.9",
     "javascript-time-ago": "^2.3.10",
+    "knope": "^1.1.2",
     "lodash.throttle": "^4.1.1",
     "moment": "^2.29.1",
     "react": "^17.0.2",

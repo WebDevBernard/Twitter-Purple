@@ -89,34 +89,27 @@ export default function NewTweet() {
   return (
     <Card className={classes.card}>
       <form onSubmit={addTweetOnClick} onKeyDown={addTweetOnEnter}>
-        {ready && (
-          <div>
+        <div className={classes.textareacontainer}>
+          {ready && (
             <img
               className={classes.avatar}
               src={selectUserAvatar}
               alt="avatar"
             />
-            <div className={classes.tag}>
-              <img
-                className={classes.atSign}
-                src="https://img.icons8.com/ios/50/000000/email.png"
-                alt="email"
-              />
-              {selectUserName}
-            </div>
-          </div>
-        )}
-        <textarea
-          className={classes.input}
-          id="tweetinput"
-          placeholder="What are you humming about?"
-          onClick={errorHandler}
-          onChange={tweetChangeHandler}
-          value={enteredTweet}
-          rows={4}
-          autoComplete="off"
-          type="text"
-        />
+          )}
+          <textarea
+            className={classes.input}
+            id="tweetinput"
+            placeholder="What are you humming about?"
+            onClick={errorHandler}
+            onChange={tweetChangeHandler}
+            value={enteredTweet}
+            rows={4}
+            autoComplete="off"
+            type="text"
+          />
+        </div>
+
         <footer>
           <Button className={classes.button} type="submit">
             TWEET

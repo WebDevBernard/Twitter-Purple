@@ -46,6 +46,7 @@
   font-size: 16px;
   white-space: nowrap;
   user-select: none;
+  opacity: 0.7;
 }
 .input input:focus {
   outline: none;

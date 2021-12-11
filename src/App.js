@@ -16,6 +16,8 @@ import Notification from "./components/Login/Notification";
 import UserProfile from "./components/Login/UserProfile";
 import CommentList from "./components/Tweet/Comments/CommentList";
 import FourOFour from "./route/FourOFour";
+import Widget from "./components/Widgets/Widget";
+import SideBar from "./components/SideBar/SideBar";
 function App() {
   const [openModal, setOpenModal] = useState(false);
   const [notification, setNotification] = useState("");
@@ -60,9 +62,11 @@ function App() {
             exact
             path="/comments/:id"
             element={
-              <>
+              <div style={{ position: "relative" }}>
+                <SideBar />
+                <Widget />
                 <CommentList getComments={getComments} />
-              </>
+              </div>
             }
           />
 
@@ -70,10 +74,12 @@ function App() {
             exact
             path="/"
             element={
-              <>
+              <div style={{ position: "relative" }}>
+                <SideBar />
+                <Widget />
                 <NewTweet notification={notification} />
                 <TweetList getCommentsHandler={getCommentsHandler} />
-              </>
+              </div>
             }
           />
           <Route element={<PrivateRoute />}>

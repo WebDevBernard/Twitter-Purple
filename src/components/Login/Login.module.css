@@ -17,20 +17,23 @@
   justify-content: center;
   align-items: center;
 }
-.input {
-  min-width: 25rem;
-}
+
 .modal input {
+  min-width: 25rem;
   font-family: "Roboto Mono";
   letter-spacing: 0.08rem;
   width: 100%;
-  font-size: 16px;
+  font-size: 14px;
   outline: 0;
   padding: 1rem 4rem;
   display: block;
-  border: none;
+  border: 1px solid blueviolet;
   padding: 0.6rem;
   resize: none;
+  color: black;
+}
+.modal input::placeholder {
+  color: blueviolet;
 }
 
 .loginheader {
