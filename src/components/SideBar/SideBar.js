@@ -57,9 +57,9 @@ export default function SideBar() {
                 src="https://img.icons8.com/ios/50/000000/email.png"
                 alt="email"
               />
-              <a href="/profile">
+
                 <p>{selectUserName}</p>
-              </a>
+
             </div>
           </div>
         )}
