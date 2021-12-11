@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { tweetActions } from "../../redux/tweet-slice";
 import { Link } from "react-router-dom";
 import moment from "moment";
@@ -14,6 +14,11 @@ export default function TweetItem(props) {
   const likeToggleHandler = () => {
     dispatch(tweetActions.toggleLike({ id: props.id, like: !props.like }));
   };
+
+  const tweets = useSelector((state) => state.tweet);
+  const tweetIndex = tweets.findIndex((tweet) => tweet.id === props.id);
+  const commentLength = tweets[tweetIndex].reply.length;
+  const heartLength = tweets[tweetIndex].like ? 1 : 0;
 
   return (
     <Card className={classes.card}>
@@ -42,7 +47,7 @@ export default function TweetItem(props) {
       </header>
       <br />
       <Link to={`/comments/${props.id}`}>
-        <p className={classes.input}>{props.tweet}</p>{" "}
+        <p className={classes.input}>{props.tweet}</p>
       </Link>
       <footer>
         <span className={classes.time}>{timeAgo(props.createdAt)}</span>
@@ -54,7 +59,8 @@ export default function TweetItem(props) {
               src="https://img.icons8.com/ios/50/000000/no-comments.png"
             />
           </Link>
-          {props.like && <span>1</span>}
+          <span className={classes.commentcount}>{commentLength}</span>
+
           <img
             onClick={likeToggleHandler}
             className={props.like ? classes.like : classes.heart}
@@ -65,6 +71,7 @@ export default function TweetItem(props) {
                 : "https://img.icons8.com/wired/64/000000/hearts.png"
             }
           />
+          <span>{heartLength}</span>
         </div>
       </footer>
     </Card>

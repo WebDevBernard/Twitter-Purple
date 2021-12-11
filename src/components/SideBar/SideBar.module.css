@@ -60,11 +60,12 @@
   align-items: center;
   color: blueviolet;
   margin-right: 24px;
+  white-space: nowrap;
 
   word-break: break-word;
 }
 .username p {
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .atSign {

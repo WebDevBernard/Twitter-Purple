@@ -67,7 +67,7 @@
 .comment {
   opacity: 0.7;
   height: 24px;
-  cursor: pointer;
+
   font-size: 20px;
   color: rgba(55, 65, 81, 0.95);
   user-select: none;
@@ -98,7 +98,6 @@
   user-select: none;
 }
 
-.comment:hover,
 .delete:hover,
 .heart:hover {
   filter: invert(23%) sepia(76%) saturate(5751%) hue-rotate(317deg)

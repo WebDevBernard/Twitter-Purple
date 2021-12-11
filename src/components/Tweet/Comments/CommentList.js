@@ -24,11 +24,12 @@ export default function CommentList() {
     );
   };
 
-  console.log(replies);
   if (selectedTweet === undefined) {
     return <Navigate to="/404" />;
   }
 
+  const commentLength = selectedTweet.reply.length;
+  const heartLength = selectedTweet.like ? 1 : 0;
   return (
     <div className={classes.cardcontainer}>
       <Card className={classes.card}>
@@ -59,7 +60,14 @@ export default function CommentList() {
             {timeAgo(selectedTweet.createdAt)}
           </span>
           <div className={classes.likecontainer}>
-            {selectedTweet.like && <span>1</span>}
+            <img
+              className={classes.comment}
+              alt="comment"
+              src="https://img.icons8.com/ios/50/000000/no-comments.png"
+            />
+
+            <span className={classes.commentcount}>{commentLength}</span>
+
             <img
               onClick={likeToggleHandler}
               className={selectedTweet.like ? classes.like : classes.heart}
@@ -70,6 +78,7 @@ export default function CommentList() {
                   : "https://img.icons8.com/wired/64/000000/hearts.png"
               }
             />
+            <span>{heartLength}</span>
           </div>
         </footer>
       </Card>
@@ -86,6 +95,7 @@ export default function CommentList() {
       {[...replies].reverse().map((entries, id) => {
         return (
           <CommentItem
+            currentTweetId={selectedTweet.id}
             key={id}
             id={entries.id}
             createdAt={entries.createdAt}

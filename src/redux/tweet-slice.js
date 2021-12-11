@@ -17,6 +17,7 @@ const initialState = [
         comment: "Why am I commenting on my own tweet?",
         avatar: avatarArray[3],
         userName: "Bernard Yang",
+        like: false,
       },
     ],
   },
@@ -59,13 +60,24 @@ const tweetSlice = createSlice({
     addComment: (state, action) => {
       const index = state.findIndex((tweet) => tweet.id === action.payload.id);
       const newComment = {
-        id: `${action.payload.tweet}_${new Date().getTime()}`,
+        id: `${action.payload.reply.comment}_${new Date().getTime()}`,
         createdAt: Date.now(),
         comment: action.payload.reply.comment,
         avatar: action.payload.reply.avatar,
         userName: action.payload.reply.userName,
+        like: false,
       };
       state[index].reply.push(newComment);
+    },
+    toggleCommentLike: (state, action) => {
+      const index = state.findIndex((tweet) => tweet.id === action.payload.id);
+      const currentTweet = state[index].reply;
+      const commentIndex = currentTweet.findIndex(
+        (comment) => comment.id === action.payload.commentid
+      );
+      console.log(commentIndex);
+      state[index].reply[commentIndex].like = action.payload.like;
+      console.log(action.payload.like);
     },
   },
 });
