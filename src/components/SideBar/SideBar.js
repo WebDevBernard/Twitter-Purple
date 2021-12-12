@@ -6,7 +6,6 @@ import Card from "../Card/Card";
 import AuthContext from "../../store/auth-context";
 import { auth } from "../../utils/firebase";
 import avatar, { shortName } from "../../utils/generate-avatar-names";
-
 export default function SideBar() {
   const params = useParams();
   const tweets = useSelector((state) => state.tweet);
@@ -58,8 +57,7 @@ export default function SideBar() {
                 alt="email"
               />
 
-                <p>{selectUserName}</p>
-
+              <p>{selectUserName}</p>
             </div>
           </div>
         )}
