@@ -33,7 +33,7 @@ const initialState = [
         id: "2",
         createdAt: 1639077467544,
         comment:
-          "On either home page, click on a username to toggle user tweets and the home page.",
+          "On the home page, click on a username to toggle/filter user tweets",
         avatar: avatarArray[3],
         userName: "Bernard_Yang",
         like: false,
