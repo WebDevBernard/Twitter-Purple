@@ -19,6 +19,7 @@ export default function TweetItem(props) {
   };
 
   const deleteHandler = () => {
+    setOpenDialog(false);
     dispatch(tweetActions.deleteTweet({ id: props.id }));
   };
 
@@ -29,10 +30,6 @@ export default function TweetItem(props) {
     setOpenDialog(false);
   };
 
-  useEffect(() => {
-    const body = document.querySelector("body");
-    body.style.overflow = openDialog ? "hidden" : "auto";
-  }, [openDialog]);
   return (
     <>
       <Card className={classes.card}>

@@ -45,10 +45,6 @@ function App() {
     };
   }, [notification]);
 
-  useEffect(() => {
-    const body = document.querySelector("body");
-    body.style.overflow = openModal ? "hidden" : "auto";
-  }, [openModal]);
   return (
     <Router>
       {notification && <Notification notification={notification} />}
