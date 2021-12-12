@@ -23,6 +23,7 @@
     "react-router-dom": "^6.0.2",
     "react-scripts": "4.0.3",
     "unique-names-generator": "^4.6.0",
+    "uuid": "^8.3.2",
     "web-vitals": "^1.0.1",
     "yup": "^0.32.11"
   },

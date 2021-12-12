@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { avatarArray } from "../utils/generate-avatar-names";
-
+import { v4 as uuidv4 } from "uuid";
 const initialState = [
   {
     id: "1",
@@ -16,7 +16,7 @@ const initialState = [
     id: "2",
     createdAt: 1639077467544,
     tweet:
-      "Yes, it's not exactly twitter but it does have data persisted through local storage, and a login connected to Firebase.",
+      "Yes, it's not exactly Twitter but it does have data persisted through local storage, and a login connected to Firebase.",
 
     avatar: avatarArray[3],
     userName: "Bernard_Yang",
@@ -26,7 +26,7 @@ const initialState = [
         id: "1",
         createdAt: 1639077467544,
         comment:
-          "Updated the login validation from a custom hook to Formik and Yup",
+          "Updated the login validation from a custom hook to Formik and Yup.",
         avatar: avatarArray[3],
         userName: "Bernard_Yang",
         like: false,
@@ -34,7 +34,7 @@ const initialState = [
       {
         id: "2",
         createdAt: 1639077467544,
-        comment: "App wide state managed with Redux",
+        comment: "App wide state managed with Redux.",
         avatar: avatarArray[3],
         userName: "Bernard_Yang",
         like: false,
@@ -42,7 +42,7 @@ const initialState = [
       {
         id: "3",
         createdAt: 1639077467544,
-        comment: "Twitter feed is from Twitter API",
+        comment: "Twitter feed is from Twitter API.",
         avatar: avatarArray[3],
         userName: "Bernard_Yang",
         like: false,
@@ -57,7 +57,7 @@ const tweetSlice = createSlice({
   reducers: {
     addTweet: (state, action) => {
       const newTweet = {
-        id: `${action.payload.tweet}_${new Date().getTime()}`,
+        id: uuidv4(),
         createdAt: Date.now(),
         tweet: action.payload.tweet,
         avatar: action.payload.avatar,
@@ -77,7 +77,7 @@ const tweetSlice = createSlice({
     addComment: (state, action) => {
       const index = state.findIndex((tweet) => tweet.id === action.payload.id);
       const newComment = {
-        id: `${action.payload.reply.comment}_${new Date().getTime()}`,
+        id: uuidv4(),
         createdAt: Date.now(),
         comment: action.payload.reply.comment,
         avatar: action.payload.reply.avatar,
