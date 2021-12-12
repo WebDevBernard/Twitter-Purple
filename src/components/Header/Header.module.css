@@ -46,17 +46,10 @@
   align-items: center;
 }
 
-@media (max-width: 1024px) {
-  .header nav p {
-    display: none;
-  }
-}
-
 @media (max-width: 768px) {
-  .button {
-    margin-left: 24px;
-  }
-  .profilebutton {
-    display: none;
+  .header nav {
+    display: flex;
+    margin-left: 7rem;
+    justify-content: space-evenly;
   }
 }

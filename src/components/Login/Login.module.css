@@ -53,11 +53,6 @@
   align-self: center;
 }
 
-.close {
-  height: 30px;
-  cursor: pointer;
-}
-
 .signup,
 .login {
   cursor: pointer;
@@ -95,12 +90,26 @@
   justify-content: center;
   font-size: 14px;
 }
+.close {
+  display: none;
+}
 
 @media (max-width: 768px) {
   .modal {
     height: 100%;
-    width: 76%;
+    width: 100%;
     top: 0;
     left: 0;
+  }
+
+  .close {
+    display: flex;
+    float: right;
+    height: 30px;
+    cursor: pointer;
+  }
+  .close:hover {
+    filter: invert(23%) sepia(76%) saturate(5751%) hue-rotate(317deg)
+      brightness(104%) contrast(101%);
   }
 }

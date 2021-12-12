@@ -28,6 +28,12 @@ export default function LoginContainer(props) {
 
   return (
     <Modal onClose={props.onClose} className={classes.modal}>
+      <img
+        onClick={props.onClose}
+        className={classes.close}
+        alt="delete"
+        src="https://img.icons8.com/dotty/80/000000/delete-sign.png"
+      />
       <p className={classes.error}>{error}</p>
       <header>
         <div className={classes.loginheader}>

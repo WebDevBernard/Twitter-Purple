@@ -31,7 +31,8 @@ export default function NewTweet(props) {
       clearTimeout(timer);
     };
   }, []);
-
+  const selectUserName = currentUser ? auth.currentUser.displayName : shortName;
+  const selectUserAvatar = !currentUser ? avatar : auth.currentUser.photoURL;
   const dispatch = useDispatch();
 
   const handleDispatch = (e) => {
