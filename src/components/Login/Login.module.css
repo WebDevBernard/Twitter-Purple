@@ -1,6 +1,6 @@
 .modal {
   background-color: #f7f7ff;
-  top: 5vh;
+  top: calc(50% - 20rem);
   height: 35rem;
   width: 35rem;
   padding: 0 !important;

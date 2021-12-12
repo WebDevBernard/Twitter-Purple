@@ -87,6 +87,7 @@
   }
 }
 .delete {
+  opacity: 0.7;
   z-index: 1;
   cursor: pointer;
   height: 34px;

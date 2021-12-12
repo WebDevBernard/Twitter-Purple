@@ -1,0 +1,31 @@
+.modal {
+  position: absolute;
+
+  width: 15rem;
+  height: 10rem;
+  top: calc(50% - 10rem);
+  left: calc(50% - 7.5rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  outline: 0;
+  padding: 0rem;
+  z-index: 30;
+
+  background-color: #f7f7ff;
+  margin: 1rem;
+}
+
+.modal p {
+  color: blueviolet;
+}
+
+.buttoncontainer {
+  display: flex;
+}
+.button {
+  width: 5rem;
+  margin: 1rem;
+}

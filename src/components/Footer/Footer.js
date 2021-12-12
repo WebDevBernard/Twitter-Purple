@@ -7,9 +7,9 @@ export default function Footer() {
         <a
           target="_blank"
           rel="noreferrer"
-          href="https://icons8.com/icon/44096/delete"
+          href="https://icons8.com/icon/24865/ellipsis"
         >
-          Delete icon by Icons8
+          Ellipsis icon by Icons8
         </a>
         <a
           target="_blank"

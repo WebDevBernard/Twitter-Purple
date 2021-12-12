@@ -1,12 +1,15 @@
 import { useDispatch, useSelector } from "react-redux";
 import { tweetActions } from "../../redux/tweet-slice";
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 import moment from "moment";
 import Card from "../Card/Card";
 import classes from "./TweetItem.module.css";
+import DeleteDialog from "./DeleteDialog";
 const timeAgo = (el) => moment(el).fromNow();
 export default function TweetItem(props) {
   const dispatch = useDispatch();
+  const [openDialog, setOpenDialog] = useState(false);
   const tweets = useSelector((state) => state.tweet);
   const tweetIndex = tweets.findIndex((tweet) => tweet.id === props.id);
   const commentLength = tweets[tweetIndex].reply.length;
@@ -18,6 +21,18 @@ export default function TweetItem(props) {
   const deleteHandler = () => {
     dispatch(tweetActions.deleteTweet({ id: props.id }));
   };
+
+  const handleOpenDialog = () => {
+    setOpenDialog(true);
+  };
+  const handleCloseDialog = () => {
+    setOpenDialog(false);
+  };
+
+  useEffect(() => {
+    const body = document.querySelector("body");
+    body.style.overflow = openDialog ? "hidden" : "auto";
+  }, [openDialog]);
   return (
     <>
       <Card className={classes.card}>
@@ -25,13 +40,21 @@ export default function TweetItem(props) {
           <br />
           {!(tweetIndex === 0 || tweetIndex === 1) && (
             <img
-              onClick={deleteHandler}
+              onClick={handleOpenDialog}
               className={classes.delete}
               alt="delete"
-              src="https://img.icons8.com/dotty/80/000000/delete-sign.png"
+              src="https://img.icons8.com/ios/50/000000/ellipsis.png"
             />
           )}
         </div>
+        {openDialog && (
+          <DeleteDialog
+            open={openDialog}
+            delete={deleteHandler}
+            onOpen={handleOpenDialog}
+            onClose={handleCloseDialog}
+          />
+        )}
         <header>
           <div>
             <img className={classes.avatar} src={props.avatar} alt="avatar" />
