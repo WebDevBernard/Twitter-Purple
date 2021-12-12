@@ -33,14 +33,11 @@ export default function SideBar() {
   const selectUserAvatar = !currentUser ? avatar : auth.currentUser.photoURL;
   const selectedTweet = tweets.find((tweet) => tweet.id === params.id);
 
-  const messagelength =
-    selectedTweet === undefined
-      ? 0
-      : window.location.href.match("comment")
-      ? selectedTweet.reply.filter(
-          (comments) => comments.userName === selectUserName
-        ).length
-      : tweets.filter((tweet) => tweet.userName === selectUserName).length;
+  const messagelength = window.location.href.match("comment")
+    ? selectedTweet.reply.filter(
+        (comments) => comments.userName === selectUserName
+      ).length
+    : tweets.filter((tweet) => tweet.userName === selectUserName).length;
 
   return (
     <div className={classes.cardcontainer}>
