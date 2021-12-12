@@ -6,6 +6,7 @@ import AuthContext from "../../store/auth-context";
 import { useContext } from "react";
 import { auth } from "../../utils/firebase";
 import { shortName } from "../../utils/generate-avatar-names";
+import { Link } from "react-router-dom";
 export default function UserTweets(props) {
   const params = useParams(``);
   const tweets = useSelector((state) => state.tweet);
@@ -20,15 +21,17 @@ export default function UserTweets(props) {
 
   return (
     <div className={classes.card}>
-      <p
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          color: "blueviolet",
-        }}
-      >
-        {`${getUserName} Tweets`}
-      </p>
+      <Link to={params.userid !== selectUserName ? "/" : "/"}>
+        <p
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            color: "blueviolet",
+          }}
+        >
+          {`${getUserName} Tweets`}
+        </p>
+      </Link>
       {[...showTweets].reverse().map((tweet) => {
         return (
           <TweetItem

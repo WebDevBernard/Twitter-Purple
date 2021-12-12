@@ -3,6 +3,7 @@ import classes from "./Header.module.css";
 import Button from "../Button/Button";
 import AuthContext from "../../store/auth-context";
 import { auth } from "../../utils/firebase";
+import { Link } from "react-router-dom";
 export default function Header({ onOpen }) {
   const [ready, setReady] = useState(null);
   useEffect(() => {
@@ -20,13 +21,15 @@ export default function Header({ onOpen }) {
   return (
     <div id="top" className={classes.header}>
       <h1 className={classes.title}>
-        <img
-          src="https://img.icons8.com/dusk/64/000000/twitter--v2.png"
-          alt="twitter"
-        />
-        <a href="/" rel="noreferrer">
-          <p>twitter tweeter react</p>
-        </a>
+        <Link to="/">
+          <img
+            src="https://img.icons8.com/dusk/64/000000/twitter--v2.png"
+            alt="twitter"
+          />
+        </Link>
+        <Link to="/">
+          <p>twitter tweeter react</p>{" "}
+        </Link>
       </h1>
 
       <nav>

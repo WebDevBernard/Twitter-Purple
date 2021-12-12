@@ -35,7 +35,16 @@ const initialState = [
         id: "2",
         createdAt: 1639077467544,
         comment:
-          "Click the tweets counter to toggle between user tweets and all tweets.",
+          "If not logged in, username will be randomized when page is refreshed.",
+        avatar: avatarArray[3],
+        userName: "Bernard_Yang",
+        like: false,
+      },
+      {
+        id: "2",
+        createdAt: 1639077467544,
+        comment:
+          "Click on a username to toggle between that user's tweets and all tweets.",
         avatar: avatarArray[3],
         userName: "Bernard_Yang",
         like: false,

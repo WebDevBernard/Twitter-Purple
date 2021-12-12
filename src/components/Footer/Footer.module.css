@@ -11,6 +11,7 @@
   bottom: 0;
   width: 1440px;
   background-color: #f1f1fd;
+  z-index: 1;
 }
 
 .footer a {
