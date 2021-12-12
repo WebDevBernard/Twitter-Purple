@@ -8,18 +8,9 @@ const initialState = [
     tweet:
       "Try out the login feature without signing up by logging in with email: user1@fakemail.com // pw: 123456",
     avatar: avatarArray[3],
-    userName: "Bernard-Yang",
+    userName: "Bernard_Yang",
     like: true,
-    reply: [
-      {
-        id: "1",
-        createdAt: 1639077467544,
-        comment: "Why am I commenting on my own tweet?",
-        avatar: avatarArray[3],
-        userName: "Bernard-Yang",
-        like: false,
-      },
-    ],
+    reply: [],
   },
   {
     id: "2",
@@ -28,9 +19,35 @@ const initialState = [
       "Yes, it's not exactly twitter but it does have data persisted through local storage, and a login connected to Firebase.",
 
     avatar: avatarArray[3],
-    userName: "Bernard-Yang",
+    userName: "Bernard_Yang",
     like: true,
-    reply: [],
+    reply: [
+      {
+        id: "1",
+        createdAt: 1639077467544,
+        comment:
+          "Updated the login validation from a custom hook to Formik and Yup",
+        avatar: avatarArray[3],
+        userName: "Bernard_Yang",
+        like: false,
+      },
+      {
+        id: "2",
+        createdAt: 1639077467544,
+        comment: "App wide state managed with Redux",
+        avatar: avatarArray[3],
+        userName: "Bernard_Yang",
+        like: false,
+      },
+      {
+        id: "3",
+        createdAt: 1639077467544,
+        comment: "Twitter feed is from Twitter API",
+        avatar: avatarArray[3],
+        userName: "Bernard_Yang",
+        like: false,
+      },
+    ],
   },
 ];
 

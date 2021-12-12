@@ -13,7 +13,7 @@ export default function CommentList(props) {
   const tweets = useSelector((state) => state.tweet);
   const selectedTweet = tweets.find((tweet) => tweet.id === params.id);
   const replies =
-    selectedTweet === undefined ? <Navigate to="/404" /> : selectedTweet.reply;
+    selectedTweet === undefined ? <Navigate to="/" /> : selectedTweet.reply;
 
   const likeToggleHandler = () => {
     dispatch(
@@ -25,7 +25,7 @@ export default function CommentList(props) {
   };
 
   if (selectedTweet === undefined) {
-    return <Navigate to="/404" />;
+    return <Navigate to="/" />;
   }
 
   const commentLength = selectedTweet.reply.length;
