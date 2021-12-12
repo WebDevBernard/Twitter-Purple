@@ -1,4 +1,4 @@
-import { useParams, Navigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { tweetActions } from "../../../redux/tweet-slice";
 import NewComment from "./NewComment";
@@ -7,13 +7,12 @@ import Card from "../../Card/Card";
 import moment from "moment";
 import classes from "./CommentList.module.css";
 const timeAgo = (el) => moment(el).fromNow();
-export default function CommentList(props) {
+export default function CommentList() {
   const dispatch = useDispatch();
   const params = useParams();
   const tweets = useSelector((state) => state.tweet);
   const selectedTweet = tweets.find((tweet) => tweet.id === params.id);
-  const replies =
-    selectedTweet === undefined ? <Navigate to="/" /> : selectedTweet.reply;
+  const replies = selectedTweet === undefined ? null : selectedTweet.reply;
 
   const likeToggleHandler = () => {
     dispatch(
@@ -25,9 +24,8 @@ export default function CommentList(props) {
   };
 
   if (selectedTweet === undefined) {
-    return <Navigate to="/" />;
+    return null;
   }
-
   const commentLength = selectedTweet.reply.length;
   const heartLength = selectedTweet.like ? 1 : 0;
   return (

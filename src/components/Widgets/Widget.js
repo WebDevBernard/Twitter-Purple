@@ -5,6 +5,7 @@ export default function Widget() {
   return (
     <div className={classes.cardcontainer}>
       <Card className={classes.card}>
+        <p className={classes.title}>Trending on Real Twitter</p>
         <label className={classes.trendlabel} htmlFor="trendcard">
           Trending in Canada
         </label>

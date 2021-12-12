@@ -26,7 +26,7 @@ const initialState = [
         id: "1",
         createdAt: 1639077467544,
         comment:
-          "Updated the login validation from a custom hook to Formik and Yup.",
+          "Some other features include: login validation using Formik and Yup, Twitter feed using Twitter API, app wide state management with Redux.",
         avatar: avatarArray[3],
         userName: "Bernard_Yang",
         like: false,
@@ -34,15 +34,8 @@ const initialState = [
       {
         id: "2",
         createdAt: 1639077467544,
-        comment: "App wide state managed with Redux.",
-        avatar: avatarArray[3],
-        userName: "Bernard_Yang",
-        like: false,
-      },
-      {
-        id: "3",
-        createdAt: 1639077467544,
-        comment: "Twitter feed is from Twitter API.",
+        comment:
+          "Click the tweets counter to toggle between user tweets and all tweets.",
         avatar: avatarArray[3],
         userName: "Bernard_Yang",
         like: false,

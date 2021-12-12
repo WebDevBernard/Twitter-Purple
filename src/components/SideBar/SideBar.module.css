@@ -25,7 +25,14 @@
 }
 
 .profiledescription {
-  /* cursor: pointer; */
+  cursor: default;
+  display: flex;
+  justify-content: center;
+
+  font-size: 14px;
+}
+.tweetdescription {
+  cursor: pointer;
   display: flex;
   justify-content: center;
 

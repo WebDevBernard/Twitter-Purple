@@ -15,9 +15,9 @@ import TopButton from "./components/TopButton/TopButton";
 import Notification from "./components/Login/Notification";
 import UserProfile from "./components/Login/UserProfile";
 import CommentList from "./components/Tweet/Comments/CommentList";
-import FourOFour from "./route/FourOFour";
 import Widget from "./components/Widgets/Widget";
 import SideBar from "./components/SideBar/SideBar";
+import UserTweets from "./components/Tweet/UserTweets";
 function App() {
   const [openModal, setOpenModal] = useState(false);
   const [notification, setNotification] = useState("");
@@ -57,7 +57,6 @@ function App() {
       )}
       <main>
         <Routes>
-          <Route exact path="/404" element={<FourOFour />} />
           <Route
             exact
             path="/comments/:id"
@@ -69,7 +68,18 @@ function App() {
               </div>
             }
           />
-
+          <Route
+            exact
+            path="/:userid/tweets"
+            element={
+              <div style={{ position: "relative" }}>
+                <SideBar />
+                <Widget />
+                <NewTweet />
+                <UserTweets getComments={getComments} />
+              </div>
+            }
+          />
           <Route
             exact
             path="/"
@@ -89,7 +99,7 @@ function App() {
               element={<UserProfile handleNotification={handleNotification} />}
             />
           </Route>
-          <Route path="*" element={<Navigate to="/404" />} />
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </main>
       <Footer />

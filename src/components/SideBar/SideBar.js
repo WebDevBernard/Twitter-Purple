@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import classes from "./SideBar.module.css";
 import Card from "../Card/Card";
 import AuthContext from "../../store/auth-context";
@@ -11,7 +11,6 @@ export default function SideBar() {
   const tweets = useSelector((state) => state.tweet);
   const { currentUser } = useContext(AuthContext);
   const [ready, setReady] = useState(null);
-  // Pass in the name as a parameter
 
   // this useEffect makes it so the conditional default element is not shown when the app is checking if currentUser exists
   useEffect(() => {
@@ -32,12 +31,16 @@ export default function SideBar() {
   const selectUserName = currentUser ? auth.currentUser.displayName : shortName;
   const selectUserAvatar = !currentUser ? avatar : auth.currentUser.photoURL;
   const selectedTweet = tweets.find((tweet) => tweet.id === params.id);
+  const messageLength =
+    selectedTweet !== undefined
+      ? selectedTweet.reply.filter(
+          (comments) => comments.userName === selectUserName
+        ).length
+      : null;
 
-  const messagelength = window.location.href.match("comment")
-    ? selectedTweet.reply.filter(
-        (comments) => comments.userName === selectUserName
-      ).length
-    : tweets.filter((tweet) => tweet.userName === selectUserName).length;
+  const tweetLength = !window.location.href.match("comment")
+    ? tweets.filter((tweet) => tweet.userName === selectUserName).length
+    : null;
 
   return (
     <div className={classes.cardcontainer}>
@@ -62,11 +65,36 @@ export default function SideBar() {
           </div>
         )}
         <Card className={classes.cards}>
-          <p className={classes.profiledescription}>
-            {messagelength}{" "}
-            {window.location.href.match("comment") ? "Comment" : "Tweet"}
-            {messagelength <= 1 ? "" : "s"}
-          </p>
+          <Link
+            to={
+              window.location.href.match("comments")
+                ? `/comments/${params.id}`
+                : !window.location.href.match("tweets")
+                ? `/${selectUserName}/tweets`
+                : `/`
+            }
+          >
+            <p
+              className={
+                window.location.href.match("comment")
+                  ? classes.profiledescription
+                  : classes.tweetdescription
+              }
+            >
+              {tweetLength} {messageLength}{" "}
+              {window.location.href.match("comment") ? "Comment" : "Tweet"}
+              {!window.location.href.match("comment")
+                ? tweetLength <= 1
+                  ? null
+                  : "s"
+                : null}
+              {window.location.href.match("comment")
+                ? messageLength <= 1
+                  ? null
+                  : "s"
+                : null}
+            </p>
+          </Link>
         </Card>
       </Card>
     </div>
