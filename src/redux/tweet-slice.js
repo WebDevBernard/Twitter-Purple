@@ -8,7 +8,7 @@ const initialState = [
     tweet:
       "Try out the login feature without signing up by logging in with email: user1@fakemail.com // pw: 123456",
     avatar: avatarArray[3],
-    userName: "Bernard Yang",
+    userName: "Bernard-Yang",
     like: true,
     reply: [
       {
@@ -16,7 +16,7 @@ const initialState = [
         createdAt: 1639077467544,
         comment: "Why am I commenting on my own tweet?",
         avatar: avatarArray[3],
-        userName: "Bernard Yang",
+        userName: "Bernard-Yang",
         like: false,
       },
     ],
@@ -28,7 +28,7 @@ const initialState = [
       "Yes, it's not exactly twitter but it does have data persisted through local storage, and a login connected to Firebase.",
 
     avatar: avatarArray[3],
-    userName: "Bernard Yang",
+    userName: "Bernard-Yang",
     like: true,
     reply: [],
   },

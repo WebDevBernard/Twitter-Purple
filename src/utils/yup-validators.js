@@ -2,6 +2,7 @@ import * as Yup from "yup";
 
 export const validateSignUp = Yup.object({
   username: Yup.string()
+    .matches(/^\S*$/, "Cannot have spaces")
     .max(15, "Username must be less than 15 characters")
     .required("Username is required"),
   email: Yup.string()
