@@ -75,7 +75,6 @@ function App() {
               <div style={{ position: "relative" }}>
                 <SideBar />
                 <Widget />
-                <NewTweet />
                 <UserTweets getComments={getComments} />
               </div>
             }

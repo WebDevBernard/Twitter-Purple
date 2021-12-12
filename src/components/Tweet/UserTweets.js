@@ -2,17 +2,22 @@ import TweetItem from "./TweetItem";
 import classes from "./TweetList.module.css";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-
+import AuthContext from "../../store/auth-context";
+import { useContext } from "react";
+import { auth } from "../../utils/firebase";
+import { shortName } from "../../utils/generate-avatar-names";
 export default function UserTweets(props) {
   const params = useParams(``);
   const tweets = useSelector((state) => state.tweet);
-
+  const { currentUser } = useContext(AuthContext);
+  const selectUserName = currentUser ? auth.currentUser.displayName : shortName;
   const selectedTweets = tweets.filter(
     (tweet) => tweet.userName === params.userid
   );
   const showTweets = selectedTweets !== undefined ? selectedTweets : null;
 
-  console.log(params.userid);
+  const getUserName = params.userid !== selectUserName ? params.userid : "Your";
+
   return (
     <div className={classes.card}>
       <p
@@ -22,7 +27,7 @@ export default function UserTweets(props) {
           color: "blueviolet",
         }}
       >
-        Your Tweets
+        {`${getUserName} Tweets`}
       </p>
       {[...showTweets].reverse().map((tweet) => {
         return (

@@ -6,6 +6,15 @@ export default function TweetList(props) {
 
   return (
     <div className={classes.card}>
+      <p
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          color: "blueviolet",
+        }}
+      >
+        Home Page
+      </p>
       {[...tweets].reverse().map((tweet) => {
         return (
           <TweetItem

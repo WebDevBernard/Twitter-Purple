@@ -42,7 +42,15 @@ export default function TweetItem(props) {
                 alt="@ sign"
               />
 
-              <p>{props.userName}</p>
+              <Link
+                to={
+                  !window.location.href.match("tweets")
+                    ? `/${props.userName}/tweets`
+                    : `/`
+                }
+              >
+                <p>{props.userName}</p>
+              </Link>
             </div>
           </div>
         </header>

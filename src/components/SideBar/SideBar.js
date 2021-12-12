@@ -60,7 +60,9 @@ export default function SideBar() {
                 alt="email"
               />
 
-              <p>{selectUserName}</p>
+              <Link to="/">
+                <p>{selectUserName}</p>
+              </Link>
             </div>
           </div>
         )}
