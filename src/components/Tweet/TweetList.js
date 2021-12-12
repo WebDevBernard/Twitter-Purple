@@ -25,6 +25,7 @@ export default function TweetList(props) {
             createdAt={tweet.createdAt}
             avatar={tweet.avatar}
             userName={tweet.userName}
+            handleNotification={props.handleNotification}
           />
         );
       })}

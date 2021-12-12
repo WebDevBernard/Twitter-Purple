@@ -89,7 +89,10 @@ function App() {
                 <SideBar />
                 <Widget />
                 <NewTweet />
-                <TweetList getCommentsHandler={getCommentsHandler} />
+                <TweetList
+                  handleNotification={handleNotification}
+                  getCommentsHandler={getCommentsHandler}
+                />
               </div>
             }
           />

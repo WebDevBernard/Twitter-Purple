@@ -19,7 +19,7 @@ export default function TweetItem(props) {
   };
 
   const deleteHandler = () => {
-    setOpenDialog(false);
+    props.handleNotification("Tweet Deleted");
     dispatch(tweetActions.deleteTweet({ id: props.id }));
   };
 
