@@ -61,7 +61,7 @@ const SignUp = ({
           type="password"
         />
         <Button disabled={loading} className={classes.buttons}>
-          {!loading ? "Register" : "Loading"}
+          {!loading ? "Sign Up" : "Loading"}
         </Button>
       </Form>
     </Formik>

@@ -34,6 +34,7 @@
 }
 .modal input::placeholder {
   color: blueviolet;
+  text-transform: uppercase;
 }
 
 .loginheader {
@@ -104,12 +105,5 @@
 
   .close {
     display: flex;
-    float: right;
-    height: 30px;
-    cursor: pointer;
-  }
-  .close:hover {
-    filter: invert(23%) sepia(76%) saturate(5751%) hue-rotate(317deg)
-      brightness(104%) contrast(101%);
   }
 }

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Modal from "../Modal/Modal";
 import classes from "./Login.module.css";
+import Button from "../Button/Button";
 import SignUp, { ResetPassword, SignIn } from "./SignUp";
 export default function LoginContainer(props) {
   const [isLogin, setIsLogin] = useState(false);
@@ -28,13 +29,10 @@ export default function LoginContainer(props) {
 
   return (
     <Modal onClose={props.onClose} className={classes.modal}>
-      <img
-        onClick={props.onClose}
-        className={classes.close}
-        alt="delete"
-        src="https://img.icons8.com/dotty/80/000000/delete-sign.png"
-      />
       <p className={classes.error}>{error}</p>
+      <Button onClick={props.onClose} className={classes.close}>
+        Exit
+      </Button>
       <header>
         <div className={classes.loginheader}>
           {!passwordReset && (
@@ -55,6 +53,7 @@ export default function LoginContainer(props) {
               Login
             </label>
           )}
+
           {passwordReset && <label htmlFor="email">Reset Password</label>}
         </div>
       </header>
