@@ -3,9 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.36",
-    "@fortawesome/free-solid-svg-icons": "^5.15.4",
-    "@fortawesome/react-fontawesome": "^0.1.16",
     "@reduxjs/toolkit": "^1.6.2",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -13,8 +10,6 @@
     "dotenv": "^10.0.0",
     "firebase": "^9.6.0",
     "formik": "^2.2.9",
-    "javascript-time-ago": "^2.3.10",
-    "knope": "^1.1.2",
     "lodash.throttle": "^4.1.1",
     "moment": "^2.29.1",
     "react": "^17.0.2",

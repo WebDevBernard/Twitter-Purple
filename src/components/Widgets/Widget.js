@@ -4,7 +4,7 @@ import Button from "../Button/Button";
 export default function Widget() {
   return (
     <div className={classes.cardcontainer}>
-      <Card className={classes.card}>
+      {/* <Card className={classes.card}>
         <p className={classes.title}>Trending on Real Twitter</p>
         <label className={classes.trendlabel} htmlFor="trendcard">
           Trending in Canada
@@ -18,7 +18,7 @@ export default function Widget() {
         <Card className={classes.trendcard}>
           <p>Trending</p>
         </Card>
-      </Card>
+      </Card> */}
 
       <Card className={classes.card}>
         <p className={classes.title}>follow me on real twitter</p>

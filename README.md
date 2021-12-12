@@ -4,11 +4,11 @@
 
 ## About
 
-Not exactly Twitter but a remake of this app made at Lighthouse Labs: [https://github.com/WebDevBernard/tweeter](https://github.com/WebDevBernard/tweeter). I remade it with these extra features:
+Not exactly Twitter but a remake of this app made at Lighthouse Labs: [https://github.com/WebDevBernard/tweeter](https://github.com/WebDevBernard/tweeter). Remade with these extra features:
 
 - Written with modern React tools, using reuseable components: Modal, Button, Card, Input, Header, Footer.
-- User content persisted with localStorage. Tweets can also be liked/disliked or deleted.
-- Sign in with Firebase with form validation and user feedback
+- User content persisted with local storage. Tweets can also be liked/disliked, comment or deleted.
+- Sign in with Firebase with form validation and user feedback.
 
 ## Preview
 

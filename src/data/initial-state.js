@@ -4,7 +4,7 @@ const initialState = [
     id: "1",
     createdAt: 1639077467544,
     tweet:
-      "Try out the login feature without signing up by logging in with email: user1@fakemail.com // pw: 123456",
+      "Try out the login feature without signing up by logging in with email: guest@email.com // pw: 123456",
     avatar: avatarArray[3],
     userName: "Bernard_Yang",
     like: true,
@@ -33,7 +33,7 @@ const initialState = [
         id: "2",
         createdAt: 1639077467544,
         comment:
-          "Click on a username on the home or tweet page to toggle between that user's tweets and the home page.",
+          "On either home page, click on a username to toggle user tweets and the home page.",
         avatar: avatarArray[3],
         userName: "Bernard_Yang",
         like: false,
