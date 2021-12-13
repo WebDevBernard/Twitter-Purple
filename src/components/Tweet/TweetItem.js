@@ -75,7 +75,7 @@ export default function TweetItem(props) {
           </div>
         </header>
         <br />
-        <Link to={`/comments/${props.id}`}>
+        <Link to={`${props.userName}/comments/${props.id}`}>
           <p className={classes.input}>{props.tweet}</p>
         </Link>
 

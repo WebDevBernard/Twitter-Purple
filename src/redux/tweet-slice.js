@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import initialState from "../data/initial-state";
-import { v4 as uuidv4 } from "uuid";
+import initialState from "./initial-state";
+import { nanoid } from "nanoid";
 
 const tweetSlice = createSlice({
   name: "tweets",
@@ -8,7 +8,7 @@ const tweetSlice = createSlice({
   reducers: {
     addTweet: (state, action) => {
       const newTweet = {
-        id: uuidv4(),
+        id: nanoid(),
         createdAt: Date.now(),
         tweet: action.payload.tweet,
         avatar: action.payload.avatar,
@@ -28,7 +28,7 @@ const tweetSlice = createSlice({
     addComment: (state, action) => {
       const index = state.findIndex((tweet) => tweet.id === action.payload.id);
       const newComment = {
-        id: uuidv4(),
+        id: nanoid(),
         createdAt: Date.now(),
         comment: action.payload.reply.comment,
         avatar: action.payload.reply.avatar,
