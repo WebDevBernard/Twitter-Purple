@@ -37,3 +37,11 @@
   width: 10rem;
   margin: 2rem auto;
 }
+
+@media (max-width: 768px) {
+  .card {
+    width: 28.4rem;
+    grid-template-columns: repeat(3, minmax(0px, 1fr));
+    gap: 2rem 0;
+  }
+}
