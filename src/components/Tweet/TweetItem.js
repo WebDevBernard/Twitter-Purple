@@ -82,7 +82,7 @@ export default function TweetItem(props) {
         <footer>
           <span className={classes.time}>{timeAgo(props.createdAt)}</span>
           <div className={classes.likecontainer}>
-            <Link to={`/comments/${props.id}`}>
+            <Link to={`${props.userName}/comments/${props.id}`}>
               <img
                 className={classes.comment}
                 alt="comment"
