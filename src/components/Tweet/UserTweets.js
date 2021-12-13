@@ -42,6 +42,7 @@ export default function UserTweets(props) {
             createdAt={tweet.createdAt}
             avatar={tweet.avatar}
             userName={tweet.userName}
+            handleNotification={props.handleNotification}
           />
         );
       })}
