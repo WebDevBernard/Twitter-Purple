@@ -61,7 +61,7 @@ function App() {
         <Routes>
           <Route
             exact
-            path="/comments/:id"
+            path="/:userid/comments/:id"
             element={
               <div style={{ position: "relative" }}>
                 <SideBar />
