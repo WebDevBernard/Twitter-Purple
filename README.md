@@ -14,6 +14,8 @@ Not exactly Twitter but a remake of this app made at Lighthouse Labs: [https://g
 - Mobile responsive web design
 - Made with modular React components
 
+I made this app to practice concepts learned from various tutorials.
+
 ## Tech Stack
 
 - Firebase Login to manage user authentication
