@@ -18,7 +18,7 @@ I made this app to practice concepts learned from various tutorials.
 
 ## Tech Stack
 
-- Firebase Login to manage user authentication
+- Firebase authentication to manage user login
 - React state management using Redux Toolkit
 - Formik and Yup for form Vaildation
 - Unique Names Generator to create randomize user names
