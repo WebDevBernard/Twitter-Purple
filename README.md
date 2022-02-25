@@ -3,6 +3,7 @@
 ### [Live Demo!](https://twitterreact.vercel.app/)
 
 ## About
+- A simple Twitter-like React app with Firebase authentication. Users can tweet, like, and comment on other tweets. 
 
 - I initially made this app to practice structuring a React project and creating multiple reusable components.  One major challenge working with this app was managing state through props drilling.  For some reason, I could not get the state controlling the like-toggle to pass down state through props drilling.  I ended up making it work with Context API but it did not make sense just to have the "like" state in its own store.  Only later when I wanted to add more features such as login and commenting, that’s when I moved everything controlling the tweet state to a Redux store. 
 
