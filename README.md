@@ -18,7 +18,7 @@
 
 ## Preview
 
-!["twitter tweeter react"](https://raw.githubusercontent.com/WebDevBernard/Portfolio/main/docs/twitter.png)
+!["twitter tweeter react"](https://github.com/WebDevBernard/Portfolio/blob/main/public/docs/twitter.png)
 
 ## Installation
 
