@@ -1,11 +1,13 @@
-import { SearchIcon, DotsVerticalIcon } from "@heroicons/react/outline";
+import ReactTooltip from "react-tooltip";
+import { SearchIcon } from "@heroicons/react/outline";
 import LoginButton from "./LoginButton";
 import Card from "./shared/Card";
 
 const Widgets = () => {
   return (
     <div className="hidden md:flex flex-col space-y-6 max-w-xs overflow-hidden whitespace-nowrap">
-      <form className="relative flex items-center">
+      <form data-tip="Not Implemented" className="relative flex items-center">
+        <ReactTooltip backgroundColor="#64748b" />
         <input
           className="w-[100%] px-3 py-2 bg-violet-100 placeholder-violet-400 mt-2 rounded-3xl focus:outline-violet-500"
           placeholder="Search Twitter"

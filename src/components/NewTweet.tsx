@@ -15,7 +15,10 @@ const NewTweet = (props: any) => {
           <br />
           <div className="flex items-center">
             <p>140</p>
-            <TweetButton className="text-sm ml-4 px-4 py-2" text="Tweet" />
+            <TweetButton
+              className="text-sm ml-4 md:px-4 md:py-2"
+              text="Tweet"
+            />
           </div>
         </div>
       </div>
