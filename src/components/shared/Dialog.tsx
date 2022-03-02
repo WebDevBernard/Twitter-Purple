@@ -8,8 +8,7 @@ const Dialog = (props: any) => {
       initial="hidden"
       animate="visible"
       exit="exit"
-      ref={props.ref}
-      className="flex flex-col justify-center space-y-2 border-[1px] border-violet-500 text-purple-700 bg-violet-100 rounded-md absolute z-20 right-0 top-0 opacity-95 shadow-lg"
+      className={`flex flex-col justify-center space-y-2 border-[1px] border-violet-500 text-purple-700 bg-violet-100 rounded-md absolute z-20  opacity-95 shadow-lg ${props.className}`}
     >
       {props.children}
     </motion.div>

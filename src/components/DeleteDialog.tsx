@@ -4,9 +4,9 @@ import {
   CheckCircleIcon,
   XCircleIcon,
 } from "@heroicons/react/outline";
-const DeleteButton = (props: any) => {
+const DeleteDialog = (props: any) => {
   return (
-    <Dialog ref={props.menuRef}>
+    <Dialog className="right-0 top-0">
       <span className="flex space-x-1 p-2 border-b-[1px] border-violet-300">
         <TrashIcon className="h-6 w-6" />
         <p>Delete?</p>
@@ -27,4 +27,4 @@ const DeleteButton = (props: any) => {
   );
 };
 
-export default DeleteButton;
+export default DeleteDialog;

@@ -1,11 +1,12 @@
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import {
   ChatAltIcon,
   HeartIcon,
   DotsHorizontalIcon,
 } from "@heroicons/react/outline";
+import { HeartIcon as SolidHeartIcon } from "@heroicons/react/solid";
 import { AnimatePresence } from "framer-motion";
-import DeleteButton from "./DeleteButton";
+import DeleteDialog from "./DeleteDialog";
 import Avatar from "./shared/Avatar";
 const Tweet = (props: any) => {
   const [openDelete, setOpenDelete] = useState<boolean>(false);
@@ -18,20 +19,6 @@ const Tweet = (props: any) => {
     setOpenDelete(false);
   };
 
-  const menuRef = useRef<HTMLDivElement>();
-
-  // closes delete button when click outside of modal
-  useEffect(() => {
-    const handler = (e: any) => {
-      if (!menuRef.current?.contains(e.target)) {
-        setOpenDelete(false);
-      }
-    };
-    document.addEventListener("mousedown", handler);
-    return () => {
-      document.removeEventListener("mousedown", handler);
-    };
-  });
   return (
     <div className="flex px-3 py-2 border-b-slate-300 border-[1px] max-w-[600px]">
       <Avatar className="h-12 w-12 md:h-16 md:w-16" />
@@ -52,8 +39,7 @@ const Tweet = (props: any) => {
             onExitComplete={() => null}
           >
             {openDelete && (
-              <DeleteButton
-                menuRef={menuRef}
+              <DeleteDialog
                 onClose={handleCloseDelete}
                 onOpen={handleOpenDelete}
               />
@@ -74,6 +60,7 @@ const Tweet = (props: any) => {
           <div className="flex space-x-2">
             <p>1</p>
             <HeartIcon className="h-6 w-6 cursor-pointer rounded-full hover:text-red-500 opacity-90" />
+            {/* <SolidHeartIcon className="h-6 w-6 cursor-pointer rounded-full text-red-500 opacity-90" /> */}
           </div>
         </div>
       </div>

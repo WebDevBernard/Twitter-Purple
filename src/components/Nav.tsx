@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   HomeIcon,
   HashtagIcon,
@@ -10,13 +11,23 @@ import {
 import NavButton from "./shared/NavButton";
 import LoginButton from "./LoginButton";
 import TweetButton from "./TweetButton";
-
+import { AnimatePresence } from "framer-motion";
+import NavTweet from "./NavTweet";
 const style = {
   navIcon: "h-[24px] w-[24px]",
   navText: "hidden md:flex ml-2",
 };
 
 const Nav = () => {
+  const [openModal, setOpenModal] = useState<boolean>(false);
+
+  const handleOpenModal = () => {
+    setOpenModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setOpenModal(false);
+  };
   return (
     <div className="min-w-fit pl-2 items-center flex flex-col justify-between overflow-hidden">
       <div className="space-y-3 flex flex-col items-start mt-4">
@@ -50,7 +61,16 @@ const Nav = () => {
           <DotsCircleHorizontalIcon className={style.navIcon} />
           <p className={style.navText}> More</p>
         </NavButton>
-        <TweetButton className="md:px-20 md:py-3" text="Tweet" />
+        <div onClick={handleOpenModal}>
+          <AnimatePresence
+            initial={false}
+            exitBeforeEnter={true}
+            onExitComplete={() => null}
+          >
+            {openModal && <NavTweet />}
+          </AnimatePresence>
+          <TweetButton className="md:px-20 md:py-3" text="Tweet" />
+        </div>
       </div>
       <div className="bottom-0 mb-4">
         <LoginButton className="md:pl-2 md:pr-4 md:py-2 md:hover:bg-violet-100 rounded-full " />
