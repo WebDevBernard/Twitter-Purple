@@ -3,7 +3,9 @@ import Nav from "./components/Nav";
 import Widgets from "./components/Widgets";
 function App() {
   return (
-    <div className="relative flex md:justify-center h-screen text-slate-700">
+    <div
+      className={`font-["Sofia Pro"] relative flex md:justify-center h-screen text-slate-700`}
+    >
       <Nav />
       <Layout />
       <Widgets />
