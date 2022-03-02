@@ -6,31 +6,51 @@ import {
 } from "@heroicons/react/outline";
 import { HeartIcon as SolidHeartIcon } from "@heroicons/react/solid";
 import { AnimatePresence } from "framer-motion";
-import DeleteDialog from "./DeleteDialog";
-import Avatar from "./shared/Avatar";
+import Dialog from "../shared/Dialog";
+import {
+  TrashIcon,
+  CheckCircleIcon,
+  XCircleIcon,
+} from "@heroicons/react/outline";
+import Avatar from "../shared/Avatar";
+import { dialogIcons } from "../styles/heroicons-style";
+
+const DeleteDialog = (props: any) => {
+  return (
+    <Dialog className="right-0 top-0">
+      <span className="dialog-head">
+        <TrashIcon className={dialogIcons} />
+        <p>Delete?</p>
+      </span>
+      <span onClick={props.handleDialog} className="dialog-cell">
+        <CheckCircleIcon className={dialogIcons} /> <p>Yes</p>
+      </span>
+      <span onClick={props.handleDialog} className="dialog-cell">
+        <XCircleIcon className={dialogIcons} /> <p>No</p>
+      </span>
+    </Dialog>
+  );
+};
+
 const Tweet = (props: any) => {
-  const [openDelete, setOpenDelete] = useState<boolean>(false);
+  const [openDialog, setOpenDialog] = useState<boolean>(false);
 
-  const handleOpenDelete = () => {
-    setOpenDelete(true);
-  };
-
-  const handleCloseDelete = () => {
-    setOpenDelete(false);
+  const handleDialog = (e: any) => {
+    setOpenDialog(!openDialog);
   };
 
   return (
-    <div className="flex px-3 py-2 border-b-slate-300 border-[1px] max-w-[600px]">
+    <div className="flex px-3 py-2 border-hover_border border-[1px] max-w-[600px]">
       <Avatar className="h-12 w-12 md:h-16 md:w-16" />
       <div className="w-full mt-2 mx-3 ">
         <div className="flex items-center justify-between relative">
           <span className="flex items-center space-x-2">
-            <p className="text-lg text-purple-500 font-bold ">Bernard</p>
+            <p className="text-lg text-secondary_text font-bold ">Bernard</p>
             <p className="text-xs ">@WebDevBernard</p>
             <p className="text-sm ">7h</p>
           </span>
           <DotsHorizontalIcon
-            onClick={handleOpenDelete}
+            onClick={handleDialog}
             className="h-6 w-6 cursor-pointer rounded-full"
           />
           <AnimatePresence
@@ -38,12 +58,7 @@ const Tweet = (props: any) => {
             exitBeforeEnter={true}
             onExitComplete={() => null}
           >
-            {openDelete && (
-              <DeleteDialog
-                onClose={handleCloseDelete}
-                onOpen={handleOpenDelete}
-              />
-            )}
+            {openDialog && <DeleteDialog handleDialog={handleDialog} />}
           </AnimatePresence>
         </div>
         <p>

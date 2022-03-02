@@ -7,6 +7,14 @@ html {
   background-color: #f1f1fd;
 }
 
+.dialog-head {
+  @apply flex space-x-1 p-2 border-b-[1px] border-violet-300;
+}
+
+.dialog-cell {
+  @apply flex space-x-2 border-transparent border-[1px] hover:bg-violet-200 cursor-pointer p-2;
+}
+
 /* Hide scrollbar for Chrome, Safari and Opera */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
