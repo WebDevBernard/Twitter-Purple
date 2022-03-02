@@ -1,11 +1,10 @@
-@import url("http://fonts.cdnfonts.com/css/sofia-pro");
+/* @import url("http://fonts.cdnfonts.com/css/sofia-pro"); */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 html {
   background-color: #f1f1fd;
-  font-family: "Sofia Pro";
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
