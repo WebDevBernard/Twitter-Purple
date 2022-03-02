@@ -1,27 +1,19 @@
+@import url("http://fonts.cdnfonts.com/css/sofia-pro");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html {
-  margin: 0 auto;
-  max-width: 1440px;
-  min-height: 100%;
-}
-html ::selection {
-  background: #c7d2fe; /* WebKit/Blink Browsers */
-}
-body {
-  color: #444444;
   background-color: #f1f1fd;
-  letter-spacing: 0.08rem;
-  margin: 0;
-  font-family: "Roboto Mono", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  text-decoration: none;
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
 
-@media only screen and (max-width: 768px) {
-  html {
-    overflow-x: hidden;
-  }
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }

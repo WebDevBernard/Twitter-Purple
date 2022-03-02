@@ -103,7 +103,7 @@ export default function NewTweet(props) {
             onClick={errorHandler}
             onChange={tweetChangeHandler}
             value={enteredTweet}
-            rows={4}
+            rows={3}
             autoComplete="off"
             type="text"
           />
