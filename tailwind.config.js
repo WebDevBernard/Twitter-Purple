@@ -4,7 +4,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Sofia Pro", ...defaultTheme.fontFamily.sans],
+        // sans: ["Sofia Pro", ...defaultTheme.fontFamily.sans],
+        sans: ["Neucha", ...defaultTheme.fontFamily.sans],
       },
       colors: {
         primary: "#F1F1FD",

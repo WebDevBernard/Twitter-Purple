@@ -1,20 +1,20 @@
-export const deleteAnimation = {
+export const dialogAnimation = {
   hidden: {
-    transform: "scale(0) rotate(720deg)",
+    transform: "scale(0)",
     opacity: 0,
     transition: {
       delay: 0.3,
     },
   },
   visible: {
-    transform: " scale(1) rotate(0deg)",
+    transform: " scale(1)",
     opacity: 1,
     transition: {
       duration: 0.5,
     },
   },
   exit: {
-    transform: "scale(0) rotate(-720deg)",
+    transform: "scale(0)",
     opacity: 0,
     transition: {
       duration: 0.3,
