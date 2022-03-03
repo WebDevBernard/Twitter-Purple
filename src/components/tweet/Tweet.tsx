@@ -86,7 +86,7 @@ const Tweet = (props: any) => {
             <p className="text-xs ">@ {props.userName}</p>
             <p className="text-sm ">{timeAgo(props.createdAt)}</p>
           </span>
-          {!(tweetIndex === 0 || tweetIndex === 1) && (
+          {!(tweetIndex <= 4) && (
             <DotsHorizontalIcon
               onClick={handleDialog}
               className="h-6 w-6 cursor-pointer rounded-full"

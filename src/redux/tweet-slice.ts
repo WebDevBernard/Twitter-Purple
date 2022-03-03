@@ -27,7 +27,7 @@ const tweetSlice = createSlice({
     },
     addComment: (state, action) => {
       const index = state.findIndex((tweet) => tweet.id === action.payload.id);
-      const newComment = {
+      const newComment: any | null = {
         id: nanoid(),
         createdAt: Date.now(),
         comment: action.payload.reply.comment,
@@ -35,13 +35,17 @@ const tweetSlice = createSlice({
         userName: action.payload.reply.userName,
         like: false,
       };
-      state[index].reply.push(newComment);
+      {
+        newComment && state[index].reply.push(newComment);
+      }
     },
-    toggleCommentLike: (state, action) => {
-      const index = state.findIndex((tweet) => tweet.id === action.payload.id);
+    toggleCommentLike: (state: any, action) => {
+      const index = state.findIndex(
+        (tweet: any) => tweet.id === action.payload.id
+      );
       const currentTweet = state[index].reply;
       const commentIndex = currentTweet.findIndex(
-        (comment) => comment.id === action.payload.commentid
+        (comment: any) => comment.id === action.payload.commentid
       );
       state[index].reply[commentIndex].like = action.payload.like;
     },

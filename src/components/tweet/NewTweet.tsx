@@ -10,6 +10,7 @@ import { tweetIconSmall } from "../styles/heroicons-style";
 import useAvatarReady from "../hooks/useAvatarReady";
 import { useNavigate } from "react-router-dom";
 const NewTweet = (props: any) => {
+  const dispatch = useDispatch();
   const [enteredTweet, setEnteredTweet] = useState("");
   const [error, setError] = useState<any>({});
   const [count, setCount] = useState(0);
@@ -22,7 +23,6 @@ const NewTweet = (props: any) => {
     ? auth.currentUser?.displayName
     : shortName;
   const selectUserAvatar = !currentUser ? avatar : auth.currentUser?.photoURL;
-  const dispatch = useDispatch();
 
   const handleDispatch = () => {
     dispatch(
