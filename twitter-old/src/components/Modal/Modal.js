@@ -13,9 +13,7 @@ const ModalOverlay = (props) => {
   );
 };
 
-const portalElement = document.getElementById("modal-hook");
-
-export default function Modal(props) {
+const Modal = (props) => {
   return (
     <>
       {ReactDOM.createPortal(
@@ -30,4 +28,11 @@ export default function Modal(props) {
       )}
     </>
   );
+};
+
+export default Modal;
+const portalElement = document.getElementById("modal-hook");
+
+{
+  ReactDOM.createPortal(<Modal />, portalElement);
 }

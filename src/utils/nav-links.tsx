@@ -7,14 +7,14 @@ import {
   DocumentTextIcon,
   DotsCircleHorizontalIcon,
 } from "@heroicons/react/outline";
-import { navIcons } from "../components/styles/heroicons-style";
+import { icons } from "../components/styles/heroicons-style";
 
 export const navLinks = {
-  Home: <HomeIcon className={navIcons} />,
-  Explore: <HashtagIcon className={navIcons} />,
-  Notifications: <BellIcon className={navIcons} />,
-  Messages: <MailIcon className={navIcons} />,
-  Bookmarks: <FlagIcon className={navIcons} />,
-  Lists: <DocumentTextIcon className={navIcons} />,
-  More: <DotsCircleHorizontalIcon className={navIcons} />,
+  Home: <HomeIcon className={icons} />,
+  Explore: <HashtagIcon className={icons} />,
+  Notifications: <BellIcon className={icons} />,
+  Messages: <MailIcon className={icons} />,
+  Bookmarks: <FlagIcon className={icons} />,
+  Lists: <DocumentTextIcon className={icons} />,
+  More: <DotsCircleHorizontalIcon className={icons} />,
 };

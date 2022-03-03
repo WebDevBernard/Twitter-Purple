@@ -1,8 +1,8 @@
 import Modal from "../shared/Modal";
 import NewTweet from "./NewTweet";
-const NavTweet = () => {
+const NavTweet = (props: any) => {
   return (
-    <Modal>
+    <Modal onClose={props.onClose} className="w-[400px]">
       <NewTweet />
     </Modal>
   );

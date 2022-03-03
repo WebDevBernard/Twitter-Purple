@@ -1,9 +1,10 @@
 import Avatar from "../shared/Avatar";
 import TweetButton from "../layout/TweetButton";
+import { avatarIcon } from "../styles/heroicons-style";
 const NewComment = (props: any) => {
   return (
     <div className="flex px-3 py-2 border-hover_border border-b-[1px]">
-      <Avatar className="h-12 w-12 md:h-16 md:w-16" />
+      <Avatar className={avatarIcon} />
       <div className="w-full mt-2 mx-3">
         <textarea
           rows={3}

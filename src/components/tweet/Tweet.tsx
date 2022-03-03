@@ -13,20 +13,24 @@ import {
   XCircleIcon,
 } from "@heroicons/react/outline";
 import Avatar from "../shared/Avatar";
-import { dialogIcons } from "../styles/heroicons-style";
+import { icons } from "../styles/heroicons-style";
+import useClickedOutside from "../hooks/useClickedOutside";
 
 const DeleteDialog = (props: any) => {
+  const domNode = useClickedOutside(() => {
+    props.handleDialog();
+  });
   return (
     <Dialog className="right-0 top-0">
-      <span className="dialog-head">
-        <TrashIcon className={dialogIcons} />
+      <span ref={domNode} className="dialog-head">
+        <TrashIcon className={icons} />
         <p>Delete?</p>
       </span>
       <span onClick={props.handleDialog} className="dialog-cell">
-        <CheckCircleIcon className={dialogIcons} /> <p>Yes</p>
+        <CheckCircleIcon className={icons} /> <p>Yes</p>
       </span>
       <span onClick={props.handleDialog} className="dialog-cell">
-        <XCircleIcon className={dialogIcons} /> <p>No</p>
+        <XCircleIcon className={icons} /> <p>No</p>
       </span>
     </Dialog>
   );

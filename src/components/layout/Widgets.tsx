@@ -5,7 +5,7 @@ import Card from "../shared/Card";
 
 const Widgets = () => {
   return (
-    <div className="hidden md:flex flex-col space-y-6 max-w-xs overflow-hidden whitespace-nowrap">
+    <div className="hidden px-8 md:flex flex-col space-y-6 whitespace-nowrap">
       <form data-tip="Not Implemented" className="relative flex items-center">
         <ReactTooltip backgroundColor="#64748b" />
         <input

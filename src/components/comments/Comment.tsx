@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { ChatAltIcon, HeartIcon } from "@heroicons/react/outline";
 import { HeartIcon as SolidHeartIcon } from "@heroicons/react/solid";
-
+import { avatarIcon, icons } from "../styles/heroicons-style";
 import Avatar from "../shared/Avatar";
 
 const Comment = (props: any) => {
   return (
     <div className="flex px-3 py-2 border-hover_border border-[1px] max-w-[600px]">
-      <Avatar className="h-12 w-12 md:h-16 md:w-16" />
+      <Avatar className={avatarIcon} />
       <div className="w-full mt-2 mx-3 ">
         <div className="flex items-center justify-between relative">
           <span className="flex items-center space-x-2">
@@ -25,11 +25,13 @@ const Comment = (props: any) => {
         <div className="flex items-center justify-evenly my-2">
           <div className="flex space-x-2">
             <p>0</p>
-            <ChatAltIcon className="h-6 w-6 cursor-pointer rounded-full hover:text-purple-500 opacity-90" />
+            <ChatAltIcon
+              className={`${icons}hover:text-purple-500 opacity-90`}
+            />
           </div>
           <div className="flex space-x-2">
             <p>1</p>
-            <HeartIcon className="h-6 w-6 cursor-pointer rounded-full hover:text-red-500 opacity-90" />
+            <HeartIcon className={`${icons} hover:text-red-500 opacity-90`} />
             {/* <SolidHeartIcon className="h-6 w-6 cursor-pointer rounded-full text-red-500 opacity-90" /> */}
           </div>
         </div>
