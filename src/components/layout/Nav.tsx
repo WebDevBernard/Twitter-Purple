@@ -31,10 +31,16 @@ const ProfileDialog = (props: any) => {
           </div>
         </div>
       </span>
-      <span className="flex  space-x-2 border-transparent border-[1px] hover:bg-hover cursor-pointer p-2">
+      <span
+        onClick={props.handleOpenProfile}
+        className="flex  space-x-2 border-transparent border-[1px] hover:bg-hover cursor-pointer p-2"
+      >
         <p>Update Avatar</p>
       </span>
-      <span className="flex  space-x-2 border-transparent border-[1px] hover:bg-hover cursor-pointer p-2 ">
+      <span
+        onClick={props.handleOpenAuth}
+        className="flex  space-x-2 border-transparent border-[1px] hover:bg-hover cursor-pointer p-2 "
+      >
         <p>Login ? Logout?</p>
       </span>
     </Dialog>
@@ -73,7 +79,13 @@ const Nav = (props: any) => {
         exitBeforeEnter={true}
         onExitComplete={() => null}
       >
-        {openDialog && <ProfileDialog openDialog={handleOpenDialog} />}
+        {openDialog && (
+          <ProfileDialog
+            openDialog={handleOpenDialog}
+            handleOpenAuth={props.handleOpenAuth}
+            handleOpenProfile={props.handleOpenProfile}
+          />
+        )}
       </AnimatePresence>
       <ProfileButton
         openDialog={handleOpenDialog}

@@ -4,7 +4,7 @@ import ReactDOM from "react-dom";
 
 const Backdrop = (props: any) => (
   <div
-    className="fixed top-0 left-0 h-screen w-full z-20 bg-black opacity-20"
+    className="fixed top-0 left-0 h-screen w-full z-20  opacity-20 transition bg-black ease-out duration-75"
     onClick={props.onClose}
   />
 );

@@ -3,7 +3,7 @@ import TweetButton from "../layout/TweetButton";
 import { tweetIconSmall } from "../styles/heroicons-style";
 const NewTweet = (props: any) => {
   return (
-    <div className="flex px-3 py-2 border-hover_border  border-b-[1px]">
+    <div className="flex px-3 py-2 border-hover_border  border-y-[1px]">
       <Avatar className="h-12 w-12 md:h-16 md:w-16" />
       <div className="w-full mt-2 mx-3">
         <textarea

@@ -44,7 +44,7 @@ const Tweet = (props: any) => {
   };
 
   return (
-    <div className="flex px-3 py-2 border-hover_border border-[1px] max-w-[600px]">
+    <div className="flex px-3 py-2 border-hover_border border-y-[1px] max-w-[600px]">
       <Avatar className="h-12 w-12 md:h-16 md:w-16" />
       <div className="w-full mt-2 mx-3 ">
         <div className="flex items-center justify-between relative">

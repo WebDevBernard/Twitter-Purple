@@ -12,7 +12,7 @@ const Widgets = () => {
           className="w-[100%] px-3 py-2 bg-bg placeholder-primary_light_text mt-2 rounded-3xl focus:outline-border"
           placeholder="Search Twitter"
         ></input>
-        <SearchIcon className=" w-[20px] h-[20px] bottom-3 right-3 absolute text-primaryLightText" />
+        <SearchIcon className=" w-[20px] h-[20px] bottom-3 right-3 absolute text-primary_light_text" />
       </form>
       <Card className="space-y-6 bg-bg p-3">
         <h3 className=" font-bold">What's Happening</h3>
