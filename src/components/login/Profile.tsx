@@ -1,30 +1,33 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import AuthContext from "../../store/auth-context";
+import { auth } from "../../utils/firebase";
 import { avatarArray } from "../../utils/avatar-names";
 import Button from "../shared/Button";
-import { auth } from "../../utils/firebase";
+
 import Modal from "../shared/Modal";
 
 const Profile = (props: any) => {
   const [selected, setSelected] = useState("");
-
+  const { handleNotification } = useContext<any>(AuthContext);
   const handleSelected = (e: any) => {
     setSelected(avatarArray[e.target.id]);
   };
 
   const handleSubmit = async (e: any) => {
-    // e.preventDefault();
-    // if (selected === "") {
-    //   props.handleNotification("No Avatar Selected");
-    //   return;
-    // }
-    // try {
-    //   await auth.currentUser?.updateProfile({
-    //     photoURL: selected,
-    //   });
-    //   props.handleNotification("Avatar Updated");
-    // } catch (err) {
-    //   console.error(err);
-    // }
+    e.preventDefault();
+    if (selected === "") {
+      handleNotification("No Avatar Selected");
+      return;
+    }
+    try {
+      await auth.currentUser?.updateProfile({
+        photoURL: selected,
+      });
+      handleNotification("Avatar Updated");
+      props.onClose();
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (
