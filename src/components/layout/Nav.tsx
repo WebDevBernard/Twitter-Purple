@@ -13,12 +13,17 @@ import { tweetIcon } from "../styles/heroicons-style";
 import Dialog from "../shared/Dialog";
 import Avatar from "../shared/Avatar";
 import useClickedOutside from "../hooks/useClickedOutside";
+const logout = async () => {
+  await auth.signOut();
+};
 const ProfileDialog = (props: any) => {
+  const { currentUser } = useContext<any>(AuthContext);
+
   const domNode = useClickedOutside(() => {
     props.openDialog();
   });
   return (
-    <Dialog className="bottom-0 left-20 md:left-0 md:relative">
+    <Dialog className="top-0 left-0">
       <span
         ref={domNode}
         className="flex space-x-1 p-2 border-b-[1px] border-border "
@@ -31,7 +36,7 @@ const ProfileDialog = (props: any) => {
           </div>
         </div>
       </span>
-      {props.currentUser && (
+      {currentUser && (
         <span
           onClick={props.handleOpenProfile}
           className="flex  space-x-2 border-transparent border-[1px] hover:bg-hover cursor-pointer p-2"
@@ -40,10 +45,10 @@ const ProfileDialog = (props: any) => {
         </span>
       )}
       <span
-        onClick={props.handleOpenAuth}
+        onClick={!currentUser ? props.handleOpenAuth : logout}
         className="flex  space-x-2 border-transparent border-[1px] hover:bg-hover cursor-pointer p-2 "
       >
-        <p>{props.currentUser ? "Logout" : "Login"}</p>
+        <p>{currentUser ? "Logout" : "Login"}</p>
       </span>
     </Dialog>
   );
@@ -63,8 +68,8 @@ const Nav = (props: any) => {
   };
 
   return (
-    <div className="max-w-xs px-2 md:px-8 items-center flex flex-col justify-between overflow-hidden ">
-      <div className="space-y-3 flex flex-col items-start mt-4">
+    <div className="max-w-xs px-2 md:px-8 items-center flex flex-col justify-between top-0 overflow-hidden ">
+      <div className="space-y-3 flex flex-col items-start justify-between mt-4">
         <Link to={"/"}>
           <i className="devicon-twitter-original text-[30px] ml-2 mb-2 text-secondary_text"></i>
         </Link>

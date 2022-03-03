@@ -16,7 +16,7 @@ import Comment from "./components/comments/Comment";
 import NewComment from "./components/comments/NewComment";
 import CurrentComment from "./components/comments/CurrentComment";
 import Profile from "./components/login/Profile";
-import Auth from "./components/login/Auth";
+import Login from "./components/login/Login";
 import TweetList from "./components/tweet/TweetList";
 function App() {
   const [openModal, setOpenModal] = useState<boolean>(false);
@@ -49,7 +49,7 @@ function App() {
           onExitComplete={() => null}
         >
           {openProfile && <Profile onClose={handleOpenProfile} />}
-          {openAuth && <Auth onClose={handleOpenAuth} />}
+          {openAuth && <Login onClose={handleOpenAuth} />}
           {openModal && <NavTweet onClose={handleOpenModal} />}
         </AnimatePresence>
         <Nav

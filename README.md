@@ -8,8 +8,6 @@
 
 - I initially made this app to practice structuring a React project and creating multiple reusable components. I added additional features over time such as persisting data through local storage, adding login feature, commenting system, a like toggle. I also wanted to practice different state management systems (including Redux), with my first iteration of this app using only props drilling. Later when I added the like toggle, I switched to Context API. Finally, when I added the commenting system, I moved everything to Redux toolkit.
 
-- The design of this project is based on a project I made at coding bootcamp: [https://github.com/WebDevBernard/tweeter](https://github.com/WebDevBernard/tweeter). I did not use any of the original code, I just used it as design reference for this project.
-
 ## Tech Stack
 
 - Firebase authentication to manage user login

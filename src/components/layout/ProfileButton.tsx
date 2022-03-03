@@ -11,8 +11,12 @@ const ProfileButton = (props: any) => {
         <Avatar avatar={props.selectUserAvatar} className="h-12 w-12" />
       )}
       <div className="ml-4 hidden md:inline-block">
-        <p className="font-bold text-secondary_text">{props.selectUserName}</p>
-        <p>@ {props.selectUserName}</p>
+        {ready && (
+          <p className="font-bold text-secondary_text">
+            {props.selectUserName}
+          </p>
+        )}
+        {ready && <p>@ {props.selectUserName}</p>}
       </div>
     </div>
   );

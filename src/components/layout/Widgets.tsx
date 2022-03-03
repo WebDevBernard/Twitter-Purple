@@ -37,13 +37,12 @@ const Widgets = () => {
           target="_blank"
           rel="noreferrer"
         >
-          <div className="flex items-center">
+          <div className="flex items-center justify-evenly">
             <ProfileButton
               selectUserAvatar={avatarArray[4]}
               selectUserName="WebDevBernard"
-              className="p-2"
             />
-            <button className="ml-6 text-sm px-3 h-8 text-primary_text bg-violet-200 hover:bg-violet-300 font-bold block select-none rounded-2xl duration-150 ease-out active:scale-95 active:shadow-sm">
+            <button className="ml-12 text-sm px-3 h-8 text-primary_text bg-violet-200 hover:bg-violet-300 font-bold select-none rounded-2xl duration-150 ease-out active:scale-95 active:shadow-sm">
               Follow
             </button>
           </div>
