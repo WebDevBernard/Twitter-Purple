@@ -11,7 +11,7 @@ const Widgets = () => {
       <form data-tip="Not Implemented" className="relative flex items-center">
         <ReactTooltip backgroundColor="#64748b" />
         <input
-          className="w-[100%] px-3 py-2 bg-bg placeholder-primary_light_text mt-2 rounded-3xl focus:outline-border"
+          className="w-[100%] px-3 py-2 bg-bg placeholder-primary_light_text mt-2 rounded-3xl focus:outline-primary_light_text"
           placeholder="Search Twitter"
         ></input>
         <SearchIcon className=" w-[20px] h-[20px] bottom-3 right-3 absolute text-primary_light_text" />
@@ -21,7 +21,8 @@ const Widgets = () => {
         <div className="inline-block break-words">
           <p className="text-xs ">Updates</p>
           <p className="text-sm font-bold text-secondary_text">
-            Login or sign up to comment with a unique username.
+            Login or sign up to tweet with a unique username. Update user
+            avatar.
           </p>
           <p className="text-xs ">#Firebase</p>
         </div>
