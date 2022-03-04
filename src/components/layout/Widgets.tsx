@@ -1,8 +1,7 @@
-import { Link } from "react-router-dom";
 import { avatarArray } from "../../utils/avatar-names";
 import ReactTooltip from "react-tooltip";
 import { SearchIcon } from "@heroicons/react/outline";
-import ProfileButton from "./ProfileButton";
+import Avatar from "../shared/Avatar";
 import Card from "../shared/Card";
 
 const Widgets = () => {
@@ -44,10 +43,13 @@ const Widgets = () => {
           rel="noreferrer"
         >
           <div className="flex items-center justify-evenly">
-            <ProfileButton
-              selectUserAvatar={avatarArray[4]}
-              selectUserName="WebDevBernard"
-            />
+            <div className="flex cursor-pointer">
+              <Avatar avatar={avatarArray[4]} className="h-12 w-12" />
+              <div className="ml-4 hidden md:inline-block whitespace-nowrap">
+                <p className="font-bold text-secondary_text">WebDevBernard</p>
+                <p>@ WebDevBernard</p>
+              </div>
+            </div>
             <button className="ml-12 text-sm px-3 h-8 text-primary_text bg-violet-200 hover:bg-violet-300 font-bold select-none rounded-2xl duration-150 ease-out active:scale-95 active:shadow-sm">
               Follow
             </button>

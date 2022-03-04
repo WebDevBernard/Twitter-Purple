@@ -21,8 +21,3 @@
 ## Preview
 
 !["twitter tweeter react"](https://github.com/WebDevBernard/Portfolio/blob/main/public/docs/twitter.png)
-
-## Installation
-
-`run: npm install`<br/>
-`view on: localhost:3000`

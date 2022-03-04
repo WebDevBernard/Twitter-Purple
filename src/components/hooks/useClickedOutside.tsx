@@ -1,5 +1,6 @@
 import { useRef, useEffect } from "react";
 
+// custom hook to see if clicked outside of ref
 let useClickedOutside = (handler: any) => {
   let domNode: any = useRef();
 

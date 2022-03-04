@@ -7,6 +7,7 @@ import { HeartIcon as SolidHeartIcon } from "@heroicons/react/solid";
 import { avatarIcon, icons } from "../styles/heroicons-style";
 import Avatar from "../shared/Avatar";
 import NewComment from "./NewComment";
+import Tweet from "../tweet/Tweet";
 import Comment from "./Comment";
 const timeAgo = (el: any) => moment(el).fromNow();
 const CurrentComment = (props: any) => {
@@ -47,7 +48,7 @@ const CurrentComment = (props: any) => {
           <div className="flex items-center justify-evenly my-2">
             <div className="flex space-x-2">
               <p>{commentLength}</p>
-              <ChatAltIcon className={`${icons} cursor-default opacity-90`} />
+              <ChatAltIcon className={`${icons} cursor-auto opacity-90`} />
             </div>
             <div className="flex space-x-2">
               <p>{heartLength}</p>

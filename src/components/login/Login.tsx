@@ -29,7 +29,7 @@ const Login = (props: any) => {
         onClick={props.onClose}
         className="h-6 w-6 float-right cursor-pointer"
       />
-      <h3 onClick={handleLoginTab} className="text-xl">
+      <h3 onClick={handleLoginTab} className="font-bold text-xl">
         {!forgotPassword && !isLogin && "Sign in with us"}
         {!forgotPassword && isLogin && "Sign up with us"}
         {forgotPassword && "Reset password"}

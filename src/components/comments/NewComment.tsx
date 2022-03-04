@@ -1,25 +1,19 @@
-import { useState, useContext } from "react";
-import AuthContext from "../../store/auth-context";
+import { useState } from "react";
 import { tweetActions } from "../../redux/tweet-slice";
 import { useDispatch } from "react-redux";
-import { auth } from "../../utils/firebase";
 import useAvatarReady from "../hooks/useAvatarReady";
 import Avatar from "../shared/Avatar";
 import TweetButton from "../layout/TweetButton";
 import { tweetIconSmall } from "../styles/heroicons-style";
-import avatar, { shortName } from "../../utils/avatar-names";
+import useCurrentUser from "../hooks/useCurrentUser";
 const NewComment = (props: any) => {
   const dispatch = useDispatch();
   const [enteredTweet, setEnteredTweet] = useState("");
   const [error, setError] = useState<any>({});
   const [count, setCount] = useState(0);
-  const { currentUser } = useContext<any>(AuthContext);
   const ready = useAvatarReady();
+  const [selectUserAvatar, selectUserName] = useCurrentUser();
 
-  const selectUserName = currentUser
-    ? auth.currentUser?.displayName
-    : shortName;
-  const selectUserAvatar = !currentUser ? avatar : auth.currentUser?.photoURL;
   const handleDispatch = () => {
     dispatch(
       tweetActions.addComment({

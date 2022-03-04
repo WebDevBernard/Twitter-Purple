@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { useState, useContext } from "react";
 import AuthContext from "../../store/auth-context";
 import { auth } from "../../utils/firebase";
-import avatar, { shortName } from "../../utils/avatar-names";
 import { nanoid } from "nanoid";
 import { AnimatePresence } from "framer-motion";
 import { navLinks } from "../../utils/nav-links";
@@ -13,12 +12,13 @@ import { tweetIcon } from "../styles/heroicons-style";
 import Dialog from "../shared/Dialog";
 import Avatar from "../shared/Avatar";
 import useClickedOutside from "../hooks/useClickedOutside";
+import useCurrentUser from "../hooks/useCurrentUser";
 const logout = async () => {
   await auth.signOut();
 };
 const ProfileDialog = (props: any) => {
   const { currentUser } = useContext<any>(AuthContext);
-
+  const [selectUserAvatar, selectUserName] = useCurrentUser();
   const domNode = useClickedOutside(() => {
     props.openDialog();
   });
@@ -28,12 +28,10 @@ const ProfileDialog = (props: any) => {
       <div ref={domNode}>
         <span className="flex space-x-1 p-2 border-b-[1px] border-border ">
           <div ref={props.menuRef} className={`flex  ${props.className}`}>
-            <Avatar avatar={props.selectUserAvatar} className="h-12 w-12" />
+            <Avatar avatar={selectUserAvatar} className="h-12 w-12" />
             <div className="ml-4">
-              <p className="font-bold text-purple-500">
-                {props.selectUserName}
-              </p>
-              <p>@ {props.selectUserName}</p>
+              <p className="font-bold text-purple-500">{selectUserName}</p>
+              <p>@ {selectUserName}</p>
             </div>
           </div>
         </span>
@@ -58,12 +56,6 @@ const ProfileDialog = (props: any) => {
 };
 
 const Nav = (props: any) => {
-  const { currentUser } = useContext<any>(AuthContext);
-
-  const selectUserName = currentUser
-    ? auth.currentUser?.displayName
-    : shortName;
-  const selectUserAvatar = !currentUser ? avatar : auth.currentUser?.photoURL;
   const [openDialog, setOpenDialog] = useState<boolean>(false);
 
   const handleOpenDialog = () => {
@@ -103,15 +95,10 @@ const Nav = (props: any) => {
             handleOpenAuth={props.handleOpenAuth}
             handleOpenProfile={props.handleOpenProfile}
             handleOpenDialog={handleOpenDialog}
-            selectUserAvatar={selectUserAvatar}
-            selectUserName={selectUserName}
-            currentUser={props.currentUser}
           />
         )}
       </AnimatePresence>
       <ProfileButton
-        selectUserAvatar={selectUserAvatar}
-        selectUserName={selectUserName}
         openDialog={handleOpenDialog}
         className="bottom-0 hover:bg-hover mb-4 md:pl-2 md:pr-4 md:py-2 rounded-full"
       />
