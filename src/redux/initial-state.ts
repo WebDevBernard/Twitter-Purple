@@ -59,7 +59,7 @@ const initialState = [
         comment:
           "Euismod nulla etiam. Elementum elementum faucibus risus. Aptent quam pede lectus. Cursus tempor tristique Varius potenti Dictumst Nibh mollis justo dui porttitor rutrum class.",
         avatar: avatarArray[3],
-        userName: "Bernard_Yang",
+        userName: "Aliquet",
         like: false,
       },
     ],

@@ -11,10 +11,15 @@ const Layout = (props: any) => {
       <div className="text-secondary_text flex justify-between items-center space-x-2 top-0 sticky p-3 border-y-[1px] border-hover_border z-10 bg-bg opacity-90 ">
         <Link to={"/"}>
           <div className="flex space-x-2 ">
-            <ArrowLeftIcon className={icons} /> <p>Home</p>
+            {window.location.href.match("comments") && (
+              <ArrowLeftIcon className={icons} />
+            )}
+            <p className="text-xl">
+              {window.location.href.match("comments") ? "Tweets" : "Home"}
+            </p>
           </div>
         </Link>
-        <p className="space-x-2">{notification}</p>
+        <p className="text-xl space-x-2">{notification}</p>
       </div>
       {props.children}
     </div>

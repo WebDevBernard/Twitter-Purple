@@ -16,12 +16,12 @@ const Login = (props: any) => {
   };
 
   const handleSignUpTab = () => {
-    setIsLogin(true);
+    setIsLogin(false);
     setError("");
   };
 
   const handleLoginTab = () => {
-    setIsLogin(false);
+    setIsLogin(true);
     setError("");
   };
 
@@ -34,20 +34,21 @@ const Login = (props: any) => {
       <header>
         <div className="">
           {!passwordReset && (
-            <label onClick={handleLoginTab} className="" htmlFor="input">
-              Sign Up
-            </label>
-          )}
-          {!passwordReset && (
             <label onClick={handleSignUpTab} className="" htmlFor="input">
               Login
+            </label>
+          )}
+
+          {!passwordReset && (
+            <label onClick={handleLoginTab} className="" htmlFor="input">
+              Sign Up
             </label>
           )}
 
           {passwordReset && <label htmlFor="email">Reset Password</label>}
         </div>
       </header>
-      {!passwordReset && !isLogin && (
+      {!passwordReset && isLogin && (
         <SignUp
           handleNotification={props.handleNotification}
           onClose={props.onClose}
@@ -56,7 +57,7 @@ const Login = (props: any) => {
           handleError={handleError}
         />
       )}
-      {!passwordReset && isLogin && (
+      {!passwordReset && !isLogin && (
         <SignIn
           handleNotification={props.handleNotification}
           handleError={handleError}

@@ -72,17 +72,10 @@ const Tweet = (props: any) => {
       <div className="w-full mt-2 mx-3 ">
         <div className="flex items-center justify-between relative">
           <span className="flex items-center space-x-2">
-            <Link
-              to={
-                !window.location.href.match("tweets")
-                  ? `/${props.userName}/tweets`
-                  : `/`
-              }
-            >
-              <p className="text-lg text-secondary_text font-bold ">
-                {props.userName.split("_")[0]}
-              </p>
-            </Link>
+            <p className="text-lg text-secondary_text font-bold ">
+              {props.userName.split("_")[0]}
+            </p>
+
             <p className="text-xs ">@ {props.userName}</p>
             <p className="text-sm ">{timeAgo(props.createdAt)}</p>
           </span>

@@ -22,12 +22,8 @@ function App() {
   const [openModal, setOpenModal] = useState<boolean>(false);
   const [openProfile, setOpenProfile] = useState<boolean>(false);
   const [openAuth, setOpenAuth] = useState<boolean>(false);
+  const [title, setTitle] = useState<string>("");
 
-  const [getComments, setGetComments] = useState<string>("");
-
-  const getCommentsHandler = (e: any) => {
-    setGetComments(e);
-  };
   const handleOpenAuth = () => {
     setOpenAuth(!openAuth);
   };
@@ -67,15 +63,7 @@ function App() {
               </Layout>
             }
           />
-          <Route
-            path="/:userid/tweets"
-            element={
-              <Layout>
-                <NewTweet />
-                <TweetList />
-              </Layout>
-            }
-          />
+
           <Route
             path="/"
             element={

@@ -89,8 +89,8 @@ const SignUp = ({
 
 export const SignIn = ({ onClose, handleError, handleNotification }: any) => {
   const initialValues = {
-    email: "",
-    password: "",
+    email: "guest@email.com",
+    password: "123456",
   };
   const loginHandler = async (values: any) => {
     try {
