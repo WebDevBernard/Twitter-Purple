@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import AuthContext from "../../store/auth-context";
 import Modal from "../shared/Modal";
 import Button from "../shared/Button";
 import SignUp, { ResetPassword, SignIn } from "./Auth";
@@ -7,6 +8,7 @@ const Login = (props: any) => {
   const [passwordReset, setPasswordReset] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const { handleNotification } = useContext<any>(AuthContext);
   const handleLoading = () => {
     setLoading(true);
   };
@@ -50,7 +52,7 @@ const Login = (props: any) => {
       </header>
       {!passwordReset && isLogin && (
         <SignUp
-          handleNotification={props.handleNotification}
+          handleNotification={handleNotification}
           onClose={props.onClose}
           handleLoading={handleLoading}
           loading={loading}
@@ -59,14 +61,14 @@ const Login = (props: any) => {
       )}
       {!passwordReset && !isLogin && (
         <SignIn
-          handleNotification={props.handleNotification}
+          handleNotification={handleNotification}
           handleError={handleError}
           onClose={props.onClose}
         />
       )}
       {passwordReset && (
         <ResetPassword
-          handleNotification={props.handleNotification}
+          handleNotification={handleNotification}
           onClose={props.onClose}
         />
       )}

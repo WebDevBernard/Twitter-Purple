@@ -96,7 +96,7 @@ export const SignIn = ({ onClose, handleError, handleNotification }: any) => {
     try {
       await auth.signInWithEmailAndPassword(values.email, values.password);
       onClose();
-      handleNotification(`welcome back ${auth.currentUser?.displayName}!`);
+      handleNotification(`Welcome back ${auth.currentUser?.displayName}!`);
     } catch (err) {
       handleError("Invalid Credentials");
       console.error(err);
