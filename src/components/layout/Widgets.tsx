@@ -21,15 +21,16 @@ const Widgets = () => {
         <div className="inline-block break-words">
           <p className="text-xs ">Updates</p>
           <p className="text-sm font-bold text-secondary_text">
-            Login or sign up to tweet with a unique username. Update user
-            avatar.
+            Login as "Guest" user or sign up to tweet with a unique username.
+            Change your user avatar from the login menu.
           </p>
           <p className="text-xs ">#Firebase</p>
         </div>
         <div>
           <p className="text-xs">Main Features</p>
           <p className="text-sm font-bold text-secondary_text">
-            Tweet, comment or like a tweet, delete a tweet. Mobile view.
+            Tweet, comment or like a tweet. Delete your tweets. Tweet and
+            comments saved to local storage.
           </p>
           <p className="text-xs ">#ResponsiveDesign #React #Redux</p>
         </div>
