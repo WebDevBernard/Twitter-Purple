@@ -22,6 +22,11 @@ const ProfileDialog = (props: any) => {
   const domNode = useClickedOutside(() => {
     props.openDialog();
   });
+
+  const openModalCloseDialog = () => {
+    props.handleOpenAuth();
+    props.handleOpenDialog();
+  };
   return (
     <Dialog className="top-0 left-0">
       <div ref={domNode}>
@@ -45,7 +50,7 @@ const ProfileDialog = (props: any) => {
           </span>
         )}
         <span
-          onClick={!currentUser ? props.handleOpenAuth : logout}
+          onClick={!currentUser ? openModalCloseDialog : logout}
           className="flex  space-x-2 border-transparent border-[1px] hover:bg-hover cursor-pointer p-2 "
         >
           <p>{currentUser ? "Logout" : "Login"}</p>
@@ -100,6 +105,7 @@ const Nav = (props: any) => {
             openDialog={handleOpenDialog}
             handleOpenAuth={props.handleOpenAuth}
             handleOpenProfile={props.handleOpenProfile}
+            handleOpenDialog={handleOpenDialog}
             selectUserAvatar={selectUserAvatar}
             selectUserName={selectUserName}
             currentUser={props.currentUser}
