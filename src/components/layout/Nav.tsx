@@ -24,32 +24,33 @@ const ProfileDialog = (props: any) => {
   });
   return (
     <Dialog className="top-0 left-0">
-      <span
-        ref={domNode}
-        className="flex space-x-1 p-2 border-b-[1px] border-border "
-      >
-        <div ref={props.menuRef} className={`flex  ${props.className}`}>
-          <Avatar avatar={props.selectUserAvatar} className="h-12 w-12" />
-          <div className="ml-4">
-            <p className="font-bold text-purple-500">{props.selectUserName}</p>
-            <p>@ {props.selectUserName}</p>
+      <div ref={domNode}>
+        <span className="flex space-x-1 p-2 border-b-[1px] border-border ">
+          <div ref={props.menuRef} className={`flex  ${props.className}`}>
+            <Avatar avatar={props.selectUserAvatar} className="h-12 w-12" />
+            <div className="ml-4">
+              <p className="font-bold text-purple-500">
+                {props.selectUserName}
+              </p>
+              <p>@ {props.selectUserName}</p>
+            </div>
           </div>
-        </div>
-      </span>
-      {currentUser && (
-        <span
-          onClick={props.handleOpenProfile}
-          className="flex  space-x-2 border-transparent border-[1px] hover:bg-hover cursor-pointer p-2"
-        >
-          <p>Update Avatar</p>
         </span>
-      )}
-      <span
-        onClick={!currentUser ? props.handleOpenAuth : logout}
-        className="flex  space-x-2 border-transparent border-[1px] hover:bg-hover cursor-pointer p-2 "
-      >
-        <p>{currentUser ? "Logout" : "Login"}</p>
-      </span>
+        {currentUser && (
+          <span
+            onClick={props.handleOpenProfile}
+            className="flex  space-x-2 border-transparent border-[1px] hover:bg-hover cursor-pointer p-2"
+          >
+            <p>Update Avatar</p>
+          </span>
+        )}
+        <span
+          onClick={!currentUser ? props.handleOpenAuth : logout}
+          className="flex  space-x-2 border-transparent border-[1px] hover:bg-hover cursor-pointer p-2 "
+        >
+          <p>{currentUser ? "Logout" : "Login"}</p>
+        </span>
+      </div>
     </Dialog>
   );
 };

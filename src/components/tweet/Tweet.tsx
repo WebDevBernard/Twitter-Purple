@@ -28,16 +28,18 @@ const DeleteDialog = (props: any) => {
 
   return (
     <Dialog className="right-0 top-0">
-      <span ref={domNode} className="dialog-head">
-        <TrashIcon className={icons} />
-        <p>Delete?</p>
-      </span>
-      <span onClick={props.delete} className="dialog-cell">
-        <CheckCircleIcon className={icons} /> <p>Yes</p>
-      </span>
-      <span onClick={props.handleDialog} className="dialog-cell">
-        <XCircleIcon className={icons} /> <p>No</p>
-      </span>
+      <div ref={domNode}>
+        <span className="dialog-head">
+          <TrashIcon className={icons} />
+          <p>Delete?</p>
+        </span>
+        <span onClick={props.delete} className="dialog-cell">
+          <CheckCircleIcon className={icons} /> <p>Yes</p>
+        </span>
+        <span onClick={props.handleDialog} className="dialog-cell">
+          <XCircleIcon className={icons} /> <p>No</p>
+        </span>
+      </div>
     </Dialog>
   );
 };

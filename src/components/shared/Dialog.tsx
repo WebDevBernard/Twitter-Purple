@@ -5,6 +5,7 @@ import { dialogAnimation } from "../../utils/variants";
 const Dialog = (props: any) => {
   return (
     <motion.div
+      ref={props.ref}
       variants={dialogAnimation}
       initial="hidden"
       animate="visible"
