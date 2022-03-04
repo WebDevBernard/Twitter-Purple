@@ -22,7 +22,6 @@ function App() {
   const [openModal, setOpenModal] = useState<boolean>(false);
   const [openProfile, setOpenProfile] = useState<boolean>(false);
   const [openAuth, setOpenAuth] = useState<boolean>(false);
-  const [title, setTitle] = useState<string>("");
 
   const handleOpenAuth = () => {
     setOpenAuth(!openAuth);

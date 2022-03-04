@@ -7,7 +7,7 @@ import Card from "../shared/Card";
 
 const Widgets = () => {
   return (
-    <div className="max-w-xs hidden px-8 md:flex flex-col space-y-6 whitespace-nowrap">
+    <div className="max-w-xs hidden px-8 md:flex flex-col space-y-6">
       <form data-tip="Not Implemented" className="relative flex items-center">
         <ReactTooltip backgroundColor="#64748b" />
         <input
@@ -16,20 +16,24 @@ const Widgets = () => {
         ></input>
         <SearchIcon className=" w-[20px] h-[20px] bottom-3 right-3 absolute text-primary_light_text" />
       </form>
-      <Card className="space-y-6 bg-bg p-3">
+      <Card className="space-y-6 bg-bg p-3 inline-block tracking-normal">
         <h3 className=" font-bold">What's Happening</h3>
-        <div>
-          <p className="text-xs ">Placeholder</p>
-          <p className="text-base font-bold text-secondary_text">Placeholder</p>
-          <p className="text-xs ">Placeholder</p>
+        <div className="inline-block break-words">
+          <p className="text-xs ">Updates</p>
+          <p className="text-sm font-bold text-secondary_text">
+            Login or sign up to comment with a unique username.
+          </p>
+          <p className="text-xs ">#Firebase</p>
         </div>
         <div>
-          <p className="text-xs">Placeholder</p>
-          <p className="text-lg font-bold text-secondary_text">Placeholder</p>
-          <p className="text-xs ">Placeholder</p>
+          <p className="text-xs">Main Features</p>
+          <p className="text-sm font-bold text-secondary_text">
+            Tweet, comment or like a tweet, delete a tweet. Mobile view.
+          </p>
+          <p className="text-xs ">#ResponsiveDesign #React #Redux</p>
         </div>
       </Card>
-      <Card className="bg-bg p-3">
+      <Card className="bg-bg p-3 whitespace-nowrap">
         <h3 className="font-bold mb-2">Who To Follow</h3>
 
         <a
