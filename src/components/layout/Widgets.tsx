@@ -29,8 +29,8 @@ const Widgets = () => {
         <div>
           <p className="text-xs">Main Features</p>
           <p className="text-sm font-bold text-secondary_text">
-            Tweet, comment or like a tweet. Delete your tweets. Tweet and
-            comments saved to local storage.
+            Tweet, comment or like a tweet, delete your own tweets. Tweets are
+            saved to local storage.
           </p>
           <p className="text-xs ">#ResponsiveDesign #React #Redux</p>
         </div>
