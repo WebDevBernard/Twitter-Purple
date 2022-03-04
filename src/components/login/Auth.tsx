@@ -94,28 +94,28 @@ const SignUp = ({
       <Form className="space-y-2">
         <TextInput
           label="Your username"
-          className="w-full border-[1px] rounded-md text-lg py-1.5 focus:outline-primary_light_text"
+          className="w-full rounded-md text-lg py-1.5 focus:outline-primary_light_text placeholder-primary_light_text"
           placeholder="Enter a username"
           name="username"
           type="text"
         />
         <TextInput
           label="Your email"
-          className="w-full border-[1px] rounded-md text-lg py-1.5 focus:outline-primary_light_text"
+          className="w-full rounded-md text-lg py-1.5 focus:outline-primary_light_text placeholder-primary_light_text"
           placeholder="username@email.com"
           name="email"
           type="email"
         />
         <TextInput
           label="Your password"
-          className="w-full border-[1px] rounded-md text-lg py-1.5 focus:outline-primary_light_text"
+          className="w-full rounded-md text-lg py-1.5 focus:outline-primary_light_text placeholder-primary_light_text"
           placeholder="*******"
           name="password"
           type="password"
         />
         <TextInput
           label="Confirm your password"
-          className="w-full border-[1px] rounded-md text-lg py-1.5 focus:outline-primary_light_text"
+          className="w-full rounded-md text-lg py-1.5 focus:outline-primary_light_text placeholder-primary_light_text"
           placeholder="*******"
           name="passwordConfirm"
           type="password"
@@ -165,14 +165,14 @@ export const SignIn = ({
       <Form className="space-y-2">
         <TextInput
           label="Your email"
-          className="w-full border-[1px] rounded-md text-lg py-1.5 focus:outline-primary_light_text"
+          className="w-full rounded-md text-lg py-1.5 focus:outline-primary_light_text placeholder-primary_light_text"
           placeholder="username@email.com"
           name="email"
           type="email"
         />
         <TextInput
           label="Your password"
-          className="w-full border-[1px] rounded-md text-lg py-1.5 focus:outline-primary_light_text"
+          className="w-full rounded-md text-lg py-1.5 focus:outline-primary_light_text placeholder-primary_light_text"
           placeholder="*******"
           name="password"
           type="password"
@@ -216,7 +216,7 @@ export const ResetPassword = ({
       <Form className="">
         <TextInput
           label="Your email"
-          className="w-full border-[1px] rounded-md text-lg py-1.5 focus:outline-primary_light_text"
+          className="w-full rounded-md text-lg py-1.5 focus:outline-primary_light_text placeholder-primary_light_text"
           placeholder="username@email.com"
           name="email"
           type="email"

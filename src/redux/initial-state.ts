@@ -29,7 +29,7 @@ const initialState = [
 
     avatar: avatarArray[2],
     userName: "Aliquam",
-    like: true,
+    like: false,
     reply: [],
   },
   {
@@ -40,7 +40,7 @@ const initialState = [
 
     avatar: avatarArray[3],
     userName: "Aliquet",
-    like: true,
+    like: false,
     reply: [],
   },
   {
