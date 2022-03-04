@@ -1,71 +1,21 @@
-import { useState } from "react";
-import { tweetActions } from "../../redux/tweet-slice";
-import { useDispatch } from "react-redux";
 import useCurrentUser from "../hooks/useCurrentUser";
 import Avatar from "../shared/Avatar";
 import TweetButton from "../layout/TweetButton";
 import { tweetIconSmall } from "../styles/heroicons-style";
 import useAvatarReady from "../hooks/useAvatarReady";
-import { useNavigate } from "react-router-dom";
 
-const NewTweet = (props: any) => {
-  const [enteredTweet, setEnteredTweet] = useState("");
-  const [error, setError] = useState<any>("");
-  const [count, setCount] = useState(0);
-  const [selectUserAvatar, selectUserName] = useCurrentUser();
+const TweetForm = ([
+  enteredTweet,
+  count,
+  error,
+  errorHandler,
+  tweetChangeHandler,
+  addTweetOnClick,
+  addTweetOnEnter,
+]: any) => {
   const ready = useAvatarReady();
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-
-  const handleDispatch = () => {
-    dispatch(
-      tweetActions.addTweet({
-        tweet: enteredTweet,
-        avatar: selectUserAvatar,
-        userName: selectUserName,
-      })
-    );
-  };
-  const validateInput = () => {
-    if (enteredTweet.trim().length > 140) {
-      setError({
-        message: "tweet too long!",
-      });
-      return;
-    }
-    if (enteredTweet.trim().length === 0) {
-      setError({
-        message: "tweet too short!",
-      });
-      return;
-    }
-    handleDispatch();
-    setEnteredTweet("");
-    setCount(0);
-  };
-
-  const addTweetOnClick = (e: any) => {
-    e.preventDefault();
-    validateInput();
-    navigate("/");
-    props.onClose();
-  };
-
-  const addTweetOnEnter = (e: any) => {
-    if (e.keyCode === 13) {
-      addTweetOnClick(e);
-    }
-  };
-  // removes the error message
-  const errorHandler = () => {
-    setError("");
-  };
-
-  // used in onChange prop to reset the input, enteredTweet goes in value
-  const tweetChangeHandler = (e: any) => {
-    setEnteredTweet(e.target.value);
-    setCount(enteredTweet.length);
-  };
+  const [selectUserAvatar] = useCurrentUser();
+  console.log(count, error);
   return (
     <div className="flex px-3 py-2 border-hover_border  border-y-[1px]">
       {ready && (
@@ -106,4 +56,4 @@ const NewTweet = (props: any) => {
   );
 };
 
-export default NewTweet;
+export default TweetForm;

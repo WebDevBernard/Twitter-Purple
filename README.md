@@ -20,4 +20,5 @@
 
 ## Preview
 
-!["twitter tweeter react"](https://github.com/WebDevBernard/Portfolio/blob/main/public/docs/twitter.png)
+!["twitter react"](https://github.com/WebDevBernard/Portfolio/blob/main/public/docs/twitter.png)
+!["twitter yup"](https://github.com/WebDevBernard/Portfolio/blob/main/public/docs/twitteryup.png)
