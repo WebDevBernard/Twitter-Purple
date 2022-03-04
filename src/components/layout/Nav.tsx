@@ -28,7 +28,7 @@ const ProfileDialog = (props: any) => {
     props.handleOpenDialog();
   };
   return (
-    <Dialog className="top-0 left-0">
+    <Dialog className="relative top-0">
       <div ref={domNode}>
         <span className="flex space-x-1 p-2 border-b-[1px] border-border ">
           <div ref={props.menuRef} className={`flex  ${props.className}`}>
@@ -116,7 +116,7 @@ const Nav = (props: any) => {
         selectUserAvatar={selectUserAvatar}
         selectUserName={selectUserName}
         openDialog={handleOpenDialog}
-        className=" hover:bg-hover mb-4 md:pl-2 md:pr-4 md:py-2 rounded-full"
+        className="bottom-0 hover:bg-hover mb-4 md:pl-2 md:pr-4 md:py-2 rounded-full"
       />
     </div>
   );
