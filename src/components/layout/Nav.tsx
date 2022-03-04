@@ -23,10 +23,6 @@ const ProfileDialog = (props: any) => {
     props.openDialog();
   });
 
-  const openModalCloseDialog = () => {
-    props.handleOpenAuth();
-    props.handleOpenDialog();
-  };
   return (
     <Dialog className="relative top-0">
       <div ref={domNode}>
@@ -49,12 +45,13 @@ const ProfileDialog = (props: any) => {
             <p>Update Avatar</p>
           </span>
         )}
-        <span
-          onClick={!currentUser ? openModalCloseDialog : logout}
+
+        <p
           className="flex  space-x-2 border-transparent border-[1px] hover:bg-hover cursor-pointer p-2 "
+          onClick={!currentUser ? props.handleOpenAuth : logout}
         >
-          <p>{currentUser ? "Logout" : "Login"}</p>
-        </span>
+          {currentUser ? "Logout" : "Login"}
+        </p>
       </div>
     </Dialog>
   );

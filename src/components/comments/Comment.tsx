@@ -1,5 +1,5 @@
 import moment from "moment";
-import { avatarIcon, icons } from "../styles/heroicons-style";
+import { avatarIcon } from "../styles/heroicons-style";
 import Avatar from "../shared/Avatar";
 const timeAgo = (el: any) => moment(el).fromNow();
 const Comment = (props: any) => {

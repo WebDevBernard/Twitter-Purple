@@ -95,7 +95,6 @@ const NewComment = (props: any) => {
             <br />
             <div className="flex items-center">
               <p className="mr-4 text-secondary_text">
-                {" "}
                 {error && error.message}
               </p>
               <p

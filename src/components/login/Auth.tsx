@@ -1,5 +1,5 @@
 import { Formik, Form } from "formik";
-import { ErrorMessage, useField } from "formik";
+import { useField } from "formik";
 import {
   validateSignIn,
   validateReset,
@@ -10,56 +10,60 @@ import { auth } from "../../utils/firebase";
 import Button from "../shared/Button";
 
 const TextInput = ({ label, ...props }: any) => {
-  const [field] = useField(props);
-  const element =
-    props.element === "textarea" ? (
-      <textarea autoComplete="off" {...field} {...props} />
-    ) : (
-      <input noValidate autoComplete="off" {...field} {...props} />
-    );
+  const [field, meta] = useField(props);
 
   return (
-    <div {...props}>
-      <label {...props} htmlFor={field.name}>
+    <div>
+      <label className={props.className} htmlFor={field.name}>
         {label}
       </label>
-      {element}
-      <ErrorMessage component="div" className="" name={field.name} />
+      <input
+        className={`${
+          meta.error && meta.touched && "border-red-500 border-2"
+        } w-full rounded-md text-lg py-1.5 px-2 focus:outline-primary_light_text placeholder-primary_light_text`}
+        noValidate
+        autoComplete="off"
+        {...field}
+        {...props}
+      />
+      <p className="text-red-500">{meta.error && meta.touched && meta.error}</p>
     </div>
   );
 };
 
 const ForgotPassword = (props: any) => {
+  console.log(props.forgotPassword);
   return (
     <div>
       <p
         className="float-right p-2 cursor-pointer"
-        onClick={props.passwordReset}
+        onClick={props.toggleForgotPassword}
       >
-        {!props.passwordText ? "Forgot Password?" : "Return"}
+        {!props.forgotPassword ? "Forgot Password?" : "Return"}
       </p>
     </div>
   );
 };
-
-interface SignUp {
-  onClose: any;
-  loading: any;
-  handleError: any;
-  handleLoading: any;
-  handleNotification: any;
-  passwordReset: any;
-  passwordText: any;
-}
+const FormButton = (props: any) => {
+  return (
+    <div>
+      <Button
+        disabled={props.disabled}
+        className="font-thin px-6 py-1.5 rounded-md w-full bottom-0"
+      >
+        {props.content}
+      </Button>
+    </div>
+  );
+};
 
 const SignUp = ({
   onClose,
   loading,
-  handleError,
   handleLoading,
   handleNotification,
-  passwordReset,
-  passwordText,
+  toggleForgotPassword,
+  forgotPassword,
 }: any) => {
   const signUpHandler = async (values: any) => {
     try {
@@ -73,7 +77,7 @@ const SignUp = ({
       onClose();
       handleNotification(`welcome ${auth.currentUser?.displayName}!`);
     } catch (err) {
-      handleError("Please use a different email address");
+      handleNotification("Please use a different email address");
       console.error(err);
     }
   };
@@ -94,52 +98,45 @@ const SignUp = ({
       <Form className="space-y-2">
         <TextInput
           label="Your username"
-          className="w-full rounded-md text-lg py-1.5 focus:outline-primary_light_text placeholder-primary_light_text"
           placeholder="Enter a username"
           name="username"
           type="text"
         />
         <TextInput
           label="Your email"
-          className="w-full rounded-md text-lg py-1.5 focus:outline-primary_light_text placeholder-primary_light_text"
           placeholder="username@email.com"
           name="email"
           type="email"
         />
         <TextInput
           label="Your password"
-          className="w-full rounded-md text-lg py-1.5 focus:outline-primary_light_text placeholder-primary_light_text"
           placeholder="*******"
           name="password"
           type="password"
         />
         <TextInput
           label="Confirm your password"
-          className="w-full rounded-md text-lg py-1.5 focus:outline-primary_light_text placeholder-primary_light_text"
           placeholder="*******"
           name="passwordConfirm"
           type="password"
         />
         <ForgotPassword
-          passwordText={passwordText}
-          passwordReset={passwordReset}
+          forgotPassword={forgotPassword}
+          toggleForgotPassword={toggleForgotPassword}
         />
-        <Button
-          className="font-thin py-1.5 rounded-md w-full bottom-0"
+        <FormButton
           disabled={loading}
-        >
-          {!loading ? "Sign Up" : "Loading"}
-        </Button>
+          content={!loading ? "Sign Up" : "Loading"}
+        />
       </Form>
     </Formik>
   );
 };
 export const SignIn = ({
   onClose,
-  handleError,
   handleNotification,
-  passwordReset,
-  passwordText,
+  toggleForgotPassword,
+  forgotPassword,
 }: any) => {
   const initialValues = {
     email: "guest@email.com",
@@ -151,7 +148,7 @@ export const SignIn = ({
       onClose();
       handleNotification(`Welcome back ${auth.currentUser?.displayName}!`);
     } catch (err) {
-      handleError("Invalid Credentials");
+      handleNotification("Invalid Credentials");
       console.error(err);
     }
   };
@@ -165,25 +162,21 @@ export const SignIn = ({
       <Form className="space-y-2">
         <TextInput
           label="Your email"
-          className="w-full rounded-md text-lg py-1.5 focus:outline-primary_light_text placeholder-primary_light_text"
           placeholder="username@email.com"
           name="email"
           type="email"
         />
         <TextInput
           label="Your password"
-          className="w-full rounded-md text-lg py-1.5 focus:outline-primary_light_text placeholder-primary_light_text"
           placeholder="*******"
           name="password"
           type="password"
         />
         <ForgotPassword
-          passwordText={passwordText}
-          passwordReset={passwordReset}
+          forgotPassword={forgotPassword}
+          toggleForgotPassword={toggleForgotPassword}
         />
-        <Button className="font-thin px-6 py-1.5 rounded-md w-full bottom-0">
-          Login to your account
-        </Button>
+        <FormButton content={"Login to your account"} />
       </Form>
     </Formik>
   );
@@ -192,8 +185,8 @@ export const SignIn = ({
 export const ResetPassword = ({
   onClose,
   handleNotification,
-  passwordReset,
-  passwordText,
+  toggleForgotPassword,
+  forgotPassword,
 }: any) => {
   const resetPasswordHandler = async (values: any) => {
     try {
@@ -216,18 +209,15 @@ export const ResetPassword = ({
       <Form className="">
         <TextInput
           label="Your email"
-          className="w-full rounded-md text-lg py-1.5 focus:outline-primary_light_text placeholder-primary_light_text"
           placeholder="username@email.com"
           name="email"
           type="email"
         />
         <ForgotPassword
-          passwordText={passwordText}
-          passwordReset={passwordReset}
+          forgotPassword={forgotPassword}
+          toggleForgotPassword={toggleForgotPassword}
         />
-        <Button className="font-thin px-6 py-1.5 rounded-md w-full bottom-0">
-          Reset Password
-        </Button>
+        <FormButton content={"Reset Password"} />
       </Form>
     </Formik>
   );

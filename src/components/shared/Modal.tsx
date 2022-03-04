@@ -1,21 +1,29 @@
 import { motion } from "framer-motion";
 import { modalAnimation } from "../../utils/variants";
 import ReactDOM from "react-dom";
+import useClickedOutside from "../hooks/useClickedOutside";
 
 const Backdrop = (props: any) => (
   <div
-    className="fixed top-0 left-0 h-screen w-full z-20  opacity-20 transition bg-black ease-out duration-75"
+    className="fixed top-0 left-0 h-screen w-full z-20 opacity-20 transition bg-black ease-out duration-75"
     onClick={props.onClose}
   />
 );
 
 const ModalOverlay = (props: any) => {
-  return <div className={` ${props.className}`}>{props.children}</div>;
+  return (
+    <div className="z-30 flex justify-center items-center overflow-y-auto inset-0 fixed">
+      <div className={` ${props.className}`}>{props.children}</div>{" "}
+    </div>
+  );
 };
 
 const portalElement: HTMLElement = document.getElementById("modal")!;
 
 const Modal = (props: any) => {
+  const domNode = useClickedOutside(() => {
+    props.onClose();
+  });
   return (
     <>
       {ReactDOM.createPortal(
@@ -25,11 +33,12 @@ const Modal = (props: any) => {
       {ReactDOM.createPortal(
         <ModalOverlay onClose={props.onClose} {...props}>
           <motion.div
+            ref={domNode}
             variants={modalAnimation}
             initial="hidden"
             animate="visible"
             exit="exit"
-            className={`z-30 fixed border-[1px]  border-border text-secondary_text bg-bg rounded-md opacity-95 shadow-lg ${props.className}`}
+            className={` w-auto mx-w-3xl border-[1px]  border-border text-secondary_text bg-bg rounded-md opacity-95 shadow-lg ${props.className}`}
           >
             {props.children}
           </motion.div>

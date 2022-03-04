@@ -7,19 +7,19 @@ import { icons } from "../styles/heroicons-style";
 const Layout = (props: any) => {
   const { notification } = useContext<any>(AuthContext);
   return (
-    <div className="flex-1  max-w-[600px] border-x-[1px] border-hover_border overflow-auto no-scrollbar relative">
-      <div className="text-secondary_text flex justify-between items-center space-x-2 top-0 sticky p-3 border-y-[1px] border-hover_border z-10 bg-bg opacity-90 ">
+    <div className="flex-1 max-w-[600px] border-2 overflow-auto no-scrollbar relative ">
+      <div className="text-secondary_text flex justify-between items-center top-0 sticky p-3 z-10 bg-bg opacity-90 font-bold text-xl space-x-2">
         <Link to={"/"}>
-          <div className="flex space-x-2 ">
-            {window.location.href.match("comments") && (
-              <ArrowLeftIcon className={icons} />
-            )}
-            <p className="text-xl">
-              {window.location.href.match("comments") ? "Tweets" : "Home"}
-            </p>
-          </div>
+          {window.location.href.match("comments") ? (
+            <div className="text-xl space-x-2 flex ">
+              <ArrowLeftIcon className={`${icons}`} />
+              <p>Tweets</p>
+            </div>
+          ) : (
+            <p>Home</p>
+          )}
         </Link>
-        <p className="text-xl space-x-2">{notification}</p>
+        <p>{notification}</p>
       </div>
       {props.children}
     </div>

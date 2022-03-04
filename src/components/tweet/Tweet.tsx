@@ -9,6 +9,7 @@ import {
   HeartIcon,
   DotsHorizontalIcon,
 } from "@heroicons/react/outline";
+import { avatarIcon, icons } from "../styles/heroicons-style";
 import { HeartIcon as SolidHeartIcon } from "@heroicons/react/solid";
 import { AnimatePresence } from "framer-motion";
 import Dialog from "../shared/Dialog";
@@ -18,7 +19,7 @@ import {
   XCircleIcon,
 } from "@heroicons/react/outline";
 import Avatar from "../shared/Avatar";
-import { icons } from "../styles/heroicons-style";
+
 import useClickedOutside from "../hooks/useClickedOutside";
 const timeAgo = (el: any) => moment(el).fromNow();
 const DeleteDialog = (props: any) => {
@@ -66,11 +67,7 @@ const Tweet = (props: any) => {
 
   return (
     <div className="flex px-3 py-2 border-hover_border border-y-[1px] max-w-[600px]">
-      <Avatar
-        className="h-12 w-12 md:h-16 md:w-16"
-        avatar={props.avatar}
-        alt="avatar"
-      />
+      <Avatar className={avatarIcon} avatar={props.avatar} alt="avatar" />
       <div className="w-full mt-2 mx-3 ">
         <div className="flex items-center justify-between relative">
           <span className="flex items-center space-x-2">
@@ -84,7 +81,7 @@ const Tweet = (props: any) => {
           {!(tweetIndex <= 4) && (
             <DotsHorizontalIcon
               onClick={handleDialog}
-              className="h-6 w-6 cursor-pointer rounded-full"
+              className={`rounded-full ${icons}`}
             />
           )}
           <AnimatePresence
@@ -100,22 +97,27 @@ const Tweet = (props: any) => {
             )}
           </AnimatePresence>
         </div>
-        <p className="break-all">{props.tweet}</p>
+        <p className="break-normal">{props.tweet}</p>
         <div className="flex items-center justify-evenly my-2">
           <div className="flex space-x-2">
-            <p>{commentLength}</p>{" "}
+            <p>{commentLength}</p>
             <Link to={`${props.userName}/comments/${props.id}`}>
-              <ChatAltIcon className="h-6 w-6 cursor-pointer rounded-full hover:text-purple-500 opacity-90" />
+              <ChatAltIcon
+                className={`rounded-full hover:text-purple-500 opacity-90 ${icons}`}
+              />
             </Link>
           </div>
 
           <div className="flex items-center space-x-2">
             <p>{heartLength}</p>
-            <div onClick={likeToggleHandler}>
+            <div
+              className={`rounded-full hover:text-purple-500 opacity-90 ${icons}`}
+              onClick={likeToggleHandler}
+            >
               {props.like ? (
-                <SolidHeartIcon className="h-6 w-6 cursor-pointer rounded-full text-purple-500 opacity-90 duration-150 ease-out active:scale-95 active:shadow-sm" />
+                <SolidHeartIcon className=" text-purple-500" />
               ) : (
-                <HeartIcon className="h-6 w-6 cursor-pointer rounded-full  hover:text-purple-500 opacity-90" />
+                <HeartIcon />
               )}
             </div>
           </div>

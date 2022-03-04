@@ -39,11 +39,11 @@ const Profile = (props: any) => {
             {avatarArray.map((src, index: any) => {
               return (
                 <img
-                  className={
+                  className={`h-16 w-16 border-2 p-1.5 rounded-full cursor-pointer ${
                     selected === avatarArray[index]
-                      ? `h-16 w-16 border-purple-500 border-2 p-1.5 rounded-full  cursor-pointer`
-                      : `h-16 w-16 border-zinc-300 border-2 p-1.5 rounded-full cursor-pointer`
-                  }
+                      ? "border-purple-500"
+                      : "border-zinc-300"
+                  }`}
                   src={src}
                   key={index}
                   id={index}

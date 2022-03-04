@@ -1,10 +1,9 @@
 import Tweet from "./Tweet";
-
 import { useSelector } from "react-redux";
-export default function TweetList(props: any) {
+export default function TweetList() {
   const tweets = useSelector((state: any) => state.tweet);
   return (
-    <div className="">
+    <>
       {[...tweets].reverse().map((tweet) => {
         return (
           <Tweet
@@ -18,6 +17,6 @@ export default function TweetList(props: any) {
           />
         );
       })}
-    </div>
+    </>
   );
 }

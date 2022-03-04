@@ -31,7 +31,7 @@ const CurrentComment = (props: any) => {
   const heartLength = selectedTweet.like ? 1 : 0;
   return (
     <div>
-      <div className="flex px-3 py-2 border-hover_border border-y-[1px] max-w-[600px]">
+      <div className="flex px-3 py-2 border-y-[1px] max-w-[600px]">
         <Avatar avatar={selectedTweet.avatar} className={avatarIcon} />
         <div className="w-full mt-2 mx-3 ">
           <div className="flex items-center justify-between relative">
@@ -47,7 +47,7 @@ const CurrentComment = (props: any) => {
           <div className="flex items-center justify-evenly my-2">
             <div className="flex space-x-2">
               <p>{commentLength}</p>
-              <ChatAltIcon className={`${icons} opacity-90`} />
+              <ChatAltIcon className={`${icons} cursor-default opacity-90`} />
             </div>
             <div className="flex space-x-2">
               <p>{heartLength}</p>
