@@ -29,12 +29,37 @@ const TextInput = ({ label, ...props }: any) => {
   );
 };
 
+const ForgotPassword = (props: any) => {
+  return (
+    <div>
+      <p
+        className="float-right p-2 cursor-pointer"
+        onClick={props.passwordReset}
+      >
+        {!props.passwordText ? "Forgot Password?" : "Return"}
+      </p>
+    </div>
+  );
+};
+
+interface SignUp {
+  onClose: any;
+  loading: any;
+  handleError: any;
+  handleLoading: any;
+  handleNotification: any;
+  passwordReset: any;
+  passwordText: any;
+}
+
 const SignUp = ({
   onClose,
   loading,
   handleError,
   handleLoading,
   handleNotification,
+  passwordReset,
+  passwordText,
 }: any) => {
   const signUpHandler = async (values: any) => {
     try {
@@ -66,28 +91,56 @@ const SignUp = ({
       validationSchema={validateSignUp}
       onSubmit={signUpHandler}
     >
-      <Form className="">
-        <TextInput placeholder="Enter Username" name="username" type="text" />
-        <TextInput placeholder="Enter Email" name="email" type="email" />
+      <Form className="space-y-2">
         <TextInput
-          placeholder="Enter Password"
+          label="Your username"
+          className="w-full border-[1px] rounded-md text-lg py-1.5 focus:outline-primary_light_text"
+          placeholder="Enter a username"
+          name="username"
+          type="text"
+        />
+        <TextInput
+          label="Your email"
+          className="w-full border-[1px] rounded-md text-lg py-1.5 focus:outline-primary_light_text"
+          placeholder="username@email.com"
+          name="email"
+          type="email"
+        />
+        <TextInput
+          label="Your password"
+          className="w-full border-[1px] rounded-md text-lg py-1.5 focus:outline-primary_light_text"
+          placeholder="*******"
           name="password"
           type="password"
         />
         <TextInput
-          placeholder="Confirm Password"
+          label="Confirm your password"
+          className="w-full border-[1px] rounded-md text-lg py-1.5 focus:outline-primary_light_text"
+          placeholder="*******"
           name="passwordConfirm"
           type="password"
         />
-        <Button disabled={loading} className="">
+        <ForgotPassword
+          passwordText={passwordText}
+          passwordReset={passwordReset}
+        />
+        <Button
+          className="font-thin py-1.5 rounded-md w-full bottom-0"
+          disabled={loading}
+        >
           {!loading ? "Sign Up" : "Loading"}
         </Button>
       </Form>
     </Formik>
   );
 };
-
-export const SignIn = ({ onClose, handleError, handleNotification }: any) => {
+export const SignIn = ({
+  onClose,
+  handleError,
+  handleNotification,
+  passwordReset,
+  passwordText,
+}: any) => {
   const initialValues = {
     email: "guest@email.com",
     password: "123456",
@@ -109,26 +162,39 @@ export const SignIn = ({ onClose, handleError, handleNotification }: any) => {
       validationSchema={validateSignIn}
       onSubmit={loginHandler}
     >
-      <Form className="">
+      <Form className="space-y-2">
         <TextInput
-          className=""
-          placeholder="Enter Email"
+          label="Your email"
+          className="w-full border-[1px] rounded-md text-lg py-1.5 focus:outline-primary_light_text"
+          placeholder="username@email.com"
           name="email"
           type="email"
         />
         <TextInput
-          className=""
-          placeholder="Enter Password"
+          label="Your password"
+          className="w-full border-[1px] rounded-md text-lg py-1.5 focus:outline-primary_light_text"
+          placeholder="*******"
           name="password"
           type="password"
         />
-        <Button className="">Login</Button>
+        <ForgotPassword
+          passwordText={passwordText}
+          passwordReset={passwordReset}
+        />
+        <Button className="font-thin px-6 py-1.5 rounded-md w-full bottom-0">
+          Login to your account
+        </Button>
       </Form>
     </Formik>
   );
 };
 
-export const ResetPassword = ({ onClose, handleNotification }: any) => {
+export const ResetPassword = ({
+  onClose,
+  handleNotification,
+  passwordReset,
+  passwordText,
+}: any) => {
   const resetPasswordHandler = async (values: any) => {
     try {
       await auth.sendPasswordResetEmail(values.email);
@@ -148,8 +214,20 @@ export const ResetPassword = ({ onClose, handleNotification }: any) => {
       onSubmit={resetPasswordHandler}
     >
       <Form className="">
-        <TextInput placeholder="Enter Email" name="email" type="email" />
-        <Button className="">Reset Password</Button>
+        <TextInput
+          label="Your email"
+          className="w-full border-[1px] rounded-md text-lg py-1.5 focus:outline-primary_light_text"
+          placeholder="username@email.com"
+          name="email"
+          type="email"
+        />
+        <ForgotPassword
+          passwordText={passwordText}
+          passwordReset={passwordReset}
+        />
+        <Button className="font-thin px-6 py-1.5 rounded-md w-full bottom-0">
+          Reset Password
+        </Button>
       </Form>
     </Formik>
   );
