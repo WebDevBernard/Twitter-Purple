@@ -11,7 +11,7 @@ import Widgets from "./components/layout/Widgets";
 import { AnimatePresence } from "framer-motion";
 import NavTweet from "./components/tweet/NavTweet";
 import NewTweet from "./components/tweet/NewTweet";
-import CurrentComment from "./components/comments/CurrentComment";
+import CommentList from "./components/tweet/CommentList";
 import Profile from "./components/login/Profile";
 import Login from "./components/login/Login";
 import TweetList from "./components/tweet/TweetList";
@@ -55,7 +55,7 @@ function App() {
             path="/:userid/comments/:id"
             element={
               <Layout>
-                <CurrentComment />
+                <CommentList />
               </Layout>
             }
           />

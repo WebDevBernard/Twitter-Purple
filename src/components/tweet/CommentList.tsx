@@ -7,10 +7,9 @@ import { HeartIcon as SolidHeartIcon } from "@heroicons/react/solid";
 import { avatarIcon, icons } from "../styles/heroicons-style";
 import Avatar from "../shared/Avatar";
 import NewComment from "./NewComment";
-import Tweet from "../tweet/Tweet";
 import Comment from "./Comment";
 const timeAgo = (el: any) => moment(el).fromNow();
-const CurrentComment = (props: any) => {
+const CommentList = () => {
   const params = useParams();
   const tweets = useSelector((state: any) => state.tweet);
   const selectedTweet = tweets.find((tweet: any) => tweet.id === params.id);
@@ -82,4 +81,4 @@ const CurrentComment = (props: any) => {
   );
 };
 
-export default CurrentComment;
+export default CommentList;

@@ -1,13 +1,11 @@
 import { tweetActions } from "../../redux/tweet-slice";
 import { useDispatch } from "react-redux";
 import useCurrentUser from "../hooks/useCurrentUser";
-import { useNavigate } from "react-router-dom";
 import useValidate from "../hooks/useValidate";
 import TweetForm from "./TweetForm";
-const NewTweet = (props: any) => {
-  const [selectUserAvatar, selectUserName] = useCurrentUser();
-  const navigate = useNavigate();
+const NewComment = (props: any) => {
   const dispatch = useDispatch();
+  const [selectUserAvatar, selectUserName] = useCurrentUser();
   const {
     value: enteredTweet,
     isValid: enteredTweetIsValid,
@@ -21,10 +19,13 @@ const NewTweet = (props: any) => {
   );
   const handleDispatch = () => {
     dispatch(
-      tweetActions.addTweet({
-        tweet: enteredTweet,
-        avatar: selectUserAvatar,
-        userName: selectUserName,
+      tweetActions.addComment({
+        id: props.id,
+        reply: {
+          comment: enteredTweet,
+          avatar: selectUserAvatar,
+          userName: selectUserName,
+        },
       })
     );
   };
@@ -36,8 +37,6 @@ const NewTweet = (props: any) => {
     }
     handleDispatch();
     resetTweetInput();
-    navigate("/");
-    props.onClose();
   };
 
   const addTweetOnEnter = (e: any) => {
@@ -48,7 +47,7 @@ const NewTweet = (props: any) => {
 
   return (
     <TweetForm
-      placeholder={"What are you humming about?"}
+      placeholder={"Tweet your reply"}
       enteredTweet={enteredTweet}
       tweetSubmitHandler={tweetSubmitHandler}
       tweetBlurHandler={tweetBlurHandler}
@@ -60,4 +59,4 @@ const NewTweet = (props: any) => {
   );
 };
 
-export default NewTweet;
+export default NewComment;

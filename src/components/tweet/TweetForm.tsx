@@ -4,18 +4,22 @@ import TweetButton from "../layout/TweetButton";
 import { tweetIconSmall } from "../styles/heroicons-style";
 import useAvatarReady from "../hooks/useAvatarReady";
 
-const TweetForm = ([
+const TweetForm = ({
   enteredTweet,
-  count,
-  error,
-  errorHandler,
+  tweetSubmitHandler,
+  tweetBlurHandler,
   tweetChangeHandler,
-  addTweetOnClick,
   addTweetOnEnter,
-]: any) => {
+  tweetInputHasError,
+  tweetCount,
+  placeholder,
+}: any) => {
   const ready = useAvatarReady();
   const [selectUserAvatar] = useCurrentUser();
-  console.log(count, error);
+
+  const errorStyle = tweetInputHasError
+    ? "text-red-500"
+    : "text-secondary_text";
   return (
     <div className="flex px-3 py-2 border-hover_border  border-y-[1px]">
       {ready && (
@@ -25,28 +29,25 @@ const TweetForm = ([
         />
       )}
       <div className="w-full mt-2 mx-3">
-        <form onSubmit={addTweetOnClick} onKeyDown={addTweetOnEnter}>
+        <form onSubmit={tweetSubmitHandler} onKeyDown={addTweetOnEnter}>
           <textarea
             id="tweetinput"
-            onClick={errorHandler}
             onChange={tweetChangeHandler}
+            onBlur={tweetBlurHandler}
             value={enteredTweet}
             rows={3}
             autoComplete="off"
-            placeholder="What are you humming about?"
+            placeholder={placeholder}
             className="text-primary_dark_text placeholder:text-primary_light_text w-full text-lg bg-transparent border-b-2 border-hover_border resize-none focus:outline-none"
           ></textarea>
           <div className="flex items-center justify-between mt-2">
             <br />
             <div className="flex items-center">
-              <p className="mr-4 text-secondary_text">
-                {error && error.message}
+              <p className={`mr-4 ${errorStyle}`}>
+                {tweetInputHasError && tweetCount === 0 && "tweet too short!"}
+                {tweetInputHasError && tweetCount > 140 && "tweet too long!"}
               </p>
-              <p
-                className={error ? "text-secondary_text " : "text-primary_text"}
-              >
-                {140 - count}
-              </p>
+              <p className={errorStyle}>{140 - tweetCount}</p>
               <TweetButton className={tweetIconSmall} text="Tweet" />
             </div>
           </div>
