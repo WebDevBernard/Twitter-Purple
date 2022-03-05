@@ -23,25 +23,29 @@ const Comment = (props: any) => {
   const [openDialog, setOpenDialog] = useState<boolean>(false);
   const { handleNotification } = useContext<any>(AuthContext);
 
-  const likeToggleHandler = () => {
+  const likeToggleHandler = (e: any) => {
     dispatch(
       tweetActions.toggleCommentLike({
         id: props.currentTweetId,
         commentid: props.id,
-        like: !props.like,
       })
     );
   };
 
   const heartLength = props.like ? 1 : 0;
-
-  const deleteHandler = () => {
-    handleNotification("Tweet Deleted");
-    // dispatch(tweetActions.deleteTweet({ id: props.id }));
+  const handleDialog = () => {
+    setOpenDialog(!openDialog);
   };
 
-  const handleDialog = (e: any) => {
-    setOpenDialog(!openDialog);
+  const deleteHandler = () => {
+    handleNotification("Comment Deleted");
+    // handleDialog();
+    dispatch(
+      tweetActions.deleteComment({
+        id: props.currentTweetId,
+        commentid: props.id,
+      })
+    );
   };
 
   return (
@@ -57,10 +61,10 @@ const Comment = (props: any) => {
             <p className="text-sm ">{timeAgo(props.createdAt)}</p>
           </span>
 
-          <DotsHorizontalIcon
+          {/* <DotsHorizontalIcon
             onClick={handleDialog}
             className={`rounded-full ${icons}`}
-          />
+          /> */}
           <AnimatePresence
             initial={false}
             exitBeforeEnter={true}

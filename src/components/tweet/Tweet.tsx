@@ -32,7 +32,7 @@ const Tweet = (props: any) => {
     dispatch(tweetActions.deleteTweet({ id: props.id }));
   };
 
-  const handleDialog = (e: any) => {
+  const handleDialog = () => {
     setOpenDialog(!openDialog);
   };
 

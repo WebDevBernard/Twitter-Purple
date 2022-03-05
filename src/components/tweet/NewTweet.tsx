@@ -4,6 +4,7 @@ import useCurrentUser from "../hooks/useCurrentUser";
 import { useNavigate } from "react-router-dom";
 import useValidate from "../hooks/useValidate";
 import TweetForm from "./TweetForm";
+
 const NewTweet = (props: any) => {
   const [selectUserAvatar, selectUserName] = useCurrentUser();
   const navigate = useNavigate();
