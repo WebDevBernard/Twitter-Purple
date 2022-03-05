@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 const useValidate = (validateValue: any) => {
   const [enteredValue, setEnteredValue] = useState("");
   const [isTouched, setIsTouched] = useState(false);
@@ -6,7 +6,7 @@ const useValidate = (validateValue: any) => {
   const valueIsValid = validateValue(enteredValue);
   const hasError = !valueIsValid && isTouched;
 
-  const valueChangeHandler = (e: any) => {
+  const valueChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setEnteredValue(e.target.value);
     // setCount(e.target.value) not setCount(enteredTweet) otherwise it will not update immediately
     setCount(e.target.value.length);

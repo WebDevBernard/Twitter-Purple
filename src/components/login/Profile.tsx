@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, ChangeEvent } from "react";
 import AuthContext from "../../store/auth-context";
 import { auth } from "../../utils/firebase";
 import { avatarArray } from "../../utils/avatar-names";

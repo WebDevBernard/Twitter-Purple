@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import { tweetActions } from "../../redux/tweet-slice";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import AuthContext from "../../store/auth-context";
 import moment from "moment";
 import { avatarIcon, commentIcon, icons } from "../styles/heroicons-style";
@@ -23,11 +23,11 @@ const Comment = (props: any) => {
   const [openDialog, setOpenDialog] = useState<boolean>(false);
   const { handleNotification } = useContext<any>(AuthContext);
 
-  const likeToggleHandler = (e: any) => {
+  const likeToggleHandler = () => {
     dispatch(
       tweetActions.toggleCommentLike({
-        id: props.currentTweetId,
-        commentid: props.id,
+        id: props.id,
+        like: !props.like,
       })
     );
   };
@@ -36,16 +36,12 @@ const Comment = (props: any) => {
   const handleDialog = () => {
     setOpenDialog(!openDialog);
   };
+  console.log(props);
 
   const deleteHandler = () => {
     handleNotification("Comment Deleted");
-    // handleDialog();
-    dispatch(
-      tweetActions.deleteComment({
-        id: props.currentTweetId,
-        commentid: props.id,
-      })
-    );
+    handleDialog();
+    dispatch(tweetActions.deleteComment(props.id));
   };
 
   return (
@@ -61,10 +57,10 @@ const Comment = (props: any) => {
             <p className="text-sm ">{timeAgo(props.createdAt)}</p>
           </span>
 
-          {/* <DotsHorizontalIcon
+          <DotsHorizontalIcon
             onClick={handleDialog}
             className={`rounded-full ${icons}`}
-          /> */}
+          />
           <AnimatePresence
             initial={false}
             exitBeforeEnter={true}

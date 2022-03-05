@@ -3,7 +3,7 @@ import { loadState, saveState } from "./localStorage";
 import throttle from "lodash.throttle";
 import tweetSlice from "./tweet-slice";
 const store = configureStore({
-  reducer: { tweet: tweetSlice.reducer },
+  reducer: { tweetList: tweetSlice.reducer },
   preloadedState: loadState(),
 });
 

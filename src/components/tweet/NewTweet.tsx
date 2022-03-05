@@ -4,6 +4,7 @@ import useCurrentUser from "../hooks/useCurrentUser";
 import { useNavigate } from "react-router-dom";
 import useValidate from "../hooks/useValidate";
 import TweetForm from "./TweetForm";
+import { ChangeEvent } from "react";
 
 const NewTweet = (props: any) => {
   const [selectUserAvatar, selectUserName] = useCurrentUser();
@@ -30,7 +31,7 @@ const NewTweet = (props: any) => {
     );
   };
 
-  const tweetSubmitHandler = (e: any) => {
+  const tweetSubmitHandler = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     if (!enteredTweetIsValid) {
       return;
@@ -42,7 +43,7 @@ const NewTweet = (props: any) => {
   };
 
   const addTweetOnEnter = (e: any) => {
-    if (e.keyCode === 13) {
+    if (e.key === "Enter") {
       tweetSubmitHandler(e);
     }
   };

@@ -14,22 +14,29 @@ import { HeartIcon as SolidHeartIcon } from "@heroicons/react/solid";
 import { AnimatePresence } from "framer-motion";
 import Avatar from "../shared/Avatar";
 import DeleteDialog from "./DeleteDialog";
+
 const timeAgo = (el: any) => moment(el).fromNow();
 
 const Tweet = (props: any) => {
   const dispatch = useDispatch();
   const [openDialog, setOpenDialog] = useState<boolean>(false);
-  const tweets = useSelector((state: any) => state.tweet);
+  const { tweets, comments } = useSelector((state: any) => state.tweetList);
   const tweetIndex = tweets.findIndex((tweet: any) => tweet.id === props.id);
-  const commentLength = tweets[tweetIndex].reply.length;
+  const selectedComment = Array.isArray(comments)
+    ? comments.filter((comment: any) => comment.tweetId === props.id)
+    : null;
+
+  const commentLength = selectedComment?.length;
   const heartLength = tweets[tweetIndex].like ? 1 : 0;
   const { handleNotification } = useContext<any>(AuthContext);
+
   const likeToggleHandler = () => {
     dispatch(tweetActions.toggleLike({ id: props.id, like: !props.like }));
   };
+
   const deleteHandler = () => {
     handleNotification("Tweet Deleted");
-    dispatch(tweetActions.deleteTweet({ id: props.id }));
+    dispatch(tweetActions.deleteTweet(props.id));
   };
 
   const handleDialog = () => {

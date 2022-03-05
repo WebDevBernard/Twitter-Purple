@@ -15,6 +15,8 @@ import CommentList from "./components/tweet/CommentList";
 import Profile from "./components/login/Profile";
 import Login from "./components/login/Login";
 import TweetList from "./components/tweet/TweetList";
+import NewComment from "./components/tweet/NewComment";
+import CurrentTweet from "./components/tweet/CurrentTweet";
 function App() {
   const [openModal, setOpenModal] = useState<boolean>(false);
   const [openProfile, setOpenProfile] = useState<boolean>(false);
@@ -55,6 +57,8 @@ function App() {
             path="/:userid/comments/:id"
             element={
               <Layout>
+                <CurrentTweet />
+                <NewComment />
                 <CommentList />
               </Layout>
             }

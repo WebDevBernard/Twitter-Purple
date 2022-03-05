@@ -32,59 +32,50 @@ const tweetSlice = createSlice({
         avatar: action.payload.avatar,
         userName: action.payload.userName,
         like: false,
-        reply: [],
       };
-      state.push(newTweet);
+      state.tweets.push(newTweet);
     },
-    deleteTweet: (state, action) => {
-      return state.filter((tweet) => tweet.id !== action.payload.id);
+    deleteTweet: (state: any, action) => {
+      return {
+        ...state,
+        tweets: state.tweets.filter(
+          (tweet: any) => tweet.id !== action.payload
+        ),
+      };
     },
-    toggleLike: (state, action) => {
-      const index = state.findIndex((tweet) => tweet.id === action.payload.id);
-      state[index].like = action.payload.like;
+    toggleLike: (state: any, action) => {
+      const index = state.tweets.findIndex(
+        (tweet: any) => tweet.id === action.payload.id
+      );
+      state.tweets[index].like = action.payload.like;
     },
-    addComment: (state, action: PayloadAction<any>) => {
-      const index = state.findIndex((tweet) => tweet.id === action.payload.id);
-      const newComment: Comment = {
+    addComment: (state: any, action: PayloadAction<any>) => {
+      const newComment: any = {
         id: nanoid(),
         createdAt: Date.now(),
-        comment: action.payload.reply.comment,
-        avatar: action.payload.reply.avatar,
-        userName: action.payload.reply.userName,
+        tweetId: action.payload.tweetid,
+        comment: action.payload.comment,
+        avatar: action.payload.avatar,
+        userName: action.payload.userName,
         like: false,
       };
       {
-        state[index].reply.push(newComment);
+        state.comments.push(newComment);
       }
     },
     toggleCommentLike: (state: any, action) => {
-      const currentTweetIndex = state.findIndex(
-        (tweet: Tweet) => tweet.id === action.payload.id // props.currentTweetId
+      const index = state.comments.findIndex(
+        (tweet: any) => tweet.id === action.payload.id
       );
-
-      let currentComment = state[currentTweetIndex].reply.find(
-        (comment: Comment) => comment.id === action.payload.commentid
-      );
-
-      if (currentComment) {
-        currentComment.like = !currentComment.like;
-      }
+      state.comments[index].like = action.payload.like;
     },
     deleteComment: (state: any, action) => {
-      const currentTweetIndex = state.findIndex(
-        (tweet: Tweet) => tweet.id === action.payload.id // props.currentTweetId
-      );
-
-      const currentComment = state[currentTweetIndex].reply.findIndex(
-        (tweet: any) => tweet.id === action.payload.commentid
-      );
-      // console.log(current(currentComment));
-      // console.log(action.payload.commentid);
-      // return state.filter(
-      // (tweet: any) => console.log(tweet[0].reply.id)
-      // tweet[currentTweetIndex].reply[currentComment].id !==
-      // action.payload.commentid
-      // );
+      return {
+        ...state,
+        comments: state.comments.filter(
+          (comment: any) => comment.id !== action.payload
+        ),
+      };
     },
   },
 });
