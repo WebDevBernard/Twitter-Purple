@@ -9,9 +9,8 @@ import useClickedOutside from "../hooks/useClickedOutside";
 import { FC } from "react";
 
 interface IProps {
-  ref: React.MutableRefObject<HTMLDivElement | undefined>;
   handleDialog: () => void;
-  delete: () => void;
+  delete?: () => void;
 }
 const DeleteDialog: FC<IProps> = (props) => {
   const domNode = useClickedOutside(() => {

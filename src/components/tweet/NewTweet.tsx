@@ -6,9 +6,8 @@ import { useNavigate } from "react-router-dom";
 import useValidate from "../hooks/useValidate";
 import TweetForm from "./TweetForm";
 import { ChangeEvent } from "react";
-import { ITweetProps } from "../interfaces/interface";
 import { AppDispatch } from "../../redux/store";
-const NewTweet: FC = (props) => {
+const NewTweet = (props: any) => {
   const [selectUserAvatar, selectUserName] = useCurrentUser();
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
@@ -43,8 +42,8 @@ const NewTweet: FC = (props) => {
     navigate("/");
     props.onClose();
   };
-
-  const addTweetOnEnter = (e: React.KeyboardEvent<HTMLFormElement>): void => {
+  // React.KeyboardEvent<HTMLFormElement>
+  const addTweetOnEnter = (e: any) => {
     if (e.key === "Enter") {
       tweetSubmitHandler(e);
     }

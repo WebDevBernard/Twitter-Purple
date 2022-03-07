@@ -1,21 +1,26 @@
-import { useState, useContext, ChangeEvent, FC } from "react";
+import {
+  useState,
+  useContext,
+  ChangeEvent,
+  FC,
+  MouseEventHandler,
+} from "react";
 import AuthContext from "../../store/auth-context";
 import { auth } from "../../utils/firebase";
 import { avatarArray } from "../../utils/avatar-names";
 import Button from "../shared/Button";
-
 import Modal from "../shared/Modal";
 
-interface: const Profile: FC<> = (props) => {
-  const [selected, setSelected] = useState<string | null>("");
+const Profile: FC<{ onClose: () => boolean }> = (props) => {
+  const [selected, setSelected] = useState<string | null>(null);
   const { handleNotification } = useContext(AuthContext);
-  const handleSelected = (e) => {
+  const handleSelected = (e: any) => {
     setSelected(avatarArray[e.target.id]);
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (selected === "") {
+    if (selected === null) {
       handleNotification("No Avatar Selected");
       return;
     }
@@ -46,7 +51,7 @@ interface: const Profile: FC<> = (props) => {
                   }`}
                   src={src}
                   key={index}
-                  id={index}
+                  id={index.toString()}
                   onClick={handleSelected}
                   alt={src}
                 />

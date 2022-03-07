@@ -4,9 +4,7 @@ import Modal from "../shared/Modal";
 import { XIcon } from "@heroicons/react/solid";
 import SignUp, { ResetPassword, SignIn } from "./Auth";
 
-const Login: FC<{
-  onClose: React.MouseEventHandler<HTMLDivElement | SVGSVGElement>;
-}> = (props) => {
+const Login = (props: any) => {
   const [isLogin, setIsLogin] = useState<boolean>(false);
   const [forgotPassword, setForgotPassword] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);

@@ -1,4 +1,4 @@
-import { Formik, Form , FieldHookConfig,} from "formik";
+import { Formik, Form } from "formik";
 import { useField } from "formik";
 import {
   validateSignIn,
@@ -8,23 +8,8 @@ import {
 import avatar from "../../utils/avatar-names";
 import { auth } from "../../utils/firebase";
 import Button from "../shared/Button";
-import { FC } from "react";
 
-interface IAuth{
- disabled:boolean
-  onClose:
-  handleNotification:
-  toggleForgotPassword:
-  forgotPassword:
-}
-
-interface IText{
-  label: string;
-  props:  FieldHookConfig<string>;
-  className: string;
-}
-
-const TextInput:FC<IText> = ({ label, ...props }) => {
+const TextInput = ({ label, ...props }: any) => {
   const [field, meta] = useField(props);
 
   return (
@@ -46,8 +31,8 @@ const TextInput:FC<IText> = ({ label, ...props }) => {
   );
 };
 
-const ForgotPassword:FC<IAuth> = (props) => {
-  // console.log(props.forgotPassword);
+const ForgotPassword = (props: any) => {
+  console.log(props.forgotPassword);
   return (
     <div>
       <p
@@ -59,7 +44,7 @@ const ForgotPassword:FC<IAuth> = (props) => {
     </div>
   );
 };
-const FormButton:FC<IAuth> = (props) => {
+const FormButton = (props: any) => {
   return (
     <div>
       <Button
@@ -72,15 +57,15 @@ const FormButton:FC<IAuth> = (props) => {
   );
 };
 
-const SignUp:FC<IAuth> = ({
+const SignUp = ({
   onClose,
   loading,
   handleLoading,
   handleNotification,
   toggleForgotPassword,
   forgotPassword,
-}) => {
-  const signUpHandler = async (values) => {
+}: any) => {
+  const signUpHandler = async (values: any) => {
     try {
       await auth.createUserWithEmailAndPassword(values.email, values.password);
 
@@ -147,17 +132,17 @@ const SignUp:FC<IAuth> = ({
     </Formik>
   );
 };
-export const SignIn:FC<IAuth> = ({
+export const SignIn = ({
   onClose,
   handleNotification,
   toggleForgotPassword,
   forgotPassword,
-}) => {
+}: any) => {
   const initialValues = {
     email: "guest@email.com",
     password: "123456",
   };
-  const loginHandler = async (values) => {
+  const loginHandler = async (values: any) => {
     try {
       await auth.signInWithEmailAndPassword(values.email, values.password);
       onClose();
@@ -197,15 +182,13 @@ export const SignIn:FC<IAuth> = ({
   );
 };
 
-
-
-export const ResetPassword:FC<IAuth> = ({
+export const ResetPassword = ({
   onClose,
   handleNotification,
   toggleForgotPassword,
   forgotPassword,
-}) => {
-  const resetPasswordHandler = async (values) => {
+}: any) => {
+  const resetPasswordHandler = async (values: any) => {
     try {
       await auth.sendPasswordResetEmail(values.email);
       onClose();

@@ -18,7 +18,7 @@ import { AppDispatch, RootState } from "../../redux/store";
 import { ITweetProps, ICommentProps } from "../interfaces/interface";
 const timeAgo = (date: Date) => moment(date).fromNow();
 
-const Tweet: FC<ICommentProps | ITweetProps> = (props) => {
+const Tweet = (props: any) => {
   const dispatch = useDispatch<AppDispatch>();
   const [openDialog, setOpenDialog] = useState<boolean>(false);
   const { tweets, comments } = useSelector(

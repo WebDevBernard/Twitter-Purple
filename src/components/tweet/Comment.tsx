@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, FC } from "react";
 import { tweetActions } from "../../redux/tweet-slice";
 import { useDispatch } from "react-redux";
 import AuthContext from "../../store/auth-context";
@@ -18,9 +18,10 @@ import DeleteDialog from "./DeleteDialog";
 import Avatar from "../shared/Avatar";
 import ReactTooltip from "react-tooltip";
 import { AppDispatch } from "../../redux/store";
-const Comment = (props) => {
+import { ICommentProps } from "../interfaces/interface";
+const Comment = (props: any) => {
   const dispatch = useDispatch<AppDispatch>();
-  const timeAgo = (el) => moment(el).fromNow();
+  const timeAgo = (date: Date) => moment(date).fromNow();
   const [openDialog, setOpenDialog] = useState<boolean>(false);
   const { handleNotification } = useContext(AuthContext);
 
@@ -75,7 +76,7 @@ const Comment = (props) => {
             )}
           </AnimatePresence>
         </div>
-        <p className="break-all">{props.tweet}</p>
+        <p className="break-all">{props.comment}</p>
         <div className="flex items-center justify-evenly my-2">
           <ReactTooltip backgroundColor="#64748b" />
 

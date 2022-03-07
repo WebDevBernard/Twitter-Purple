@@ -9,7 +9,9 @@ interface IProps {
   enteredTweet: string;
   tweetSubmitHandler: React.FormEventHandler<HTMLFormElement>;
   tweetBlurHandler: React.FocusEventHandler<HTMLTextAreaElement>;
-  tweetChangeHandler: React.ChangeEventHandler<HTMLTextAreaElement>;
+  tweetChangeHandler: React.ChangeEventHandler<
+    HTMLInputElement | HTMLTextAreaElement
+  >;
   addTweetOnEnter: React.KeyboardEventHandler<HTMLFormElement>;
   tweetInputHasError: boolean;
   tweetCount: number;

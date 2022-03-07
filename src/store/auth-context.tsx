@@ -14,7 +14,7 @@ const AuthContext = createContext<IAuthContextProps>({
 });
 
 export const AuthContextProvider: FC = (props) => {
-  const [currentUser, setCurrentUser] = useState<string | null>(null);
+  const [currentUser, setCurrentUser] = useState<any>(null);
   const [notification, setNotification] = useState<string | null>("");
   const handleNotification = (message: string) => {
     setNotification(message);

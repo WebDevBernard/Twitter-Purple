@@ -22,13 +22,13 @@ function App() {
   const [openProfile, setOpenProfile] = useState<boolean>(false);
   const [openAuth, setOpenAuth] = useState<boolean>(false);
 
-  const handleOpenAuth = () => {
+  const handleOpenAuth: any = () => {
     setOpenAuth(!openAuth);
   };
-  const handleOpenProfile = () => {
+  const handleOpenProfile: any = () => {
     setOpenProfile(!openProfile);
   };
-  const handleOpenModal = () => {
+  const handleOpenModal: any = () => {
     setOpenModal(!openModal);
   };
 

@@ -7,8 +7,8 @@ const tweetSlice = createSlice({
   name: "tweets",
   initialState,
   reducers: {
-    addTweet: (state: ITweetProps[], action: PayloadAction<ITweetProps>) => {
-      const newTweet = {
+    addTweet: (state, action: any) => {
+      const newTweet: any = {
         id: nanoid(),
         createdAt: Date.now(),
         tweet: action.payload.tweet,
@@ -18,26 +18,25 @@ const tweetSlice = createSlice({
       };
       state.tweets.push(newTweet);
     },
-    deleteTweet: (state, action: PayloadAction<ITweetProps>) => {
+    deleteTweet: (state, action: any) => {
       return {
         ...state,
-        tweets: state.tweets.filter((tweet) => tweet.id !== action.payload),
+        tweets: state.tweets.filter(
+          (tweet: any) => tweet.id !== action.payload
+        ),
       };
     },
-    toggleLike: (state, action: PayloadAction<ITweetProps>) => {
+    toggleLike: (state, action: any) => {
       const index = state.tweets.findIndex(
         (tweet) => tweet.id === action.payload.id
       );
       state.tweets[index].like = action.payload.like;
     },
-    addComment: (
-      state: ICommentProps[],
-      action: PayloadAction<ICommentProps>
-    ) => {
-      const newComment = {
+    addComment: (state, action: any) => {
+      const newComment: any = {
         id: nanoid(),
         createdAt: Date.now(),
-        tweetId: action.payload.tweetid,
+        tweetId: action.payload.tweetId,
         comment: action.payload.comment,
         avatar: action.payload.avatar,
         userName: action.payload.userName,
@@ -47,17 +46,17 @@ const tweetSlice = createSlice({
         state.comments.push(newComment);
       }
     },
-    toggleCommentLike: (state, action: PayloadAction<ICommentProps>) => {
+    toggleCommentLike: (state, action: any) => {
       const index = state.comments.findIndex(
         (tweet) => tweet.id === action.payload.id
       );
       state.comments[index].like = action.payload.like;
     },
-    deleteComment: (state, action: PayloadAction) => {
+    deleteComment: (state, action: any) => {
       return {
         ...state,
         comments: state.comments.filter(
-          (comment) => comment.id !== action.payload
+          (comment: any) => comment.id !== action.payload
         ),
       };
     },

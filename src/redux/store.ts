@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { loadState, saveState } from "./localStorage";
+
 import throttle from "lodash.throttle";
 import tweetSlice from "./tweet-slice";
 const store = configureStore({

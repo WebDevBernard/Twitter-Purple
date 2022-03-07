@@ -1,6 +1,6 @@
 export interface ITweetProps {
   id: number | string;
-  createdAt: number | Date;
+  createdAt: Date;
   tweet: string;
   avatar: string;
   userName: string;
@@ -9,9 +9,9 @@ export interface ITweetProps {
 
 export interface ICommentProps {
   id: number | string;
-  createdAt: number | Date;
+  createdAt: Date;
   tweetId: number | string;
-  tweet: string;
+  comment: string;
   avatar: string;
   userName: string;
   like: boolean;

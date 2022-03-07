@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useState, useContext, FC } from "react";
+import { useState, useContext, FC, RefObject } from "react";
 import AuthContext from "../../store/auth-context";
 import { auth } from "../../utils/firebase";
 import { nanoid } from "nanoid";
@@ -17,9 +17,14 @@ const logout = async () => {
   await auth.signOut();
 };
 
-interface IProps{
-  ref: 
-
+interface IProps {
+  openDialog?: any;
+  menuRef?: RefObject<HTMLDivElement>;
+  className?: string;
+  handleOpenProfile?: () => boolean;
+  handleOpenAuth?: () => boolean;
+  handleOpenDialog?: React.MouseEventHandler<HTMLSpanElement>;
+  handleOpenModal?: React.MouseEventHandler<HTMLDivElement>;
 }
 const ProfileDialog: FC<IProps> = (props) => {
   const { currentUser } = useContext(AuthContext);
@@ -60,7 +65,7 @@ const ProfileDialog: FC<IProps> = (props) => {
   );
 };
 
-const Nav = (props) => {
+const Nav: FC<IProps> = (props) => {
   const [openDialog, setOpenDialog] = useState<boolean>(false);
 
   const handleOpenDialog = () => {
