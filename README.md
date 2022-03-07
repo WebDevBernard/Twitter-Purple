@@ -4,7 +4,7 @@
 
 ## About
 
-- This app is frontend only. I made it to practice React( Redux and Context ), Tailwind CSS, React with TypeScript and pretty much anything I learned after doing a tutorial.
+- This app is frontend only. I made it to practice React( Redux and Context ), Tailwind CSS, React with TypeScript and pretty much anything I learned after learning something new.
 
 ## Tech Stack
 
