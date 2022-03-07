@@ -1,12 +1,12 @@
-import { useRef, useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 
 // custom hook to see if clicked outside of ref
-let useClickedOutside = (handler: any) => {
-  let domNode: any = useRef();
+let useClickedOutside = (handler: React.FormEvent) => {
+  let domNode = useRef<HTMLTextAreaElement>();
 
   useEffect(() => {
-    let maybeHandler = (event: any) => {
-      if (!domNode.current.contains(event.target)) {
+    let maybeHandler = (event: React.FormEvent) => {
+      if (!domNode.current?.contains(event.target)) {
         handler();
       }
     };

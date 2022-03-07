@@ -17,11 +17,11 @@ import { HeartIcon as SolidHeartIcon } from "@heroicons/react/solid";
 import DeleteDialog from "./DeleteDialog";
 import Avatar from "../shared/Avatar";
 import ReactTooltip from "react-tooltip";
-const Comment = (props: any) => {
+const Comment = (props) => {
   const dispatch = useDispatch();
-  const timeAgo = (el: any) => moment(el).fromNow();
+  const timeAgo = (el) => moment(el).fromNow();
   const [openDialog, setOpenDialog] = useState<boolean>(false);
-  const { handleNotification } = useContext<any>(AuthContext);
+  const { handleNotification } = useContext(AuthContext);
 
   const likeToggleHandler = () => {
     dispatch(
@@ -53,7 +53,7 @@ const Comment = (props: any) => {
             <p className="text-lg text-secondary_text font-bold ">
               {props.userName.split("_")[0]}
             </p>
-            <p className="text-xs ">@ {props.userName}</p>
+            <p className="text-xs whitespace-nowrap">@ {props.userName}</p>
             <p className="text-sm ">{timeAgo(props.createdAt)}</p>
           </span>
 

@@ -6,14 +6,14 @@ import Button from "../shared/Button";
 
 import Modal from "../shared/Modal";
 
-const Profile = (props: any) => {
+const Profile = (props) => {
   const [selected, setSelected] = useState("");
-  const { handleNotification } = useContext<any>(AuthContext);
-  const handleSelected = (e: any) => {
+  const { handleNotification } = useContext(AuthContext);
+  const handleSelected = (e) => {
     setSelected(avatarArray[e.target.id]);
   };
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (selected === "") {
       handleNotification("No Avatar Selected");
@@ -36,7 +36,7 @@ const Profile = (props: any) => {
         <div className="p-3 space-y-4">
           <p className="border-b-border border-[1px]">Choose a new avatar</p>
           <div className="grid grid-cols-2 gap-2">
-            {avatarArray.map((src, index: any) => {
+            {avatarArray.map((src, index) => {
               return (
                 <img
                   className={`h-16 w-16 border-2 p-1.5 rounded-full cursor-pointer ${

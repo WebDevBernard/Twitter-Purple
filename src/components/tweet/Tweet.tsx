@@ -14,21 +14,23 @@ import { HeartIcon as SolidHeartIcon } from "@heroicons/react/solid";
 import { AnimatePresence } from "framer-motion";
 import Avatar from "../shared/Avatar";
 import DeleteDialog from "./DeleteDialog";
+import { RootState } from "../../redux/store";
+const timeAgo = (el) => moment(el).fromNow();
 
-const timeAgo = (el: any) => moment(el).fromNow();
-
-const Tweet = (props: any) => {
+const Tweet = (props) => {
   const dispatch = useDispatch();
   const [openDialog, setOpenDialog] = useState<boolean>(false);
-  const { tweets, comments } = useSelector((state: any) => state.tweetList);
-  const tweetIndex = tweets.findIndex((tweet: any) => tweet.id === props.id);
+  const { tweets, comments } = useSelector(
+    (state: RootState) => state.tweetList
+  );
+  const tweetIndex = tweets.findIndex((tweet) => tweet.id === props.id);
   const selectedComment = Array.isArray(comments)
-    ? comments.filter((comment: any) => comment.tweetId === props.id)
+    ? comments.filter((comment) => comment.tweetId === props.id)
     : null;
 
   const commentLength = selectedComment?.length;
   const heartLength = tweets[tweetIndex].like ? 1 : 0;
-  const { handleNotification } = useContext<any>(AuthContext);
+  const { handleNotification } = useContext(AuthContext);
 
   const likeToggleHandler = () => {
     dispatch(tweetActions.toggleLike({ id: props.id, like: !props.like }));
@@ -53,7 +55,7 @@ const Tweet = (props: any) => {
               {props.userName.split("_")[0]}
             </p>
 
-            <p className="text-xs ">@ {props.userName}</p>
+            <p className="text-xs whitespace-nowrap">@ {props.userName}</p>
             <p className="text-sm ">{timeAgo(props.createdAt)}</p>
           </span>
           {!(tweetIndex <= 4) && (

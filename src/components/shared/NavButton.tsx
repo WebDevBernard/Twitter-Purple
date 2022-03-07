@@ -1,5 +1,7 @@
+import { FC } from "react";
 import ReactTooltip from "react-tooltip";
-const NavButton = (props: any) => {
+
+const NavButton: FC<{ className: string; content: string }> = (props) => {
   return (
     <div
       data-tip="Not Implemented"

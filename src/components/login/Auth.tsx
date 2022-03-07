@@ -9,7 +9,7 @@ import avatar from "../../utils/avatar-names";
 import { auth } from "../../utils/firebase";
 import Button from "../shared/Button";
 
-const TextInput = ({ label, ...props }: any) => {
+const TextInput = ({ label, ...props }) => {
   const [field, meta] = useField(props);
 
   return (
@@ -31,7 +31,7 @@ const TextInput = ({ label, ...props }: any) => {
   );
 };
 
-const ForgotPassword = (props: any) => {
+const ForgotPassword = (props) => {
   console.log(props.forgotPassword);
   return (
     <div>
@@ -44,7 +44,7 @@ const ForgotPassword = (props: any) => {
     </div>
   );
 };
-const FormButton = (props: any) => {
+const FormButton = (props) => {
   return (
     <div>
       <Button
@@ -64,8 +64,8 @@ const SignUp = ({
   handleNotification,
   toggleForgotPassword,
   forgotPassword,
-}: any) => {
-  const signUpHandler = async (values: any) => {
+}) => {
+  const signUpHandler = async (values) => {
     try {
       await auth.createUserWithEmailAndPassword(values.email, values.password);
 
@@ -137,12 +137,12 @@ export const SignIn = ({
   handleNotification,
   toggleForgotPassword,
   forgotPassword,
-}: any) => {
+}) => {
   const initialValues = {
     email: "guest@email.com",
     password: "123456",
   };
-  const loginHandler = async (values: any) => {
+  const loginHandler = async (values) => {
     try {
       await auth.signInWithEmailAndPassword(values.email, values.password);
       onClose();
@@ -187,8 +187,8 @@ export const ResetPassword = ({
   handleNotification,
   toggleForgotPassword,
   forgotPassword,
-}: any) => {
-  const resetPasswordHandler = async (values: any) => {
+}) => {
+  const resetPasswordHandler = async (values) => {
     try {
       await auth.sendPasswordResetEmail(values.email);
       onClose();

@@ -5,7 +5,7 @@ import avatar, { shortName } from "../../utils/avatar-names";
 
 // custom hook to find if current user is the random generated one or the signed in user
 const useCurrentUser = () => {
-  const { currentUser } = useContext<any>(AuthContext);
+  const { currentUser } = useContext(AuthContext);
   const selectUserName = currentUser
     ? auth.currentUser?.displayName
     : shortName;

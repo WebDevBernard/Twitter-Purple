@@ -1,12 +1,12 @@
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Comment from "./Comment";
-
+import { RootState } from "../../redux/store";
 const CommentList = () => {
   const params = useParams();
-  const comments = useSelector((state: any) => state.tweetList.comments);
+  const comments = useSelector((state: RootState) => state.tweetList.comments);
   const selectedComment = comments.filter(
-    (comment: any) => comment.tweetId === params.id
+    (comment) => comment.tweetId === params.id
   );
 
   return (

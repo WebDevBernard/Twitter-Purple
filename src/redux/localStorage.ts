@@ -1,5 +1,5 @@
 // https://stackoverflow.com/questions/35305661/where-to-write-to-localstorage-in-a-redux-app
-export const saveState = (state: any) => {
+export const saveState = (state) => {
   try {
     const serializedState = JSON.stringify(state);
     localStorage.setItem("tweetData", serializedState);

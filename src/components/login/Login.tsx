@@ -1,15 +1,17 @@
-import { useState, useContext } from "react";
+import React, { FC, useState, useContext } from "react";
 import AuthContext from "../../store/auth-context";
 import Modal from "../shared/Modal";
 import { XIcon } from "@heroicons/react/solid";
 import SignUp, { ResetPassword, SignIn } from "./Auth";
 
-const Login = (props: any) => {
+const Login: FC<{
+  onClose: React.MouseEventHandler<HTMLDivElement | SVGSVGElement>;
+}> = (props) => {
   const [isLogin, setIsLogin] = useState(false);
   const [forgotPassword, setForgotPassword] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const { handleNotification } = useContext<any>(AuthContext);
+  const { handleNotification } = useContext(AuthContext);
 
   const handleLoading = () => {
     setLoading(true);

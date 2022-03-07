@@ -1,3 +1,4 @@
+import React, { FC } from "react";
 import { tweetActions } from "../../redux/tweet-slice";
 import { useDispatch } from "react-redux";
 import useCurrentUser from "../hooks/useCurrentUser";
@@ -5,8 +6,8 @@ import { useNavigate } from "react-router-dom";
 import useValidate from "../hooks/useValidate";
 import TweetForm from "./TweetForm";
 import { ChangeEvent } from "react";
-
-const NewTweet = (props: any) => {
+import { ITweetProps } from "../interfaces/interface";
+const NewTweet: FC<ITweetProps> = (props) => {
   const [selectUserAvatar, selectUserName] = useCurrentUser();
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -42,7 +43,7 @@ const NewTweet = (props: any) => {
     props.onClose();
   };
 
-  const addTweetOnEnter = (e: any) => {
+  const addTweetOnEnter = (e) => {
     if (e.key === "Enter") {
       tweetSubmitHandler(e);
     }

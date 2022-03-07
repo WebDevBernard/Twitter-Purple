@@ -13,7 +13,7 @@ const TweetForm = ({
   tweetInputHasError,
   tweetCount,
   placeholder,
-}: any) => {
+}) => {
   const ready = useAvatarReady();
   const [selectUserAvatar] = useCurrentUser();
 

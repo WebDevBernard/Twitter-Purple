@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { FC } from "react";
 import { motion } from "framer-motion";
 import { dialogAnimation } from "../../utils/variants";
 
-const Dialog = (props: any) => {
+const Dialog: FC<{ className: string }> = (props) => {
   return (
     <motion.div
       ref={props.ref}

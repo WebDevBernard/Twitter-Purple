@@ -1,4 +1,6 @@
-const Avatar = (props: any) => {
+import { FC } from "react";
+
+const Avatar: FC<{ className: string; avatar: string }> = (props) => {
   return (
     <img
       loading="lazy"

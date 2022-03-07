@@ -1,4 +1,8 @@
-const Button = (props: any) => {
+import { FC } from "react";
+
+interface IProps {}
+
+const Button: FC<{}> = (props) => {
   return (
     <button
       type={props.type || "submit"}

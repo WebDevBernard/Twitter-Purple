@@ -5,7 +5,7 @@ import useValidate from "../hooks/useValidate";
 import TweetForm from "./TweetForm";
 import { useParams } from "react-router-dom";
 import { ChangeEvent } from "react";
-const NewComment = (props: any) => {
+const NewComment = (props) => {
   const params = useParams();
   const dispatch = useDispatch();
   const [selectUserAvatar, selectUserName] = useCurrentUser();
@@ -41,7 +41,7 @@ const NewComment = (props: any) => {
     resetTweetInput();
   };
 
-  const addTweetOnEnter = (e: any) => {
+  const addTweetOnEnter = (e) => {
     if (e.key === "Enter") {
       tweetSubmitHandler(e);
     }

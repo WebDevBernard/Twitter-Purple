@@ -16,8 +16,8 @@ import useCurrentUser from "../hooks/useCurrentUser";
 const logout = async () => {
   await auth.signOut();
 };
-const ProfileDialog = (props: any) => {
-  const { currentUser } = useContext<any>(AuthContext);
+const ProfileDialog = (props) => {
+  const { currentUser } = useContext(AuthContext);
   const [selectUserAvatar, selectUserName] = useCurrentUser();
   const domNode = useClickedOutside(() => {
     props.openDialog();
@@ -55,7 +55,7 @@ const ProfileDialog = (props: any) => {
   );
 };
 
-const Nav = (props: any) => {
+const Nav = (props) => {
   const [openDialog, setOpenDialog] = useState<boolean>(false);
 
   const handleOpenDialog = () => {

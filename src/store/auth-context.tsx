@@ -1,12 +1,23 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, FC } from "react";
 import { auth } from "../utils/firebase";
-const AuthContext = createContext({});
 
-export const AuthContextProvider = (props: any) => {
-  const [currentUser, setCurrentUser] = useState<any>(null);
+interface IAuthContextProps {
+  currentUser: string | null;
+  handleNotification: (message: string) => void;
+  notification: string;
+}
+
+const AuthContext = createContext<IAuthContextProps>({
+  currentUser: "",
+  handleNotification: () => {},
+  notification: "",
+});
+
+export const AuthContextProvider: FC = (props) => {
+  const [currentUser, setCurrentUser] = useState<string | null>(null);
   const [notification, setNotification] = useState("");
-  const handleNotification = (e: any) => {
-    setNotification(e);
+  const handleNotification = (message: string) => {
+    setNotification(message);
   };
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {

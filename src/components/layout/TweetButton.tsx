@@ -2,7 +2,7 @@ import { PencilIcon } from "@heroicons/react/outline";
 import Button from "../shared/Button";
 import { icons } from "../styles/heroicons-style";
 
-const TweetButton = (props: any) => {
+const TweetButton = (props) => {
   return (
     <Button className={`rounded-full p-3 ${props.className}`}>
       <div className="flex">

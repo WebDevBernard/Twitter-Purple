@@ -1,30 +1,13 @@
 import { createSlice, PayloadAction, current } from "@reduxjs/toolkit";
 import initialState from "./initial-state";
 import { nanoid } from "nanoid";
+import { ICommentProps, ITweetProps } from "../components/interfaces/interface";
 
-interface Tweet {
-  id: string;
-  createdAt: number;
-  tweet: string;
-  avatar: string;
-  userName: string;
-  like: boolean;
-  reply: Array<Comment>;
-}
-
-interface Comment {
-  id: string;
-  createdAt: number;
-  comment: string;
-  avatar: string;
-  userName: string;
-  like: boolean;
-}
 const tweetSlice = createSlice({
   name: "tweets",
   initialState,
   reducers: {
-    addTweet: (state, action: PayloadAction<any>) => {
+    addTweet: (state, action: PayloadAction<ITweetProps>) => {
       const newTweet = {
         id: nanoid(),
         createdAt: Date.now(),
@@ -35,22 +18,20 @@ const tweetSlice = createSlice({
       };
       state.tweets.push(newTweet);
     },
-    deleteTweet: (state: any, action) => {
+    deleteTweet: (state, action) => {
       return {
         ...state,
-        tweets: state.tweets.filter(
-          (tweet: any) => tweet.id !== action.payload
-        ),
+        tweets: state.tweets.filter((tweet) => tweet.id !== action.payload),
       };
     },
-    toggleLike: (state: any, action) => {
+    toggleLike: (state, action) => {
       const index = state.tweets.findIndex(
-        (tweet: any) => tweet.id === action.payload.id
+        (tweet) => tweet.id === action.payload.id
       );
       state.tweets[index].like = action.payload.like;
     },
-    addComment: (state: any, action: PayloadAction<any>) => {
-      const newComment: any = {
+    addComment: (state, action: PayloadAction<ICommentProps>) => {
+      const newComment = {
         id: nanoid(),
         createdAt: Date.now(),
         tweetId: action.payload.tweetid,
@@ -63,17 +44,17 @@ const tweetSlice = createSlice({
         state.comments.push(newComment);
       }
     },
-    toggleCommentLike: (state: any, action) => {
+    toggleCommentLike: (state, action) => {
       const index = state.comments.findIndex(
-        (tweet: any) => tweet.id === action.payload.id
+        (tweet) => tweet.id === action.payload.id
       );
       state.comments[index].like = action.payload.like;
     },
-    deleteComment: (state: any, action) => {
+    deleteComment: (state, action) => {
       return {
         ...state,
         comments: state.comments.filter(
-          (comment: any) => comment.id !== action.payload
+          (comment) => comment.id !== action.payload
         ),
       };
     },

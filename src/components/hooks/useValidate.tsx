@@ -1,5 +1,5 @@
 import { ChangeEvent, useState } from "react";
-const useValidate = (validateValue: any) => {
+const useValidate = (validateValue: string) => {
   const [enteredValue, setEnteredValue] = useState("");
   const [isTouched, setIsTouched] = useState(false);
   const [count, setCount] = useState(0);
@@ -17,9 +17,9 @@ const useValidate = (validateValue: any) => {
   };
 
   const reset = () => {
+    setIsTouched(false);
     setCount(0);
     setEnteredValue("");
-    setIsTouched(false);
   };
 
   return {

@@ -6,14 +6,17 @@ import { ChatAltIcon, HeartIcon } from "@heroicons/react/outline";
 import { HeartIcon as SolidHeartIcon } from "@heroicons/react/solid";
 import { avatarIcon, icons } from "../styles/heroicons-style";
 import Avatar from "../shared/Avatar";
+import { RootState } from "../../redux/store";
 
-const timeAgo = (el: any) => moment(el).fromNow();
+const timeAgo = (el) => moment(el).fromNow();
 const CurrentTweet = () => {
   const params = useParams();
-  const { tweets, comments } = useSelector((state: any) => state.tweetList);
-  const selectedTweet = tweets.find((tweet: any) => tweet.id === params.id);
+  const { tweets, comments } = useSelector(
+    (state: RootState) => state.tweetList
+  );
+  const selectedTweet = tweets.find((tweet) => tweet.id === params.id);
   const selectedComment = Array.isArray(comments)
-    ? comments.filter((comment: any) => comment.tweetId === params.id)
+    ? comments.filter((comment) => comment.tweetId === params.id)
     : null;
 
   const commentLength = selectedComment?.length;
