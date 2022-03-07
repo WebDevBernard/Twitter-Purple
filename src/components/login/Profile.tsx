@@ -1,4 +1,4 @@
-import { useState, useContext, ChangeEvent } from "react";
+import { useState, useContext, ChangeEvent, FC } from "react";
 import AuthContext from "../../store/auth-context";
 import { auth } from "../../utils/firebase";
 import { avatarArray } from "../../utils/avatar-names";
@@ -6,8 +6,8 @@ import Button from "../shared/Button";
 
 import Modal from "../shared/Modal";
 
-const Profile = (props) => {
-  const [selected, setSelected] = useState("");
+const Profile: FC = (props) => {
+  const [selected, setSelected] = useState<string | null>("");
   const { handleNotification } = useContext(AuthContext);
   const handleSelected = (e) => {
     setSelected(avatarArray[e.target.id]);

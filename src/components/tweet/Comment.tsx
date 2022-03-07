@@ -17,8 +17,9 @@ import { HeartIcon as SolidHeartIcon } from "@heroicons/react/solid";
 import DeleteDialog from "./DeleteDialog";
 import Avatar from "../shared/Avatar";
 import ReactTooltip from "react-tooltip";
+import { AppDispatch } from "../../redux/store";
 const Comment = (props) => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const timeAgo = (el) => moment(el).fromNow();
   const [openDialog, setOpenDialog] = useState<boolean>(false);
   const { handleNotification } = useContext(AuthContext);

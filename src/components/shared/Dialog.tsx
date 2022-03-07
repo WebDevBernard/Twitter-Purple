@@ -2,7 +2,7 @@ import { FC } from "react";
 import { motion } from "framer-motion";
 import { dialogAnimation } from "../../utils/variants";
 
-const Dialog: FC<{ className: string }> = (props) => {
+const Dialog: FC<{ className: string, ref:}> = (props) => {
   return (
     <motion.div
       ref={props.ref}

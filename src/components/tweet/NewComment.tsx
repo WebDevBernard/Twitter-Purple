@@ -5,9 +5,10 @@ import useValidate from "../hooks/useValidate";
 import TweetForm from "./TweetForm";
 import { useParams } from "react-router-dom";
 import { ChangeEvent } from "react";
+import { AppDispatch } from "../../redux/store";
 const NewComment = (props) => {
   const params = useParams();
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const [selectUserAvatar, selectUserName] = useCurrentUser();
   const {
     value: enteredTweet,

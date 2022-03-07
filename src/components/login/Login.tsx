@@ -7,9 +7,9 @@ import SignUp, { ResetPassword, SignIn } from "./Auth";
 const Login: FC<{
   onClose: React.MouseEventHandler<HTMLDivElement | SVGSVGElement>;
 }> = (props) => {
-  const [isLogin, setIsLogin] = useState(false);
-  const [forgotPassword, setForgotPassword] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [isLogin, setIsLogin] = useState<boolean>(false);
+  const [forgotPassword, setForgotPassword] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const { handleNotification } = useContext(AuthContext);
 

@@ -2,7 +2,7 @@ import AuthContext from "../../store/auth-context";
 import { useDispatch, useSelector } from "react-redux";
 import { tweetActions } from "../../redux/tweet-slice";
 import { Link } from "react-router-dom";
-import { useState, useContext } from "react";
+import { useState, useContext, FC } from "react";
 import moment from "moment";
 import {
   ChatAltIcon,
@@ -14,11 +14,12 @@ import { HeartIcon as SolidHeartIcon } from "@heroicons/react/solid";
 import { AnimatePresence } from "framer-motion";
 import Avatar from "../shared/Avatar";
 import DeleteDialog from "./DeleteDialog";
-import { RootState } from "../../redux/store";
-const timeAgo = (el) => moment(el).fromNow();
+import { AppDispatch, RootState } from "../../redux/store";
+import { ITweetProps, ICommentProps } from "../interfaces/interface";
+const timeAgo = (date: Date) => moment(date).fromNow();
 
-const Tweet = (props) => {
-  const dispatch = useDispatch();
+const Tweet: FC<ICommentProps> = (props) => {
+  const dispatch = useDispatch<AppDispatch>();
   const [openDialog, setOpenDialog] = useState<boolean>(false);
   const { tweets, comments } = useSelector(
     (state: RootState) => state.tweetList
@@ -47,7 +48,7 @@ const Tweet = (props) => {
 
   return (
     <div className="flex px-3 py-2 border-hover_border border-y-[1px] max-w-[600px]">
-      <Avatar className={avatarIcon} avatar={props.avatar} alt="avatar" />
+      <Avatar className={avatarIcon} avatar={props.avatar} />
       <div className="w-full mt-2 mx-3 ">
         <div className="flex items-center justify-between relative">
           <span className="flex items-center space-x-2">

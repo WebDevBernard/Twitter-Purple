@@ -7,10 +7,11 @@ import useValidate from "../hooks/useValidate";
 import TweetForm from "./TweetForm";
 import { ChangeEvent } from "react";
 import { ITweetProps } from "../interfaces/interface";
+import { AppDispatch } from "../../redux/store";
 const NewTweet: FC<ITweetProps> = (props) => {
   const [selectUserAvatar, selectUserName] = useCurrentUser();
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const {
     value: enteredTweet,
     isValid: enteredTweetIsValid,

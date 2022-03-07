@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useState, useContext } from "react";
+import { useState, useContext, FC } from "react";
 import AuthContext from "../../store/auth-context";
 import { auth } from "../../utils/firebase";
 import { nanoid } from "nanoid";
@@ -16,7 +16,7 @@ import useCurrentUser from "../hooks/useCurrentUser";
 const logout = async () => {
   await auth.signOut();
 };
-const ProfileDialog = (props) => {
+const ProfileDialog: FC = (props) => {
   const { currentUser } = useContext(AuthContext);
   const [selectUserAvatar, selectUserName] = useCurrentUser();
   const domNode = useClickedOutside(() => {

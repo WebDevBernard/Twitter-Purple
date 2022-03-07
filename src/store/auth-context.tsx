@@ -4,7 +4,7 @@ import { auth } from "../utils/firebase";
 interface IAuthContextProps {
   currentUser: string | null;
   handleNotification: (message: string) => void;
-  notification: string;
+  notification: string | null;
 }
 
 const AuthContext = createContext<IAuthContextProps>({
@@ -15,7 +15,7 @@ const AuthContext = createContext<IAuthContextProps>({
 
 export const AuthContextProvider: FC = (props) => {
   const [currentUser, setCurrentUser] = useState<string | null>(null);
-  const [notification, setNotification] = useState("");
+  const [notification, setNotification] = useState<string | null>("");
   const handleNotification = (message: string) => {
     setNotification(message);
   };

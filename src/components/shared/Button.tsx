@@ -1,8 +1,13 @@
 import { FC } from "react";
 
-interface IProps {}
+interface IProps {
+  type?: "submit";
+  onClick?: () => void;
+  disabled?: boolean;
+  className?: string;
+}
 
-const Button: FC<{}> = (props) => {
+const Button: FC<IProps> = (props) => {
   return (
     <button
       type={props.type || "submit"}

@@ -6,9 +6,9 @@ import { ChatAltIcon, HeartIcon } from "@heroicons/react/outline";
 import { HeartIcon as SolidHeartIcon } from "@heroicons/react/solid";
 import { avatarIcon, icons } from "../styles/heroicons-style";
 import Avatar from "../shared/Avatar";
-import { RootState } from "../../redux/store";
+import { AppDispatch, RootState } from "../../redux/store";
 
-const timeAgo = (el) => moment(el).fromNow();
+const timeAgo = (date: Date) => moment(date).fromNow();
 const CurrentTweet = () => {
   const params = useParams();
   const { tweets, comments } = useSelector(
@@ -20,10 +20,10 @@ const CurrentTweet = () => {
     : null;
 
   const commentLength = selectedComment?.length;
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const likeToggleHandler = () => {
     dispatch(
-      tweetActions.toggleLike({ id: params.id, like: !selectedTweet.like })
+      tweetActions.toggleLike({ id: params.id, like: !selectedTweet?.like })
     );
   };
 

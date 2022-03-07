@@ -1,8 +1,15 @@
-import { ChangeEvent, useState } from "react";
-const useValidate = (validateValue: string) => {
-  const [enteredValue, setEnteredValue] = useState("");
-  const [isTouched, setIsTouched] = useState(false);
-  const [count, setCount] = useState(0);
+import { ChangeEvent, useState, FC } from "react";
+
+type Hook = (validateValue: string) => void;
+
+interface IValidate {
+  enteredValue: string;
+}
+
+const useValidate: Hook = (validateValue) => {
+  const [enteredValue, setEnteredValue] = useState<string>("");
+  const [isTouched, setIsTouched] = useState<boolean>(false);
+  const [count, setCount] = useState<number>(0);
   const valueIsValid = validateValue(enteredValue);
   const hasError = !valueIsValid && isTouched;
 
