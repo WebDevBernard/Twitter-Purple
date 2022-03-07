@@ -1,8 +1,9 @@
 import { ChangeEvent, useState } from "react";
+
 const useValidate = (validateValue: any) => {
-  const [enteredValue, setEnteredValue] = useState("");
-  const [isTouched, setIsTouched] = useState(false);
-  const [count, setCount] = useState(0);
+  const [enteredValue, setEnteredValue] = useState<string>("");
+  const [isTouched, setIsTouched] = useState<boolean>(false);
+  const [count, setCount] = useState<number>(0);
   const valueIsValid = validateValue(enteredValue);
   const hasError = !valueIsValid && isTouched;
 
@@ -17,9 +18,9 @@ const useValidate = (validateValue: any) => {
   };
 
   const reset = () => {
+    setIsTouched(false);
     setCount(0);
     setEnteredValue("");
-    setIsTouched(false);
   };
 
   return {

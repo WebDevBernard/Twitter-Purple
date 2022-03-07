@@ -2,7 +2,7 @@ import AuthContext from "../../store/auth-context";
 import { useDispatch, useSelector } from "react-redux";
 import { tweetActions } from "../../redux/tweet-slice";
 import { Link } from "react-router-dom";
-import { useState, useContext } from "react";
+import { useState, useContext, FC } from "react";
 import moment from "moment";
 import {
   ChatAltIcon,
@@ -14,21 +14,24 @@ import { HeartIcon as SolidHeartIcon } from "@heroicons/react/solid";
 import { AnimatePresence } from "framer-motion";
 import Avatar from "../shared/Avatar";
 import DeleteDialog from "./DeleteDialog";
-
-const timeAgo = (el: any) => moment(el).fromNow();
+import { AppDispatch, RootState } from "../../redux/store";
+import { ITweetProps, ICommentProps } from "../interfaces/interface";
+const timeAgo = (date: Date) => moment(date).fromNow();
 
 const Tweet = (props: any) => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const [openDialog, setOpenDialog] = useState<boolean>(false);
-  const { tweets, comments } = useSelector((state: any) => state.tweetList);
-  const tweetIndex = tweets.findIndex((tweet: any) => tweet.id === props.id);
+  const { tweets, comments } = useSelector(
+    (state: RootState) => state.tweetList
+  );
+  const tweetIndex = tweets.findIndex((tweet) => tweet.id === props.id);
   const selectedComment = Array.isArray(comments)
-    ? comments.filter((comment: any) => comment.tweetId === props.id)
+    ? comments.filter((comment) => comment.tweetId === props.id)
     : null;
 
   const commentLength = selectedComment?.length;
   const heartLength = tweets[tweetIndex].like ? 1 : 0;
-  const { handleNotification } = useContext<any>(AuthContext);
+  const { handleNotification } = useContext(AuthContext);
 
   const likeToggleHandler = () => {
     dispatch(tweetActions.toggleLike({ id: props.id, like: !props.like }));
@@ -45,7 +48,7 @@ const Tweet = (props: any) => {
 
   return (
     <div className="flex px-3 py-2 border-hover_border border-y-[1px] max-w-[600px]">
-      <Avatar className={avatarIcon} avatar={props.avatar} alt="avatar" />
+      <Avatar className={avatarIcon} avatar={props.avatar} />
       <div className="w-full mt-2 mx-3 ">
         <div className="flex items-center justify-between relative">
           <span className="flex items-center space-x-2">
@@ -53,7 +56,7 @@ const Tweet = (props: any) => {
               {props.userName.split("_")[0]}
             </p>
 
-            <p className="text-xs ">@ {props.userName}</p>
+            <p className="text-xs whitespace-nowrap">@ {props.userName}</p>
             <p className="text-sm ">{timeAgo(props.createdAt)}</p>
           </span>
           {!(tweetIndex <= 4) && (

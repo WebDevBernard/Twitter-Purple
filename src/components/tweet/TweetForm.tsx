@@ -3,8 +3,22 @@ import Avatar from "../shared/Avatar";
 import TweetButton from "../layout/TweetButton";
 import { tweetIconSmall } from "../styles/heroicons-style";
 import useAvatarReady from "../hooks/useAvatarReady";
+import { FC } from "react";
 
-const TweetForm = ({
+interface IProps {
+  enteredTweet: string;
+  tweetSubmitHandler: React.FormEventHandler<HTMLFormElement>;
+  tweetBlurHandler: React.FocusEventHandler<HTMLTextAreaElement>;
+  tweetChangeHandler: React.ChangeEventHandler<
+    HTMLInputElement | HTMLTextAreaElement
+  >;
+  addTweetOnEnter: React.KeyboardEventHandler<HTMLFormElement>;
+  tweetInputHasError: boolean;
+  tweetCount: number;
+  placeholder: string;
+}
+
+const TweetForm: FC<IProps> = ({
   enteredTweet,
   tweetSubmitHandler,
   tweetBlurHandler,
@@ -13,7 +27,7 @@ const TweetForm = ({
   tweetInputHasError,
   tweetCount,
   placeholder,
-}: any) => {
+}) => {
   const ready = useAvatarReady();
   const [selectUserAvatar] = useCurrentUser();
 

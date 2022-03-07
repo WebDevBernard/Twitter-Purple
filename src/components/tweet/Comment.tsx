@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, FC } from "react";
 import { tweetActions } from "../../redux/tweet-slice";
 import { useDispatch } from "react-redux";
 import AuthContext from "../../store/auth-context";
@@ -17,11 +17,13 @@ import { HeartIcon as SolidHeartIcon } from "@heroicons/react/solid";
 import DeleteDialog from "./DeleteDialog";
 import Avatar from "../shared/Avatar";
 import ReactTooltip from "react-tooltip";
+import { AppDispatch } from "../../redux/store";
+import { ICommentProps } from "../interfaces/interface";
 const Comment = (props: any) => {
-  const dispatch = useDispatch();
-  const timeAgo = (el: any) => moment(el).fromNow();
+  const dispatch = useDispatch<AppDispatch>();
+  const timeAgo = (date: Date) => moment(date).fromNow();
   const [openDialog, setOpenDialog] = useState<boolean>(false);
-  const { handleNotification } = useContext<any>(AuthContext);
+  const { handleNotification } = useContext(AuthContext);
 
   const likeToggleHandler = () => {
     dispatch(
@@ -53,7 +55,7 @@ const Comment = (props: any) => {
             <p className="text-lg text-secondary_text font-bold ">
               {props.userName.split("_")[0]}
             </p>
-            <p className="text-xs ">@ {props.userName}</p>
+            <p className="text-xs whitespace-nowrap">@ {props.userName}</p>
             <p className="text-sm ">{timeAgo(props.createdAt)}</p>
           </span>
 
@@ -74,7 +76,7 @@ const Comment = (props: any) => {
             )}
           </AnimatePresence>
         </div>
-        <p className="break-all">{props.tweet}</p>
+        <p className="break-all">{props.comment}</p>
         <div className="flex items-center justify-evenly my-2">
           <ReactTooltip backgroundColor="#64748b" />
 

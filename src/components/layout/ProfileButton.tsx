@@ -1,7 +1,12 @@
 import useCurrentUser from "../hooks/useCurrentUser";
 import Avatar from "../shared/Avatar";
 import useAvatarReady from "../hooks/useAvatarReady";
-const ProfileButton = (props: any) => {
+import { FC } from "react";
+
+const ProfileButton: FC<{
+  openDialog: React.MouseEventHandler<HTMLDivElement>;
+  className: string;
+}> = (props) => {
   const [selectUserAvatar, selectUserName] = useCurrentUser();
   const ready = useAvatarReady();
   return (

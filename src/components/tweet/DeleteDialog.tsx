@@ -6,7 +6,13 @@ import {
 } from "@heroicons/react/outline";
 import { icons } from "../styles/heroicons-style";
 import useClickedOutside from "../hooks/useClickedOutside";
-const DeleteDialog = (props: any) => {
+import { FC } from "react";
+
+interface IProps {
+  handleDialog: () => void;
+  delete?: () => void;
+}
+const DeleteDialog: FC<IProps> = (props) => {
   const domNode = useClickedOutside(() => {
     props.handleDialog();
   });

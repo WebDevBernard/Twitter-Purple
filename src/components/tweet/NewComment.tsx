@@ -4,10 +4,12 @@ import useCurrentUser from "../hooks/useCurrentUser";
 import useValidate from "../hooks/useValidate";
 import TweetForm from "./TweetForm";
 import { useParams } from "react-router-dom";
-import { ChangeEvent } from "react";
-const NewComment = (props: any) => {
+
+import { AppDispatch } from "../../redux/store";
+
+const NewComment = () => {
   const params = useParams();
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const [selectUserAvatar, selectUserName] = useCurrentUser();
   const {
     value: enteredTweet,
@@ -24,7 +26,7 @@ const NewComment = (props: any) => {
   const handleDispatch = () => {
     dispatch(
       tweetActions.addComment({
-        tweetid: params.id,
+        tweetId: params.id,
         comment: enteredTweet,
         avatar: selectUserAvatar,
         userName: selectUserName,
@@ -32,7 +34,7 @@ const NewComment = (props: any) => {
     );
   };
 
-  const tweetSubmitHandler = (e: ChangeEvent<HTMLInputElement>) => {
+  const tweetSubmitHandler = (e: any) => {
     e.preventDefault();
     if (!enteredTweetIsValid) {
       return;

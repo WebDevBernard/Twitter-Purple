@@ -1,4 +1,13 @@
-const Button = (props: any) => {
+import { FC } from "react";
+
+interface IProps {
+  type?: "submit";
+  onClick?: () => void;
+  disabled?: boolean;
+  className?: string;
+}
+
+const Button: FC<IProps> = (props) => {
   return (
     <button
       type={props.type || "submit"}

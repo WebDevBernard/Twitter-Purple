@@ -1,21 +1,26 @@
-import { useState, useContext, ChangeEvent } from "react";
+import {
+  useState,
+  useContext,
+  ChangeEvent,
+  FC,
+  MouseEventHandler,
+} from "react";
 import AuthContext from "../../store/auth-context";
 import { auth } from "../../utils/firebase";
 import { avatarArray } from "../../utils/avatar-names";
 import Button from "../shared/Button";
-
 import Modal from "../shared/Modal";
 
-const Profile = (props: any) => {
-  const [selected, setSelected] = useState("");
-  const { handleNotification } = useContext<any>(AuthContext);
+const Profile: FC<{ onClose: () => boolean }> = (props) => {
+  const [selected, setSelected] = useState<string | null>(null);
+  const { handleNotification } = useContext(AuthContext);
   const handleSelected = (e: any) => {
     setSelected(avatarArray[e.target.id]);
   };
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (selected === "") {
+    if (selected === null) {
       handleNotification("No Avatar Selected");
       return;
     }
@@ -36,7 +41,7 @@ const Profile = (props: any) => {
         <div className="p-3 space-y-4">
           <p className="border-b-border border-[1px]">Choose a new avatar</p>
           <div className="grid grid-cols-2 gap-2">
-            {avatarArray.map((src, index: any) => {
+            {avatarArray.map((src, index) => {
               return (
                 <img
                   className={`h-16 w-16 border-2 p-1.5 rounded-full cursor-pointer ${
@@ -46,7 +51,7 @@ const Profile = (props: any) => {
                   }`}
                   src={src}
                   key={index}
-                  id={index}
+                  id={index.toString()}
                   onClick={handleSelected}
                   alt={src}
                 />

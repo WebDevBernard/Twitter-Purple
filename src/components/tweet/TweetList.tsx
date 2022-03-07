@@ -1,7 +1,9 @@
 import Tweet from "./Tweet";
+import type { RootState } from "../../redux/store";
 import { useSelector } from "react-redux";
+
 export default function TweetList() {
-  const tweets = useSelector((state: any) => state.tweetList.tweets);
+  const tweets = useSelector((state: RootState) => state.tweetList.tweets);
   return (
     <>
       {[...tweets].reverse().map((tweet) => {
