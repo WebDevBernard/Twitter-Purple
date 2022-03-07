@@ -4,9 +4,20 @@ import useCurrentUser from "../hooks/useCurrentUser";
 import useValidate from "../hooks/useValidate";
 import TweetForm from "./TweetForm";
 import { useParams } from "react-router-dom";
-import { ChangeEvent } from "react";
+import { ChangeEvent, FC } from "react";
 import { AppDispatch } from "../../redux/store";
-const NewComment = (props) => {
+import { ICommentProps } from "../interfaces/interface";
+
+interface IValidate {
+  enteredTweet: string;
+enteredTweetIsValid: boolean;
+tweetInputHasError: boolean;
+ tweetChangeHandler: () => void;
+  tweetBlurHandler: t
+ resetTweetInput:
+  tweetCount:
+}
+const NewComment:FC = (props) => {
   const params = useParams();
   const dispatch = useDispatch<AppDispatch>();
   const [selectUserAvatar, selectUserName] = useCurrentUser();
@@ -18,7 +29,7 @@ const NewComment = (props) => {
     inputBlurHandler: tweetBlurHandler,
     reset: resetTweetInput,
     count: tweetCount,
-  } = useValidate(
+  }: IValidate = useValidate(
     (value: string) => value.trim().length !== 0 && value.trim().length < 140
   );
 
@@ -42,7 +53,7 @@ const NewComment = (props) => {
     resetTweetInput();
   };
 
-  const addTweetOnEnter = (e) => {
+  const addTweetOnEnter = (e: ) => {
     if (e.key === "Enter") {
       tweetSubmitHandler(e);
     }

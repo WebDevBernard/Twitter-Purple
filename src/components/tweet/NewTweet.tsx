@@ -8,7 +8,7 @@ import TweetForm from "./TweetForm";
 import { ChangeEvent } from "react";
 import { ITweetProps } from "../interfaces/interface";
 import { AppDispatch } from "../../redux/store";
-const NewTweet: FC<ITweetProps> = (props) => {
+const NewTweet: FC = (props) => {
   const [selectUserAvatar, selectUserName] = useCurrentUser();
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
@@ -33,7 +33,7 @@ const NewTweet: FC<ITweetProps> = (props) => {
     );
   };
 
-  const tweetSubmitHandler = (e: ChangeEvent<HTMLInputElement>) => {
+  const tweetSubmitHandler = (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!enteredTweetIsValid) {
       return;
@@ -44,7 +44,7 @@ const NewTweet: FC<ITweetProps> = (props) => {
     props.onClose();
   };
 
-  const addTweetOnEnter = (e) => {
+  const addTweetOnEnter = (e: React.KeyboardEvent<HTMLFormElement>): void => {
     if (e.key === "Enter") {
       tweetSubmitHandler(e);
     }

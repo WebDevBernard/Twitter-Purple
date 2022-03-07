@@ -6,7 +6,7 @@ import Button from "../shared/Button";
 
 import Modal from "../shared/Modal";
 
-const Profile: FC = (props) => {
+interface: const Profile: FC<> = (props) => {
   const [selected, setSelected] = useState<string | null>("");
   const { handleNotification } = useContext(AuthContext);
   const handleSelected = (e) => {

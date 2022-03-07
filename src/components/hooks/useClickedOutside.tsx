@@ -1,11 +1,11 @@
 import { useRef, useEffect } from "react";
 // https://stackoverflow.com/questions/62454630/react-typescript-type-for-mousedown-and-touchstart-events
 // custom hook to see if clicked outside of ref
-let useClickedOutside = (handler: () => void) => {
+function useClickedOutside(handler: () => void) {
   let domNode = useRef<HTMLDivElement>();
 
   useEffect(() => {
-    let maybeHandler = (event: MouseEvent) => {
+    let maybeHandler = (event: TouchEvent | MouseEvent) => {
       if (!domNode.current?.contains(event.target as Node)) {
         handler();
       }
@@ -19,6 +19,6 @@ let useClickedOutside = (handler: () => void) => {
   });
 
   return domNode;
-};
+}
 
 export default useClickedOutside;

@@ -7,7 +7,7 @@ const tweetSlice = createSlice({
   name: "tweets",
   initialState,
   reducers: {
-    addTweet: (state, action: PayloadAction<ITweetProps>) => {
+    addTweet: (state: ITweetProps[], action: PayloadAction<ITweetProps>) => {
       const newTweet = {
         id: nanoid(),
         createdAt: Date.now(),
@@ -18,19 +18,22 @@ const tweetSlice = createSlice({
       };
       state.tweets.push(newTweet);
     },
-    deleteTweet: (state, action) => {
+    deleteTweet: (state, action: PayloadAction<ITweetProps>) => {
       return {
         ...state,
         tweets: state.tweets.filter((tweet) => tweet.id !== action.payload),
       };
     },
-    toggleLike: (state, action) => {
+    toggleLike: (state, action: PayloadAction<ITweetProps>) => {
       const index = state.tweets.findIndex(
         (tweet) => tweet.id === action.payload.id
       );
       state.tweets[index].like = action.payload.like;
     },
-    addComment: (state, action: PayloadAction<ICommentProps>) => {
+    addComment: (
+      state: ICommentProps[],
+      action: PayloadAction<ICommentProps>
+    ) => {
       const newComment = {
         id: nanoid(),
         createdAt: Date.now(),
@@ -44,13 +47,13 @@ const tweetSlice = createSlice({
         state.comments.push(newComment);
       }
     },
-    toggleCommentLike: (state, action) => {
+    toggleCommentLike: (state, action: PayloadAction<ICommentProps>) => {
       const index = state.comments.findIndex(
         (tweet) => tweet.id === action.payload.id
       );
       state.comments[index].like = action.payload.like;
     },
-    deleteComment: (state, action) => {
+    deleteComment: (state, action: PayloadAction) => {
       return {
         ...state,
         comments: state.comments.filter(

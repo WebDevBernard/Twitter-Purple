@@ -1,6 +1,7 @@
 import Tweet from "./Tweet";
+import type { RootState } from "../../redux/store";
 import { useSelector } from "react-redux";
-import type { RootState}
+
 export default function TweetList() {
   const tweets = useSelector((state: RootState) => state.tweetList.tweets);
   return (

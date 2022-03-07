@@ -1,4 +1,4 @@
-import { Formik, Form } from "formik";
+import { Formik, Form , FieldHookConfig,} from "formik";
 import { useField } from "formik";
 import {
   validateSignIn,
@@ -8,8 +8,23 @@ import {
 import avatar from "../../utils/avatar-names";
 import { auth } from "../../utils/firebase";
 import Button from "../shared/Button";
+import { FC } from "react";
 
-const TextInput = ({ label, ...props }) => {
+interface IAuth{
+ disabled:boolean
+  onClose:
+  handleNotification:
+  toggleForgotPassword:
+  forgotPassword:
+}
+
+interface IText{
+  label: string;
+  props:  FieldHookConfig<string>;
+  className: string;
+}
+
+const TextInput:FC<IText> = ({ label, ...props }) => {
   const [field, meta] = useField(props);
 
   return (
@@ -31,8 +46,8 @@ const TextInput = ({ label, ...props }) => {
   );
 };
 
-const ForgotPassword = (props) => {
-  console.log(props.forgotPassword);
+const ForgotPassword:FC<IAuth> = (props) => {
+  // console.log(props.forgotPassword);
   return (
     <div>
       <p
@@ -44,7 +59,7 @@ const ForgotPassword = (props) => {
     </div>
   );
 };
-const FormButton = (props) => {
+const FormButton:FC<IAuth> = (props) => {
   return (
     <div>
       <Button
@@ -57,7 +72,7 @@ const FormButton = (props) => {
   );
 };
 
-const SignUp = ({
+const SignUp:FC<IAuth> = ({
   onClose,
   loading,
   handleLoading,
@@ -132,7 +147,7 @@ const SignUp = ({
     </Formik>
   );
 };
-export const SignIn = ({
+export const SignIn:FC<IAuth> = ({
   onClose,
   handleNotification,
   toggleForgotPassword,
@@ -182,7 +197,9 @@ export const SignIn = ({
   );
 };
 
-export const ResetPassword = ({
+
+
+export const ResetPassword:FC<IAuth> = ({
   onClose,
   handleNotification,
   toggleForgotPassword,

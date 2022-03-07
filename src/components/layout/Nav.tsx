@@ -16,7 +16,12 @@ import useCurrentUser from "../hooks/useCurrentUser";
 const logout = async () => {
   await auth.signOut();
 };
-const ProfileDialog: FC = (props) => {
+
+interface IProps{
+  ref: 
+
+}
+const ProfileDialog: FC<IProps> = (props) => {
   const { currentUser } = useContext(AuthContext);
   const [selectUserAvatar, selectUserName] = useCurrentUser();
   const domNode = useClickedOutside(() => {
