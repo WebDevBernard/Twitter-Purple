@@ -4,7 +4,7 @@
 
 ## About
 
-- Login to this app and tweet, comment, like or delete a tweet. I made this website to practice React Redux and Context, React with TypeScript, Tailwind CSS, and Firebase Auth.
+- A Twitter clone made in React and Tailwind CSS. Users can login with Firebase, and tweet, comment, like or delete a tweet. I made this website to practice things I learned in React tutorials, including React Redux and Context, and React with TypeScript.
 
 ## Tech Stack
 

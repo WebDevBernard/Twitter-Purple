@@ -13,7 +13,11 @@ const Backdrop: FC<{ onClose: () => boolean }> = (props) => (
 
 const ModalOverlay: FC<{ className: string }> = (props) => {
   return (
-    <div className="z-30 h-screen w-full md:flex justify-center overflow-y-auto inset-0 fixed">
+    <div
+      className={
+        " z-30  w-full md:flex justify-center overflow-y-auto inset-0 fixed"
+      }
+    >
       <div className={` ${props.className}`}>{props.children}</div>{" "}
     </div>
   );

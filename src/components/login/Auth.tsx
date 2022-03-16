@@ -20,30 +20,19 @@ const TextInput = ({ label, ...props }: any) => {
       <input
         className={`${
           meta.error && meta.touched && ""
-        } border-[1px] border-slate-400  w-full rounded-sm text-lg py-1.5 px-2 focus:outline-blue-500 placeholder-primary_light_text`}
+        } border-[1px] border-slate-400  w-full rounded-sm text-lg py-3 px-2 mb-4 focus:outline-blue-500 placeholder-primary_light_text `}
         noValidate
         autoComplete="off"
         {...field}
         {...props}
       />
-      <p className="text-red-500">{meta.error && meta.touched && meta.error}</p>
-    </div>
-  );
-};
-
-const ForgotPassword = (props: any) => {
-  console.log(props.forgotPassword);
-  return (
-    <div>
-      <p
-        className="float-right p-2 cursor-pointer"
-        onClick={props.toggleForgotPassword}
-      >
-        {!props.forgotPassword ? "Forgot Password?" : "Return"}
+      <p className="text-red-500 absolute -mt-4">
+        {meta.error && meta.touched && meta.error}
       </p>
     </div>
   );
 };
+
 const FormButton = (props: any) => {
   return (
     <div>
@@ -62,8 +51,6 @@ const SignUp = ({
   loading,
   handleLoading,
   handleNotification,
-  toggleForgotPassword,
-  forgotPassword,
 }: any) => {
   const signUpHandler = async (values: any) => {
     try {
@@ -98,13 +85,13 @@ const SignUp = ({
       <Form className="space-y-2">
         <TextInput
           label="Your username"
-          placeholder="Enter a username"
+          placeholder="Username"
           name="username"
           type="text"
         />
         <TextInput
           label="Your email"
-          placeholder="username@email.com"
+          placeholder="Email"
           name="email"
           type="email"
         />
@@ -120,10 +107,7 @@ const SignUp = ({
           name="passwordConfirm"
           type="password"
         />
-        <ForgotPassword
-          forgotPassword={forgotPassword}
-          toggleForgotPassword={toggleForgotPassword}
-        />
+
         <FormButton
           disabled={loading}
           content={!loading ? "Sign Up" : "Loading"}
@@ -132,15 +116,37 @@ const SignUp = ({
     </Formik>
   );
 };
-export const SignIn = ({
-  onClose,
-  handleNotification,
-  toggleForgotPassword,
-  forgotPassword,
-}: any) => {
+export const FirebaseLogin = ({ onClose, handleNotification }: any) => {
+  const loginHandler = async (e: any) => {
+    e.preventDefault();
+    try {
+      await auth.signInWithEmailAndPassword("guest@email.com", "123456");
+      onClose();
+      handleNotification(`Welcome back ${auth.currentUser?.displayName}!`);
+    } catch (err) {
+      handleNotification("Invalid Credentials");
+      console.error(err);
+    }
+  };
+  return (
+    <form onSubmit={loginHandler}>
+      <button
+        type="submit"
+        className="font-thin px-6 py-1.5 rounded-3xl w-full text-white bg-pink-500 hover:bg-pink-600  text-lg  block select-none duration-150 ease-out active:scale-95 active:shadow-sm mb-6"
+      >
+        <i
+          className="devicon-firebase-plain h-12 w-12 mr-2"
+          title="firebase icon"
+        />
+        Login as "Guest" with Firebase
+      </button>
+    </form>
+  );
+};
+export const SignIn = ({ onClose, handleNotification }: any) => {
   const initialValues = {
-    email: "guest@email.com",
-    password: "123456",
+    email: "",
+    password: "",
   };
   const loginHandler = async (values: any) => {
     try {
@@ -172,22 +178,14 @@ export const SignIn = ({
           name="password"
           type="password"
         />
-        <ForgotPassword
-          forgotPassword={forgotPassword}
-          toggleForgotPassword={toggleForgotPassword}
-        />
+
         <FormButton content={"Login to your account"} />
       </Form>
     </Formik>
   );
 };
 
-export const ResetPassword = ({
-  onClose,
-  handleNotification,
-  toggleForgotPassword,
-  forgotPassword,
-}: any) => {
+export const ResetPassword = ({ onClose, handleNotification }: any) => {
   const resetPasswordHandler = async (values: any) => {
     try {
       await auth.sendPasswordResetEmail(values.email);
@@ -206,18 +204,14 @@ export const ResetPassword = ({
       validationSchema={validateReset}
       onSubmit={resetPasswordHandler}
     >
-      <Form className="w-full px-8">
+      <Form className="w-full">
         <TextInput
           label="Your email"
-          placeholder="Enter your email, phone number, or username"
+          placeholder="Enter your email"
           name="email"
           type="email"
         />
-        <ForgotPassword
-          forgotPassword={forgotPassword}
-          toggleForgotPassword={toggleForgotPassword}
-        />
-        <FormButton className="bottom-0" content={"Reset Password"} />
+        <FormButton className="" content={"Reset Password"} />
       </Form>
     </Formik>
   );
