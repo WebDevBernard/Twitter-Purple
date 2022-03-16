@@ -4,7 +4,7 @@
 
 ## About
 
-- This app is frontend only. I made it to practice React( Redux and Context ), Tailwind CSS, React with TypeScript.
+- Login to this app and tweet, comment, like or delete a tweet. I made this website to practice React( Redux and Context ), Tailwind CSS, React with TypeScript, and Firebase Auth.
 
 ## Tech Stack
 
