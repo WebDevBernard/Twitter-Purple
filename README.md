@@ -4,7 +4,7 @@
 
 ## About
 
-- A Twitter clone made in React and Tailwind CSS. Users can login with Firebase, and tweet, comment, like or delete a tweet. I made this website to practice things I learned in React tutorials, including React Redux and Context, and React with TypeScript.
+- My attempt to make a pixel perfect match of the Twitter home page, made using React and Tailwind CSS. Users can also login with Firebase, update avatar, tweet, comment, like or delete a tweet. I made this website to practice things I learned in React tutorials, including React Redux and Context, and React with TypeScript. State persisted through local storage.
 
 ## Tech Stack
 
