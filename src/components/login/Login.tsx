@@ -50,7 +50,7 @@ const Login = (props: any) => {
           isLogin && "px-8"
         }  py-6 flex flex-col justify center space-y-6`}
       >
-        <h3 onClick={handleLoginTab} className="font-bold text-xl">
+        <h3 className="font-bold text-xl">
           {!forgotPassword && !isLogin && "Sign in to Twitter"}
           {!forgotPassword && isLogin && "Create your account"}
           {forgotPassword && "Reset your password"}
@@ -93,12 +93,14 @@ const Login = (props: any) => {
         )}
 
         <div className="cursor-pointer">
-          <p className={`${!isLogin && "mt-8"} `} onClick={handleLoginTab}>
+          <p className={`${!isLogin && "mt-8"} `}>
             {isLogin && !forgotPassword && "Login with an existing account"}
             {!isLogin && !forgotPassword && (
               <p>
                 Don't have an account?{" "}
-                <span className="text-blue-500">Sign Up</span>
+                <span onClick={handleLoginTab} className="text-blue-500">
+                  Sign Up
+                </span>
               </p>
             )}
           </p>
