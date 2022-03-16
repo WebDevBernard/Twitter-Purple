@@ -92,13 +92,19 @@ const Login = (props: any) => {
           />
         )}
 
-        <div className="cursor-pointer">
-          <p className={`${!isLogin && "mt-8"} `}>
+        <div>
+          <p
+            onClick={handleLoginTab}
+            className={`${!isLogin && "mt-8 cursor-pointer"} `}
+          >
             {isLogin && !forgotPassword && "Login with an existing account"}
             {!isLogin && !forgotPassword && (
               <p>
                 Don't have an account?{" "}
-                <span onClick={handleLoginTab} className="text-blue-500">
+                <span
+                  onClick={handleLoginTab}
+                  className="text-blue-500 cursor-pointer"
+                >
                   Sign Up
                 </span>
               </p>
