@@ -97,7 +97,7 @@ const Login = (props: any) => {
             {isLogin && !forgotPassword && "Login with an existing account"}
             {!isLogin && !forgotPassword && (
               <p>
-                "Don't have an account?"{" "}
+                Don't have an account?{" "}
                 <span className="text-blue-500">Sign Up</span>
               </p>
             )}
