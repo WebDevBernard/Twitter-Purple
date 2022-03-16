@@ -46,7 +46,7 @@ const Login = (props: any) => {
         <br />
       </div>
       <div
-        className={`${!isLogin && "px-36"} ${
+        className={`${!isLogin && "px-8 md:px-36"} ${
           isLogin && "px-8"
         }  py-6 flex flex-col justify center space-y-6`}
       >

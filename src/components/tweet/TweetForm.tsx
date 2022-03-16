@@ -18,6 +18,8 @@ interface IProps {
   tweetCount: number;
   placeholder: string;
   rows: number;
+  pencil?: string;
+  p?: string;
 }
 
 const TweetForm: FC<IProps> = ({
@@ -30,6 +32,8 @@ const TweetForm: FC<IProps> = ({
   tweetCount,
   placeholder,
   rows,
+  pencil,
+  p,
 }) => {
   const ready = useAvatarReady();
   const [selectUserAvatar] = useCurrentUser();
@@ -62,7 +66,12 @@ const TweetForm: FC<IProps> = ({
                 {tweetInputHasError && tweetCount > 140 && "tweet too long!"}
               </p>
               <p className={errorStyle}>{140 - tweetCount}</p>
-              <TweetButton className={tweetIconSmall} text="Tweet" />
+              <TweetButton
+                pencil={pencil}
+                p={p}
+                className={tweetIconSmall}
+                text="Tweet"
+              />
             </div>
           </div>
         </form>

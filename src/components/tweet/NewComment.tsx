@@ -60,6 +60,8 @@ const NewComment = () => {
       tweetInputHasError={tweetInputHasError}
       tweetCount={tweetCount}
       rows={2}
+      p="inline-block"
+      pencil="hidden"
     />
   );
 };

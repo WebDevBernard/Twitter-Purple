@@ -68,7 +68,7 @@ function App() {
             path="/"
             element={
               <Layout>
-                <NewTweet />
+                <NewTweet p="inline-block" pencil="hidden" />
                 <TweetList />
               </Layout>
             }

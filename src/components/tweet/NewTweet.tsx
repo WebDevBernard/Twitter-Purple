@@ -60,6 +60,8 @@ const NewTweet = (props: any) => {
       tweetInputHasError={tweetInputHasError}
       tweetCount={tweetCount}
       rows={2}
+      pencil={props.pencil}
+      p={props.p}
     />
   );
 };

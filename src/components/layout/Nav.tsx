@@ -78,8 +78,8 @@ const Nav: FC<IProps> = (props) => {
   };
 
   return (
-    <div className="max-w-xs  px-3 items-center flex flex-col justify-between top-0 overflow-hidden ">
-      <div className="mr-8 mt-4 ">
+    <div className="max-w-xs px-2 xl:px-3 items-center flex flex-col justify-between top-0 overflow-hidden ">
+      <div className="xl:mr-8 mt-4 ">
         <div className="mb-4">
           <Link to={"/"}>
             <i
@@ -100,7 +100,12 @@ const Nav: FC<IProps> = (props) => {
           );
         })}
         <div onClick={props.handleOpenModal}>
-          <TweetButton className={`${tweetIcon} mt-4`} text="Tweet" />
+          <TweetButton
+            className={`${tweetIcon} mt-4`}
+            p="hidden xl:inline-block"
+            pencil="xl:hidden inline-block"
+            text="Tweet"
+          />
         </div>
       </div>
       <br />
