@@ -81,16 +81,15 @@ const Tweet = (props: any) => {
         <p className="break-all">{props.tweet}</p>
         <div className="flex items-center justify-evenly my-2">
           <div className="flex space-x-2">
-            <p>{commentLength}</p>
             <Link to={`${props.userName}/comments/${props.id}`}>
               <ChatAltIcon
                 className={`rounded-full hover:text-purple-500 opacity-90 ${icons}`}
               />
             </Link>
+            <p>{commentLength}</p>
           </div>
 
           <div className="flex items-center space-x-2">
-            <p>{heartLength}</p>
             <div
               className={`rounded-full hover:text-purple-500 opacity-90 ${icons}`}
               onClick={likeToggleHandler}
@@ -101,6 +100,7 @@ const Tweet = (props: any) => {
                 <HeartIcon />
               )}
             </div>
+            <p>{heartLength}</p>
           </div>
         </div>
       </div>

@@ -4,6 +4,7 @@ import TweetButton from "../layout/TweetButton";
 import { tweetIconSmall } from "../styles/heroicons-style";
 import useAvatarReady from "../hooks/useAvatarReady";
 import { FC } from "react";
+import { avatarIcon } from "../styles/heroicons-style";
 
 interface IProps {
   enteredTweet: string;
@@ -16,6 +17,7 @@ interface IProps {
   tweetInputHasError: boolean;
   tweetCount: number;
   placeholder: string;
+  rows: number;
 }
 
 const TweetForm: FC<IProps> = ({
@@ -27,6 +29,7 @@ const TweetForm: FC<IProps> = ({
   tweetInputHasError,
   tweetCount,
   placeholder,
+  rows,
 }) => {
   const ready = useAvatarReady();
   const [selectUserAvatar] = useCurrentUser();
@@ -35,12 +38,9 @@ const TweetForm: FC<IProps> = ({
     ? "text-red-500"
     : "text-secondary_text";
   return (
-    <div className="flex px-3 py-2 border-hover_border  border-y-[1px]">
+    <div className="flex p-2 border-hover_border">
       {ready && (
-        <Avatar
-          avatar={selectUserAvatar}
-          className="h-12 w-12 md:h-16 md:w-16"
-        />
+        <Avatar avatar={selectUserAvatar} className={`ml-1 ${avatarIcon}`} />
       )}
       <div className="w-full mt-2 mx-3">
         <form onSubmit={tweetSubmitHandler} onKeyDown={addTweetOnEnter}>
@@ -49,10 +49,10 @@ const TweetForm: FC<IProps> = ({
             onChange={tweetChangeHandler}
             onBlur={tweetBlurHandler}
             value={enteredTweet}
-            rows={3}
+            rows={rows}
             autoComplete="off"
             placeholder={placeholder}
-            className="text-primary_dark_text placeholder:text-primary_light_text w-full text-lg bg-transparent border-b-2 border-hover_border resize-none focus:outline-none"
+            className="text-primary_dark_text placeholder:text-primary_light_text w-full text-lg bg-transparent border-b-[1px] border-hover_border resize-none focus:outline-none mt-2"
           ></textarea>
           <div className="flex items-center justify-between mt-2">
             <br />

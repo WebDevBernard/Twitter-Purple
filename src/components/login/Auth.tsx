@@ -14,13 +14,13 @@ const TextInput = ({ label, ...props }: any) => {
 
   return (
     <div>
-      <label className={props.className} htmlFor={field.name}>
+      {/* <label className={props.className} htmlFor={field.name}>
         {label}
-      </label>
+      </label> */}
       <input
         className={`${
-          meta.error && meta.touched && "border-red-500 border-2"
-        } w-full rounded-md text-lg py-1.5 px-2 focus:outline-primary_light_text placeholder-primary_light_text`}
+          meta.error && meta.touched && ""
+        } border-[1px] border-slate-400  w-full rounded-sm text-lg py-1.5 px-2 focus:outline-blue-500 placeholder-primary_light_text`}
         noValidate
         autoComplete="off"
         {...field}
@@ -49,7 +49,7 @@ const FormButton = (props: any) => {
     <div>
       <Button
         disabled={props.disabled}
-        className="font-thin px-6 py-1.5 rounded-md w-full bottom-0"
+        className="font-thin px-6 py-1.5 rounded-3xl w-full"
       >
         {props.content}
       </Button>
@@ -206,10 +206,10 @@ export const ResetPassword = ({
       validationSchema={validateReset}
       onSubmit={resetPasswordHandler}
     >
-      <Form className="">
+      <Form className="w-full px-8">
         <TextInput
           label="Your email"
-          placeholder="username@email.com"
+          placeholder="Enter your email, phone number, or username"
           name="email"
           type="email"
         />
@@ -217,7 +217,7 @@ export const ResetPassword = ({
           forgotPassword={forgotPassword}
           toggleForgotPassword={toggleForgotPassword}
         />
-        <FormButton content={"Reset Password"} />
+        <FormButton className="bottom-0" content={"Reset Password"} />
       </Form>
     </Formik>
   );

@@ -8,11 +8,12 @@ import { navLinks } from "../../utils/nav-links";
 import NavButton from "../shared/NavButton";
 import ProfileButton from "./ProfileButton";
 import TweetButton from "./TweetButton";
-import { tweetIcon } from "../styles/heroicons-style";
+import { avatarIcon, tweetIcon } from "../styles/heroicons-style";
 import Dialog from "../shared/Dialog";
 import Avatar from "../shared/Avatar";
 import useClickedOutside from "../hooks/useClickedOutside";
 import useCurrentUser from "../hooks/useCurrentUser";
+import { CheckIcon } from "@heroicons/react/outline";
 const logout = async () => {
   await auth.signOut();
 };
@@ -34,15 +35,19 @@ const ProfileDialog: FC<IProps> = (props) => {
   });
 
   return (
-    <Dialog className="relative top-0">
+    <Dialog className="p-2 absolute bottom-20 left-20 xl:relative xl:left-0 xl:bottom-0">
       <div ref={domNode}>
         <span className="flex space-x-1 p-2 border-b-[1px] border-border ">
-          <div ref={props.menuRef} className={`flex  ${props.className}`}>
-            <Avatar avatar={selectUserAvatar} className="h-12 w-12" />
+          <div
+            ref={props.menuRef}
+            className={`flex items-center ${props.className}`}
+          >
+            <Avatar avatar={selectUserAvatar} className={avatarIcon} />
             <div className="ml-4">
               <p className="font-bold text-purple-500">{selectUserName}</p>
               <p>@ {selectUserName}</p>
             </div>
+            <CheckIcon className="h-6 w-6 ml-8 xl:inline-block text-violet-400" />
           </div>
         </span>
         {currentUser && (
@@ -50,7 +55,7 @@ const ProfileDialog: FC<IProps> = (props) => {
             onClick={props.handleOpenProfile}
             className="flex  space-x-2 border-transparent border-[1px] hover:bg-hover cursor-pointer p-2"
           >
-            <p>Update Avatar</p>
+            <p>Update User Avatar</p>
           </span>
         )}
 
@@ -58,7 +63,7 @@ const ProfileDialog: FC<IProps> = (props) => {
           className="flex  space-x-2 border-transparent border-[1px] hover:bg-hover cursor-pointer p-2 "
           onClick={!currentUser ? props.handleOpenAuth : logout}
         >
-          {currentUser ? "Logout" : "Login"}
+          {currentUser ? `Log out @${selectUserName}` : "Login"}
         </p>
       </div>
     </Dialog>
@@ -73,15 +78,20 @@ const Nav: FC<IProps> = (props) => {
   };
 
   return (
-    <div className="max-w-xs px-2 md:px-8 items-center flex flex-col justify-between top-0 overflow-hidden ">
-      <div className="space-y-3 flex flex-col items-start justify-between mt-4">
-        <Link to={"/"}>
-          <i className="devicon-twitter-original text-[30px] ml-2 mb-2 text-secondary_text"></i>
-        </Link>
+    <div className="max-w-xs  px-3 items-center flex flex-col justify-between top-0 overflow-hidden ">
+      <div className="mr-8 mt-4 ">
+        <div className="mb-4">
+          <Link to={"/"}>
+            <i
+              className="devicon-twitter-original text-[24px] ml-2  text-secondary_text"
+              title="twitter icon"
+            ></i>
+          </Link>
+        </div>
         {Object.entries(navLinks).map((link) => {
           return (
             <NavButton
-              className="rounded-3xl p-3"
+              className="rounded-3xl  p-3"
               content={link[0]}
               key={nanoid()}
             >
@@ -90,7 +100,7 @@ const Nav: FC<IProps> = (props) => {
           );
         })}
         <div onClick={props.handleOpenModal}>
-          <TweetButton className={tweetIcon} text="Tweet" />
+          <TweetButton className={`${tweetIcon} mt-4`} text="Tweet" />
         </div>
       </div>
       <br />
@@ -110,7 +120,7 @@ const Nav: FC<IProps> = (props) => {
       </AnimatePresence>
       <ProfileButton
         openDialog={handleOpenDialog}
-        className="bottom-0 hover:bg-hover mb-4 md:pl-2 md:pr-4 md:py-2 rounded-full"
+        className="bottom-0 hover:bg-hover mb-4 md:pl-2 md:pr-4 md:py-2 rounded-full left-0"
       />
     </div>
   );

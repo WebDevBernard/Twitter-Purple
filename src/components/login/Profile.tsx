@@ -10,6 +10,7 @@ import { auth } from "../../utils/firebase";
 import { avatarArray } from "../../utils/avatar-names";
 import Button from "../shared/Button";
 import Modal from "../shared/Modal";
+import { XIcon } from "@heroicons/react/outline";
 
 const Profile: FC<{ onClose: () => boolean }> = (props) => {
   const [selected, setSelected] = useState<string | null>(null);
@@ -36,11 +37,15 @@ const Profile: FC<{ onClose: () => boolean }> = (props) => {
   };
 
   return (
-    <Modal className="" onClose={props.onClose}>
+    <Modal className="flex items-center " onClose={props.onClose}>
+      <XIcon
+        onClick={props.onClose}
+        className="h-10 w-10 p-2 cursor-pointer absolute top-0"
+      />
       <form onSubmit={handleSubmit}>
-        <div className="p-3 space-y-4">
+        <div className="p-10 space-y-4">
           <p className="border-b-border border-[1px]">Choose a new avatar</p>
-          <div className="grid grid-cols-2 gap-2">
+          <div className="grid grid-cols-2 gap-4">
             {avatarArray.map((src, index) => {
               return (
                 <img

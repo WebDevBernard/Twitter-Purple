@@ -9,7 +9,7 @@ const NavButton: FC<{ className: string; content: string }> = (props) => {
     >
       <ReactTooltip backgroundColor="#64748b" />
       {props.children}
-      <p className="hidden md:flex ml-2">{props.content}</p>
+      <p className="hidden text-[22px] xl:flex ml-4">{props.content}</p>
     </div>
   );
 };

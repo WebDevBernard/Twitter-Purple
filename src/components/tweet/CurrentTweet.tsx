@@ -49,18 +49,18 @@ const CurrentTweet = () => {
           <p>{selectedTweet.tweet}</p>
           <div className="flex items-center justify-evenly my-2">
             <div className="flex space-x-2">
+              <ChatAltIcon className={`${icons} cursor-auto opacity-90`} />{" "}
               <p>{commentLength}</p>
-              <ChatAltIcon className={`${icons} cursor-auto opacity-90`} />
             </div>
             <div className="flex space-x-2">
-              <p>{heartLength}</p>
               <div onClick={likeToggleHandler}>
                 {selectedTweet.like ? (
                   <SolidHeartIcon className="h-6 w-6 cursor-pointer rounded-full text-purple-500 opacity-90 duration-150 ease-out active:scale-95 active:shadow-sm" />
                 ) : (
                   <HeartIcon className="h-6 w-6 cursor-pointer rounded-full  hover:text-purple-500 opacity-90" />
                 )}
-              </div>
+              </div>{" "}
+              <p>{heartLength}</p>
             </div>
           </div>
         </div>

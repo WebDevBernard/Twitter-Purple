@@ -6,6 +6,7 @@ import {
   FlagIcon,
   DocumentTextIcon,
   DotsCircleHorizontalIcon,
+  UserIcon,
 } from "@heroicons/react/outline";
 import { icons } from "../components/styles/heroicons-style";
 
@@ -16,5 +17,6 @@ export const navLinks = {
   Messages: <MailIcon className={icons} />,
   Bookmarks: <FlagIcon className={icons} />,
   Lists: <DocumentTextIcon className={icons} />,
+  Profile: <UserIcon className={icons} />,
   More: <DotsCircleHorizontalIcon className={icons} />,
 };

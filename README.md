@@ -4,7 +4,7 @@
 
 ## About
 
-- Login to this app and tweet, comment, like or delete a tweet. I made this website to practice React( Redux and Context ), Tailwind CSS, React with TypeScript, and Firebase Auth.
+- Login to this app and tweet, comment, like or delete a tweet. I made this website to practice React Redux and Context, React with TypeScript, Tailwind CSS, and Firebase Auth.
 
 ## Tech Stack
 

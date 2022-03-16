@@ -59,6 +59,7 @@ const NewTweet = (props: any) => {
       addTweetOnEnter={addTweetOnEnter}
       tweetInputHasError={tweetInputHasError}
       tweetCount={tweetCount}
+      rows={2}
     />
   );
 };

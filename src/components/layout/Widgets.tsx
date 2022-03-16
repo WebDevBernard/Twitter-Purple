@@ -3,10 +3,11 @@ import ReactTooltip from "react-tooltip";
 import { SearchIcon } from "@heroicons/react/outline";
 import Avatar from "../shared/Avatar";
 import Card from "../shared/Card";
+import { avatarIcon } from "../styles/heroicons-style";
 
 const Widgets = () => {
   return (
-    <div className="max-w-xs hidden px-8 md:flex flex-col space-y-6">
+    <div className="w-[405px] hidden px-8 lg:flex flex-col space-y-3">
       <form data-tip="Not Implemented" className="relative flex items-center">
         <ReactTooltip backgroundColor="#64748b" />
         <input
@@ -15,7 +16,7 @@ const Widgets = () => {
         ></input>
         <SearchIcon className=" w-[20px] h-[20px] bottom-3 right-3 absolute text-primary_light_text" />
       </form>
-      <Card className="space-y-6 bg-bg p-3 inline-block tracking-normal">
+      <Card className="space-y-6 bg-bg p-4 inline-block tracking-normal">
         <h3 className=" font-bold">What's Happening</h3>
         <div className="inline-block break-words">
           <p className="text-xs ">Updates</p>
@@ -34,7 +35,7 @@ const Widgets = () => {
           <p className="text-xs ">#ResponsiveDesign #React #Redux</p>
         </div>
       </Card>
-      <Card className="bg-bg p-3 whitespace-nowrap">
+      <Card className="bg-bg p-4 whitespace-nowrap">
         <h3 className="font-bold mb-2">Who To Follow</h3>
 
         <a
@@ -42,9 +43,9 @@ const Widgets = () => {
           target="_blank"
           rel="noreferrer"
         >
-          <div className="flex items-center justify-evenly">
-            <div className="flex cursor-pointer">
-              <Avatar avatar={avatarArray[4]} className="h-12 w-12" />
+          <div className="flex items-center justify-between">
+            <div className="flex items-center cursor-pointer">
+              <Avatar avatar={avatarArray[4]} className={avatarIcon} />
               <div className="ml-4 hidden md:inline-block whitespace-nowrap">
                 <p className="font-bold text-secondary_text">WebDevBernard</p>
                 <p>@ WebDevBernard</p>

@@ -13,7 +13,7 @@ const Backdrop: FC<{ onClose: () => boolean }> = (props) => (
 
 const ModalOverlay: FC<{ className: string }> = (props) => {
   return (
-    <div className="z-30 flex justify-center items-center overflow-y-auto inset-0 fixed">
+    <div className="z-30 h-screen w-full md:flex justify-center overflow-y-auto inset-0 fixed">
       <div className={` ${props.className}`}>{props.children}</div>{" "}
     </div>
   );
@@ -42,7 +42,7 @@ const Modal: FC<{
             initial="hidden"
             animate="visible"
             exit="exit"
-            className={` w-auto mx-w-3xl border-[1px]  border-border text-secondary_text bg-bg rounded-md opacity-95 shadow-lg ${props.className}`}
+            className={` text-secondary_text bg-bg rounded-2xl opacity-95 shadow-md ${props.className}`}
           >
             {props.children}
           </motion.div>

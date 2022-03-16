@@ -18,7 +18,7 @@ import DeleteDialog from "./DeleteDialog";
 import Avatar from "../shared/Avatar";
 import ReactTooltip from "react-tooltip";
 import { AppDispatch } from "../../redux/store";
-import { ICommentProps } from "../interfaces/interface";
+
 const Comment = (props: any) => {
   const dispatch = useDispatch<AppDispatch>();
   const timeAgo = (date: Date) => moment(date).fromNow();
@@ -38,7 +38,6 @@ const Comment = (props: any) => {
   const handleDialog = () => {
     setOpenDialog(!openDialog);
   };
-  console.log(props);
 
   const deleteHandler = () => {
     handleNotification("Comment Deleted");
@@ -76,7 +75,7 @@ const Comment = (props: any) => {
             )}
           </AnimatePresence>
         </div>
-        <p className="break-all">{props.comment}</p>
+        <p className="break-all">{props.tweet}</p>
         <div className="flex items-center justify-evenly my-2">
           <ReactTooltip backgroundColor="#64748b" />
 
@@ -87,7 +86,6 @@ const Comment = (props: any) => {
             className={`${commentIcon}`}
           />
           <div className="flex items-center space-x-2">
-            <p>{heartLength}</p>
             <div
               className={`rounded-full hover:text-purple-500 opacity-90 ${icons}`}
               onClick={likeToggleHandler}
@@ -98,6 +96,7 @@ const Comment = (props: any) => {
                 <HeartIcon />
               )}
             </div>
+            <p>{heartLength}</p>
           </div>
           <UploadIcon data-tip="Not Implemented" className={`${commentIcon}`} />
           <ChartBarIcon
