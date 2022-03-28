@@ -12,7 +12,7 @@ import Button from "../shared/Button";
 import Modal from "../shared/Modal";
 import { XIcon } from "@heroicons/react/outline";
 
-const Profile: FC<{ onClose: () => boolean }> = (props) => {
+const Profile: FC<{ onClose: () => void }> = (props) => {
   const [selected, setSelected] = useState<string | null>(null);
   const { handleNotification } = useContext(AuthContext);
   const handleSelected = (e: any) => {

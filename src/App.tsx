@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -17,19 +17,29 @@ import Login from "./components/login/Login";
 import TweetList from "./components/tweet/TweetList";
 import NewComment from "./components/tweet/NewComment";
 import CurrentTweet from "./components/tweet/CurrentTweet";
+
 function App() {
   const [openModal, setOpenModal] = useState<boolean>(false);
   const [openProfile, setOpenProfile] = useState<boolean>(false);
   const [openAuth, setOpenAuth] = useState<boolean>(false);
+  const [show, setShow] = useState<boolean>(false);
+  useEffect(() => {
+    show
+      ? (document.body.style.overflow = "hidden")
+      : (document.body.style.overflow = "unset");
+  }, [show]);
 
-  const handleOpenAuth: any = () => {
+  const handleOpenAuth = () => {
     setOpenAuth(!openAuth);
+    setShow(!show);
   };
-  const handleOpenProfile: any = () => {
+  const handleOpenProfile = () => {
     setOpenProfile(!openProfile);
+    setShow(!show);
   };
-  const handleOpenModal: any = () => {
+  const handleOpenModal = () => {
     setOpenModal(!openModal);
+    setShow(!show);
   };
 
   return (

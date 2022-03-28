@@ -4,7 +4,7 @@ import { modalAnimation } from "../../utils/variants";
 import ReactDOM from "react-dom";
 import useClickedOutside from "../hooks/useClickedOutside";
 
-const Backdrop: FC<{ onClose: () => boolean }> = (props) => (
+const Backdrop: FC<{ onClose: () => void }> = (props) => (
   <div
     className="fixed top-0 left-0 h-screen w-full z-20 opacity-20 transition bg-black ease-out duration-75"
     onClick={props.onClose}
@@ -26,7 +26,7 @@ const ModalOverlay: FC<{ className: string }> = (props) => {
 const portalElement: HTMLElement = document.getElementById("modal")!;
 
 const Modal: FC<{
-  onClose: () => boolean;
+  onClose: () => void;
   className: string;
 }> = (props) => {
   const domNode = useClickedOutside(() => {

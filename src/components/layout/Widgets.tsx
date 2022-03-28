@@ -34,6 +34,18 @@ const Widgets = () => {
           </p>
           <p className="text-xs ">#ResponsiveDesign #React #Redux</p>
         </div>
+        <div>
+          <p className="text-xs">Info</p>
+          <a
+            href="https://github.com/WebDevBernard/Twitter-Purple"
+            target="_blank"
+            rel="noreferrer"
+            className="text-sm font-bold text-secondary_text"
+          >
+            View the Github repo
+          </a>
+          <p className="text-xs ">#Github</p>
+        </div>
       </Card>
       <Card className="bg-bg p-4 whitespace-nowrap">
         <h3 className="font-bold mb-2">Who To Follow</h3>

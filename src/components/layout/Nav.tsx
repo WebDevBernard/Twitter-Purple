@@ -1,5 +1,6 @@
+import ReactTooltip from "react-tooltip";
 import { Link } from "react-router-dom";
-import { useState, useContext, FC, RefObject } from "react";
+import React, { useState, useContext, FC, RefObject } from "react";
 import AuthContext from "../../store/auth-context";
 import { auth } from "../../utils/firebase";
 import { nanoid } from "nanoid";
@@ -22,8 +23,8 @@ interface IProps {
   openDialog?: any;
   menuRef?: RefObject<HTMLDivElement>;
   className?: string;
-  handleOpenProfile?: () => boolean;
-  handleOpenAuth?: () => boolean;
+  handleOpenProfile?: () => void;
+  handleOpenAuth?: () => void;
   handleOpenDialog?: React.MouseEventHandler<HTMLSpanElement>;
   handleOpenModal?: React.MouseEventHandler<HTMLDivElement>;
 }
@@ -35,7 +36,7 @@ const ProfileDialog: FC<IProps> = (props) => {
   });
 
   return (
-    <Dialog className="p-2 absolute bottom-20 left-20 xl:relative xl:left-0 xl:bottom-0">
+    <Dialog className="p-2  left-20 xl:relative xl:left-0 xl:bottom-0">
       <div ref={domNode}>
         <span className="flex space-x-1 p-2 border-b-[1px] border-border ">
           <div
@@ -78,7 +79,7 @@ const Nav: FC<IProps> = (props) => {
   };
 
   return (
-    <div className="max-w-xs px-2 xl:px-3 items-center flex flex-col justify-between top-0 overflow-hidden ">
+    <div className="max-w-xs px-2 xl:px-3 items-center flex flex-col justify-between top-0 overflow-x-hidden overflow-y-auto ">
       <div className="xl:mr-8 mt-4 ">
         <div className="mb-4">
           <Link to={"/"}>
@@ -90,13 +91,12 @@ const Nav: FC<IProps> = (props) => {
         </div>
         {Object.entries(navLinks).map((link) => {
           return (
-            <NavButton
-              className="rounded-3xl  p-3"
-              content={link[0]}
-              key={nanoid()}
-            >
-              {link[1]}
-            </NavButton>
+            <React.Fragment key={nanoid()}>
+              <NavButton className="rounded-3xl  p-3">
+                <ReactTooltip backgroundColor="#64748b" />
+                <p className="hidden text-[22px] xl:flex ml-4">{link[0]}</p>
+              </NavButton>
+            </React.Fragment>
           );
         })}
         <div onClick={props.handleOpenModal}>
@@ -125,7 +125,7 @@ const Nav: FC<IProps> = (props) => {
       </AnimatePresence>
       <ProfileButton
         openDialog={handleOpenDialog}
-        className="bottom-0 hover:bg-hover mb-4 md:pl-2 md:pr-4 md:py-2 rounded-full left-0"
+        className=" hover:bg-hover mb-4 md:pl-2 md:pr-4 md:py-2 rounded-full left-0 relative"
       />
     </div>
   );
