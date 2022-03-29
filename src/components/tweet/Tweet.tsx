@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { tweetActions } from "../../redux/tweet-slice";
 import { Link } from "react-router-dom";
 import { useState, useContext, FC } from "react";
-import moment from "moment";
+
 import {
   ChatAltIcon,
   HeartIcon,
@@ -16,7 +16,7 @@ import Avatar from "../shared/Avatar";
 import DeleteDialog from "./DeleteDialog";
 import { AppDispatch, RootState } from "../../redux/store";
 import { ITweetProps, ICommentProps } from "../interfaces/interface";
-const timeAgo = (date: Date) => moment(date).fromNow();
+import ReactTimeAgo from "react-time-ago";
 
 const Tweet = (props: any) => {
   const dispatch = useDispatch<AppDispatch>();
@@ -57,7 +57,17 @@ const Tweet = (props: any) => {
             </p>
 
             <p className="text-xs whitespace-nowrap">@ {props.userName}</p>
-            <p className="text-sm ">{timeAgo(props.createdAt)}</p>
+
+            <ReactTimeAgo
+              className="text-sm "
+              date={props.createdAt}
+              locale="en-US"
+              timeStyle={
+                new Date(props.createdAt + 60000) < new Date(Date.now())
+                  ? "round-minute"
+                  : "twitter"
+              }
+            />
           </span>
           {!(tweetIndex <= 4) && (
             <DotsHorizontalIcon

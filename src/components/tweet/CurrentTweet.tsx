@@ -1,14 +1,13 @@
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { tweetActions } from "../../redux/tweet-slice";
-import moment from "moment";
+import ReactTimeAgo from "react-time-ago";
 import { ChatAltIcon, HeartIcon } from "@heroicons/react/outline";
 import { HeartIcon as SolidHeartIcon } from "@heroicons/react/solid";
 import { avatarIcon, icons } from "../styles/heroicons-style";
 import Avatar from "../shared/Avatar";
 import { AppDispatch, RootState } from "../../redux/store";
 
-const timeAgo = (date: Date) => moment(date).fromNow();
 const CurrentTweet = () => {
   const params = useParams();
   const { tweets, comments } = useSelector(
@@ -43,7 +42,12 @@ const CurrentTweet = () => {
                 {selectedTweet.userName?.split("_")[0]}
               </p>
               <p className="text-xs ">@ {selectedTweet.userName}</p>
-              <p className="text-sm ">{timeAgo(selectedTweet.createdAt)}</p>
+              <ReactTimeAgo
+                className="text-sm "
+                date={selectedTweet.createdAt}
+                locale="en-US"
+                timeStyle="round-minute"
+              />
             </span>
           </div>
           <p>{selectedTweet.tweet}</p>

@@ -2,7 +2,7 @@ import { useState, useContext, FC } from "react";
 import { tweetActions } from "../../redux/tweet-slice";
 import { useDispatch } from "react-redux";
 import AuthContext from "../../store/auth-context";
-import moment from "moment";
+import ReactTimeAgo from "react-time-ago";
 import { avatarIcon, commentIcon, icons } from "../styles/heroicons-style";
 import { AnimatePresence } from "framer-motion";
 import {
@@ -21,7 +21,7 @@ import { AppDispatch } from "../../redux/store";
 
 const Comment = (props: any) => {
   const dispatch = useDispatch<AppDispatch>();
-  const timeAgo = (date: Date) => moment(date).fromNow();
+
   const [openDialog, setOpenDialog] = useState<boolean>(false);
   const { handleNotification } = useContext(AuthContext);
 
@@ -55,7 +55,17 @@ const Comment = (props: any) => {
               {props.userName.split("_")[0]}
             </p>
             <p className="text-xs whitespace-nowrap">@ {props.userName}</p>
-            <p className="text-sm ">{timeAgo(props.createdAt)}</p>
+
+            <ReactTimeAgo
+              className="text-sm "
+              date={props.createdAt}
+              locale="en-US"
+              timeStyle={
+                new Date(props.createdAt + 60000) < new Date(Date.now())
+                  ? "round-minute"
+                  : "twitter"
+              }
+            />
           </span>
 
           <DotsHorizontalIcon

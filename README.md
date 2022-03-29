@@ -13,7 +13,7 @@
 - Tailwind CSS for styling
 - Formik and Yup for form Vaildation
 - Unique Names Generator to create randomize user names
-- MomentJS for timeago
+- react-timeago for time formatting
 
 ## Preview
 

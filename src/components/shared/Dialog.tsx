@@ -14,7 +14,7 @@ const Dialog: FC<IProps> = (props) => {
       initial="hidden"
       animate="visible"
       exit="exit"
-      className={`flex flex-col justify-center space-y-2 text-secondary_text bg-bg rounded-md absolute  opacity-95 shadow-lg ${props.className}`}
+      className={`z-20 flex flex-col justify-center space-y-2 text-secondary_text bg-bg rounded-md absolute  opacity-95 shadow-lg ${props.className}`}
     >
       {props.children}
     </motion.div>

@@ -5,6 +5,11 @@ import App from "./App";
 import { Provider } from "react-redux";
 import { AuthContextProvider } from "./store/auth-context";
 import store from "./redux/store";
+import TimeAgo from "javascript-time-ago";
+
+import en from "javascript-time-ago/locale/en.json";
+
+TimeAgo.addDefaultLocale(en);
 
 ReactDOM.render(
   <React.StrictMode>
