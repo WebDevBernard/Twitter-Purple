@@ -41,7 +41,7 @@ const TweetForm: FC<IProps> = ({
       {ready && (
         <Avatar avatar={selectUserAvatar} className={`ml-1 ${avatarIcon}`} />
       )}
-      <div className="w-full mt-2 mx-3">
+      <div className=" w-full mt-2 mx-3">
         <form onSubmit={tweetSubmitHandler}>
           <textarea
             onChange={tweetChangeHandler}
@@ -49,7 +49,7 @@ const TweetForm: FC<IProps> = ({
             value={enteredTweet}
             autoComplete="off"
             placeholder={placeholder}
-            className="overflow-y-hidden text-primary_dark_text placeholder:text-primary_light_text w-full bg-transparent border-b-[1px] border-hover_border resize-none focus:outline-none mt-2 text-2xl placeholder:text-lg"
+            className=" overflow-y-hidden text-primary_dark_text placeholder:text-primary_light_text w-full bg-transparent border-b-[1px] border-hover_border resize-none focus:outline-none mt-2 text-2xl placeholder:text-lg"
           ></textarea>
           <div className="flex items-center justify-between mt-2">
             <br />
