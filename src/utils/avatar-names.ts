@@ -1,9 +1,4 @@
-import {
-  uniqueNamesGenerator,
-  adjectives,
-  colors,
-  animals,
-} from "unique-names-generator";
+import { uniqueNamesGenerator, starWars, Config } from "unique-names-generator";
 
 const avatars = {
   Female: [
@@ -27,8 +22,15 @@ export const avatarArray = Object.values(avatars.Male).concat(
 const avatar = avatarArray[Math.floor(Math.random() * avatarArray.length)];
 
 export const shortName = uniqueNamesGenerator({
-  dictionaries: [adjectives, animals, colors],
-  length: 2,
+  dictionaries: [starWars],
+  length: 1,
 });
+
+const config: Config = {
+  dictionaries: [starWars],
+};
+export const randomName = Array.from({ length: 8 }, () =>
+  uniqueNamesGenerator(config)
+);
 
 export default avatar;
