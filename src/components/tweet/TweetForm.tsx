@@ -35,13 +35,13 @@ const TweetForm: FC<IProps> = ({
   const ready = useAvatarReady();
   const [selectUserAvatar] = useCurrentUser();
   const [rows, setRows] = useState(2);
-  useEffect(() => {
-    const rowlen = enteredTweet.split("\n");
+//   useEffect(() => {
+//     const rowlen = enteredTweet.split("\n");
 
-    if (rowlen.length > 2) {
-      setRows(rowlen.length);
-    }
-  }, [enteredTweet]);
+//     if (rowlen.length > 2) {
+//       setRows(rowlen.length);
+//     }
+//   }, [enteredTweet]);
 
   return (
     <div className="flex p-2 border-hover_border">
