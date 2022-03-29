@@ -58,10 +58,10 @@ const Comment = (props: any) => {
 
             <ReactTimeAgo
               className="text-sm "
-              date={props.createdAt}
+              date={new Date(props.createdAt) || 0}
               locale="en-US"
               timeStyle={
-                new Date(props.createdAt + 60000) < new Date(Date.now())
+                new Date(props.createdAt + 60000) > new Date(Date.now())
                   ? "round-minute"
                   : "twitter"
               }

@@ -44,7 +44,7 @@ const CurrentTweet = () => {
               <p className="text-xs ">@ {selectedTweet.userName}</p>
               <ReactTimeAgo
                 className="text-sm "
-                date={selectedTweet.createdAt}
+                date={selectedTweet.createdAt || 0}
                 locale="en-US"
                 timeStyle="round-minute"
               />

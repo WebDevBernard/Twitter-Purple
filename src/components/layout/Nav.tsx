@@ -91,13 +91,11 @@ const Nav: FC<IProps> = (props) => {
         </div>
         {Object.entries(navLinks).map((link) => {
           return (
-            <React.Fragment key={nanoid()}>
-              <NavButton className="rounded-3xl  p-3">
-                <ReactTooltip backgroundColor="#64748b" />
-                {link[1]}
-                <p className="hidden text-[22px] xl:flex ml-4">{link[0]}</p>
-              </NavButton>
-            </React.Fragment>
+            <NavButton key={nanoid()} className="rounded-3xl  p-3">
+              <ReactTooltip backgroundColor="#64748b" />
+              {link[1]}
+              <p className="hidden text-[22px] xl:flex ml-4">{link[0]}</p>
+            </NavButton>
           );
         })}
         <div onClick={props.handleOpenModal}>
