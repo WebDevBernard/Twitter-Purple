@@ -7,7 +7,8 @@ const useValidate = (validateValue: any) => {
   const valueIsValid = validateValue(enteredValue);
 
   const valueChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    e.target.style.height = "30px";
+    console.log(e);
+    e.target.style.height = "60px";
     e.target.style.height = `${e.target.scrollHeight}px`;
     setEnteredValue(e.target.value);
     // setCount(e.target.value) not setCount(enteredTweet) otherwise it will not update immediately
