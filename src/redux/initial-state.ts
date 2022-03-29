@@ -1,10 +1,13 @@
 import { avatarArray, randomName } from "../utils/avatar-names";
 const sw = require("star-wars-quotes");
+
+const monthsAgo = new Date(
+  new Date().getFullYear(),
+  new Date().getMonth() - 3,
+  new Date().getDate()
+);
 const generateRandomDate = () => {
-  const random = getRandomDate(
-    new Date("2022-01-01T01:57:45.271Z"),
-    new Date("2022-04-01T01:57:45.271Z")
-  );
+  const random = getRandomDate(new Date(Date.now()), monthsAgo);
   return random;
 };
 

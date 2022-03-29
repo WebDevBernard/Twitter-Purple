@@ -13,12 +13,14 @@ const ProfileButton: FC<{
   return (
     <div
       onClick={props.openDialog}
-      className={`flex items-center  cursor-pointer ${props.className}`}
+      className={`flex items-center cursor-pointer ${props.className}`}
     >
       {ready && <Avatar avatar={selectUserAvatar} className={avatarIcon} />}
       <div className="ml-4 hidden xl:inline-block whitespace-nowrap">
         {ready && (
-          <p className=" font-bold text-secondary_text">{selectUserName}</p>
+          <p className=" font-bold text-secondary_text">
+            {selectUserName.split(" ")[0]}
+          </p>
         )}
         {ready && <p>@ {selectUserName}</p>}
       </div>
