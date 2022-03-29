@@ -36,7 +36,7 @@ const ProfileDialog: FC<IProps> = (props) => {
   });
 
   return (
-    <Dialog className="p-2  left-20 xl:relative xl:left-0 xl:bottom-0">
+    <Dialog className="p-2 bottom-10 left-20 xl:relative xl:left-0 xl:bottom-0">
       <div ref={domNode}>
         <span className="flex space-x-1 p-2 border-b-[1px] border-border ">
           <div
@@ -124,7 +124,7 @@ const Nav: FC<IProps> = (props) => {
       </AnimatePresence>
       <ProfileButton
         openDialog={handleOpenDialog}
-        className=" hover:bg-hover mb-4 md:pl-2 md:pr-4 md:py-2 rounded-full left-0 relative"
+        className=" hover:bg-hover mb-4 md:pl-2 md:pr-4 md:py-2 rounded-full  left-0 relative"
       />
     </div>
   );

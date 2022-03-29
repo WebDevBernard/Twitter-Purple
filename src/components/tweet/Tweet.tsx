@@ -38,7 +38,7 @@ const Tweet = (props: any) => {
   };
 
   const deleteHandler = () => {
-    handleNotification("Tweet Deleted");
+    handleNotification("Your Tweet was deleted");
     dispatch(tweetActions.deleteTweet(props.id));
   };
 
@@ -69,12 +69,12 @@ const Tweet = (props: any) => {
               }
             />
           </span>
-          {!(tweetIndex <= 4) && (
-            <DotsHorizontalIcon
-              onClick={handleDialog}
-              className={`rounded-full ${icons}`}
-            />
-          )}
+
+          <DotsHorizontalIcon
+            onClick={handleDialog}
+            className={`rounded-full ${icons}`}
+          />
+
           <AnimatePresence
             initial={false}
             exitBeforeEnter={true}

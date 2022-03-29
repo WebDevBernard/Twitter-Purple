@@ -6,7 +6,7 @@ const NavTweet: FC<{ onClose: any }> = (props) => {
   return (
     <Modal
       onClose={props.onClose}
-      className="md:w-[600px] md:min-h-[200px] md:h-auto  md:top-10 top-0 h-screen relative"
+      className="md:w-[600px] md:min-h-[200px] w-full md:h-auto  md:top-10 top-0 h-screen relative"
     >
       <ArrowLeftIcon
         onClick={props.onClose}

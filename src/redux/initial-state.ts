@@ -1,13 +1,27 @@
 import { avatarArray, randomName } from "../utils/avatar-names";
 const sw = require("star-wars-quotes");
+const generateRandomDate = (): string => {
+  const random = getRandomDate(
+    new Date("2022-01-01T01:57:45.271Z"),
+    new Date("2022-04-01T01:57:45.271Z")
+  );
+  return random.toISOString();
+};
 
+function getRandomDate(from: Date, to: Date) {
+  const fromTime = from.getTime();
+  const toTime = to.getTime();
+  return new Date(fromTime + Math.random() * (toTime - fromTime));
+}
+
+const randomDate = Array.from({ length: 11 }, () => generateRandomDate());
 const randomTweet = Array.from({ length: 8 }, () => sw());
 
 const initialState = {
   tweets: [
     {
       id: "1",
-      createdAt: new Date(1639077467544),
+      createdAt: new Date(randomDate[0]),
       tweet: randomTweet[0].split("-")[0],
       avatar: avatarArray[0],
       userName: randomName[0],
@@ -15,7 +29,7 @@ const initialState = {
     },
     {
       id: "2",
-      createdAt: new Date(1639077467544),
+      createdAt: new Date(randomDate[1]),
       tweet: randomTweet[1].split("-")[0],
 
       avatar: avatarArray[1],
@@ -24,7 +38,7 @@ const initialState = {
     },
     {
       id: "3",
-      createdAt: new Date(1639077467544),
+      createdAt: new Date(randomDate[2]),
       tweet: randomTweet[2].split("-")[0],
 
       avatar: avatarArray[2],
@@ -33,7 +47,7 @@ const initialState = {
     },
     {
       id: "4",
-      createdAt: new Date(1639077467544),
+      createdAt: new Date(randomDate[3]),
       tweet: randomTweet[3].split("-")[0],
 
       avatar: avatarArray[3],
@@ -42,7 +56,7 @@ const initialState = {
     },
     {
       id: "5",
-      createdAt: new Date(1639077467544),
+      createdAt: new Date(randomDate[4]),
       tweet: randomTweet[4].split("-")[0],
 
       avatar: avatarArray[4],
@@ -51,7 +65,7 @@ const initialState = {
     },
     {
       id: "6",
-      createdAt: new Date(1639077467544),
+      createdAt: new Date(randomDate[5]),
       tweet: randomTweet[5].split("-")[0],
 
       avatar: avatarArray[5],
@@ -60,7 +74,7 @@ const initialState = {
     },
     {
       id: "7",
-      createdAt: new Date(1639077467544),
+      createdAt: new Date(randomDate[6]),
       tweet: randomTweet[6].split("-")[0],
 
       avatar: avatarArray[6],
@@ -69,7 +83,7 @@ const initialState = {
     },
     {
       id: "8",
-      createdAt: new Date(1639077467544),
+      createdAt: new Date(randomDate[7]),
       tweet: randomTweet[7].split("-")[0],
 
       avatar: avatarArray[7],
@@ -80,8 +94,8 @@ const initialState = {
   comments: [
     {
       id: "1",
-      createdAt: new Date(1639077467544),
-      tweetId: "5",
+      createdAt: new Date(randomDate[8]),
+      tweetId: "8",
       comment: randomTweet[5].split("-")[0],
       avatar: avatarArray[3],
       userName: randomName[0],
@@ -89,8 +103,8 @@ const initialState = {
     },
     {
       id: "2",
-      createdAt: new Date(1639077467544),
-      tweetId: "5",
+      createdAt: new Date(randomDate[9]),
+      tweetId: "8",
       comment: randomTweet[6].split("-")[0],
       avatar: avatarArray[1],
       userName: randomName[1],
@@ -98,8 +112,8 @@ const initialState = {
     },
     {
       id: "3",
-      createdAt: new Date(1639077467544),
-      tweetId: "5",
+      createdAt: new Date(randomDate[10]),
+      tweetId: "7",
       comment: randomTweet[7].split("-")[0],
       avatar: avatarArray[2],
       userName: randomName[2],

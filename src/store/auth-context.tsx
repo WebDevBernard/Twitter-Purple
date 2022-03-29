@@ -29,7 +29,7 @@ export const AuthContextProvider: FC = (props) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setNotification("");
-    }, 10000);
+    }, 5000);
     return () => {
       clearTimeout(timer);
     };

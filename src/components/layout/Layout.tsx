@@ -22,7 +22,7 @@ const Layout: FC = ({ children }) => {
         </Link>
       </div>
       {notification && (
-        <div className="fixed bottom-10 inset-x-0 mx-auto text-center text-2xl whitespace-nowrap z-50 text-secondary_text bg-bg w-fit rounded-lg shadow-md p-2">
+        <div className="fixed bottom-10 inset-x-0 mx-auto text-center whitespace-nowrap z-50 text-bg bg-purple-700 w-fit rounded-lg shadow-md p-4">
           {notification}
         </div>
       )}

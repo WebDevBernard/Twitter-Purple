@@ -37,7 +37,7 @@ const Login = (props: any) => {
 
   return (
     <Modal
-      className="md:top-20 h-screen  md:absolute md:w-[600px] md:h-auto md:min-h-[650px]"
+      className="md:top-20 h-screen w-full md:absolute md:w-[600px] md:h-auto md:min-h-[650px]"
       onClose={props.onClose}
     >
       <div className="flex p-3  justify-between">
