@@ -1,11 +1,10 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useState, useEffect } from "react";
 
 const useValidate = (validateValue: any) => {
   const [enteredValue, setEnteredValue] = useState<string>("");
   const [isTouched, setIsTouched] = useState<boolean>(false);
   const [count, setCount] = useState<number>(0);
   const valueIsValid = validateValue(enteredValue);
-  const hasError = !valueIsValid && isTouched;
 
   const valueChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setEnteredValue(e.target.value);
@@ -23,10 +22,19 @@ const useValidate = (validateValue: any) => {
     setEnteredValue("");
   };
 
+  const [rows, setRows] = useState(2);
+  useEffect(() => {
+    const rowlen = enteredValue.split(/\r\n|\r|\n/);
+    if (rowlen.length > 2) {
+      setRows(rowlen.length);
+    }
+    console.log(rowlen.length);
+  }, [enteredValue]);
+
   return {
     value: enteredValue,
     isValid: valueIsValid,
-    hasError,
+    rows,
     valueChangeHandler,
     inputBlurHandler,
     reset,

@@ -1,3 +1,4 @@
+import { useState, useEffect, useRef } from "react";
 import useCurrentUser from "../hooks/useCurrentUser";
 import Avatar from "../shared/Avatar";
 import TweetButton from "../layout/TweetButton";
@@ -5,6 +6,8 @@ import { tweetIconSmall } from "../styles/heroicons-style";
 import useAvatarReady from "../hooks/useAvatarReady";
 import { FC } from "react";
 import { avatarIcon } from "../styles/heroicons-style";
+import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
 
 interface IProps {
   enteredTweet: string;
@@ -13,44 +16,39 @@ interface IProps {
   tweetChangeHandler: React.ChangeEventHandler<
     HTMLInputElement | HTMLTextAreaElement
   >;
-  addTweetOnEnter: React.KeyboardEventHandler<HTMLFormElement>;
-  tweetInputHasError: boolean;
   tweetCount: number;
   placeholder: string;
-  rows: number;
   pencil?: string;
   p?: string;
+  disabled?: boolean;
+  rows: number;
 }
 
 const TweetForm: FC<IProps> = ({
+  disabled,
   enteredTweet,
   tweetSubmitHandler,
   tweetBlurHandler,
   tweetChangeHandler,
-  addTweetOnEnter,
-  tweetInputHasError,
   tweetCount,
   placeholder,
-  rows,
   pencil,
   p,
+  rows,
 }) => {
   const ready = useAvatarReady();
   const [selectUserAvatar] = useCurrentUser();
 
-  const errorStyle = tweetInputHasError
-    ? "text-red-500"
-    : "text-secondary_text";
   return (
     <div className="flex p-2 border-hover_border">
       {ready && (
         <Avatar avatar={selectUserAvatar} className={`ml-1 ${avatarIcon}`} />
       )}
       <div className="w-full mt-2 mx-3">
-        <form onSubmit={tweetSubmitHandler} onKeyDown={addTweetOnEnter}>
+        <form onSubmit={tweetSubmitHandler}>
           <textarea
-            id="tweetinput"
             onChange={tweetChangeHandler}
+            id="tweetinput"
             onBlur={tweetBlurHandler}
             value={enteredTweet}
             rows={rows}
@@ -61,12 +59,26 @@ const TweetForm: FC<IProps> = ({
           <div className="flex items-center justify-between mt-2">
             <br />
             <div className="flex items-center">
-              <p className={`mr-4 ${errorStyle}`}>
-                {tweetInputHasError && tweetCount === 0 && "tweet too short!"}
-                {tweetInputHasError && tweetCount > 140 && "tweet too long!"}
-              </p>
-              <p className={errorStyle}>{140 - tweetCount}</p>
+              {tweetCount ? (
+                <div className="h-6 w-6 text-xl">
+                  <CircularProgressbar
+                    styles={buildStyles({
+                      textSize: "36px",
+                      pathTransitionDuration: 0.5,
+                      pathColor: "#7e22ce",
+                      textColor: "red",
+                      trailColor: "#cbd5e1",
+                    })}
+                    value={tweetCount}
+                    maxValue={140}
+                    text={tweetCount > 140 ? (140 - tweetCount).toString() : ""}
+                  />
+                </div>
+              ) : (
+                ""
+              )}
               <TweetButton
+                disabled={disabled}
                 pencil={pencil}
                 p={p}
                 className={tweetIconSmall}

@@ -14,11 +14,11 @@ const NewComment = () => {
   const {
     value: enteredTweet,
     isValid: enteredTweetIsValid,
-    hasError: tweetInputHasError,
     valueChangeHandler: tweetChangeHandler,
     inputBlurHandler: tweetBlurHandler,
     reset: resetTweetInput,
     count: tweetCount,
+    rows: rows,
   } = useValidate(
     (value: string) => value.trim().length !== 0 && value.trim().length < 140
   );
@@ -43,12 +43,6 @@ const NewComment = () => {
     resetTweetInput();
   };
 
-  const addTweetOnEnter = (e: any) => {
-    if (e.key === "Enter") {
-      tweetSubmitHandler(e);
-    }
-  };
-
   return (
     <TweetForm
       placeholder={"Tweet your reply"}
@@ -56,12 +50,11 @@ const NewComment = () => {
       tweetSubmitHandler={tweetSubmitHandler}
       tweetBlurHandler={tweetBlurHandler}
       tweetChangeHandler={tweetChangeHandler}
-      addTweetOnEnter={addTweetOnEnter}
-      tweetInputHasError={tweetInputHasError}
       tweetCount={tweetCount}
-      rows={2}
       p="inline-block"
       pencil="hidden"
+      rows={rows}
+      disabled={!enteredTweetIsValid}
     />
   );
 };

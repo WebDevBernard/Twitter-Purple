@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { useState, useEffect } from "react";
 import { tweetActions } from "../../redux/tweet-slice";
 import { useDispatch } from "react-redux";
 import useCurrentUser from "../hooks/useCurrentUser";
@@ -14,11 +14,11 @@ const NewTweet = (props: any) => {
   const {
     value: enteredTweet,
     isValid: enteredTweetIsValid,
-    hasError: tweetInputHasError,
     valueChangeHandler: tweetChangeHandler,
     inputBlurHandler: tweetBlurHandler,
     reset: resetTweetInput,
     count: tweetCount,
+    rows: rows,
   } = useValidate(
     (value: string) => value.trim().length !== 0 && value.trim().length < 140
   );
@@ -42,12 +42,6 @@ const NewTweet = (props: any) => {
     navigate("/");
     props.onClose();
   };
-  // React.KeyboardEvent<HTMLFormElement>
-  const addTweetOnEnter = (e: any) => {
-    if (e.key === "Enter") {
-      tweetSubmitHandler(e);
-    }
-  };
 
   return (
     <TweetForm
@@ -56,12 +50,11 @@ const NewTweet = (props: any) => {
       tweetSubmitHandler={tweetSubmitHandler}
       tweetBlurHandler={tweetBlurHandler}
       tweetChangeHandler={tweetChangeHandler}
-      addTweetOnEnter={addTweetOnEnter}
-      tweetInputHasError={tweetInputHasError}
       tweetCount={tweetCount}
-      rows={2}
       pencil={props.pencil}
       p={props.p}
+      rows={rows}
+      disabled={!enteredTweetIsValid}
     />
   );
 };
