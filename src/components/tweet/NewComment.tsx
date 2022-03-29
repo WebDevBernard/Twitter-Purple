@@ -15,10 +15,9 @@ const NewComment = () => {
     value: enteredTweet,
     isValid: enteredTweetIsValid,
     valueChangeHandler: tweetChangeHandler,
-    inputBlurHandler: tweetBlurHandler,
+
     reset: resetTweetInput,
     count: tweetCount,
-    rows: rows,
   } = useValidate(
     (value: string) => value.trim().length !== 0 && value.trim().length < 140
   );
@@ -48,12 +47,10 @@ const NewComment = () => {
       placeholder={"Tweet your reply"}
       enteredTweet={enteredTweet}
       tweetSubmitHandler={tweetSubmitHandler}
-      tweetBlurHandler={tweetBlurHandler}
       tweetChangeHandler={tweetChangeHandler}
       tweetCount={tweetCount}
       p="inline-block"
       pencil="hidden"
-      rows={rows}
       disabled={!enteredTweetIsValid}
     />
   );

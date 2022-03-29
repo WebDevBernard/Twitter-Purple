@@ -15,10 +15,9 @@ const NewTweet = (props: any) => {
     value: enteredTweet,
     isValid: enteredTweetIsValid,
     valueChangeHandler: tweetChangeHandler,
-    inputBlurHandler: tweetBlurHandler,
+
     reset: resetTweetInput,
     count: tweetCount,
-    rows: rows,
   } = useValidate(
     (value: string) => value.trim().length !== 0 && value.trim().length < 140
   );
@@ -48,12 +47,10 @@ const NewTweet = (props: any) => {
       placeholder={"What are you humming about?"}
       enteredTweet={enteredTweet}
       tweetSubmitHandler={tweetSubmitHandler}
-      tweetBlurHandler={tweetBlurHandler}
       tweetChangeHandler={tweetChangeHandler}
       tweetCount={tweetCount}
       pencil={props.pencil}
       p={props.p}
-      rows={rows}
       disabled={!enteredTweetIsValid}
     />
   );

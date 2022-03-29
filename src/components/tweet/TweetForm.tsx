@@ -12,7 +12,6 @@ import "react-circular-progressbar/dist/styles.css";
 interface IProps {
   enteredTweet: string;
   tweetSubmitHandler: React.FormEventHandler<HTMLFormElement>;
-  tweetBlurHandler: React.FocusEventHandler<HTMLTextAreaElement>;
   tweetChangeHandler: React.ChangeEventHandler<
     HTMLInputElement | HTMLTextAreaElement
   >;
@@ -21,20 +20,18 @@ interface IProps {
   pencil?: string;
   p?: string;
   disabled?: boolean;
-  rows: number;
 }
 
 const TweetForm: FC<IProps> = ({
   disabled,
   enteredTweet,
   tweetSubmitHandler,
-  tweetBlurHandler,
+
   tweetChangeHandler,
   tweetCount,
   placeholder,
   pencil,
   p,
-  rows,
 }) => {
   const ready = useAvatarReady();
   const [selectUserAvatar] = useCurrentUser();
@@ -49,12 +46,10 @@ const TweetForm: FC<IProps> = ({
           <textarea
             onChange={tweetChangeHandler}
             id="tweetinput"
-            onBlur={tweetBlurHandler}
             value={enteredTweet}
-            rows={rows}
             autoComplete="off"
             placeholder={placeholder}
-            className="text-primary_dark_text placeholder:text-primary_light_text w-full text-lg bg-transparent border-b-[1px] border-hover_border resize-none focus:outline-none mt-2"
+            className="overflow-y-hidden text-primary_dark_text placeholder:text-primary_light_text w-full text-lg bg-transparent border-b-[1px] border-hover_border resize-none focus:outline-none mt-2"
           ></textarea>
           <div className="flex items-center justify-between mt-2">
             <br />
