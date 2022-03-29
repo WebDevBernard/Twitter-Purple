@@ -5,7 +5,7 @@ import { FC } from "react";
 import { DotsHorizontalIcon } from "@heroicons/react/solid";
 import { avatarIcon } from "../styles/heroicons-style";
 const ProfileButton: FC<{
-  openDialog: React.MouseEventHandler<HTMLDivElement>;
+  openDialog: any;
   className: string;
 }> = (props) => {
   const [selectUserAvatar, selectUserName] = useCurrentUser();

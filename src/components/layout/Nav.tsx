@@ -72,12 +72,6 @@ const ProfileDialog: FC<IProps> = (props) => {
 };
 
 const Nav: FC<IProps> = (props) => {
-  const [openDialog, setOpenDialog] = useState<boolean>(false);
-
-  const handleOpenDialog = () => {
-    setOpenDialog(!openDialog);
-  };
-
   return (
     <div className="max-w-xs px-2 xl:px-3 items-center flex flex-col justify-between top-0 overflow-x-hidden overflow-y-auto ">
       <div className="xl:mr-8 mt-4 ">
@@ -113,17 +107,17 @@ const Nav: FC<IProps> = (props) => {
         exitBeforeEnter={true}
         onExitComplete={() => null}
       >
-        {openDialog && (
+        {props.openDialog && (
           <ProfileDialog
-            openDialog={handleOpenDialog}
+            openDialog={props.handleOpenDialog}
             handleOpenAuth={props.handleOpenAuth}
             handleOpenProfile={props.handleOpenProfile}
-            handleOpenDialog={handleOpenDialog}
+            handleOpenDialog={props.handleOpenDialog}
           />
         )}
       </AnimatePresence>
       <ProfileButton
-        openDialog={handleOpenDialog}
+        openDialog={props.handleOpenDialog}
         className=" hover:bg-hover mb-4 md:pl-2 md:pr-4 md:py-2 rounded-full  left-0 relative"
       />
     </div>

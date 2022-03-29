@@ -17,11 +17,16 @@ import Login from "./components/login/Login";
 import TweetList from "./components/tweet/TweetList";
 import NewComment from "./components/tweet/NewComment";
 import CurrentTweet from "./components/tweet/CurrentTweet";
+import { open } from "fs/promises";
 
 function App() {
   const [openModal, setOpenModal] = useState<boolean>(false);
   const [openProfile, setOpenProfile] = useState<boolean>(false);
   const [openAuth, setOpenAuth] = useState<boolean>(false);
+  const [openDialog, setOpenDialog] = useState<boolean>(false);
+  const handleOpenDialog = () => {
+    setOpenDialog(!openDialog);
+  };
   const [show, setShow] = useState<boolean>(false);
   useEffect(() => {
     show
@@ -32,10 +37,12 @@ function App() {
   const handleOpenAuth = () => {
     setOpenAuth(!openAuth);
     setShow(!show);
+    setOpenDialog(false);
   };
   const handleOpenProfile = () => {
     setOpenProfile(!openProfile);
     setShow(!show);
+    setOpenDialog(false);
   };
   const handleOpenModal = () => {
     setOpenModal(!openModal);
@@ -57,6 +64,8 @@ function App() {
           {openModal && <NavTweet onClose={handleOpenModal} />}
         </AnimatePresence>
         <Nav
+          openDialog={openDialog}
+          handleOpenDialog={handleOpenDialog}
           handleOpenModal={handleOpenModal}
           handleOpenAuth={handleOpenAuth}
           handleOpenProfile={handleOpenProfile}

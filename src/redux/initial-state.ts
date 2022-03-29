@@ -1,11 +1,11 @@
 import { avatarArray, randomName } from "../utils/avatar-names";
 const sw = require("star-wars-quotes");
-const generateRandomDate = (): string => {
+const generateRandomDate = () => {
   const random = getRandomDate(
     new Date("2022-01-01T01:57:45.271Z"),
     new Date("2022-04-01T01:57:45.271Z")
   );
-  return random.toISOString();
+  return random;
 };
 
 function getRandomDate(from: Date, to: Date) {
@@ -14,7 +14,13 @@ function getRandomDate(from: Date, to: Date) {
   return new Date(fromTime + Math.random() * (toTime - fromTime));
 }
 
-const randomDate = Array.from({ length: 11 }, () => generateRandomDate());
+console.log(generateRandomDate());
+
+const randomDate = Array.from({ length: 11 }, () => generateRandomDate()).sort(
+  (a, b) => {
+    return a.getTime() - b.getTime();
+  }
+);
 const randomTweet = Array.from({ length: 8 }, () => sw());
 
 const initialState = {

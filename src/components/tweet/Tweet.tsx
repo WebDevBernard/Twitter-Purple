@@ -53,7 +53,7 @@ const Tweet = (props: any) => {
         <div className="flex items-center justify-between relative">
           <span className="flex items-center space-x-2">
             <p className="text-lg text-secondary_text font-bold ">
-              {props.userName.split("_")[0]}
+              {props.userName.split(" ")[0]}
             </p>
 
             <p className="text-xs whitespace-nowrap">@ {props.userName}</p>

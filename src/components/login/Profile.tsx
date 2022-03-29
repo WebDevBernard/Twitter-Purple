@@ -44,8 +44,8 @@ const Profile: FC<{ onClose: () => void }> = (props) => {
       />
       <form onSubmit={handleSubmit}>
         <div className="p-10 space-y-4">
-          <p className="border-b-border border-[1px]">Choose a new avatar</p>
-          <div className="grid grid-cols-2 gap-4">
+          <h2 className="text-xl">Choose a new avatar</h2>
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
             {avatarArray.map((src, index) => {
               return (
                 <img
