@@ -14,7 +14,7 @@ const DeleteDialog: FC<IProps> = (props) => {
   return (
     <Modal
       onClose={props.handleDialog}
-      className="top-40 w-[320px] h-[290px] absolute "
+      className="top-28 lg:top-40 w-[320px] h-auto min-h-[290px] absolute "
     >
       <div ref={domNode} className="flex flex-col py-6 px-8">
         <h2 className="text-xl font-extrabold mb-2 tracking-widest">
