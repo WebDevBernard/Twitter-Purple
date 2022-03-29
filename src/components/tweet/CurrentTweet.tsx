@@ -50,7 +50,7 @@ const CurrentTweet = () => {
               />
             </span>
           </div>
-          <p>{selectedTweet.tweet}</p>
+          <p className=" whitespace-pre-line">{selectedTweet.tweet}</p>
           <div className="flex items-center justify-evenly my-2">
             <div className="flex space-x-2">
               <ChatAltIcon className={`${icons} cursor-auto opacity-90`} />{" "}

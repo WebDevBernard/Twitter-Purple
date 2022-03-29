@@ -85,7 +85,7 @@ const Comment = (props: any) => {
             )}
           </AnimatePresence>
         </div>
-        <p className="break-all">{props.tweet}</p>
+        <p className="break-all  whitespace-pre-line">{props.tweet}</p>
         <div className="flex items-center justify-evenly my-2">
           <ReactTooltip backgroundColor="#64748b" />
 

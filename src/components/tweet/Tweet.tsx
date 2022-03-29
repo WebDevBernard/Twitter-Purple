@@ -88,7 +88,7 @@ const Tweet = (props: any) => {
             )}
           </AnimatePresence>
         </div>
-        <p className="break-all">{props.tweet}</p>
+        <p className="break-all whitespace-pre-line">{props.tweet}</p>
         <div className="flex items-center justify-evenly my-2">
           <div className="flex space-x-2">
             <Link to={`${props.userName}/comments/${props.id}`}>
