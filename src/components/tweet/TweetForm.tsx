@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import useCurrentUser from "../hooks/useCurrentUser";
 import Avatar from "../shared/Avatar";
 import TweetButton from "../layout/TweetButton";
@@ -21,7 +21,6 @@ interface IProps {
   p?: string;
   disabled?: boolean;
 }
-
 const TweetForm: FC<IProps> = ({
   disabled,
   enteredTweet,
@@ -35,6 +34,14 @@ const TweetForm: FC<IProps> = ({
 }) => {
   const ready = useAvatarReady();
   const [selectUserAvatar] = useCurrentUser();
+  const [rows, setRows] = useState(2);
+  useEffect(() => {
+    const rowlen = enteredTweet.split("\n");
+
+    if (rowlen.length > 2) {
+      setRows(rowlen.length);
+    }
+  }, [enteredTweet]);
 
   return (
     <div className="flex p-2 border-hover_border">
@@ -44,12 +51,14 @@ const TweetForm: FC<IProps> = ({
       <div className=" w-full mt-2 mx-3">
         <form onSubmit={tweetSubmitHandler}>
           <textarea
+            rows={rows}
             onChange={tweetChangeHandler}
             id="tweetinput"
             value={enteredTweet}
             autoComplete="off"
             placeholder={placeholder}
-            className=" overflow-y-hidden text-primary_dark_text placeholder:text-primary_light_text w-full bg-transparent border-b-[1px] border-hover_border resize-none focus:outline-none mt-2 text-2xl placeholder:text-lg"
+            className="placeholder:absolute text-slate-900 placeholder:text-primary_light_text w-full bg-transparent border-b-[1px] border-hover_border resize-none focus:outline-none mt-2 text-xl placeholder:text-lg"
+            spellCheck="false"
           ></textarea>
           <div className="flex items-center justify-between mt-2">
             <br />

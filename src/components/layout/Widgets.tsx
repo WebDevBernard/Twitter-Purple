@@ -17,7 +17,7 @@ const Widgets = () => {
         <SearchIcon className=" w-[20px] h-[20px] bottom-3 right-3 absolute text-primary_light_text" />
       </form>
       <Card className="space-y-6 bg-bg p-4 inline-block tracking-normal">
-        <h3 className=" font-bold">What's Happening</h3>
+        <h3 className=" font-bold text-lg tracking-wide">What's Happening</h3>
         <div className="inline-block break-words">
           <p className="text-xs ">Updates</p>
           <p className="text-sm font-bold text-secondary_text">
